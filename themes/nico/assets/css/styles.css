@@ -1682,6 +1682,7 @@ screen and (-ms-high-contrast: none) {
 
 .footer .footer-bottom .footer-links ul a:hover {
 	color: #fff;
+	text-decoration: none;
 }
 
 

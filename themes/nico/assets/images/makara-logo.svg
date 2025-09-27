@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .logo-text { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 32px; }
+        .gradient-text { fill: url(#gradient); }
+    </style>
+    <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#5f3afc;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#ff6b6b;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    <text x="10" y="35" class="logo-text gradient-text">MAKARA</text>
+</svg>

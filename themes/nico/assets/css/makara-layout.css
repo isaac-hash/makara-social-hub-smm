@@ -1,0 +1,104 @@
+/* Makara Layout Fixes */
+
+/* Navbar */
+.navbar-custom {
+    padding: 1rem 0;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.dark-theme .navbar-custom {
+    background: rgba(21, 21, 21, 0.95) !important;
+}
+
+.navbar-brand {
+    padding: 0 !important;
+    margin-right: 2rem !important;
+}
+
+.navbar-logo {
+    height: 40px;
+    width: auto;
+}
+
+/* Navigation Items */
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+/* Header Spacing */
+.keen-header {
+    padding-top: 100px !important;
+    margin-top: 0 !important;
+}
+
+.keen-header .container {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+/* Buttons */
+.keen-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 44px !important;
+    padding: 0 1.5rem !important;
+    border-radius: 50px !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.keen-btn-outline {
+    background: transparent !important;
+    border: 2px solid var(--primary-color) !important;
+    color: var(--primary-color) !important;
+}
+
+.dark-theme .keen-btn-outline {
+    border-color: var(--text-light) !important;
+    color: var(--text-light) !important;
+}
+
+/* Mobile Menu */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: var(--background-light);
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dark-theme .navbar-collapse {
+        background: var(--background-dark);
+    }
+
+    .nav-item {
+        flex-direction: column;
+        align-items: stretch;
+        margin: 1rem 0;
+    }
+
+    .keen-btn {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    margin-left: 1rem !important;
+    width: 44px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}

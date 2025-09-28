@@ -303,13 +303,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-social a {
-    color: var(--keen-white);
+    color: #00C853;
     font-size: 1.25rem;
     transition: var(--transition-base);
 }
 
 .footer-social a:hover {
-    color: var(--keen-gold);
+    color: #00C853;
 }
 
 /* Responsive */

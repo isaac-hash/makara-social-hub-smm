@@ -1,3 +1,4 @@
+
 :root {
     --primary-color: #00C853;
     --dark-bg: #121212;
@@ -160,6 +161,48 @@ a {
     margin-bottom: 24px;
 }
 
+/* How It Works Section */
+.process-step {
+    text-align: center;
+    padding: 20px;
+}
+
+.process-step-number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 50px;
+    margin: 0 auto 20px;
+}
+
+/* FAQs Section */
+.accordion-item {
+    background-color: #222;
+    border: 1px solid var(--border-color);
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.accordion-button {
+    background-color: #222;
+    color: var(--light-text);
+    font-weight: 700;
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--primary-color);
+    background-color: #333;
+}
+
+.accordion-body {
+    background-color: #333;
+    color: var(--light-text);
+}
+
 /* Testimonials Section */
 .testimonials-section {
     background-color: var(--dark-bg);
@@ -182,7 +225,8 @@ a {
 .testimonial-quote {
     font-size: 60px;
     font-weight: 700;
-    color: var(--primary-color);
+    color: #0C63E4;
+    /* color: var(--primary-color); */
     line-height: 1;
     margin-bottom: 20px;
 }

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +16,20 @@
     <!-- Styles -->
     <link href="<?php echo BASE; ?>themes/nico/assets/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo BASE; ?>assets/css/new_style.css" rel="stylesheet">
+    <link href="<?php echo BASE; ?>themes/nico/assets/css/sections.css" rel="stylesheet">
+    <link href="<?php echo BASE; ?>themes/nico/assets/css/utilities.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <style>
+        /* Critical rendering fixes */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 
     <script type="text/javascript">
       var token = '<?=$this->security->get_csrf_hash()?>',
@@ -33,29 +46,29 @@
                 <img src="<?=get_option('website_logo', BASE."assets/images/logo.png")?>" alt="Makara Logo" class="navbar-logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
+                <i class="fa-solid fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link text-primary" href="#">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" style="color: black;" onmouseover="this.style.color='#00C853'" onmouseout="this.style.color='black'" href="#services">Services</a>
+                        <a class="nav-link" style="color: black;" onmouseover="this.style.color='lime'" onmouseout="this.style.color='black'" href="#services">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: black;" onmouseover="this.style.color='#00C853'" onmouseout="this.style.color='black'" href="#features">Features</a>
+                        <a class="nav-link" style="color: black;" onmouseover="this.style.color='lime'" onmouseout="this.style.color='black'" href="#features">Features</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: black;" onmouseover="this.style.color='#00C853'" onmouseout="this.style.color='black'" href="#pricing">Pricing</a>
+                        <a class="nav-link" style="color: black;" onmouseover="this.style.color='lime'" onmouseout="this.style.color='black'" href="#pricing">Pricing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: black;" onmouseover="this.style.color='#00C853'" onmouseout="this.style.color='black'" href="#contact">Contact</a>
+                        <a class="nav-link" style="color: black;" onmouseover="this.style.color='lime'" onmouseout="this.style.color='black'" href="#contact">Contact</a>
                     </li>
                 </ul>
-                <div class="navbar-buttons">
-                    <a href="<?=cn('auth/login')?>" class="btn btn-link me-3">Login</a>
-                    <a href="<?=cn('auth/signup')?>" class="btn btn-keen-primary">Sign Up</a>
+                <div class="navbar-buttons d-flex align-items-center">
+                    <a href="<?=cn('auth/login')?>" class="btn btn-outline-primary me-3 px-4 rounded-pill fw-medium">Login</a>
+                    <a href="<?=cn('auth/signup')?>" class="btn btn-primary px-4 rounded-pill fw-medium shadow-sm hover-lift">Sign Up</a>
                 </div>
             </div>
         </div>
@@ -63,29 +76,31 @@
 
     <!-- Hero Section -->
     <section class="hero-section" style="background: url('https://environics.ca/wp-content/uploads/2024/07/feature-image-cropped.png') no-repeat center center fixed;">
-        <div class="container" >
-            <div class="row align-items-center">
-                <div class="col-lg-6 mt-5">
-                    <h1 class="keen-hero-title mb-4">
-                        <span># Accelerate</span>
-                        <span># Your Social</span>
-                        <span># Growth</span>
-                    </h1>
-                    <p class="keen-subtitle mb-4">Premium social media solutions for brands that want to stand out. Grow, engage, and convert with Makara.</p>
-                    <a href="<?=cn('auth/signup')?>" class="btn btn-secondary mb-4" style="border-radius: 10px">Start Growing Today</a>
-                    <div class="keen-hero-social-proof d-flex align-items-center">
-                        <div class="keen-stars me-3">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+        <div class="container position-relative" >
+            <div class="row align-items-center min-vh-75">
+                <div class="col-lg-6 py-5">
+                    <div class="hero-content-wrapper mt-5">
+                        <h1 class="keen-hero-title display-4 fw-bold mb-4">
+                            <span class="d-block " style="color: lightgray;"># Accelerate # Your Social</span>
+                            <!-- <span class="d-block" style="color: lightgray;"># Your Social</span> -->
+                            <span class="d-block" style="color: lightgray;"># Growth</span>
+                        </h1>
+                        <p class="keen-subtitle lead mb-4 text-dark-50">Premium social media solutions for brands that want to stand out. Grow, engage, and convert with Makara.</p>
+                        <a href="<?=cn('auth/signup')?>" class="btn btn-outline-secondary btn-lg px-5 py-3 mb-4 rounded-pill shadow-lg text-white hover-lift">Start Growing Today</a>
+                        <div class="keen-hero-social-proof d-flex align-items-center p-3 bg-white rounded-3 shadow-sm" style="max-width: 300px;">
+                            <div class="keen-stars me-3">
+                                <i class="fa-solid fa-star text-warning"></i>
+                                <i class="fa-solid fa-star text-warning"></i>
+                                <i class="fa-solid fa-star text-warning"></i>
+                                <i class="fa-solid fa-star text-warning"></i>
+                                <i class="fa-solid fa-star text-warning"></i>
+                            </div>
+                            <p class="mb-0 small fw-medium">Rated 4.8/5 from over 1,000+ reviews</p>
                         </div>
-                        <p class="mb-0">Rated 4.8/5 from over 1,000+ reviews</p>
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
-                    <!-- <img src="https://images.sbs.com.au/dims4/default/557da45/2147483647/strip/true/crop/2850x1603+616+1417/resize/1280x720!/quality/90/?url=http%3A%2F%2Fsbs-au-brightspot.s3.amazonaws.com%2F74%2F41%2Fb5af8ce441a5a0cc425a3680ce71%2F20240221001905687010-original.jpg&imwidth=960" alt="Social Growth" class="img-fluid"> -->
+                    <!-- Keeping space for background image -->
                 </div>
             </div>
         </div>
@@ -123,39 +138,225 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="py-5">
+    <!-- Who We Are Section -->
+        <!-- Who We Are Section -->
+    <section class="section-padding bg-light position-relative overflow-hidden">
+        <div class="section-shape">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="var(--keen-primary)" opacity="0.05" d="M45.3,-59.1C58.9,-49.3,70.3,-35.3,74.8,-19.2C79.3,-3.1,76.9,15.1,69.1,30.5C61.3,45.9,48.1,58.4,32.4,65.9C16.7,73.4,-1.5,75.8,-19.9,71.8C-38.3,67.8,-56.9,57.4,-67.1,41.7C-77.3,26,-79,5,-73.3,-12.7C-67.6,-30.4,-54.4,-44.8,-40.1,-54.7C-25.8,-64.5,-10.4,-69.8,3.9,-74.6C18.2,-79.4,31.7,-68.9,45.3,-59.1Z" transform="translate(100 100)" />
+            </svg>
+        </div>
         <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="who-we-are-content pe-lg-5">
+                        <h2 class="section-title text-dark fw-bold mb-4">Who We Are & What We Offer</h2>
+                        <p class="lead text-dark mb-4">At Makara Social Hub, we're your dedicated partner in social media growth. Our platform provides comprehensive solutions for businesses and individuals looking to expand their digital presence.</p>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="feature-card-mini bg-white">
+                                    <div class="icon-box mb-3" style="  width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0, 0.3);">
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <h4 class="h5 mb-3 text-dark">Quality Service</h4>
+                                    <p class="text-dark mb-0">Premium quality engagement from real users to boost your social presence.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="feature-card-mini bg-white">
+                                    <div class="icon-box mb-3" style="  width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0, 0.3);">
+                                        <i class="fa-solid fa-headset"></i>
+                                    </div>
+                                    <h4 class="h5 mb-3 text-dark">24/7 Support</h4>
+                                    <p class="text-dark mb-0">Round-the-clock customer support to assist you whenever you need help.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="who-we-are-image position-relative mt-5 mt-lg-0">
+                        <img src="https://img.freepik.com/free-vector/social-tree-concept-illustration_114360-4898.jpg" alt="About Us" class="img-fluid floating-animation">
+                        <div class="experience-badge bg-white shadow">
+                            <span class="h2 mb-0 text-primary fw-bold">5+</span>
+                            <span class="text-dark">Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section-padding position-relative">
+        <div class="section-shape right">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="var(--keen-secondary)" opacity="0.05" d="M42.7,-62.9C50.9,-53.7,50.1,-35.7,53.1,-20.1C56.1,-4.4,62.9,8.9,61.4,22.7C59.8,36.5,49.9,50.9,36.9,57.6C23.9,64.3,7.7,63.3,-7.4,59.9C-22.5,56.4,-36.4,50.5,-47.8,40.6C-59.2,30.7,-68,16.9,-70.2,1.3C-72.3,-14.4,-67.7,-31.9,-57.1,-43.6C-46.5,-55.3,-29.9,-61.3,-13.3,-63.1C3.2,-64.9,19.8,-62.5,32.7,-63.3C45.7,-64.1,55,-72.1,42.7,-62.9Z" transform="translate(100 100)" />
+            </svg>
+        </div>
+        <div class="container p-5">
             <div class="text-center mb-5">
-                <h2 class="keen-section-title">Why Choose Makara</h2>
-                <p class="keen-subtitle">Premium features to accelerate your social media growth</p>
+                <h2 class="keen-section-title">How It Works</h2>
+                <p class="lead text-muted">Get started with Makara Social Hub in four simple steps</p>
             </div>
             <div class="row g-4" style="color: black;">
-                <div class="col-md-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-rocket"></i>
+                <div class="col-md-6 col-lg-3">
+                    <div class="process-card">
+                        <div class="process-card-body">
+                            <div class="process-icon" >
+                                <span class="process-number" >01</span>
+                                <i class="fa-solid fa-user-plus" ></i>
+                            </div>
+                            <h4 class="process-title">Sign Up</h4>
+                            <p class="process-text">Create your account in less than 2 minutes</p>
+                            <div class="process-arrow">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
                         </div>
-                        <h3>Instant Delivery</h3>
-                        <p>Get your orders fulfilled instantly with our automated system. No waiting, no delays.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
+                <div class="col-md-6 col-lg-3">
+                    <div class="process-card">
+                        <div class="process-card-body">
+                            <div class="process-icon">
+                                <span class="process-number">02</span>
+                                <i class="fa-solid fa-wallet"></i>
+                            </div>
+                            <h4 class="process-title">Add Funds</h4>
+                            <p class="process-text">Choose from our secure payment methods</p>
+                            <div class="process-arrow">
+                                <i class="fa-solid fa-long-arrow-alt-right"></i>
+                            </div>
                         </div>
-                        <h3>Safe & Secure</h3>
-                        <p>Your account safety is our priority. All activities comply with platform guidelines.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-chart-line"></i>
+                <div class="col-md-6 col-lg-3">
+                    <div class="process-card">
+                        <div class="process-card-body">
+                            <div class="process-icon">
+                                <span class="process-number">03</span>
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <h4 class="process-title">Select Service</h4>
+                            <p class="process-text">Pick the perfect package for your needs</p>
+                            <div class="process-arrow">
+                                <i class="fas fa-long-arrow-alt-right"></i>
+                            </div>
                         </div>
-                        <h3>Real Growth</h3>
-                        <p>High-quality engagement from real users to boost your social proof naturally.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="process-card">
+                        <div class="process-card-body">
+                            <div class="process-icon">
+                                <span class="process-number">04</span>
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <h4 class="process-title">Watch Growth</h4>
+                            <p class="process-text">See your social media presence expand</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    <!-- FAQs Section -->
+    <section class="faq-section py-7 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="font-xl fw-bold mb-3 p-5" style="color: black;">Frequently Asked Questions</h2>
+                    <p class="lead text-muted mb-5">Find quick answers to common questions about our services</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    What are SMM panels?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    An SMM panel is an online shop that you can visit to purchase SMM services at great prices. We provide a user-friendly platform to help you grow your social media presence effectively.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    What SMM services can I find?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    We offer a comprehensive range of SMM services including:
+                                    <ul class="mt-2 mb-0">
+                                        <li>Social media likes and followers</li>
+                                        <li>Video views and engagement</li>
+                                        <li>Comments and shares</li>
+                                        <li>Custom social media packages</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Are SMM services safe?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Yes, our services are completely safe! We use organic methods that comply with social media platform guidelines. Your account security is our top priority, and we guarantee that your accounts won't face any risks.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    How does a mass order work?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Our mass order feature allows you to place multiple orders simultaneously. Simply upload a list of links and select your desired services for each. This saves time and streamlines your social media growth strategy.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    What does drip-feed mean?
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Drip-feed is our smart delivery system that gradually distributes your order over time. For example, instead of getting 2000 likes at once, you can receive 200 likes daily for 10 days. This creates a more natural growth pattern and improves engagement authenticity.
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -163,35 +364,111 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials-section py-5">
+        <!-- Testimonials Section -->
+    <section class="testimonials-section py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="keen-section-title">What Our Clients Say</h2>
+                <h2 class="keen-section-title display-4 fw-bold">What Our Clients Say</h2>
+                <p class="lead text-muted">Real stories from our satisfied customers</p>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-quote">“</div>
-                        <p class="testimonial-text">Makara has transformed our social media presence. Our engagement has increased by 300% in just two months!</p>
-                        <div class="testimonial-author">
-                            <img src="https://i.pravatar.cc/100?img=1" alt="Author Image">
-                            <div>
-                                <div class="testimonial-author-name">Sarah Johnson</div>
-                                <div class="testimonial-author-role">Marketing Director, TechCorp</div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="testimonial-card bg-white p-4 p-lg-5 rounded-4 shadow-sm">
+                                    <div class="testimonial-quote display-3 text-primary mb-3">"</div>
+                                    <p class="testimonial-text text-primary lead mb-4">Makara Social Hub is the real deal! I've used many platforms before, but none delivered results as fast as they did. My engagement improved almost instantly, and their customer service is always available to assist. Highly recommended!</p>
+                                    <div class="testimonial-author d-flex align-items-center">
+                                        <img src="https://i.pravatar.cc/100?img=3" alt="Author" class="rounded-circle me-3" width="60">
+                                        <div>
+                                            <div class="testimonial-author-name text-secondary fw-bold">PRECIOUS O.</div>
+                                            <div class="testimonial-author-role text-muted">Content Creator</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="testimonial-card bg-white p-4 p-lg-5 rounded-4 shadow-sm">
+                                    <div class="testimonial-quote display-3 text-primary mb-3">"</div>
+                                    <p class="testimonial-text text-primary lead mb-4">I used to struggle with reaching the right audience, but Makara Social Hub changed everything. They are honest, reliable, and always deliver on time. No delays, no excuses just results!</p>
+                                    <div class="testimonial-author d-flex align-items-center">
+                                        <img src="https://i.pravatar.cc/100?img=4" alt="Author" class="rounded-circle me-3" width="60">
+                                        <div>
+                                            <div class="testimonial-author-name text-secondary fw-bold">Tima K.</div>
+                                            <div class="testimonial-author-role text-muted">Fashion Entrepreneur</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="testimonial-card bg-white p-4 p-lg-5 rounded-4 shadow-sm">
+                                    <div class="testimonial-quote display-3 text-primary mb-3">"</div>
+                                    <p class="testimonial-text text-primary lead mb-4">As an artist, I need real and organic engagement, not fake numbers. Makara Social Hub delivered exactly what they promised. No scams, no shady practices, just quality promotion. If you're serious about your music, they are the right choice!</p>
+                                    <div class="testimonial-author d-flex align-items-center">
+                                        <img src="https://i.pravatar.cc/100?img=5" alt="Author" class="rounded-circle me-3" width="60">
+                                        <div>
+                                            <div class="testimonial-author-name text-secondary fw-bold">Bayo A.</div>
+                                            <div class="testimonial-author-role text-muted">Afrobeats Artist</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="testimonial-card bg-white p-4 p-lg-5 rounded-4 shadow-sm">
+                                    <div class="testimonial-quote display-3 text-primary mb-3">"</div>
+                                    <p class="testimonial-text text-primary lead mb-4">I've tried several social media promotion services before, and most of them either delay or don't respond when you have issues. But Makara Social Hub is different their customer support is top-notch, and they always deliver on time!</p>
+                                    <div class="testimonial-author d-flex align-items-center">
+                                        <img src="https://i.pravatar.cc/100?img=6" alt="Author" class="rounded-circle me-3" width="60">
+                                        <div>
+                                            <div class="testimonial-author-name text-secondary fw-bold">Blessing C.</div>
+                                            <div class="testimonial-author-role text-muted">Online Vendor</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="testimonial-card bg-white p-4 p-lg-5 rounded-4 shadow-sm">
+                                    <div class="testimonial-quote display-3 text-primary mb-3">"</div>
+                                    <p class="testimonial-text text-primary lead mb-4">One thing I love about Makara Social Hub is their honesty. They don't just promise results; they actually deliver. Their team is also very professional and responsive. They helped my startup gain visibility, and I couldn't be happier!</p>
+                                    <div class="testimonial-author d-flex align-items-center">
+                                        <img src="https://i.pravatar.cc/100?img=7" alt="Author" class="rounded-circle me-3" width="60">
+                                        <div>
+                                            <div class="testimonial-author-name text-secondary fw-bold">Emeka P.</div>
+                                            <div class="testimonial-author-role text-muted">Fintech Founder</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="testimonial-card bg-white p-4 p-lg-5 rounded-4 shadow-sm">
+                                    <div class="testimonial-quote display-3 text-primary mb-3">"</div>
+                                    <p class="testimonial-text text-primary lead mb-4">Registering my business with CAC was so smooth with Makara Social Hub! They handled everything professionally, and I didn't have to worry about unnecessary delays. Their service is fast, reliable, and completely stress-free!</p>
+                                    <div class="testimonial-author d-flex align-items-center">
+                                        <img src="https://i.pravatar.cc/100?img=8" alt="Author" class="rounded-circle me-3" width="60">
+                                        <div>
+                                            <div class="testimonial-author-name text-secondary fw-bold">Enobong A.</div>
+                                            <div class="testimonial-author-role text-muted">Business Owner</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="testimonial-quote">“</div>
-                        <p class="testimonial-text">The best SMM panel I've ever used. The customer support is top-notch and the services are high-quality.</p>
-                        <div class="testimonial-author">
-                            <img src="https://i.pravatar.cc/100?img=2" alt="Author Image">
-                            <div>
-                                <div class="testimonial-author-name">John Doe</div>
-                                <div class="testimonial-author-role">Freelancer</div>
-                            </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                        <div class="carousel-indicators position-relative mt-4">
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active bg-primary" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" class="bg-primary" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" class="bg-primary" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="3" class="bg-primary" aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="4" class="bg-primary" aria-label="Slide 5"></button>
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="5" class="bg-primary" aria-label="Slide 6"></button>
                         </div>
                     </div>
                 </div>
@@ -200,11 +477,30 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-5">
-        <div class="container text-center" style="border-left: 1px solid gray; border-right: 1px solid gray;">
-            <h2 class="keen-section-title">Ready to Dominate Social Media?</h2>
-            <p class="keen-subtitle">Join thousands of successful brands who trust Makara for their social media growth</p>
-            <a href="<?=cn('auth/signup')?>" class="btn btn-secondary btn-lg">Get Started Now</a>
+    <section class="py-7 position-relative overflow-hidden">
+        <div class="section-shape">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="var(--keen-primary)" opacity="0.05" d="M42.7,-62.9C50.9,-53.7,50.1,-35.7,53.1,-20.1C56.1,-4.4,62.9,8.9,61.4,22.7C59.8,36.5,49.9,50.9,36.9,57.6C23.9,64.3,7.7,63.3,-7.4,59.9C-22.5,56.4,-36.4,50.5,-47.8,40.6C-59.2,30.7,-68,16.9,-70.2,1.3C-72.3,-14.4,-67.7,-31.9,-57.1,-43.6C-46.5,-55.3,-29.9,-61.3,-13.3,-63.1C3.2,-64.9,19.8,-62.5,32.7,-63.3C45.7,-64.1,55,-72.1,42.7,-62.9Z" transform="translate(100 100)" />
+            </svg>
+        </div>
+        <div class="container text-center position-relative">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="keen-section-title display-4 fw-bold mb-4">Ready to Dominate <span class="text-primary">Social Media</span>?</h2>
+                    <p class="keen-subtitle lead mb-5 text-dark-50">Join thousands of successful brands who trust Makara for their social media growth</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="<?=cn('auth/signup')?>" class="btn btn-keen-primary btn-lg px-5 py-3 rounded-pill shadow-lg hover-lift">
+                            Get Started Now
+                            <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                    <div class="mt-4 pt-2">
+                        <span class="badge bg-light text-dark px-3 py-2 rounded-pill shadow-sm">
+                            <i class="fas fa-shield-alt me-2"></i>No Credit Card Required
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -212,32 +508,32 @@
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="col-lg-4 mb-4 mb-lg-0" style="color: #0C63E4;">
                     <img src="<?=get_option('website_logo_white', BASE."assets/images/logo-white.png")?>" alt="Makara Logo" class="footer-logo mb-4">
                     <p class="mb-4">Premium social media growth solutions for brands that want to stand out and succeed in the digital world.</p>
                     <div class="footer-social">
-                        <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" style="color: #0C63E4; text-decoration: none;" class="me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: #0C63E4; text-decoration: none;" class="me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: #0C63E4; text-decoration: none;" class="me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: #0C63E4; text-decoration: none;"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
                     <h4>Company</h4>
-                    <ul class="footer-links" style="color: #00C853; text-decoration: none;">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Blog</a></li>
+                    <ul class="footer-links">
+                        <li><a href="#" style="text-decoration: none;">About Us</a></li>
+                        <li><a href="#" style="text-decoration: none;">Features</a></li>
+                        <li><a href="#" style="text-decoration: none;">Pricing</a></li>
+                        <li><a href="#" style="text-decoration: none;">Blog</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
                     <h4>Support</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">API Docs</a></li>
+                        <li><a href="#" style="text-decoration: none;">Help Center</a></li>
+                        <li><a href="#" style="text-decoration: none;">FAQ</a></li>
+                        <li><a href="#" style="text-decoration: none;">Contact Us</a></li>
+                        <li><a href="#" style="text-decoration: none;">API Docs</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4">
@@ -265,12 +561,20 @@
     </footer>
 
     <!-- Scripts -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="<?php echo BASE; ?>assets/js/vendors/jquery-3.2.1.min.js"></script>
     <script src="<?php echo BASE; ?>themes/nico/assets/js/bootstrap.min.js"></script>
-    <!-- Scripts -->
-    <script src="<?php echo BASE; ?>assets/js/vendors/jquery-3.2.1.min.js"></script>
-    <script src="<?php echo BASE; ?>themes/nico/assets/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f94c035ae6.js" crossorigin="anonymous"></script>
     <script src="<?php echo BASE; ?>themes/nico/assets/js/navbar-scroll.js"></script>
+    
+    <!-- Initialize Font Awesome -->
+    <script>
+        // Ensure Font Awesome is loaded
+        window.onload = function() {
+            if (typeof FontAwesome !== 'undefined') {
+                FontAwesome.dom.watch();
+            }
+        };
+    </script>
 </body>
 </html>

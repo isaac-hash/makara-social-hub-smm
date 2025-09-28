@@ -140,6 +140,7 @@
 
     <!-- Who We Are Section -->
         <!-- Who We Are Section -->
+    <!-- About Us Section -->
     <section class="section-padding bg-light position-relative overflow-hidden">
         <div class="section-shape">
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -150,41 +151,42 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="who-we-are-content pe-lg-5">
-                        <h2 class="section-title text-dark fw-bold mb-4">Who We Are & What We Offer</h2>
-                        <p class="lead text-dark mb-4">At Makara Social Hub, we're your dedicated partner in social media growth. Our platform provides comprehensive solutions for businesses and individuals looking to expand their digital presence.</p>
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <div class="feature-card-mini bg-white">
-                                    <div class="icon-box mb-3" style="  width: 60px;
-    height: 60px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: black;
-    font-size: 1.5rem;
-    box-shadow: 0 5px 15px rgba(0,0,0, 0.3);">
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-                                    <h4 class="h5 mb-3 text-dark">Quality Service</h4>
-                                    <p class="text-dark mb-0">Premium quality engagement from real users to boost your social presence.</p>
-                                </div>
+                        <h2 class="section-title text-dark fw-bold mb-4">Who We Are</h2>
+                        <p class="lead text-dark mb-4">Makara Social Hub is your go-to digital growth and marketing hub, helping individuals and businesses boost visibility, grow engagement, and build a powerful online presence.</p>
+                        <div class="vision-mission mb-5">
+                            <div class="vision-card bg-white p-4 rounded-4 shadow-sm mb-4">
+                                <h3 class="h4 text-primary mb-3">Our Vision</h3>
+                                <p class="mb-0">To become the world's leading one-stop digital powerhouse, empowering businesses, influencers, and creators with innovative tools for growth.</p>
                             </div>
-                            <div class="col-md-6">
-                                <div class="feature-card-mini bg-white">
-                                    <div class="icon-box mb-3" style="  width: 60px;
-    height: 60px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: black;
-    font-size: 1.5rem;
-    box-shadow: 0 5px 15px rgba(0,0,0, 0.3);">
-                                        <i class="fa-solid fa-headset"></i>
+                            <div class="mission-card bg-white p-4 rounded-4 shadow-sm">
+                                <h3 class="h4 text-primary mb-3">Our Mission</h3>
+                                <p class="mb-0">To help individuals and businesses showcase their value by giving their platforms the boost they need to gain visibility and recognition both locally and globally.</p>
+                            </div>
+                        </div>
+                        <div class="work-culture mt-4 py-4">
+                            <h3 class="h4 text-dark mb-4">Our Values</h3>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="value-card bg-white p-3 rounded-3 shadow-sm">
+                                        <div class="d-flex align-items-center mb-2">
+                                            <div class="icon-box me-3" style="width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
+                                                <i class="fa-solid fa-seedling text-primary"></i>
+                                            </div>
+                                            <h4 class="h6 mb-0">Empowerment & Growth</h4>
+                                        </div>
+                                        <p class="small mb-0 text-muted">Supporting continuous learning and innovation</p>
                                     </div>
-                                    <h4 class="h5 mb-3 text-dark">24/7 Support</h4>
-                                    <p class="text-dark mb-0">Round-the-clock customer support to assist you whenever you need help.</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="value-card bg-white p-3 rounded-3 shadow-sm">
+                                        <div class="d-flex align-items-center mb-2">
+                                            <div class="icon-box me-3" style="width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
+                                                <i class="fas fa-shield-alt text-primary"></i>
+                                            </div>
+                                            <h4 class="h6 mb-0">Transparency & Trust</h4>
+                                        </div>
+                                        <p class="small mb-0 text-muted">Built on honesty and clear communication</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -194,9 +196,134 @@
                     <div class="who-we-are-image position-relative mt-5 mt-lg-0">
                         <img src="https://img.freepik.com/free-vector/social-tree-concept-illustration_114360-4898.jpg" alt="About Us" class="img-fluid floating-animation">
                         <div class="experience-badge bg-white shadow">
-                            <span class="h2 mb-0 text-primary fw-bold">5+</span>
-                            <span class="text-dark">Years Experience</span>
+                            <span class="h2 mb-0 text-primary fw-bold">24/7</span>
+                            <span class="text-dark">Support</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services Section -->
+    <section class="section-padding">
+        <div class="container p-5">
+            <div class="text-center mb-5">
+                <h2 class="section-title text-dark fw-bold mb-3">Our Core Services</h2>
+                <p class="lead text-muted">Premium digital solutions for your growth and success</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card bg-white p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1); ">
+                            <i class="fas fa-users  text-primary "></i>
+                        </div>
+                        <h3 class="h5 mb-3">Social Media Growth</h3>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Instagram, Facebook, TikTok Growth</li>
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>YouTube, Twitter, LinkedIn Services</li>
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Engagement & Interaction Boost</li>
+                            <li><i class="fas fa-check text-primary me-2"></i>WhatsApp Status & Channel Growth</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card bg-white p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
+                            <i class="fas fa-bullhorn  text-primary"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Advertising & Promotion</h3>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Targeted Social Media Ads</li>
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>SEO-Optimized Campaigns</li>
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>App Store Promotion</li>
+                            <li><i class="fas fa-check text-primary me-2"></i>Brand Visibility Enhancement</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card bg-white p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
+                            <i class="fas fa-music  text-primary"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Music & Streaming</h3>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Spotify & Apple Music Growth</li>
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Audiomack & SoundCloud Promotion</li>
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>YouTube Music Marketing</li>
+                            <li><i class="fas fa-check text-primary me-2"></i>Boomplay Streams & Engagement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section-padding bg-light position-relative overflow-hidden p-5">
+        <div class="section-shape right">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="var(--keen-secondary)" opacity="0.05" d="M42.7,-62.9C50.9,-53.7,50.1,-35.7,53.1,-20.1C56.1,-4.4,62.9,8.9,61.4,22.7C59.8,36.5,49.9,50.9,36.9,57.6C23.9,64.3,7.7,63.3,-7.4,59.9C-22.5,56.4,-36.4,50.5,-47.8,40.6C-59.2,30.7,-68,16.9,-70.2,1.3C-72.3,-14.4,-67.7,-31.9,-57.1,-43.6C-46.5,-55.3,-29.9,-61.3,-13.3,-63.1C3.2,-64.9,19.8,-62.5,32.7,-63.3C45.7,-64.1,55,-72.1,42.7,-62.9Z" transform="translate(100 100)" />
+            </svg>
+        </div>
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title text-dark fw-bold mb-3">Why Choose Makara Social Hub?</h2>
+                <p class="lead text-muted">We're more than just a service provider - we're your growth partner</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card bg-white p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
+                            <i class="fas fa-tools  text-primary"></i>
+                        </div>
+                        <h3 class="h5 mb-3">One-Stop Digital Growth Hub</h3>
+                        <p class="mb-0">Complete suite of digital services, from social media engagement to business registration, all under one roof.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card bg-white p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
+                            <i class="fas fa-globe  text-primary"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Global Trust & Reliability</h3>
+                        <p class="mb-0">Trusted by businesses and creators worldwide, delivering high-quality engagement and visibility.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card bg-white p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
+                            <i class="fas fa-robot  text-primary"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Smart Automation</h3>
+                        <p class="mb-0">Cutting-edge automation combined with a personal touch for authentic engagement and growth.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card bg-white p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
+                            <i class="fas fa-headset  text-primary"></i>
+                        </div>
+                        <h3 class="h5 mb-3">24/7 Support</h3>
+                        <p class="mb-0">Round-the-clock customer support with complete transparency and regular updates.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card bg-white p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
+                            <i class="fas fa-code  text-primary"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Reseller API Solutions</h3>
+                        <p class="mb-0">Seamless API integration for resellers with white-label solutions and automated processing.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card bg-white p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
+                            <i class="fas fa-graduation-cap  text-primary"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Education & Community</h3>
+                        <p class="mb-0">Access to educational resources, industry insights, and a supportive community for growth.</p>
                     </div>
                 </div>
             </div>
@@ -219,9 +346,9 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="process-card">
                         <div class="process-card-body">
-                            <div class="process-icon" >
+                            <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);" >
                                 <span class="process-number" >01</span>
-                                <i class="fa-solid fa-user-plus" ></i>
+                                <i class="fa-solid fa-user-plus text-primary" ></i>
                             </div>
                             <h4 class="process-title">Sign Up</h4>
                             <p class="process-text">Create your account in less than 2 minutes</p>
@@ -234,9 +361,9 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="process-card">
                         <div class="process-card-body">
-                            <div class="process-icon">
+                            <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
                                 <span class="process-number">02</span>
-                                <i class="fa-solid fa-wallet"></i>
+                                <i class="fa-solid fa-wallet text-primary"></i>
                             </div>
                             <h4 class="process-title">Add Funds</h4>
                             <p class="process-text">Choose from our secure payment methods</p>
@@ -249,9 +376,9 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="process-card">
                         <div class="process-card-body">
-                            <div class="process-icon">
-                                <span class="process-number">03</span>
-                                <i class="fas fa-tasks"></i>
+                            <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
+                                <span class="process-number ">03</span>
+                                <i class="fas fa-tasks text-primary"></i>
                             </div>
                             <h4 class="process-title">Select Service</h4>
                             <p class="process-text">Pick the perfect package for your needs</p>
@@ -264,9 +391,9 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="process-card">
                         <div class="process-card-body">
-                            <div class="process-icon">
+                            <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
                                 <span class="process-number">04</span>
-                                <i class="fa-solid fa-chart-line"></i>
+                                <i class="fa-solid fa-chart-line text-primary"></i>
                             </div>
                             <h4 class="process-title">Watch Growth</h4>
                             <p class="process-text">See your social media presence expand</p>

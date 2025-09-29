@@ -6,7 +6,7 @@
     <title><?=get_option('website_title', "Makara - Social Hub")?></title>
     <meta name="description" content="<?=get_option('website_desc', "Your one-stop solution for social media management.")?>">
     <meta name="keywords" content="<?=get_option('website_keywords', "social media, smm, panel, marketing")?>">
-    <link rel="shortcut icon" type="image/x-icon" href="<?=get_option('website_favicon', BASE."assets/images/favicon.png")?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?=get_option('website_favicon', BASE."assets/images/favicon.ico")?>"
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,32 +75,124 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section" style="background: url('https://environics.ca/wp-content/uploads/2024/07/feature-image-cropped.png') no-repeat center center fixed;">
+    <!-- Hero Section -->
+    <section class="hero-section position-relative" style="
+        background: linear-gradient(150deg,
+            rgba(0, 42, 255, 1) 0%,
+            rgba(0, 98, 255, 0.95) 25%,
+            rgba(0, 140, 255, 0.9) 50%,
+            rgba(0, 157, 255, 0.8) 75%,
+            rgba(0, 183, 255, 0.7) 100%
+        );
+        min-height: 100vh;
+        overflow: hidden;
+        position: relative;
+    ">
+        <!-- Mesh gradient overlay for depth -->
+        <div style="
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            opacity: 0.4;
+            mix-blend-mode: overlay;
+        "></div>
+        <!-- Animated gradient lines -->
+        <div style="
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.03) 10px,
+                rgba(255, 255, 255, 0.03) 20px
+            );
+            animation: gradient-move 20s linear infinite;
+        "></div>
+        <style>
+            @keyframes gradient-move {
+                0% { background-position: 0 0; }
+                100% { background-position: 50px 50px; }
+            }
+        </style>
         <div class="container position-relative" >
             <div class="row align-items-center min-vh-75">
                 <div class="col-lg-6 py-5">
                     <div class="hero-content-wrapper mt-5">
-                        <h1 class="keen-hero-title display-4 fw-bold mb-4">
-                            <span class="d-block " style="color: lightgray;"># Accelerate # Your Social</span>
-                            <!-- <span class="d-block" style="color: lightgray;"># Your Social</span> -->
-                            <span class="d-block" style="color: lightgray;"># Growth</span>
+                        <h1 class="keen-hero-title display-3 fw-bold mb-4" style="
+                            background: linear-gradient(to right, #fff, #e0e0e0);
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+                        ">
+                            <span class="d-block"># Accelerate</span>
+                            <span class="d-block"># Your Social</span>
+                            <span class="d-block"># Growth</span>
                         </h1>
-                        <p class="keen-subtitle lead mb-4 text-dark-50">Premium social media solutions for brands that want to stand out. Grow, engage, and convert with Makara.</p>
-                        <a href="<?=cn('auth/signup')?>" class="btn btn-outline-secondary btn-lg px-5 py-3 mb-4 rounded-pill shadow-lg text-white hover-lift">Start Growing Today</a>
-                        <div class="keen-hero-social-proof d-flex align-items-center p-3 bg-white rounded-3 shadow-sm" style="max-width: 300px;">
+                        <p class="keen-subtitle lead mb-4" style="color: rgba(255, 255, 255, 0.9); font-size: 1.25rem;">
+                            Premium social media solutions for brands that want to stand out. 
+                            <span style="color: rgba(255, 255, 255, 0.7);">Grow, engage, and convert with Makara.</span>
+                        </p>
+                        <a href="<?=cn('auth/signup')?>" class="btn px-5 py-3 mb-4 rounded-pill shadow-lg hover-lift" style="
+                            background: rgba(255, 255, 255, 0.15);
+                            backdrop-filter: blur(5px);
+                            border: 1px solid rgba(255, 255, 255, 0.3);
+                            color: white;
+                            font-weight: 500;
+                            transition: all 0.3s ease;
+                        " onmouseover="this.style.background='rgba(255, 255, 255, 0.25)'" 
+                           onmouseout="this.style.background='rgba(255, 255, 255, 0.15)'">
+                            Start Growing Today
+                        </a>
+                        <div class="keen-hero-social-proof d-flex align-items-center p-3 rounded-3" style="
+                            background: rgba(255, 255, 255, 0.1);
+                            backdrop-filter: blur(10px);
+                            border: 1px solid rgba(255, 255, 255, 0.2);
+                            max-width: 300px;
+                        ">
                             <div class="keen-stars me-3">
-                                <i class="fa-solid fa-star text-warning"></i>
-                                <i class="fa-solid fa-star text-warning"></i>
-                                <i class="fa-solid fa-star text-warning"></i>
-                                <i class="fa-solid fa-star text-warning"></i>
-                                <i class="fa-solid fa-star text-warning"></i>
+                                <i class="fa-solid fa-star" style="color: #FFD700;"></i>
+                                <i class="fa-solid fa-star" style="color: #FFD700;"></i>
+                                <i class="fa-solid fa-star" style="color: #FFD700;"></i>
+                                <i class="fa-solid fa-star" style="color: #FFD700;"></i>
+                                <i class="fa-solid fa-star" style="color: #FFD700;"></i>
                             </div>
-                            <p class="mb-0 small fw-medium">Rated 4.8/5 from over 1,000+ reviews</p>
+                            <p class="mb-0 small fw-medium" style="color: rgba(255, 255, 255, 0.9);">
+                                Rated 4.8/5 from over 1,000+ reviews
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 d-none d-lg-block">
-                    <!-- Keeping space for background image -->
+                <div class="col-lg-6 d-none d-lg-block position-relative">
+                    <div class="hero-image-wrapper" style="
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        min-height: 500px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    ">
+                        <img src="https://www.socialchamp.com/blog/wp-content/uploads/2024/03/Content-Blog-Banner_Q1-2024_1125x600_081_Social-Media-Growth.png" 
+                             alt="Social Media Growth Illustration" 
+                             class="img-fluid rounded-4 shadow-lg" 
+                             style="
+                                max-width: 90%;
+                                height: 30rem;
+                                animation: float 3s ease-in-out infinite;
+                                filter: drop-shadow(0 10px 20px rgba(0,98,255,0.2));
+                             "
+                        >
+                    </div>
+                    <style>
+                        @keyframes float {
+                            0% { transform: translateY(0px); }
+                            50% { transform: translateY(-20px); }
+                            100% { transform: translateY(0px); }
+                        }
+                    </style>
                 </div>
             </div>
         </div>
@@ -141,10 +233,16 @@
     <!-- Who We Are Section -->
         <!-- Who We Are Section -->
     <!-- About Us Section -->
-    <section class="section-padding bg-light position-relative overflow-hidden">
+    <section class="section-padding position-relative overflow-hidden" style="
+        background: linear-gradient(135deg,
+            rgba(0, 42, 255, 0.05) 0%,
+            rgba(0, 98, 255, 0.1) 50%,
+            rgba(64, 224, 208, 0.15) 100%
+        );
+    ">
         <div class="section-shape">
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <path fill="var(--keen-primary)" opacity="0.05" d="M45.3,-59.1C58.9,-49.3,70.3,-35.3,74.8,-19.2C79.3,-3.1,76.9,15.1,69.1,30.5C61.3,45.9,48.1,58.4,32.4,65.9C16.7,73.4,-1.5,75.8,-19.9,71.8C-38.3,67.8,-56.9,57.4,-67.1,41.7C-77.3,26,-79,5,-73.3,-12.7C-67.6,-30.4,-54.4,-44.8,-40.1,-54.7C-25.8,-64.5,-10.4,-69.8,3.9,-74.6C18.2,-79.4,31.7,-68.9,45.3,-59.1Z" transform="translate(100 100)" />
+                <path fill="#0066ff" opacity="0.1" d="M45.3,-59.1C58.9,-49.3,70.3,-35.3,74.8,-19.2C79.3,-3.1,76.9,15.1,69.1,30.5C61.3,45.9,48.1,58.4,32.4,65.9C16.7,73.4,-1.5,75.8,-19.9,71.8C-38.3,67.8,-56.9,57.4,-67.1,41.7C-77.3,26,-79,5,-73.3,-12.7C-67.6,-30.4,-54.4,-44.8,-40.1,-54.7C-25.8,-64.5,-10.4,-69.8,3.9,-74.6C18.2,-79.4,31.7,-68.9,45.3,-59.1Z" transform="translate(100 100)" />
             </svg>
         </div>
         <div class="container">
@@ -154,12 +252,32 @@
                         <h2 class="section-title text-dark fw-bold mb-4">Who We Are</h2>
                         <p class="lead text-dark mb-4">Makara Social Hub is your go-to digital growth and marketing hub, helping individuals and businesses boost visibility, grow engagement, and build a powerful online presence.</p>
                         <div class="vision-mission mb-5">
-                            <div class="vision-card bg-white p-4 rounded-4 shadow-sm mb-4">
-                                <h3 class="h4 text-primary mb-3">Our Vision</h3>
+                            <div class="vision-card p-4 rounded-4 shadow-sm mb-4" style="
+                                background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(236, 246, 255, 0.9));
+                                border: 1px solid rgba(0, 98, 255, 0.1);
+                                backdrop-filter: blur(10px);
+                            ">
+                                <h3 class="h4 mb-3" style="
+                                    background: linear-gradient(90deg, #0062FF, #00C6FF);
+                                    -webkit-background-clip: text;
+                                    background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                    font-weight: bold;
+                                ">Our Vision</h3>
                                 <p class="mb-0">To become the world's leading one-stop digital powerhouse, empowering businesses, influencers, and creators with innovative tools for growth.</p>
                             </div>
-                            <div class="mission-card bg-white p-4 rounded-4 shadow-sm">
-                                <h3 class="h4 text-primary mb-3">Our Mission</h3>
+                            <div class="mission-card p-4 rounded-4 shadow-sm" style="
+                                background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(236, 246, 255, 0.9));
+                                border: 1px solid rgba(0, 98, 255, 0.1);
+                                backdrop-filter: blur(10px);
+                            ">
+                                <h3 class="h4 mb-3" style="
+                                    background: linear-gradient(90deg, #0062FF, #00C6FF);
+                                    -webkit-background-clip: text;
+                                    background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                    font-weight: bold;
+                                ">Our Mission</h3>
                                 <p class="mb-0">To help individuals and businesses showcase their value by giving their platforms the boost they need to gain visibility and recognition both locally and globally.</p>
                             </div>
                         </div>
@@ -206,17 +324,43 @@
     </section>
 
     <!-- Core Services Section -->
-    <section class="section-padding">
+    <section class="section-padding" style="
+        background: linear-gradient(135deg,
+            rgba(64, 224, 208, 0.15) 0%,
+            rgba(0, 98, 255, 0.1) 50%,
+            rgba(0, 42, 255, 0.05) 100%
+        );
+    ">
         <div class="container p-5">
             <div class="text-center mb-5">
-                <h2 class="section-title text-dark fw-bold mb-3">Our Core Services</h2>
-                <p class="lead text-muted">Premium digital solutions for your growth and success</p>
+                <h2 class="section-title mb-3" style="
+                    background: linear-gradient(90deg, #0062FF, #40E0D0);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    font-weight: bold;
+                ">Our Core Services</h2>
+                <p class="lead" style="color: #0062FF;">Premium digital solutions for your growth and success</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="service-card bg-white p-4 rounded-4 shadow-sm h-100">
-                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1); ">
-                            <i class="fas fa-users  text-primary "></i>
+                    <div class="service-card p-4 rounded-4 shadow-sm h-100" style="
+                        background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(236, 246, 255, 0.9));
+                        border: 1px solid rgba(0, 98, 255, 0.1);
+                        backdrop-filter: blur(10px);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 20px rgba(0,98,255,0.1)'" 
+                       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
+                        <div class="icon-box mb-4" style="
+                            width: 60px; 
+                            height: 60px; 
+                            border-radius: 15px; 
+                            display: flex; 
+                            align-items: center; 
+                            justify-content: center; 
+                            background: linear-gradient(135deg, #0062FF, #40E0D0);
+                        ">
+                            <i class="fas fa-users" style="color: white"></i>
                         </div>
                         <h3 class="h5 mb-3">Social Media Growth</h3>
                         <ul class="list-unstyled mb-0">
@@ -228,11 +372,32 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="service-card bg-white p-4 rounded-4 shadow-sm h-100">
-                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
-                            <i class="fas fa-bullhorn  text-primary"></i>
+                    <div class="service-card p-4 rounded-4 shadow-sm h-100" style="
+                        background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(236, 246, 255, 0.9));
+                        border: 1px solid rgba(0, 98, 255, 0.1);
+                        backdrop-filter: blur(10px);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 20px rgba(0,98,255,0.1)'" 
+                       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
+                        <div class="icon-box mb-4" style="
+                            width: 60px; 
+                            height: 60px; 
+                            border-radius: 15px; 
+                            display: flex; 
+                            align-items: center; 
+                            justify-content: center; 
+                            background: linear-gradient(135deg, #7B1FA2, #20C997);
+                            box-shadow: 0 4px 15px rgba(123, 31, 162, 0.2);
+                        ">
+                            <i class="fas fa-bullhorn" style="color: white"></i>
                         </div>
-                        <h3 class="h5 mb-3">Advertising & Promotion</h3>
+                        <h3 class="h5 mb-3" style="
+                            background: linear-gradient(90deg, #7B1FA2, #20C997);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            font-weight: bold;
+                        ">Advertising & Promotion</h3>
                         <ul class="list-unstyled mb-0">
                             <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Targeted Social Media Ads</li>
                             <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>SEO-Optimized Campaigns</li>
@@ -242,11 +407,32 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="service-card bg-white p-4 rounded-4 shadow-sm h-100">
-                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
-                            <i class="fas fa-music  text-primary"></i>
+                    <div class="service-card p-4 rounded-4 shadow-sm h-100" style="
+                        background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(236, 246, 255, 0.9));
+                        border: 1px solid rgba(0, 98, 255, 0.1);
+                        backdrop-filter: blur(10px);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 20px rgba(0,98,255,0.1)'" 
+                       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
+                        <div class="icon-box mb-4" style="
+                            width: 60px; 
+                            height: 60px; 
+                            border-radius: 15px; 
+                            display: flex; 
+                            align-items: center; 
+                            justify-content: center; 
+                            background: linear-gradient(135deg, #20C997, #0062FF);
+                            box-shadow: 0 4px 15px rgba(32, 201, 151, 0.2);
+                        ">
+                            <i class="fas fa-music" style="color: white"></i>
                         </div>
-                        <h3 class="h5 mb-3">Music & Streaming</h3>
+                        <h3 class="h5 mb-3" style="
+                            background: linear-gradient(90deg, #20C997, #0062FF);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            font-weight: bold;
+                        ">Music & Streaming</h3>
                         <ul class="list-unstyled mb-0">
                             <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Spotify & Apple Music Growth</li>
                             <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Audiomack & SoundCloud Promotion</li>
@@ -260,70 +446,223 @@
     </section>
 
     <!-- Why Choose Us Section -->
-    <section class="section-padding bg-light position-relative overflow-hidden p-5">
+    <section class="section-padding position-relative overflow-hidden p-5" style="
+        background: linear-gradient(135deg,
+            rgba(0, 42, 255, 0.08) 0%,
+            rgba(123, 31, 162, 0.06) 25%,
+            rgba(32, 201, 151, 0.07) 50%,
+            rgba(255, 128, 0, 0.05) 75%,
+            rgba(0, 98, 255, 0.08) 100%
+        );
+    ">
         <div class="section-shape right">
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <path fill="var(--keen-secondary)" opacity="0.05" d="M42.7,-62.9C50.9,-53.7,50.1,-35.7,53.1,-20.1C56.1,-4.4,62.9,8.9,61.4,22.7C59.8,36.5,49.9,50.9,36.9,57.6C23.9,64.3,7.7,63.3,-7.4,59.9C-22.5,56.4,-36.4,50.5,-47.8,40.6C-59.2,30.7,-68,16.9,-70.2,1.3C-72.3,-14.4,-67.7,-31.9,-57.1,-43.6C-46.5,-55.3,-29.9,-61.3,-13.3,-63.1C3.2,-64.9,19.8,-62.5,32.7,-63.3C45.7,-64.1,55,-72.1,42.7,-62.9Z" transform="translate(100 100)" />
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#0062FF;stop-opacity:0.3" />
+                        <stop offset="50%" style="stop-color:#7B1FA2;stop-opacity:0.3" />
+                        <stop offset="100%" style="stop-color:#20C997;stop-opacity:0.3" />
+                    </linearGradient>
+                </defs>
+                <path fill="url(#gradient)" opacity="0.15" d="M42.7,-62.9C50.9,-53.7,50.1,-35.7,53.1,-20.1C56.1,-4.4,62.9,8.9,61.4,22.7C59.8,36.5,49.9,50.9,36.9,57.6C23.9,64.3,7.7,63.3,-7.4,59.9C-22.5,56.4,-36.4,50.5,-47.8,40.6C-59.2,30.7,-68,16.9,-70.2,1.3C-72.3,-14.4,-67.7,-31.9,-57.1,-43.6C-46.5,-55.3,-29.9,-61.3,-13.3,-63.1C3.2,-64.9,19.8,-62.5,32.7,-63.3C45.7,-64.1,55,-72.1,42.7,-62.9Z" transform="translate(100 100)" />
             </svg>
         </div>
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title text-dark fw-bold mb-3">Why Choose Makara Social Hub?</h2>
-                <p class="lead text-muted">We're more than just a service provider - we're your growth partner</p>
+                <h2 class="section-title fw-bold mb-3" style="
+                    background: linear-gradient(90deg, #0062FF, #7B1FA2, #20C997);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    font-size: 2.5rem;
+                ">Why Choose Makara Social Hub?</h2>
+                <p class="lead" style="
+                    background: linear-gradient(90deg, #0062FF, #7B1FA2);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    font-weight: 500;
+                ">We're more than just a service provider - we're your growth partner</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4">
-                    <div class="feature-card bg-white p-4 rounded-4 shadow-sm h-100">
-                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
-                            <i class="fas fa-tools  text-primary"></i>
+                    <div class="feature-card p-4 rounded-4 shadow-sm h-100" style="
+                        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(236, 246, 255, 0.95));
+                        border: 1px solid rgba(0, 98, 255, 0.1);
+                        backdrop-filter: blur(10px);
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 20px rgba(0,98,255,0.1)'" 
+                       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
+                        <div class="icon-box mb-4" style="
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 15px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: linear-gradient(135deg, #0062FF, #7B1FA2);
+                            box-shadow: 0 4px 15px rgba(0, 98, 255, 0.2);
+                        ">
+                            <i class="fas fa-tools" style="color: white"></i>
                         </div>
-                        <h3 class="h5 mb-3">One-Stop Digital Growth Hub</h3>
-                        <p class="mb-0">Complete suite of digital services, from social media engagement to business registration, all under one roof.</p>
+                        <h3 class="h5 mb-3" style="
+                            background: linear-gradient(90deg, #0062FF, #7B1FA2);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            font-weight: bold;
+                        ">One-Stop Digital Growth Hub</h3>
+                        <p class="mb-0" style="color: #2c3e50">Complete suite of digital services, from social media engagement to business registration, all under one roof.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="feature-card bg-white p-4 rounded-4 shadow-sm h-100">
-                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
-                            <i class="fas fa-globe  text-primary"></i>
+                    <div class="feature-card p-4 rounded-4 shadow-sm h-100" style="
+                        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(236, 246, 255, 0.95));
+                        border: 1px solid rgba(0, 98, 255, 0.1);
+                        backdrop-filter: blur(10px);
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 20px rgba(0,98,255,0.1)'" 
+                       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
+                        <div class="icon-box mb-4" style="
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 15px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: linear-gradient(135deg, #20C997, #0062FF);
+                            box-shadow: 0 4px 15px rgba(32, 201, 151, 0.2);
+                        ">
+                            <i class="fas fa-globe" style="color: white"></i>
                         </div>
-                        <h3 class="h5 mb-3">Global Trust & Reliability</h3>
-                        <p class="mb-0">Trusted by businesses and creators worldwide, delivering high-quality engagement and visibility.</p>
+                        <h3 class="h5 mb-3" style="
+                            background: linear-gradient(90deg, #20C997, #0062FF);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            font-weight: bold;
+                        ">Global Trust & Reliability</h3>
+                        <p class="mb-0" style="color: #2c3e50">Trusted by businesses and creators worldwide, delivering high-quality engagement and visibility.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="feature-card bg-white p-4 rounded-4 shadow-sm h-100">
-                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
-                            <i class="fas fa-robot  text-primary"></i>
+                    <div class="feature-card p-4 rounded-4 shadow-sm h-100" style="
+                        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(236, 246, 255, 0.95));
+                        border: 1px solid rgba(0, 98, 255, 0.1);
+                        backdrop-filter: blur(10px);
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 20px rgba(0,98,255,0.1)'" 
+                       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
+                        <div class="icon-box mb-4" style="
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 15px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: linear-gradient(135deg, #7B1FA2, #20C997);
+                            box-shadow: 0 4px 15px rgba(123, 31, 162, 0.2);
+                        ">
+                            <i class="fas fa-robot" style="color: white"></i>
                         </div>
-                        <h3 class="h5 mb-3">Smart Automation</h3>
-                        <p class="mb-0">Cutting-edge automation combined with a personal touch for authentic engagement and growth.</p>
+                        <h3 class="h5 mb-3" style="
+                            background: linear-gradient(90deg, #7B1FA2, #20C997);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            font-weight: bold;
+                        ">Smart Automation</h3>
+                        <p class="mb-0" style="color: #2c3e50">Cutting-edge automation combined with a personal touch for authentic engagement and growth.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="feature-card bg-white p-4 rounded-4 shadow-sm h-100">
-                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
-                            <i class="fas fa-headset  text-primary"></i>
+                    <div class="feature-card p-4 rounded-4 shadow-sm h-100" style="
+                        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(236, 246, 255, 0.95));
+                        border: 1px solid rgba(0, 98, 255, 0.1);
+                        backdrop-filter: blur(10px);
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 20px rgba(0,98,255,0.1)'" 
+                       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
+                        <div class="icon-box mb-4" style="
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 15px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: linear-gradient(135deg, #20C997, #FF8000);
+                            box-shadow: 0 4px 15px rgba(32, 201, 151, 0.2);
+                        ">
+                            <i class="fas fa-headset" style="color: white"></i>
                         </div>
-                        <h3 class="h5 mb-3">24/7 Support</h3>
-                        <p class="mb-0">Round-the-clock customer support with complete transparency and regular updates.</p>
+                        <h3 class="h5 mb-3" style="
+                            background: linear-gradient(90deg, #20C997, #FF8000);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            font-weight: bold;
+                        ">24/7 Support</h3>
+                        <p class="mb-0" style="color: #2c3e50">Round-the-clock customer support with complete transparency and regular updates.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="feature-card bg-white p-4 rounded-4 shadow-sm h-100">
-                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
-                            <i class="fas fa-code  text-primary"></i>
+                    <div class="feature-card p-4 rounded-4 shadow-sm h-100" style="
+                        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(236, 246, 255, 0.95));
+                        border: 1px solid rgba(0, 98, 255, 0.1);
+                        backdrop-filter: blur(10px);
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 20px rgba(0,98,255,0.1)'" 
+                       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
+                        <div class="icon-box mb-4" style="
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 15px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: linear-gradient(135deg, #FF8000, #0062FF);
+                            box-shadow: 0 4px 15px rgba(255, 128, 0, 0.2);
+                        ">
+                            <i class="fas fa-code" style="color: white"></i>
                         </div>
-                        <h3 class="h5 mb-3">Reseller API Solutions</h3>
-                        <p class="mb-0">Seamless API integration for resellers with white-label solutions and automated processing.</p>
+                        <h3 class="h5 mb-3" style="
+                            background: linear-gradient(90deg, #FF8000, #0062FF);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            font-weight: bold;
+                        ">Reseller API Solutions</h3>
+                        <p class="mb-0" style="color: #2c3e50">Seamless API integration for resellers with white-label solutions and automated processing.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="feature-card bg-white p-4 rounded-4 shadow-sm h-100">
-                        <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
-                            <i class="fas fa-graduation-cap  text-primary"></i>
+                    <div class="feature-card p-4 rounded-4 shadow-sm h-100" style="
+                        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(236, 246, 255, 0.95));
+                        border: 1px solid rgba(0, 98, 255, 0.1);
+                        backdrop-filter: blur(10px);
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 20px rgba(0,98,255,0.1)'" 
+                       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
+                        <div class="icon-box mb-4" style="
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 15px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: linear-gradient(135deg, #0062FF, #20C997);
+                            box-shadow: 0 4px 15px rgba(0, 98, 255, 0.2);
+                        ">
+                            <i class="fas fa-graduation-cap" style="color: white"></i>
                         </div>
-                        <h3 class="h5 mb-3">Education & Community</h3>
-                        <p class="mb-0">Access to educational resources, industry insights, and a supportive community for growth.</p>
+                        <h3 class="h5 mb-3" style="
+                            background: linear-gradient(90deg, #0062FF, #20C997);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            font-weight: bold;
+                        ">Education & Community</h3>
+                        <p class="mb-0" style="color: #2c3e50">Access to educational resources, industry insights, and a supportive community for growth.</p>
                     </div>
                 </div>
             </div>
@@ -331,89 +670,205 @@
     </section>
 
     <!-- How It Works Section -->
-    <section class="section-padding position-relative">
+    <section class="section-padding position-relative" style="
+        background: linear-gradient(135deg,
+            rgba(0, 42, 255, 0.05) 0%,
+            rgba(123, 31, 162, 0.05) 50%,
+            rgba(32, 201, 151, 0.05) 100%
+        );
+    ">
         <div class="section-shape right">
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <path fill="var(--keen-secondary)" opacity="0.05" d="M42.7,-62.9C50.9,-53.7,50.1,-35.7,53.1,-20.1C56.1,-4.4,62.9,8.9,61.4,22.7C59.8,36.5,49.9,50.9,36.9,57.6C23.9,64.3,7.7,63.3,-7.4,59.9C-22.5,56.4,-36.4,50.5,-47.8,40.6C-59.2,30.7,-68,16.9,-70.2,1.3C-72.3,-14.4,-67.7,-31.9,-57.1,-43.6C-46.5,-55.3,-29.9,-61.3,-13.3,-63.1C3.2,-64.9,19.8,-62.5,32.7,-63.3C45.7,-64.1,55,-72.1,42.7,-62.9Z" transform="translate(100 100)" />
+                <defs>
+                    <linearGradient id="processGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#0062FF;stop-opacity:0.3" />
+                        <stop offset="50%" style="stop-color:#7B1FA2;stop-opacity:0.3" />
+                        <stop offset="100%" style="stop-color:#20C997;stop-opacity:0.3" />
+                    </linearGradient>
+                </defs>
+                <path fill="url(#processGradient)" opacity="0.15" d="M42.7,-62.9C50.9,-53.7,50.1,-35.7,53.1,-20.1C56.1,-4.4,62.9,8.9,61.4,22.7C59.8,36.5,49.9,50.9,36.9,57.6C23.9,64.3,7.7,63.3,-7.4,59.9C-22.5,56.4,-36.4,50.5,-47.8,40.6C-59.2,30.7,-68,16.9,-70.2,1.3C-72.3,-14.4,-67.7,-31.9,-57.1,-43.6C-46.5,-55.3,-29.9,-61.3,-13.3,-63.1C3.2,-64.9,19.8,-62.5,32.7,-63.3C45.7,-64.1,55,-72.1,42.7,-62.9Z" transform="translate(100 100)" />
             </svg>
         </div>
         <div class="container p-5">
             <div class="text-center mb-5">
-                <h2 class="keen-section-title">How It Works</h2>
-                <p class="lead text-muted">Get started with Makara Social Hub in four simple steps</p>
+                <h2 class="section-title mb-3" style="
+                    background: linear-gradient(90deg, #0062FF, #7B1FA2, #20C997);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    font-weight: bold;
+                    font-size: 2.5rem;
+                ">How It Works</h2>
+                <p class="lead" style="
+                    background: linear-gradient(90deg, #0062FF, #7B1FA2);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    font-weight: 500;
+                ">Get started with Makara Social Hub in four simple steps</p>
             </div>
-            <div class="row g-4" style="color: black;">
+            <div class="row g-4">
                 <div class="col-md-6 col-lg-3">
-                    <div class="process-card">
-                        <div class="process-card-body">
-                            <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);" >
-                                <span class="process-number" >01</span>
-                                <i class="fa-solid fa-user-plus text-primary" ></i>
-                            </div>
-                            <h4 class="process-title">Sign Up</h4>
-                            <p class="process-text">Create your account in less than 2 minutes</p>
-                            <div class="process-arrow">
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </div>
+                    <div class="process-card p-4 rounded-4 shadow-sm h-100" style="
+                        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(236, 246, 255, 0.95));
+                        border: 1px solid rgba(0, 98, 255, 0.1);
+                        backdrop-filter: blur(10px);
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 20px rgba(0,98,255,0.1)'" 
+                       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
+                        <div class="icon-box mb-4" style="
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 15px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: linear-gradient(135deg, #0062FF, #7B1FA2);
+                            box-shadow: 0 4px 15px rgba(0, 98, 255, 0.2);
+                        ">
+                            <span class="process-number" style="color: white; font-weight: bold; margin-right: 5px">01</span>
+                            <i class="fa-solid fa-user-plus" style="color: white"></i>
+                        </div>
+                        <h4 class="process-title" style="
+                            background: linear-gradient(90deg, #0062FF, #7B1FA2);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            font-weight: bold;
+                        ">Sign Up</h4>
+                        <p class="process-text" style="color: #2c3e50">Create your account in less than 2 minutes</p>
+                        <div class="process-arrow">
+                            <i class="fa-solid fa-arrow-right" style="color: #0062FF"></i>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <div class="process-card">
-                        <div class="process-card-body">
-                            <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
-                                <span class="process-number">02</span>
-                                <i class="fa-solid fa-wallet text-primary"></i>
-                            </div>
-                            <h4 class="process-title">Add Funds</h4>
-                            <p class="process-text">Choose from our secure payment methods</p>
-                            <div class="process-arrow">
-                                <i class="fa-solid fa-long-arrow-alt-right"></i>
-                            </div>
+                    <div class="process-card p-4 rounded-4 shadow-sm h-100" style="
+                        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(236, 246, 255, 0.95));
+                        border: 1px solid rgba(0, 98, 255, 0.1);
+                        backdrop-filter: blur(10px);
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 20px rgba(0,98,255,0.1)'" 
+                       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
+                        <div class="icon-box mb-4" style="
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 15px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: linear-gradient(135deg, #7B1FA2, #20C997);
+                            box-shadow: 0 4px 15px rgba(123, 31, 162, 0.2);
+                        ">
+                            <span class="process-number" style="color: white; font-weight: bold; margin-right: 5px">02</span>
+                            <i class="fa-solid fa-wallet" style="color: white"></i>
+                        </div>
+                        <h4 class="process-title" style="
+                            background: linear-gradient(90deg, #7B1FA2, #20C997);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            font-weight: bold;
+                        ">Add Funds</h4>
+                        <p class="process-text" style="color: #2c3e50">Choose from our secure payment methods</p>
+                        <div class="process-arrow">
+                            <i class="fa-solid fa-long-arrow-alt-right" style="color: #7B1FA2"></i>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <div class="process-card">
-                        <div class="process-card-body">
-                            <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
-                                <span class="process-number ">03</span>
-                                <i class="fas fa-tasks text-primary"></i>
-                            </div>
-                            <h4 class="process-title">Select Service</h4>
-                            <p class="process-text">Pick the perfect package for your needs</p>
-                            <div class="process-arrow">
-                                <i class="fas fa-long-arrow-alt-right"></i>
-                            </div>
+                    <div class="process-card p-4 rounded-4 shadow-sm h-100" style="
+                        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(236, 246, 255, 0.95));
+                        border: 1px solid rgba(0, 98, 255, 0.1);
+                        backdrop-filter: blur(10px);
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 20px rgba(0,98,255,0.1)'" 
+                       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
+                        <div class="icon-box mb-4" style="
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 15px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: linear-gradient(135deg, #20C997, #FF8000);
+                            box-shadow: 0 4px 15px rgba(32, 201, 151, 0.2);
+                        ">
+                            <span class="process-number" style="color: white; font-weight: bold; margin-right: 5px">03</span>
+                            <i class="fas fa-tasks" style="color: white"></i>
+                        </div>
+                        <h4 class="process-title" style="
+                            background: linear-gradient(90deg, #20C997, #FF8000);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            font-weight: bold;
+                        ">Select Service</h4>
+                        <p class="process-text" style="color: #2c3e50">Pick the perfect package for your needs</p>
+                        <div class="process-arrow">
+                            <i class="fas fa-long-arrow-alt-right" style="color: #20C997"></i>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <div class="process-card">
-                        <div class="process-card-body">
-                            <div class="icon-box mb-4" style="width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
-                                <span class="process-number">04</span>
-                                <i class="fa-solid fa-chart-line text-primary"></i>
-                            </div>
-                            <h4 class="process-title">Watch Growth</h4>
-                            <p class="process-text">See your social media presence expand</p>
+                    <div class="process-card p-4 rounded-4 shadow-sm h-100" style="
+                        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(236, 246, 255, 0.95));
+                        border: 1px solid rgba(0, 98, 255, 0.1);
+                        backdrop-filter: blur(10px);
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 10px 20px rgba(0,98,255,0.1)'" 
+                       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
+                        <div class="icon-box mb-4" style="
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 15px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: linear-gradient(135deg, #FF8000, #0062FF);
+                            box-shadow: 0 4px 15px rgba(255, 128, 0, 0.2);
+                        ">
+                            <span class="process-number" style="color: white; font-weight: bold; margin-right: 5px">04</span>
+                            <i class="fa-solid fa-chart-line" style="color: white"></i>
                         </div>
+                        <h4 class="process-title" style="
+                            background: linear-gradient(90deg, #FF8000, #0062FF);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            font-weight: bold;
+                        ">Watch Growth</h4>
+                        <p class="process-text" style="color: #2c3e50">See your social media presence expand</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>    <!-- FAQs Section -->
-    <section class="faq-section py-7 bg-light">
+    <section class="faq-section py-7" style="
+        background: linear-gradient(135deg,
+            rgba(0, 42, 255, 0.03) 0%,
+            rgba(41, 25, 205, 0.05) 25%,
+            rgba(82, 50, 155, 0.07) 50%,
+            rgba(123, 75, 105, 0.05) 75%,
+            rgba(164, 100, 55, 0.03) 100%
+        );
+    ">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h2 class="font-xl fw-bold mb-3 p-5" style="color: black;">Frequently Asked Questions</h2>
-                    <p class="lead text-muted mb-5">Find quick answers to common questions about our services</p>
+                    <h2 class="section-title fw-bold mb-3 p-5" style="
+                        background: linear-gradient(90deg, #0033FF, #6B46C1, #4F30A2);
+                        -webkit-background-clip: text;
+                        background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        font-size: 2.5rem;
+                    ">Frequently Asked Questions</h2>
+                    <p class="lead mb-5" style="color: #4F30A2;">Find quick answers to common questions about our services</p>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="accordion" id="accordionExample">
+                    <div class="accordion custom-accordion" id="accordionExample" style="--bs-accordion-active-bg: #EEF2FF; --bs-accordion-btn-focus-border-color: #4F30A2; --bs-accordion-active-color: #4F30A2;">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -492,11 +947,23 @@
 
     <!-- Testimonials Section -->
         <!-- Testimonials Section -->
-    <section class="testimonials-section py-5 bg-light">
+    <section class="testimonials-section py-5" style="
+        background: linear-gradient(135deg,
+            rgba(0, 51, 255, 0.05) 0%,
+            rgba(107, 70, 193, 0.08) 50%,
+            rgba(79, 48, 162, 0.05) 100%
+        );
+    ">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class=" fw-bold" style="color:black;">What Our Clients Say</h2>
-                <p class="lead text-muted">Real stories from our satisfied customers</p>
+                <h2 class="section-title fw-bold" style="
+                    background: linear-gradient(90deg, #0033FF, #6B46C1, #4F30A2);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    font-size: 2.5rem;
+                ">What Our Clients Say</h2>
+                <p class="lead" style="color: #4F30A2;">Real stories from our satisfied customers</p>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -604,24 +1071,42 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-7 position-relative overflow-hidden">
+    <section class="py-7 position-relative overflow-hidden" style="
+        background: linear-gradient(135deg,
+            rgba(0, 51, 255, 0.1) 0%,
+            rgba(107, 70, 193, 0.15) 50%,
+            rgba(79, 48, 162, 0.1) 100%
+        );
+    ">
         <div class="section-shape">
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <path fill="var(--keen-primary)" opacity="0.05" d="M42.7,-62.9C50.9,-53.7,50.1,-35.7,53.1,-20.1C56.1,-4.4,62.9,8.9,61.4,22.7C59.8,36.5,49.9,50.9,36.9,57.6C23.9,64.3,7.7,63.3,-7.4,59.9C-22.5,56.4,-36.4,50.5,-47.8,40.6C-59.2,30.7,-68,16.9,-70.2,1.3C-72.3,-14.4,-67.7,-31.9,-57.1,-43.6C-46.5,-55.3,-29.9,-61.3,-13.3,-63.1C3.2,-64.9,19.8,-62.5,32.7,-63.3C45.7,-64.1,55,-72.1,42.7,-62.9Z" transform="translate(100 100)" />
+                <defs>
+                    <linearGradient id="ctaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#0033FF;stop-opacity:0.2" />
+                        <stop offset="50%" style="stop-color:#6B46C1;stop-opacity:0.2" />
+                        <stop offset="100%" style="stop-color:#4F30A2;stop-opacity:0.2" />
+                    </linearGradient>
+                </defs>
+                <path fill="url(#ctaGradient)" d="M42.7,-62.9C50.9,-53.7,50.1,-35.7,53.1,-20.1C56.1,-4.4,62.9,8.9,61.4,22.7C59.8,36.5,49.9,50.9,36.9,57.6C23.9,64.3,7.7,63.3,-7.4,59.9C-22.5,56.4,-36.4,50.5,-47.8,40.6C-59.2,30.7,-68,16.9,-70.2,1.3C-72.3,-14.4,-67.7,-31.9,-57.1,-43.6C-46.5,-55.3,-29.9,-61.3,-13.3,-63.1C3.2,-64.9,19.8,-62.5,32.7,-63.3C45.7,-64.1,55,-72.1,42.7,-62.9Z" transform="translate(100 100)" />
             </svg>
         </div>
         <div class="container text-center position-relative">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <h2 class="keen-section-title display-4 fw-bold mb-4">Ready to Dominate <span class="text-primary">Social Media</span>?</h2>
-                    <p class="keen-subtitle lead mb-5 text-dark-50">Join thousands of successful brands who trust Makara for their social media growth</p>
+                    <h2 class="keen-section-title display-4 fw-bold mb-4" style="
+                        background: linear-gradient(90deg, #0033FF, #6B46C1, #4F30A2);
+                        -webkit-background-clip: text;
+                        background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    ">Ready to Dominate <span style="color: #0033FF; -webkit-text-fill-color: #0033FF;">Social Media</span>?</h2>
+                    <p class="keen-subtitle lead mb-5" style="color: #4F30A2;">Join thousands of successful brands who trust Makara for their social media growth</p>
                     <div class="d-flex justify-content-center gap-3">
                         <a href="<?=cn('auth/signup')?>" class="btn btn-keen-primary btn-lg px-5 py-3 rounded-pill shadow-lg hover-lift">
                             Get Started Now
                             <i class="fas fa-arrow-right ms-2"></i>
                         </a>
                     </div>
-                    <div class="mt-4 pt-2">
+                    <div class="mt-4 pt-2 mb-4">
                         <span class="badge bg-light text-dark px-3 py-2 rounded-pill shadow-sm">
                             <i class="fas fa-shield-alt me-2"></i>No Credit Card Required
                         </span>

@@ -495,7 +495,7 @@
     <section class="testimonials-section py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="keen-section-title display-4 fw-bold">What Our Clients Say</h2>
+                <h2 class=" fw-bold" style="color:black;">What Our Clients Say</h2>
                 <p class="lead text-muted">Real stories from our satisfied customers</p>
             </div>
             <div class="row justify-content-center">

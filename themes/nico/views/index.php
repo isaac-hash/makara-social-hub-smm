@@ -224,7 +224,7 @@
                         align-items: center;
                         justify-content: center;
                     ">
-                        <img src="https://www.socialchamp.com/blog/wp-content/uploads/2024/03/Content-Blog-Banner_Q1-2024_1125x600_081_Social-Media-Growth.png" 
+                        <img src="assets/images/makara_IMG_0436.png" 
                              alt="Social Media Growth Illustration" 
                              class="img-fluid rounded-4 shadow-lg" 
                              style="

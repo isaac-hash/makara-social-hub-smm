@@ -116,8 +116,8 @@
                     </li>
                 </ul>
                 <div class="navbar-buttons d-flex align-items-center">
-                    <a href="<?=cn('auth/login')?>" class="btn me-3 px-4 rounded-pill fw-medium" style="color:  #0D0BD1; background-color: white; outline: 1px solid #0D0BD1">Login</a>
-                    <a href="<?=cn('auth/signup')?>" class="btn px-4 rounded-pill fw-medium shadow-sm hover-lift" style="color:  white; background-color: #0D0BD1">Sign Up</a>
+                    <a href="<?=cn('/auth/login')?>" class="btn me-3 px-4 rounded-pill fw-medium" style="color:  #0D0BD1; background-color: white; outline: 1px solid #0D0BD1">Login</a>
+                    <a href="<?=cn('/auth/signup')?>" class="btn px-4 rounded-pill fw-medium shadow-sm hover-lift" style="color:  white; background-color: #0D0BD1">Sign Up</a>
                 </div>
             </div>
         </div>

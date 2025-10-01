@@ -91,7 +91,7 @@
                   <?php echo $social_login_html?>
 
                 <?php echo form_close(); ?>
-                <p class="login-card-footer-text"><?=lang("already_have_account")?> <a href="<?=cn('auth/login')?>"><?=lang("Login")?></a></p>
+                <p class="login-card-footer-text"><?=lang("already_have_account")?> <a href="<?=cn('/auth/login')?>"><?=lang("Login")?></a></p>
               </div>
             </div>
           </div>

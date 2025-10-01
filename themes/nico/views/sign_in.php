@@ -71,12 +71,12 @@
                 <?php echo form_close(); ?>
 
                 <?php if (!session('uid')) : ?>
-                  <p class="login-card-footer-text"><?=lang("dont_have_account_yet")?> <a href="<?=cn('auth/signup')?>" class="text-reset"><?=lang("Sign_Up")?></a></p>
+                  <p class="login-card-footer-text"><?=lang("dont_have_account_yet")?> <a href="<?=cn('/auth/signup')?>" class="text-reset"><?=lang("Sign_Up")?></a></p>
                 <?php endif; ?> 
 
                 <?php if (!session('uid')) : ?>
                   <nav class="login-card-footer-nav">
-                    <a href="<?=cn("auth/forgot_password")?>" class="text-reset"><?=lang("forgot_password")?>?</a>
+                    <a href="<?=cn("/auth/forgot_password")?>" class="text-reset"><?=lang("forgot_password")?>?</a>
                   </nav>
                 <?php endif; ?>
               </div>

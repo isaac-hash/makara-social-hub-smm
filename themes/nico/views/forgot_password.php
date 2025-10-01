@@ -42,7 +42,7 @@
                   <button class="btn btn-block login-btn btn-submit mb-4" type="submit"><?=lang("Submit")?></button>
                 <?php echo form_close(); ?>
 
-                <p class="login-card-footer-text"><?=lang("already_have_account")?> <a href="<?=cn('auth/login')?>"><?=lang("Login")?></a></p>
+                <p class="login-card-footer-text"><?=lang("already_have_account")?> <a href="<?=cn('/auth/login')?>"><?=lang("Login")?></a></p>
                 <nav class="login-card-footer-nav">
                   <a href="<?=cn();?>" class="text-reset"><?=lang('back_to_home');?></a>
                 </nav>

@@ -10,7 +10,7 @@
     if (isset($_COOKIE["cookie_pass"])) {
       $cookie_pass = encrypt_decode($_COOKIE["cookie_pass"]);
     }
-    $form_url        = cn("auth/ajax_sign_in");
+    $form_url        = cn("/auth/ajax_sign_in");
     $form_attributes = [
       'id'            => 'signUpForm', 
       'data-focus'    => 'false', 

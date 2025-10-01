@@ -2,7 +2,7 @@
 <html lang="en">
   <?php 
     include_once 'blocks/head.blade.php';
-    $form_url        = cn("auth/ajax_forgot_password");
+    $form_url        = cn("/auth/ajax_forgot_password");
     $form_attributes = [
       'id'            => 'signUpForm', 
       'data-focus'    => 'false', 

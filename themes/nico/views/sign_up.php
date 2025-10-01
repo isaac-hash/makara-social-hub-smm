@@ -2,7 +2,7 @@
 <html lang="en">
   <?php 
     include_once 'blocks/head.blade.php';
-    $form_url        = cn("auth/ajax_sign_up");
+    $form_url        = cn("/auth/ajax_sign_up");
     $form_attributes = [
       'id'            => 'signUpForm', 
       'data-focus'    => 'false', 

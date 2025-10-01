@@ -1,4 +1,4 @@
-<section class="page-title">
+<!-- <section class="page-title">
   <div class="row justify-content-between">
     <div class="col-md-6">
       <h1 class="page-title">
@@ -50,4 +50,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

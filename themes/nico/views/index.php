@@ -1,3 +1,18 @@
+<?php 
+// // Using the session library
+// $user_id = $this->session->userdata('uid');
+
+// // Or directly via the $_SESSION superglobal
+// // $user_id = $_SESSION['uid'];
+
+// if ($user_id) {
+//     echo "The User ID is: " . $user_id;
+// } else {
+//     echo "User ID not found in session.";
+// }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,20 +56,15 @@
 
     <!-- Header -->
     <nav class="navbar navbar-expand-lg fixed-top" style="
-        background: rgba(255, 255, 255, 0.95);
+        background: white;
         backdrop-filter: blur(10px);
         box-shadow: 0 4px 20px rgba(0, 98, 255, 0.1);
     ">
         <div class="container" style="overflow: hidden; height: 50px; ">
-            <a class="navbar-brand" href="#" style="
-                background: linear-gradient(90deg, #0D0BD1, #FF9933);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
-            ">
-                <!-- <img src="<?=get_option('website_logo', BASE."assets/images/logo.png")?>" alt="Makara Logo" class="navbar-logo" style="height: 40px;"> -->
-                <!-- <img src="<?=get_option('website_logo', BASE."assets/images/makara_IMG_1660.png")?>" alt="Makara Logo" class="navbar-logo" style="height: 90px;"> -->
-                <img src="assets/images/makara_IMG_1659.JPG" alt="Makara Logo" class="navbar-logo" style="height: 120px; width: 140px;">
+            <a class="navbar-brand" href="#">
+                <!-- <img src="<?=get_option('website_logo', BASE."assets\images\makara_IMG_1670.PNG")?>" alt="Makara Logo" class="navbar-logo" style="height: 40px;"> -->
+                <!-- <img src="<?=get_option('website_logo', BASE."assets\images\makara_IMG_1670.PNG")?>" alt="Makara Logo" class="navbar-logo" style="height: 90px;"> -->
+                <img src="assets\images\makara_IMG_1670.PNG" alt="Makara Logo" class="navbar-logo" style="height: 45px; width: 190px;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="
                 border: none;
@@ -137,6 +147,13 @@
         overflow: hidden;
         position: relative;
     ">
+        <?php
+            // if ($user_id) {
+            //     echo "The User ID is: " . $user_id;
+            // } else {
+            //     echo "User ID not found in session.";
+            // }
+        ?>
         <!-- Mesh gradient overlay for depth -->
         <div style="
             position: absolute;
@@ -926,7 +943,7 @@
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                <div class="accordion-body" style="color: whitesmoke;">
+                                <div class="accordion-body mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
                                     An SMM panel is an online shop that you can visit to purchase SMM services at great prices. We provide a user-friendly platform to help you grow your social media presence effectively.
                                 </div>
                             </div>
@@ -939,7 +956,7 @@
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                <div class="accordion-body" style="color: whitesmoke;">
+                                <div class="accordion-body mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
                                     We offer a comprehensive range of SMM services including:
                                     <ul class="mt-2 mb-0">
                                         <li>Social media likes and followers</li>
@@ -958,7 +975,7 @@
                                 </button>
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                <div class="accordion-body" style="color: whitesmoke;">
+                                <div class="accordion-body mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
                                     Yes, our services are completely safe! We use organic methods that comply with social media platform guidelines. Your account security is our top priority, and we guarantee that your accounts won't face any risks.
                                 </div>
                             </div>
@@ -971,7 +988,7 @@
                                 </button>
                             </h2>
                             <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                                <div class="accordion-body" style="color: whitesmoke;">
+                                <div class="accordion-body mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
                                     Our mass order feature allows you to place multiple orders simultaneously. Simply upload a list of links and select your desired services for each. This saves time and streamlines your social media growth strategy.
                                 </div>
                             </div>
@@ -984,7 +1001,7 @@
                                 </button>
                             </h2>
                             <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-                                <div class="accordion-body" style="color: whitesmoke;">
+                                <div class="accordion-body mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
                                     Drip-feed is our smart delivery system that gradually distributes your order over time. For example, instead of getting 2000 likes at once, you can receive 200 likes daily for 10 days. This creates a more natural growth pattern and improves engagement authenticity.
                                 </div>
                             </div>
@@ -1150,17 +1167,17 @@
                         -webkit-text-fill-color: transparent;
                     ">Ready to Dominate <span style="color: #0033FF; -webkit-text-fill-color: #0033FF;">Social Media</span>?</h2>
                     <p class="keen-subtitle lead mb-5" style="color: #4F30A2;">Join thousands of successful brands who trust Makara for their social media growth</p>
-                    <div class="d-flex justify-content-center gap-3">
+                    <div class="d-flex justify-content-center gap-3 mb-4">
                         <a href="<?=cn('auth/signup')?>" class="btn btn-keen-primary btn-lg px-5 py-3 rounded-pill shadow-lg hover-lift">
                             Get Started Now
                             <i class="fas fa-arrow-right ms-2"></i>
                         </a>
                     </div>
-                    <div class="mt-4 pt-2 mb-4">
+                    <!-- <div class="mt-4 pt-2 mb-4">
                         <span class="badge bg-light text-dark px-3 py-2 rounded-pill shadow-sm">
                             <i class="fas fa-shield-alt me-2"></i>No Credit Card Required
                         </span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

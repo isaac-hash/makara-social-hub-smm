@@ -65,21 +65,21 @@
     <div class="container-fluid">
         <div class="row" style="min-height: 100vh;">
             <!-- Left Column -->
-            <div class="col-lg-7 d-none d-lg-flex flex-column align-items-center justify-content-center" style="background: linear-gradient(135deg, #0D0BD1, #00C6FF); color: white; position: relative;">
-                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('<?=BASE?>assets/images/bg-01.jpg'); background-size: cover; background-position: center; opacity: 0.1;"></div>
+            <div class="col-lg-7 d-none d-lg-flex flex-column align-items-center justify-content-center" style=" color: white; position: relative;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('<?=BASE?>assets/images/auth.png'); background-size: cover; background-position: center; opacity: 1;"></div>
                 <div class="text-center p-5" style="z-index: 1;">
                     <a href="<?=BASE?>">
                         <img src="<?=BASE?>assets/images/makara_IMG_1670.PNG" alt="Makara Logo" style="height: 60px; margin-bottom: 2rem;">
                     </a>
                     <h1 class="display-4 fw-bold mb-4">
-                        <span class="d-block"># Accelerate</span>
+                        <!-- <span class="d-block"># Accelerate</span>
                         <span class="d-block"># Your Social</span>
-                        <span class="d-block"># Growth</span>
+                        <span class="d-block"># Growth</span> -->
                     </h1>
-                    <p class="lead">
+                    <!-- <p class="lead">
                         Premium social media solutions for brands that want to stand out. 
                         <span class="d-block">Grow, engage, and convert with Makara.</span>
-                    </p>
+                    </p> -->
                 </div>
             </div>
 
@@ -143,8 +143,46 @@
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <!-- Scripts -->
     <script src="<?php echo BASE; ?>assets/js/vendors/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <script>
+    // Force AJAX requests to be recognized by CodeIgniter
+    $.ajaxSetup({
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    });
+
+    $(document).ready(function(){
+        $(".actionForm").on("submit", function(e){
+            e.preventDefault(); // stop normal form submit
+
+            var form = $(this);
+            var actionUrl = form.attr("action");
+            var redirectUrl = form.data("redirect");
+
+            $.ajax({
+                url: actionUrl,
+                type: "POST",
+                data: form.serialize(),
+                dataType: "json",
+                success: function(response){
+                    if(response.status === "success"){
+                        window.location.href = redirectUrl;
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function(xhr){
+                    console.error(xhr.responseText);
+                    alert("Something went wrong. Please try again.");
+                }
+            });
+        });
+    });
+    </script>
+
 </body>
 </html>

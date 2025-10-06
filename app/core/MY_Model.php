@@ -363,8 +363,8 @@ class MY_Model extends CI_Model
         $user_email = $user_info->email;
 
         $website_link = PATH;
-        $website_logo = get_option('website_logo', BASE . "assets/images/logo.png");
-        $website_name = get_option("website_name", "SMM PANEL");
+        $website_logo = get_option('website_logo', BASE . "assets/images/makara_IMG_1670.PNG");
+        $website_name = get_option("website_name", "Makara Social Hub");
         $copyright = get_option('copy_right_content', "Copyright &copy; 2020 - SmartPanel");
 
         /*----------  Need to replace subject, content or Not  ----------*/

@@ -1,0 +1,73 @@
+
+/* Contact Page Styles */
+.contact-section {
+    padding: 60px 0;
+}
+
+.contact-section .contact-title {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #0D0BD1; /* Primary Blue */
+    font-weight: bold;
+}
+
+.contact-form {
+    background: #f9f9f9;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form .form-control {
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    padding: 15px;
+}
+
+.contact-form .form-control:focus {
+    border-color: #0D0BD1;
+    box-shadow: 0 0 0 0.2rem rgba(13, 11, 209, 0.25);
+}
+
+.contact-form .btn-submit {
+    background-color: #0D0BD1; /* Primary Blue */
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.contact-form .btn-submit:hover {
+    background-color: #0a08a8;
+}
+
+.contact-info {
+    margin-top: 40px;
+}
+
+.contact-info .info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.contact-info .info-item i {
+    font-size: 24px;
+    color: #FF9933; /* Accent Orange */
+    margin-right: 15px;
+}
+
+.contact-info .info-item p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.map-section {
+    margin-top: 40px;
+}

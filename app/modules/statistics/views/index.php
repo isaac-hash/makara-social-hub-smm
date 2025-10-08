@@ -9,10 +9,10 @@ $sections = [
     'url' => cn($controller_name . '/load_chart_and_orders_area'),
     'callback' => 'chartCallback',
   ],
-  [
-    'id' => 'items_top_best_seller',
-    'url' => cn($controller_name . '/load_items_top_best_seller'),
-  ],
+  // [
+  //   'id' => 'items_top_best_seller',
+  //   'url' => cn($controller_name . '/load_items_top_best_seller'),
+  // ],
 ];
 ?>
 
@@ -44,4 +44,13 @@ $sections = [
     });
   });
 
-</script>
+</script> 
+<?php
+    // require_once 'themes/nico/views/nav.php';
+    ?>
+
+
+<?php
+// require_once 'themes/nico/views/footer.php';
+
+?>

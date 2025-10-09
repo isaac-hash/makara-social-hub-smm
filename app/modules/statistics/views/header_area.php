@@ -3,7 +3,7 @@
     if ($header_area) :
   ?>
 
-      <div class="row">
+      <div class="row" style="margin-top: 5rem; ">
         <?php
           foreach ($header_area as $key => $item) {
         ?>

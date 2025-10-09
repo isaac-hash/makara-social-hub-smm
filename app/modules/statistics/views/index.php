@@ -16,16 +16,16 @@ $sections = [
 ];
 ?>
 
-
-<div class="row justify-content-center row-card statistics" id="statistics-area">
-  <?php foreach ($sections as $section): ?>
-    <div class="col-sm-12" id="<?= $section['id']; ?>">
-      <?= render_component_loader(); ?>
-    </div>
-  <?php endforeach; ?>
+<!-- Main Content Wrapper - This handles the sidebar spacing -->
+<div class="main-content-wrapper">
+  <div class="row justify-content-center row-card statistics">
+    <?php foreach ($sections as $section): ?>
+      <div class="col-sm-12" id="<?= $section['id']; ?>">
+        <?= render_component_loader(); ?>
+      </div>
+    <?php endforeach; ?>
+  </div>
 </div>
-
-
 
 <script>
   const sectionCallbacks = {
@@ -43,5 +43,8 @@ $sections = [
       loadSection(section.url, '#' + section.id, cb);
     });
   });
-
 </script>
+
+<?php
+// require 'themes/nico/views/footer.php'
+?>

@@ -19,8 +19,8 @@ class statistics extends My_UserController
             "module" => get_class($this),
         );
         $chart_and_orders_area = $this->model->chart_and_orders_statistics();
-        // $this->template->set_layout(false);
-        $this->template->set_layout('user');
+        $this->template->set_layout(false);
+        // $this->template->set_layout('user');
         $this->template->build("index", $data);
     }
 

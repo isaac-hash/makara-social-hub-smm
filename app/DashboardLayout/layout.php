@@ -1,14 +1,3 @@
-<?php
-  $balance = current_logged_user()->balance;
-  if (empty($balance) || $balance == 0) {
-    $balance = 0.00;
-  } else {
-    $balance = currency_format($balance);
-  }
-  $current_balance = get_option('currency_symbol',"") . $balance;
-  $nav_item_user_title = sprintf('%s! <span class="text-uppercase">%s</span>', lang('Hi'), current_logged_user()->first_name);
-  $user = current_logged_user();
-?>
 
 
 <!DOCTYPE html>
@@ -397,14 +386,14 @@
                 <div class="user-avatar">
                     <i class="fas fa-user"></i>
                 </div>
-                <span><?= $user->first_name ?? 'User' ?></span>
+                <span><?= $_SESSION['user_name'] ?? 'User' ?></span>
                 <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i>
                 
                 <!-- User Dropdown -->
                 <div class="user-dropdown" id="userDropdown">
                     <div class="dropdown-header">
-                        <div class="dropdown-user-name"><?= $user->first_name ?? 'User' ?></div>
-                        <div class="dropdown-user-email"><?= $user->email ?? 'user@example.com' ?></div>
+                        <div class="dropdown-user-name"><?= $_SESSION['user_name'] ?? 'User' ?></div>
+                        <div class="dropdown-user-email"><?= $_SESSION['user_email'] ?? 'user@example.com' ?></div>
                     </div>
                     <ul class="dropdown-menu">
                         <li>

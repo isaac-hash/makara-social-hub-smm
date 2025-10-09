@@ -85,3 +85,33 @@
         </div>
     </div>
 </header>
+
+<aside class="sidebar" id="sidebar">
+    <?php include 'sidebar.php'; ?>
+</aside>
+
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+
+    function toggleUserDropdown(event) {
+        event.stopPropagation();
+        const dropdown = document.getElementById('userDropdown');
+        dropdown.classList.toggle('active');
+    }
+
+    document.addEventListener('click', function(event) {
+        const dropdown = document.getElementById('userDropdown');
+        const userProfile = document.querySelector('.user-profile');
+        
+        if (dropdown && !userProfile.contains(event.target)) {
+            dropdown.classList.remove('active');
+        }
+    });
+</script>

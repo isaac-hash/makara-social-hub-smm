@@ -16,10 +16,16 @@ $sections = [
 ];
 ?>
 
-
+<?php
+// $page_content = render_component_loader(cn($controller_name . '/load_chart_and_orders_area')) ;
+// foreach ($sections as $key => $item) {
+//   $page_content = render_component_loader($item['url']);
+// }
+// include './app/modules/user/views/index.php'
+?>
 <div class="row justify-content-center row-card statistics" id="statistics-area">
-  <?php foreach ($sections as $section): ?>
-    <div class="col-sm-12" id="<?= $section['id']; ?>">
+  <?php foreach ($sections as $page_content): ?>
+    <div class="col-sm-12" >
       <?= render_component_loader(); ?>
     </div>
   <?php endforeach; ?>

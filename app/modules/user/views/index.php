@@ -1,14 +1,97 @@
+<!-- <div class="page-header">
+<div class="page-header">
+  <h1 class="page-title">
+    <?=lang('Your_account')?>
+  </h1>
+</div> -->
+</div>
 <?php
-  $balance = current_logged_user()->balance;
-  if (empty($balance) || $balance == 0) {
-    $balance = 0.00;
-  } else {
-    $balance = currency_format($balance);
-  }
-  $current_balance = get_option('currency_symbol',"") . $balance;
-  $nav_item_user_title = sprintf('%s! <span class="text-uppercase">%s</span>', lang('Hi'), current_logged_user()->first_name);
-  $user = current_logged_user();
+  $item_user_timezone = esc($item['last_name'] ?? 'Asia/Ho_Chi_Minh');
+  $item_login_type = esc($item['last_name'] ?? '');
+  $item_more_infor = esc($item['more_information'] ?? []);
 ?>
+<!--<div class="row">
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><?=lang("basic_information")?></h3>
+        <div class="card-options">
+          <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
+          <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
+        </div>
+      </div>
+      <div class="card-body">
+        <form class="form actionForm" action="<?=cn($module."/ajax_update")?>" data-redirect="<?=cn($module)?>" method="POST">
+          <div class="form-body">
+            <div class="row">
+
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label for="projectinput5"><?=lang("first_name")?></label>
+                  <input class="form-control square" name="first_name" type="text" value="<?=esc($item['first_name'] ?? '')?>">
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                  <div class="form-group">
+                    <label for="userinput5"><?=lang("last_name")?></label>
+                    <input class="form-control square" name="last_name" type="text" value="<?=esc($item['last_name'] ?? '')?>">
+                  </div>
+              </div> 
+
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label for="projectinput5"><?=lang('Email')?></label>
+                  <input class="form-control square" name="email" type="email" value="<?=esc($item['email'] ?? '')?>" readonly>
+                </div>
+              </div>
+              
+
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label for="projectinput5"><?=lang('Timezone')?></label>
+                  <select  name="timezone" class="form-control square">
+                    <?php $time_zones = tz_list();
+                      if (!empty($time_zones)) {
+                        foreach ($time_zones as $key => $time_zone) {
+                    ?>
+                    <option value="<?=$time_zone['zone']?>" <?= ($item_user_timezone== $time_zone["zone"]) ? 'selected': ''?>><?=$time_zone['time']?></option>
+                    <?php }}?>
+                  </select>
+                </div>
+              </div>
+              
+              <?php if ($item_login_type != 'google_login') : ?>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                  <div class="form-group">
+                    <label for="projectinput5"><?=lang('Password')?></label>
+                    <input class="form-control square" name="password" type="password">
+                    <small class="text-muted"><?=lang("note_if_you_dont_want_to_change_password_then_leave_these_password_fields_empty")?></small>
+                  </div>
+                </div> 
+
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                  <div class="form-group">
+                    <label for="projectinput5"><?=lang('Confirm_password')?></label>
+                    <input class="form-control square" name="re_password" type="password">
+                  </div>
+                </div>
+              <?php endif; ?>
+              <div class="col-md-12 col-sm-12 col-xs-12 form-actions">
+                <div class="p-l-10">
+                  <button type="submit" class="btn btn-primary btn-min-width mr-1 mb-1"><?=lang('Save')?></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>  -->
+
 
 
 <!DOCTYPE html>
@@ -397,14 +480,14 @@
                 <div class="user-avatar">
                     <i class="fas fa-user"></i>
                 </div>
-                <span><?= $user->first_name ?? 'User' ?></span>
+                <span><?=esc($item['first_name'] ?? '')?></span>
                 <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i>
                 
                 <!-- User Dropdown -->
                 <div class="user-dropdown" id="userDropdown">
                     <div class="dropdown-header">
-                        <div class="dropdown-user-name"><?= $user->first_name ?? 'User' ?></div>
-                        <div class="dropdown-user-email"><?= $user->email ?? 'user@example.com' ?></div>
+                        <div class="dropdown-user-name"><?=esc($item['first_name'] ?? '')?></div>
+                        <div class="dropdown-user-email"><?=esc($item['email'] ?? '')?></div>
                     </div>
                     <ul class="dropdown-menu">
                         <li>
@@ -575,3 +658,5 @@
     </script>
 </body>
 </html>
+
+  </div> 

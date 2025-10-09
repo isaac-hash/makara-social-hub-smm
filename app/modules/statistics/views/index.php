@@ -9,23 +9,17 @@ $sections = [
     'url' => cn($controller_name . '/load_chart_and_orders_area'),
     'callback' => 'chartCallback',
   ],
-  // [
-  //   'id' => 'items_top_best_seller',
-  //   'url' => cn($controller_name . '/load_items_top_best_seller'),
-  // ],
+  [
+    'id' => 'items_top_best_seller',
+    'url' => cn($controller_name . '/load_items_top_best_seller'),
+  ],
 ];
 ?>
 
-<?php
-// $page_content = render_component_loader(cn($controller_name . '/load_chart_and_orders_area')) ;
-// foreach ($sections as $key => $item) {
-//   $page_content = render_component_loader($item['url']);
-// }
-// include './app/modules/user/views/index.php'
-?>
+
 <div class="row justify-content-center row-card statistics" id="statistics-area">
-  <?php foreach ($sections as $page_content): ?>
-    <div class="col-sm-12" >
+  <?php foreach ($sections as $section): ?>
+    <div class="col-sm-12" id="<?= $section['id']; ?>">
       <?= render_component_loader(); ?>
     </div>
   <?php endforeach; ?>
@@ -50,13 +44,4 @@ $sections = [
     });
   });
 
-</script> 
-<?php
-    // require_once 'themes/nico/views/nav.php';
-    ?>
-
-
-<?php
-// require_once 'themes/nico/views/footer.php';
-
-?>
+</script>

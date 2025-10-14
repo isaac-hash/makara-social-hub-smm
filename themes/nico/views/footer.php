@@ -63,7 +63,13 @@
     </footer>
 
     <!-- Scripts -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+     <!-- ✅ Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+  crossorigin="anonymous"></script>
+
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="<?php echo BASE; ?>assets/js/vendors/jquery-3.2.1.min.js"></script>
     <script src="<?php echo BASE; ?>themes/nico/assets/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/f94c035ae6.js" crossorigin="anonymous"></script>

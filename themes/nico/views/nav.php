@@ -25,85 +25,114 @@
           PATH  = '<?php echo PATH; ?>',
           BASE  = '<?php echo BASE; ?>';
     </script>
+    <style>
+/* ✅ Tweak navbar for mid-size screens (1024px - 1399px) */
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .navbar .navbar-brand img {
+    width: 150px !important; /* smaller logo */
+    height: auto;
+  }
+
+  .navbar-nav .nav-link {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    font-size: 0.95rem !important; /* slightly smaller text */
+  }
+
+  .navbar-buttons .btn {
+    padding: 0.45rem 1rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .navbar .container {
+    max-width: 100% !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Optional: Reduce gap between nav links and buttons */
+  .navbar-buttons {
+    margin-left: 0.5rem;
+  }
+}
+
+/* ✅ Optional: Trigger mobile menu (offcanvas) earlier at 1200px */
+@media (max-width: 1200px) {
+  .navbar-collapse {
+    display: none !important;
+  }
+  .navbar-toggler {
+    display: block !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
 
 <!-- Header -->
-    <nav class="navbar navbar-expand-lg fixed-top" style="
-        background: white;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 20px rgba(0, 98, 255, 0.1);
+<!-- ✅ Header -->
+<nav class="navbar navbar-expand-lg fixed-top" style="
+    background: white;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 98, 255, 0.1);
+    overflow: hidden;
+">
+  <div class="container">
+    <!-- Brand -->
+    <a class="navbar-brand" href="<?=cn('')?>">
+      <img src="assets/images/makara_IMG_1670.PNG" alt="Makara Logo" class="navbar-logo" style="height: 45px; width: 190px;" />
+    </a>
+
+    <!-- ✅ Bootstrap 5 Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle navigation" style="
+        border: none;
+        padding: 0.5rem;
+        color: #0D0BD1;
     ">
-        <div class="container" style="overflow: hidden; height: 50px; ">
-            <a class="navbar-brand" href="<?=cn('')?>">
-                <!-- <img src="<?=get_option('website_logo', BASE."assets\images\makara_IMG_1670.PNG")?>" alt="Makara Logo" class="navbar-logo" style="height: 40px;"> -->
-                <!-- <img src="<?=get_option('website_logo', BASE."assets\images\makara_IMG_1670.PNG")?>" alt="Makara Logo" class="navbar-logo" style="height: 90px;"> -->
-                <img src="assets\images\makara_IMG_1670.PNG" alt="Makara Logo" class="navbar-logo" style="height: 45px; width: 190px;">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="
-                border: none;
-                padding: 0.5rem;
-                color: #0D0BD1;
-            ">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="<?=cn('')?>" style="
-                            color: #0D0BD1;
-                            font-weight: 500;
-                            position: relative;
-                        ">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- <a class="nav-link px-3" href="#services" style="
-                            color: #4F30A2;
-                            font-weight: 500;
-                            position: relative;
-                            transition: color 0.3s ease;
-                        " onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Services</a>
-                    </li>
-                    <li class="nav-item">
-                       -->
-                       <a class="nav-link px-3" href="<?=cn('about-services')?>" style=" color: #4F30A2; font-weight: 500; position: relative; transition: color 0.3s ease; " onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">Services</a>
+      <i class="fa-solid fa-bars"></i>
+    </button>
 
-                    </li>
+    <!-- ✅ Desktop Nav -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link px-3" href="<?=cn('')?>" style="color:#0D0BD1;font-weight:500;">Home</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="<?=cn('about-services')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">Services</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="<?=cn('cac')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">CAC</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="<?=cn('api')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">API</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="#features" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">Features</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="#pricing" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="<?=cn('home/contact')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Contact</a></li>
+      </ul>
 
+      <div class="navbar-buttons d-flex align-items-center">
+        <a href="<?=cn('auth/login')?>" class="btn me-3 px-4 rounded-pill fw-medium" style="color:#0D0BD1;background-color:white;outline:1px solid #0D0BD1;">Login</a>
+        <a href="<?=cn('auth/signup')?>" class="btn px-4 rounded-pill fw-medium shadow-sm hover-lift" style="color:white;background-color:#0D0BD1;">Sign Up</a>
+      </div>
+    </div>
+  </div>
+</nav>
 
-                    <li class="nav-item">
-                        <!-- <a class="nav-link px-3" href="#features" style="
-                            color: #4F30A2;
-                            font-weight: 500;
-                            position: relative;
-                            transition: color 0.3s ease;
-                        " onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Features</a>
-                    </li>
-                    <li class="nav-item">
-                      -->
-                       <a class="nav-link px-3" href="#features" style=" color: #4F30A2; font-weight: 500; position: relative; transition: color 0.3s ease; " onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">Features</a>
-                    </li>
-                    <li class="nav-item">    <a class="nav-link px-3" href="#pricing" style="
-                            color: #4F30A2;
-                            font-weight: 500;
-                            position: relative;
-                            transition: color 0.3s ease;
-                        " onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="<?=cn('home/contact')?>" style="
-                            color: #4F30A2;
-                            font-weight: 500;
-                            position: relative;
-                            transition: color 0.3s ease;
-                        " onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Contact</a>
-                    </li>
-                </ul>
-                <div class="navbar-buttons d-flex align-items-center">
-                    <a href="<?=cn('auth/login')?>" class="btn me-3 px-4 rounded-pill fw-medium" style="color:  #0D0BD1; background-color: white; outline: 1px solid #0D0BD1">Login</a>
-                    <a href="<?=cn('auth/signup')?>" class="btn px-4 rounded-pill fw-medium shadow-sm hover-lift" style="color:  white; background-color: #0D0BD1">Sign Up</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+<!-- ✅ Offcanvas (Mobile Menu) -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="mobileMenuLabel">Menu</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="<?=cn('')?>">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="<?=cn('about-services')?>">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="<?=cn('cac')?>">CAC</a></li>
+      <li class="nav-item"><a class="nav-link" href="<?=cn('api')?>">API</a></li>
+      <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+      <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+      <li class="nav-item"><a class="nav-link" href="<?=cn('home/contact')?>">Contact</a></li>
+    </ul>
+    <div class="mt-4">
+      <a href="<?=cn('auth/login')?>" class="btn w-100 mb-2 rounded-pill" style="color:#0D0BD1;background-color:white;outline:1px solid #0D0BD1;">Login</a>
+      <a href="<?=cn('auth/signup')?>" class="btn w-100 rounded-pill" style="color:white;background-color:#0D0BD1;">Sign Up</a>
+    </div>
+  </div>
+</div>

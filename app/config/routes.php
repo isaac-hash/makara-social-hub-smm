@@ -54,6 +54,8 @@ $route['404_override']                          = 'custom_page/page_404';
 $route['translate_uri_dashes']                  = FALSE;
 $route['set_language']                          = 'blocks/set_language';
 $route['about-services'] = 'services/about';
+$route['cac'] = 'cac';
+$route['api'] = 'api';
 
 // Settings page
 $route['new_order']                             = 'order/new_order';

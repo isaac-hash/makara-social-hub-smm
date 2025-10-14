@@ -19,7 +19,7 @@
             --light-gray: #f8f9fa;
             --text-dark: #2c3e50;
             --text-muted: #6c757d;
-            --sidebar-width: 160px;
+            --sidebar-width: 180px;
             --header-height: 70px;
             --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
@@ -380,7 +380,8 @@
                 <i class="fas fa-bars"></i>
             </button>
             <a href="<?php echo cn(); ?>" class="logo">
-                <img src="<?php echo get_option('website_logo', BASE.'assets/images/logo.png'); ?>" alt="Website Logo" style="max-height: 40px;">
+                <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1760352921/logo_famnk2.png" alt="Website Logo" style="max-height: 40px;">
+            
             </a>
         </div>
         <div class="header-right">
@@ -464,50 +465,84 @@
             </div>
         </div>
     </header>
+    <?php
+  $header_elements = app_config('controller')['user'];
+?>
+
 
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <ul class="sidebar-menu">
             <li class="menu-item">
-                <a href="?page=dashboard" class="menu-link active">
+                <a href="<?=cn('statistics')?>" class="menu-link active">
                     <i class="fas fa-home menu-icon"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="menu-item">
+            <!-- <li class="menu-item">
                 <a href="?page=analytics" class="menu-link">
                     <i class="fas fa-chart-bar menu-icon"></i>
                     <span>Analytics</span>
                 </a>
-            </li>
-            <li class="menu-item">
+            </li> -->
+            <!-- <li class="menu-item">
                 <a href="?page=users" class="menu-link">
                     <i class="fas fa-users menu-icon"></i>
                     <span>Users</span>
                 </a>
-            </li>
+            </li> -->
             <li class="menu-item">
-                <a href="?page=products" class="menu-link">
-                    <i class="fas fa-box menu-icon"></i>
-                    <span>Products</span>
+                <a href="<?=cn($header_elements['dripfeed']['route-name'])?>" class="menu-link">
+                    <i class="fa-solid fa-square-rss menu-icon"></i>
+                    <span>Dripfeed</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="?page=orders" class="menu-link">
+                <a href="<?=cn($header_elements['order']['route-name'])?>" class="menu-link">
                     <i class="fas fa-shopping-cart menu-icon"></i>
                     <span>Orders</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="?page=reports" class="menu-link">
-                    <i class="fas fa-file-alt menu-icon"></i>
-                    <span>Reports</span>
+                <a href="<?=cn($header_elements['new_order']['route-name'])?>" class="menu-link">
+                    <i class="fas fa-cart-plus menu-icon"></i>
+                    <span>New Order</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="?page=settings" class="menu-link">
-                    <i class="fas fa-cog menu-icon"></i>
-                    <span>Settings</span>
+                <a href="<?=cn($header_elements['subscriptions']['route-name'])?>" class="menu-link">
+                    <i class="fas fa-file-alt menu-icon"></i>
+                    <span>Subscription</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn($header_elements['services']['route-name']); ?>" class="menu-link">
+                    <i class="fa-brands fa-servicestack menu-icon"></i>
+                    <span>Services</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn($header_elements['api']['route-name']); ?>" class="menu-link">
+                    <i class="fa-brands fa-nfc-symbol menu-icon"></i>
+                    <span>Api</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn($header_elements['tickets']['route-name'])?>" class="menu-link">
+                    <i class="fa-solid fa-ticket menu-icon"></i>
+                    <span>Tickets</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn($header_elements['add_funds']['route-name']); ?>" class="menu-link">
+                    <i class="fa-solid fa-wallet menu-icon"></i>
+                    <span>Add funds</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn($header_elements['transactions']['route-name']); ?>" class="menu-link">
+                    <i class="fa-solid fa-money-bill-transfer menu-icon"></i>
+                    <span>Transactions</span>
                 </a>
             </li>
             <li class="menu-item">

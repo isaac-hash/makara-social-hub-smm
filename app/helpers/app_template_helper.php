@@ -276,7 +276,7 @@ if (! function_exists('show_search_area')) {
         $class_btn_clear     = (! empty($param_search['query'])) ? '' : 'd-none';
         $search_placeholder  = lang("Search_for_");
         if ($task == 'admin') {
-            $xhtml_fields = '<select name="field" class="form-control" id="">';
+            $xhtml_fields = '<select name="field" class="form-control" id="" style="margin-top:10rem">';
             foreach ($field_in_controller[$current_controller] as $item) {
                 $selected = ($item == $param_search['field']) ? 'selected' : '';
                 $xhtml_fields .= sprintf('<option value="%s" %s>%s</option>', $item, $selected, $tmpl_search_fields[$item]['name']);
@@ -285,8 +285,9 @@ if (! function_exists('show_search_area')) {
             $search_placeholder = 'Search for…';
         }
         $xhtml = sprintf(
-            '<div class="form-group">
+            '<div class="form-group" >
                     <div class="input-group">
+                    
                         <input type="text" name="query" class="form-control" placeholder="%s" value="%s">
                         %s
                         <button class="btn btn-primary btn-square btn-search" type="button"><span class="fe fe-search"></span></button>

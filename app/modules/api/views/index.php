@@ -6,7 +6,7 @@
   }
 </style>
 
-<div class="row justify-content-center api-documentation">
+<div class="row justify-content-center api-documentation" style="margin-top: 6rem;">
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">

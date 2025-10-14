@@ -26,6 +26,30 @@
             margin: 0;
             padding: 0;
         }
+        .accordion {
+  background-color: #f3f3f3ff;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  border-radius: 2rem;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
     </style>
 
 
@@ -849,17 +873,17 @@
                     <p class="lead mb-5" style="color: #4F30A2;">Find quick answers to common questions about our services</p>
                 </div>
             </div>
-            <div class="row justify-content-center align-items-start">
+            <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 order-1 order-lg-2 ">
                     <div class="faq-image-wrapper" style="position: sticky; top: 20px; border-radius:2rem;">
                         <img src="assets/images/makara_faq2.jpg" 
                              alt="FAQ Support" 
                              class="img-fluid rounded-4 shadow-lg"
-                             style="width: 100%; max-height: 31rem; object-fit: cover; border-radius:2rem;">
+                             style="width: 100%; height: 100%; object-fit: cover; border-radius:2rem;">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 order-2 order-lg-1">
-                    <div class="accordion custom-accordion" id="accordionExample" style="--bs-accordion-active-bg: #EEF2FF; --bs-accordion-btn-focus-border-color: #4F30A2; --bs-accordion-active-color: #4F30A2; ">
+                    <!-- <div class="accordion custom-accordion" id="accordionExample" style="--bs-accordion-active-bg: #EEF2FF; --bs-accordion-btn-focus-border-color: #4F30A2; --bs-accordion-active-color: #4F30A2;">
                         <div class="accordion-item" style="border-radius:2rem;">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -930,7 +954,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+
+<div class="accordion" id="accordionExample"
+     style="">
+</div>
                 </div>
             </div>
         </div>
@@ -1106,6 +1134,111 @@
             </div>
         </div>
     </section>
+<script>
+  // Accordion data (title, content, and optional HTML)
+  const faqData = [
+    {
+      title: "What are SMM panels?",
+      content: `An SMM panel is an online shop that you can visit to purchase SMM services at great prices. 
+      We provide a user-friendly platform to help you grow your social media presence effectively.`,
+      show: true
+    },
+    {
+      title: "What SMM services can I find?",
+      content: `
+        We offer a comprehensive range of SMM services including:
+        <ul class="mt-2 mb-0">
+          <li>Social media likes and followers</li>
+          <li>Video views and engagement</li>
+          <li>Comments and shares</li>
+          <li>Custom social media packages</li>
+        </ul>
+      `
+    },
+    {
+      title: "Are SMM services safe?",
+      content: `Yes, our services are completely safe! We use organic methods that comply with 
+      social media platform guidelines. Your account security is our top priority, and we guarantee 
+      that your accounts won't face any risks.`
+    },
+    {
+      title: "How does a mass order work?",
+      content: `Our mass order feature allows you to place multiple orders simultaneously. 
+      Simply upload a list of links and select your desired services for each. 
+      This saves time and streamlines your social media growth strategy.`
+    },
+    {
+      title: "What does drip-feed mean?",
+      content: `Drip-feed is our smart delivery system that gradually distributes your order over time. 
+      For example, instead of getting 2000 likes at once, you can receive 200 likes daily for 10 days. 
+      This creates a more natural growth pattern and improves engagement authenticity.`
+    }
+  ];
+
+  const accordion = document.getElementById("accordionExample");
+
+  // Generate Bootstrap accordion items dynamically
+  faqData.forEach((item, index) => {
+    const id = `collapse${index + 1}`;
+    const headingId = `heading${index + 1}`;
+    const isShow = item.show ? "show" : "";
+    const collapsed = item.show ? "" : "collapsed";
+    const expanded = item.show ? "true" : "false";
+
+    accordion.innerHTML += `
+      <div class="accordion-item" style="border-radius:2rem;">
+        <h2 class="accordion-header" id="${headingId}">
+          <button class="accordion-button ${collapsed}" type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#${id}"
+                  aria-expanded="${expanded}"
+                  aria-controls="${id}">
+            ${item.title}
+          </button>
+        </h2>
+        <div id="${id}" class="accordion-collapse collapse ${isShow}"
+             aria-labelledby="${headingId}"
+             data-bs-parent="#accordionExample">
+          <div class="mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
+            ${item.content}
+          </div>
+        </div>
+      </div>
+    `;
+  });
+</script>
+    
+<script>
+//   // Example data (you can load this from anywhere)
+//   const accordionData = [
+//     { title: "Section 1", content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit..." },
+//     { title: "Section 2", content: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris..." },
+//     { title: "Section 3", content: "Duis aute irure dolor in reprehenderit in voluptate velit esse..." }
+//   ];
+
+//   // Generate accordion HTML dynamically
+//   const container = document.getElementById("accordionContainer");
+//   accordionData.forEach(item => {
+//     container.innerHTML += `
+//       <button class="accordion">${item.title}</button>
+//       <div class="panel">
+//         <p>${item.content}</p>
+//       </div>
+//     `;
+//   });
+</script>
+
+<!-- ✅ Your existing accordion toggle script -->
+<script>
+//   var acc = document.getElementsByClassName("accordion");
+//   for (let i = 0; i < acc.length; i++) {
+//     acc[i].addEventListener("click", function() {
+//       this.classList.toggle("active");
+//       var panel = this.nextElementSibling;
+//       panel.style.display = (panel.style.display === "block") ? "none" : "block";
+//     });
+//   }
+</script>
 <?php
 require_once 'themes/nico/views/footer.php';
 

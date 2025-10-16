@@ -138,8 +138,8 @@
 <style>
   /* Desktop - with sidebar offset */
   .responsive-section-header {
-    margin-top: 7rem;
-    margin-left: 7rem;
+    margin-top: 9rem;
+    margin-left: 9rem;
   }
   
   .responsive-content-row {
@@ -149,8 +149,8 @@
   /* Tablet Screens (768px to 991px) */
   @media (max-width: 991px) {
     .responsive-section-header {
-      margin-left: 3rem;
-      margin-top: 6rem;
+      margin-left: 5rem;
+      margin-top: 7rem;
     }
     
     .responsive-content-row {

@@ -1,13 +1,30 @@
 <?php
   if ($header_area) :
 ?>
+
+<?php
+$user = current_logged_user();
+$user_name = $user->first_name . ' ' . $user->last_name;
+// echo $user_name;
+
+$hour = date('G');
+$period_of_day = '';
+
+if ($hour >= 5 && $hour <= 11) {
+    $period_of_day = "Good Morning";
+} else if ($hour >= 12 && $hour <= 17) {
+    $period_of_day = "Good Afternoon";
+} else {
+    $period_of_day = "Good Evening";
+}
+?>
   <!-- Banner Section -->
   <div class="banner-section mb-5 mt-6" style="background: linear-gradient(135deg, #0D0BD1 0%, #3b38eeff 100%); border-radius: 15px; overflow: hidden; position: relative;">
     <div class="row align-items-center p-3 p-sm-4 p-md-5 m-0">
       <!-- Left Content -->
       <div class="col-md-6 col-lg-7 mb-4 mb-md-0 px-2 px-sm-3">
         <h2 class="text-white mb-2 mb-sm-3 banner-title">
-          Hi <?php echo isset($user_name) ? $user_name : 'User'; ?>!
+          <?php echo $period_of_day; ?>, <?php echo isset($user->first_name) ? $user->first_name : 'User'; ?>!
         </h2>
         <p class="text-white mb-3 mb-sm-4 banner-description">
           Welcome to Makara Social Hub! - One platform for all your social media needs. 
@@ -111,7 +128,8 @@
     
     /* Banner Logo Container */
     .banner-logo {
-      background: rgba(0,0,0,0.3);
+      background: #ff9933;
+      /* background: rgba(0,0,0,0.3); */
       border-radius: 15px;
       padding: 2rem 1.5rem;
       backdrop-filter: blur(10px);
@@ -119,6 +137,7 @@
     
     .banner-logo-inner {
       background: rgba(0,0,0,0.3);
+      /* background: rgba(0,0,0,0.3); */
       border-radius: 15px;
       padding: 1.5rem 1rem;
       display: inline-block;

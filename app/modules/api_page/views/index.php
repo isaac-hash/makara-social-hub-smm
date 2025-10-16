@@ -1,3 +1,8 @@
+<?php
+
+require_once 'themes/nico/views/nav.php';
+
+?>
 <style>
   .api-documentation pre{
     background: #293340;
@@ -6,7 +11,7 @@
   }
 </style>
 
-<div class="row justify-content-center api-documentation" style="margin-top: 6rem;">
+<div class="row justify-content-center api-documentation" style="margin-top: 6rem; margin-bottom: 2rem;">
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
@@ -873,3 +878,6 @@
 
 </div>
 
+<?php
+require_once 'themes/nico/views/footer.php'
+?>

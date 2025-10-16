@@ -55,7 +55,7 @@ $route['translate_uri_dashes']                  = FALSE;
 $route['set_language']                          = 'blocks/set_language';
 $route['about-services'] = 'services/about';
 $route['cac'] = 'cac';
-$route['api'] = 'api';
+$route['api-page'] = 'api_page';
 
 // Settings page
 $route['new_order']                             = 'order/new_order';

@@ -6,7 +6,7 @@
     <title><?=get_option('website_title', "Makara - Social Hub")?></title>
     <meta name="description" content="<?=get_option('website_desc', "Your one-stop solution for social media management.")?>">
     <meta name="keywords" content="<?=get_option('website_keywords', "social media, smm, panel, marketing")?>">
-    <link rel="shortcut icon" type="image/x-icon" href="<?=get_option('website_favicon', BASE."assets/images/favicon.ico")?>">
+    <link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1760352921/logo_famnk2.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -1,12 +1,12 @@
 
-<div class="row h-100 align-items-center auth-form">
+<div class="row h-100 align-items-center auth-form" style="background-color: #0D0BD1">
   <div class="col-md-6 col-login mx-auto ">
     <form class="card actionForm" action="<?=admin_url("login")?>" data-redirect="<?=admin_url('users')?>" method="POST">
       <div class="card-body ">
         <div class="card-title text-center">
           <div class="site-logo mb-2">
             <a href="<?=cn()?>">
-              <img src="<?=get_option('website_logo', BASE."assets/images/logo.png")?>" alt="website-logo" style="max-height: 50px;">
+              <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1760352921/logo_famnk2.png" alt="website-logo" style="max-height: 50px;">
             </a>
           </div>
           <h5><?=lang("login_to_your_account")?></h5>
@@ -37,7 +37,7 @@
 
         <div class="form-footer">
           <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-          <button type="submit" class="btn btn-primary btn-block"><?=lang("Login")?></button>
+          <button type="submit" class="btn btn-block" style="background-color: #0D0BD1; color: #fff"><?=lang("Login")?></button>
         </div>
       </div>
     </form>

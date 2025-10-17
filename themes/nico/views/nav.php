@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=get_option('website_title', "Makara - Social Hub")?></title>
-    <meta name="description" content="<?=get_option('website_desc', "Your one-stop solution for social media management.")?>">
-    <meta name="keywords" content="<?=get_option('website_keywords', "social media, smm, panel, marketing")?>">
-    <link rel="shortcut icon" type="image/x-icon" href="<?=get_option('website_favicon', BASE."assets/images/favicon.ico")?>"
+    <meta name="description" content="<?=get_option('website_desc', "Makara Social Hub. Your go-to digital growth and marketing hub. Boost visibility, grow engagement, and build a powerful online presence. Also well known for TOP SMM Panel and Cheap SMM Panel for all kind of Social Media Marketing Services. SMM Panel for Facebook, Instagram, YouTube and more services!")?>">
+<meta name="keywords" content="<?=get_option('website_keywords', "smm panel, SmartPanel, smm reseller panel, smm provider panel, reseller panel, instagram panel, resellerpanel, social media reseller panel, smmpanel, panelsmm, smm, panel, socialmedia, instagram reseller panel")?>">
+<title><?=get_option('website_title', "Makara Social Hub - SMM Panel Reseller Tool")?></title>
+
+<link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1760352921/logo_famnk2.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,7 +84,7 @@
   <div class="container">
     <!-- Brand -->
     <a class="navbar-brand" href="<?=cn('')?>">
-      <img src="assets/images/makara_IMG_1670.PNG" alt="Makara Logo" class="navbar-logo" style="height: 45px; width: 190px;" />
+      <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1760352921/logo_famnk2.png" alt="Makara Logo" class="navbar-logo" style="height: 45px; width: 190px;" />
     </a>
 
     <!-- ✅ Bootstrap 5 Toggler -->
@@ -101,8 +103,8 @@
         <li class="nav-item"><a class="nav-link px-3" href="<?=cn('about-services')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">Services</a></li>
         <li class="nav-item"><a class="nav-link px-3" href="<?=cn('cac')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">CAC</a></li>
         <li class="nav-item"><a class="nav-link px-3" href="<?=cn('api-page')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">API</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="#features" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">Features</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="#pricing" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Pricing</a></li>
+        <!-- <li class="nav-item"><a class="nav-link px-3" href="#features" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">Features</a></li> -->
+        <li class="nav-item"><a class="nav-link px-3" href="<?=cn('blog')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Blog</a></li>
         <li class="nav-item"><a class="nav-link px-3" href="<?=cn('home/contact')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Contact</a></li>
       </ul>
 
@@ -126,8 +128,8 @@
       <li class="nav-item"><a class="nav-link" href="<?=cn('about-services')?>">Services</a></li>
       <li class="nav-item"><a class="nav-link" href="<?=cn('cac')?>">CAC</a></li>
       <li class="nav-item"><a class="nav-link" href="<?=cn('api-page')?>">API</a></li>
-      <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-      <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+      <!-- <li class="nav-item"><a class="nav-link" href="#features">Features</a></li> -->
+      <li class="nav-item"><a class="nav-link" href="<?=cn('blog')?>">Blog</a></li>
       <li class="nav-item"><a class="nav-link" href="<?=cn('home/contact')?>">Contact</a></li>
     </ul>
     <div class="mt-4">

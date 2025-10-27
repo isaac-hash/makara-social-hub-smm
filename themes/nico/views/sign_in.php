@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,27 @@
     <meta name="description" content="<?=get_option('website_desc', "Your one-stop solution for social media management.")?>">
     <meta name="keywords" content="<?=get_option('website_keywords', "social media, smm, panel, marketing")?>">
     <link rel="shortcut icon" type="image/x-icon" href="<?=get_option('website_favicon', BASE."assets/images/favicon.ico")?>">
+=======
+  <?php 
+    include_once 'blocks/head.blade.php';
+    $cookie_email = '';
+    $cookie_pass = '';
+    if (isset($_COOKIE["cookie_email"])) {
+      $cookie_email = encrypt_decode($_COOKIE["cookie_email"]);
+    }
+    if (isset($_COOKIE["cookie_pass"])) {
+      $cookie_pass = encrypt_decode($_COOKIE["cookie_pass"]);
+    }
+    $form_url        = cn("/auth/ajax_sign_in");
+    $form_attributes = [
+      'id'            => 'signUpForm', 
+      'data-focus'    => 'false', 
+      'class'         => 'actionFormWithoutToast', 
+      'data-redirect' => cn('home'), 
+      'method'        => "POST"
+    ];
+  ?>
+>>>>>>> ede5ab0910aae871f4de1584a8f3133cd28ebb9f
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -215,8 +237,16 @@
                 <input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>">
             </form>
 
-            <div class="signup-link">
-                Don't have an account? <a href="<?=cn("auth/signup")?>">Sign Up</a>
+                <?php if (!session('uid')) : ?>
+                  <p class="login-card-footer-text"><?=lang("dont_have_account_yet")?> <a href="<?=cn('/auth/signup')?>" class="text-reset"><?=lang("Sign_Up")?></a></p>
+                <?php endif; ?> 
+
+                <?php if (!session('uid')) : ?>
+                  <nav class="login-card-footer-nav">
+                    <a href="<?=cn("/auth/forgot_password")?>" class="text-reset"><?=lang("forgot_password")?>?</a>
+                  </nav>
+                <?php endif; ?>
+              <!-- </div> -->
             </div>
         </div>
     </div>

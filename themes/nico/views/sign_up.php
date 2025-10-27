@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -189,6 +190,26 @@
         <div class="signup-card">
             <div class="logo-container">
                 <img src="<?=BASE?>assets/images/makara_IMG_1670.PNG" alt="Logo" style="max-width: 110px; max-height: 110px;">
+=======
+  <?php 
+    include_once 'blocks/head.blade.php';
+    $form_url        = cn("/auth/ajax_sign_up");
+    $form_attributes = [
+      'id'            => 'signUpForm', 
+      'data-focus'    => 'false', 
+      'class'         => 'actionFormWithoutToast', 
+      'data-redirect' => cn('new_order'), 
+      'method'        => "POST"  
+    ];
+  ?>
+  <body>
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+      <div class="container">
+        <div class="card login-card">
+          <div class="row no-gutters">
+            <div class="col-md-6 left-image mx-auto">
+              <a href="<?=cn();?>"><img src="<?php echo BASE; ?>themes/nico/assets/images/login.png" alt="login" class="login-card-img"></a>
+>>>>>>> ede5ab0910aae871f4de1584a8f3133cd28ebb9f
             </div>
             
             <h2 class="signup-title">Create Account To Access Your Personal Dashboard</h2>
@@ -234,22 +255,9 @@
                     </div>
                 </div>
 
-                <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" name="terms" id="terms" required>
-                    <label class="form-check-label" for="terms">
-                        I agree to the <a href="<?=cn('terms')?>">Terms of Service</a>
-                    </label>
-                </div>
-
-                <button type="submit" class="btn btn-signup">
-                    ✓ Create Account
-                </button>
-                
-                <input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>">
-            </form>
-
-            <div class="signin-link">
-                Already have an account? <a href="<?=cn("auth/login")?>">Sign In</a>
+                <?php echo form_close(); ?>
+                <p class="login-card-footer-text"><?=lang("already_have_account")?> <a href="<?=cn('/auth/login')?>"><?=lang("Login")?></a></p>
+              </div>
             </div>
         </div>
     </div>

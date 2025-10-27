@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php 
 // // Using the session library
 // $user_id = $this->session->userdata('uid');
@@ -14,6 +15,19 @@
 ?>
 
 
+=======
+<?php require_once 'themes/nico/header.php'; ?> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?=get_option('website_title', "Makara - Social Hub")?></title>
+   
+    <meta name="description" content="<?=get_option('website_desc', "Your one-stop solution for social media management.")?>">
+    <meta name="keywords" content="<?=get_option('website_keywords', "social media, smm, panel, marketing")?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?=get_option('website_favicon', BASE."assets/images/favicon.ico")?>"
+>>>>>>> ede5ab0910aae871f4de1584a8f3133cd28ebb9f
 
 
     
@@ -57,9 +71,65 @@
     <!-- Header -->
     
 
+<<<<<<< HEAD
     <?php
     require_once 'themes/nico/views/nav.php';
     ?>
+=======
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="<?=cn('services/all')?>" style=" color: #4F30A2; font-weight: 500; position: relative; transition: color 0.3s ease; " onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">All Services</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <!-- <a class="nav-link px-3" href="#features" style="
+                            color: #4F30A2;
+                            font-weight: 500;
+                            position: relative;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Features</a>
+                    </li>
+                    <li class="nav-item">
+                      -->
+                       <a class="nav-link px-3" href="#features" style=" color: #4F30A2; font-weight: 500; position: relative; transition: color 0.3s ease; " onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">Features</a>
+                    </li>
+                    <li class="nav-item">    <a class="nav-link px-3" href="#pricing" style="
+                            color: #4F30A2;
+                            font-weight: 500;
+                            position: relative;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#contact" style="
+                            color: #4F30A2;
+                            font-weight: 500;
+                            position: relative;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Contact</a>
+                    </li>
+                </ul>
+                <div class="navbar-buttons d-flex align-items-center">
+                    <?php if($this->session->userdata('uid')){ ?>
+                        <div class="dropdown">
+                            <button class="btn btn-primary rounded-pill dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-user"></i>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="<?=cn('profile')?>">Profile</a></li>
+                                <li><a class="dropdown-item" href="<?=cn('auth/logout')?>">Logout</a></li>
+                            </ul>
+                        </div>
+                    <?php }else{ ?>
+                        <a href="<?=cn('auth/login')?>" class="btn me-3 px-4 rounded-pill fw-medium" style="color:  #0D0BD1; background-color: white; outline: 1px solid #0D0BD1">Login</a>
+                        <a href="<?=cn('auth/signup')?>" class="btn px-4 rounded-pill fw-medium shadow-sm hover-lift" style="color:  white; background-color: #0D0BD1">Sign Up</a>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </nav>
+>>>>>>> ede5ab0910aae871f4de1584a8f3133cd28ebb9f
 
     <!-- Hero Section -->
     <!-- Hero Section -->
@@ -126,11 +196,17 @@
                             <span class="d-block">Social Media</span>
                             <span class="d-block">Presence</span>
                         </h1>
+<<<<<<< HEAD
                         <p class="keen-subtitle lead mb-4" style="color: rgba(255, 255, 255, 0.9); font-size: 1.25rem;">
                             Makara Social Hub is your go-to digital growth and marketing hub. Helping individuals and businesses boost visibility,  
                             <span style="color: rgba(255, 255, 255, 0.7);">grow engagement, and build a powerful online presence.</span>
+=======
+                        <p class="keen-subtitle lead mb-4" style="color: rgba(255, 255, 255, 0.9); font-size: 1.25rem;"> 
+                            Premium social media solutions for brands that want to stand out. 
+                            <span style="color: rgba(255, 255, 255, 0.7);">Grow, engage, and convert with Makara.</span>
+>>>>>>> ede5ab0910aae871f4de1584a8f3133cd28ebb9f
                         </p>
-                        <a href="<?=cn('auth/signup')?>" class="btn px-5 py-3 mb-4 rounded-pill shadow-lg hover-lift" style="
+                        <a href="<?=cn('/auth/signup')?>" class="btn px-5 py-3 mb-4 rounded-pill shadow-lg hover-lift" style="
                             background: rgba(255, 255, 255, 0.15);
                             backdrop-filter: blur(5px);
                             border: 1px solid rgba(255, 255, 255, 0.3);

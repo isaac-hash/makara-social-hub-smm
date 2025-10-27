@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+<?php 
+// // Using the session library
+// $user_id = $this->session->userdata('uid');
+
+// // Or directly via the $_SESSION superglobal
+// // $user_id = $_SESSION['uid'];
+
+// if ($user_id) {
+//     echo "The User ID is: " . $user_id;
+// } else {
+//     echo "User ID not found in session.";
+// }
+
+?>
+
+
+=======
 <?php require_once 'themes/nico/header.php'; ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,18 +27,9 @@
     <meta name="description" content="<?=get_option('website_desc', "Your one-stop solution for social media management.")?>">
     <meta name="keywords" content="<?=get_option('website_keywords', "social media, smm, panel, marketing")?>">
     <link rel="shortcut icon" type="image/x-icon" href="<?=get_option('website_favicon', BASE."assets/images/favicon.ico")?>"
+>>>>>>> ede5ab0910aae871f4de1584a8f3133cd28ebb9f
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
-    <link href="<?php echo BASE; ?>themes/nico/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="<?php echo BASE; ?>assets/css/new_style.css" rel="stylesheet">
-    <link href="<?php echo BASE; ?>themes/nico/assets/css/sections.css" rel="stylesheet">
-    <link href="<?php echo BASE; ?>themes/nico/assets/css/utilities.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     
     <style>
         /* Critical rendering fixes */
@@ -31,61 +40,42 @@
             margin: 0;
             padding: 0;
         }
+        .accordion {
+  background-color: #f3f3f3ff;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  border-radius: 2rem;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
     </style>
 
-    <script type="text/javascript">
-      var token = '<?=$this->security->get_csrf_hash()?>',
-          PATH  = '<?php echo PATH; ?>',
-          BASE  = '<?php echo BASE; ?>';
-    </script>
-</head>
-<body>
+
 
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg fixed-top" style="
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 20px rgba(0, 98, 255, 0.1);
-    ">
-        <div class="container" style="overflow: hidden; height: 50px; ">
-            <a class="navbar-brand" href="#" style="
-                background: linear-gradient(90deg, #0D0BD1, #FF9933);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
-            ">
-                <!-- <img src="<?=get_option('website_logo', BASE."assets/images/logo.png")?>" alt="Makara Logo" class="navbar-logo" style="height: 40px;"> -->
-                <!-- <img src="<?=get_option('website_logo', BASE."assets/images/makara_IMG_1660.png")?>" alt="Makara Logo" class="navbar-logo" style="height: 90px;"> -->
-                <img src="assets/images/makara_IMG_1659.JPG" alt="Makara Logo" class="navbar-logo" style="height: 120px; width: 140px;">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="
-                border: none;
-                padding: 0.5rem;
-                color: #0D0BD1;
-            ">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="#" style="
-                            color: #0D0BD1;
-                            font-weight: 500;
-                            position: relative;
-                        ">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- <a class="nav-link px-3" href="#services" style="
-                            color: #4F30A2;
-                            font-weight: 500;
-                            position: relative;
-                            transition: color 0.3s ease;
-                        " onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Services</a>
-                    </li>
-                    <li class="nav-item">
-                       -->
-                       <a class="nav-link px-3" href="#services" style=" color: #4F30A2; font-weight: 500; position: relative; transition: color 0.3s ease; " onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">Services</a>
+    
 
+<<<<<<< HEAD
+    <?php
+    require_once 'themes/nico/views/nav.php';
+    ?>
+=======
                     </li>
                     <li class="nav-item">
                         <a class="nav-link px-3" href="<?=cn('services/all')?>" style=" color: #4F30A2; font-weight: 500; position: relative; transition: color 0.3s ease; " onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">All Services</a>
@@ -139,6 +129,7 @@
             </div>
         </div>
     </nav>
+>>>>>>> ede5ab0910aae871f4de1584a8f3133cd28ebb9f
 
     <!-- Hero Section -->
     <!-- Hero Section -->
@@ -154,6 +145,13 @@
         overflow: hidden;
         position: relative;
     ">
+        <?php
+            // if ($user_id) {
+            //     echo "The User ID is: " . $user_id;
+            // } else {
+            //     echo "User ID not found in session.";
+            // }
+        ?>
         <!-- Mesh gradient overlay for depth -->
         <div style="
             position: absolute;
@@ -193,13 +191,20 @@
                             -webkit-text-fill-color: transparent;
                             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
                         ">
-                            <span class="d-block"># Accelerate</span>
-                            <span class="d-block"># Your Social</span>
-                            <span class="d-block"># Growth</span>
+                            <span class="d-block">Elevate Your</span>
+                              
+                            <span class="d-block">Social Media</span>
+                            <span class="d-block">Presence</span>
                         </h1>
+<<<<<<< HEAD
+                        <p class="keen-subtitle lead mb-4" style="color: rgba(255, 255, 255, 0.9); font-size: 1.25rem;">
+                            Makara Social Hub is your go-to digital growth and marketing hub. Helping individuals and businesses boost visibility,  
+                            <span style="color: rgba(255, 255, 255, 0.7);">grow engagement, and build a powerful online presence.</span>
+=======
                         <p class="keen-subtitle lead mb-4" style="color: rgba(255, 255, 255, 0.9); font-size: 1.25rem;"> 
                             Premium social media solutions for brands that want to stand out. 
                             <span style="color: rgba(255, 255, 255, 0.7);">Grow, engage, and convert with Makara.</span>
+>>>>>>> ede5ab0910aae871f4de1584a8f3133cd28ebb9f
                         </p>
                         <a href="<?=cn('/auth/signup')?>" class="btn px-5 py-3 mb-4 rounded-pill shadow-lg hover-lift" style="
                             background: rgba(255, 255, 255, 0.15);
@@ -378,7 +383,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="who-we-are-image position-relative mt-5 mt-lg-0">
-                        <img src="https://img.freepik.com/free-vector/social-tree-concept-illustration_114360-4898.jpg" alt="About Us" class="img-fluid floating-animation">
+                        <img src="assets\images\makara_IMG_0437.png" alt="About Us" class="img-fluid floating-animation">
                         <div class="experience-badge bg-white shadow">
                             <span class="h2 mb-0 text-primary fw-bold">24/7</span>
                             <span class="text-dark">Support</span>
@@ -424,11 +429,16 @@
                             display: flex; 
                             align-items: center; 
                             justify-content: center; 
-                            background: linear-gradient(135deg, #0D0BD1, #40E0D0);
+                            background: linear-gradient(135deg, #0D0BD1);
                         ">
                             <i class="fas fa-users" style="color: white"></i>
                         </div>
-                        <h3 class="h5 mb-3">Social Media Growth</h3>
+                        <h3 class="h5 mb-3"style="
+                            background: #0D0BD1;                            -webkit-background-clip: text;
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            font-weight: bold;
+                        ">Social Media Growth</h3>
                         <ul class="list-unstyled mb-0">
                             <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Instagram, Facebook, TikTok Growth</li>
                             <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>YouTube, Twitter, LinkedIn Services</li>
@@ -452,14 +462,13 @@
                             display: flex; 
                             align-items: center; 
                             justify-content: center; 
-                            background: linear-gradient(135deg, #7B1FA2, #20C997);
+                            background: #0D0BD1;
                             box-shadow: 0 4px 15px rgba(123, 31, 162, 0.2);
                         ">
                             <i class="fas fa-bullhorn" style="color: white"></i>
                         </div>
                         <h3 class="h5 mb-3" style="
-                            background: linear-gradient(90deg, #7B1FA2, #20C997);
-                            -webkit-background-clip: text;
+                            background: #0D0BD1;                            -webkit-background-clip: text;
                             background-clip: text;
                             -webkit-text-fill-color: transparent;
                             font-weight: bold;
@@ -487,13 +496,13 @@
                             display: flex; 
                             align-items: center; 
                             justify-content: center; 
-                            background: linear-gradient(135deg, #20C997, #0D0BD1);
+                            background: linear-gradient(135deg, #0D0BD1);
                             box-shadow: 0 4px 15px rgba(32, 201, 151, 0.2);
                         ">
                             <i class="fas fa-music" style="color: white"></i>
                         </div>
                         <h3 class="h5 mb-3" style="
-                            background: linear-gradient(90deg, #20C997, #0D0BD1);
+                            background: linear-gradient(90deg, #0D0BD1);
                             -webkit-background-clip: text;
                             background-clip: text;
                             -webkit-text-fill-color: transparent;
@@ -536,7 +545,7 @@
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="section-title fw-bold mb-3" style="
-                    background: linear-gradient(90deg, #0D0BD1, #7B1FA2, #20C997);
+                    background: linear-gradient(90deg, #0D0BD1);
                     -webkit-background-clip: text;
                     background-clip: text;
                     -webkit-text-fill-color: transparent;
@@ -544,7 +553,7 @@
                     color: #0D0BD1;
                 ">Why Choose Makara Social Hub?</h2>
                 <p class="lead" style="
-                    background: linear-gradient(90deg, #0D0BD1, #7B1FA2);
+                    background: linear-gradient(90deg, #0D0BD1);
                     -webkit-background-clip: text;
                     background-clip: text;
                     -webkit-text-fill-color: transparent;
@@ -567,13 +576,13 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            background: linear-gradient(135deg, #0D0BD1, #7B1FA2);
+                            background: linear-gradient(135deg, #0D0BD1);
                             box-shadow: 0 4px 15px rgba(0, 98, 255, 0.2);
                         ">
                             <i class="fas fa-tools" style="color: white"></i>
                         </div>
                         <h3 class="h5 mb-3" style="
-                            background: linear-gradient(90deg, #0D0BD1, #7B1FA2);
+                            background: linear-gradient(90deg, #0D0BD1);
                             -webkit-background-clip: text;
                             background-clip: text;
                             -webkit-text-fill-color: transparent;
@@ -597,13 +606,13 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            background: linear-gradient(135deg, #20C997, #0D0BD1);
+                            background: linear-gradient(135deg, #0D0BD1);
                             box-shadow: 0 4px 15px rgba(32, 201, 151, 0.2);
                         ">
                             <i class="fas fa-globe" style="color: white"></i>
                         </div>
                         <h3 class="h5 mb-3" style="
-                            background: linear-gradient(90deg, #20C997, #0D0BD1);
+                            background: linear-gradient(90deg, #0D0BD1);
                             -webkit-background-clip: text;
                             background-clip: text;
                             -webkit-text-fill-color: transparent;
@@ -627,13 +636,13 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            background: linear-gradient(135deg, #7B1FA2, #20C997);
+                            background: linear-gradient(135deg, #0D0BD1);
                             box-shadow: 0 4px 15px rgba(123, 31, 162, 0.2);
                         ">
                             <i class="fas fa-robot" style="color: white"></i>
                         </div>
                         <h3 class="h5 mb-3" style="
-                            background: linear-gradient(90deg, #7B1FA2, #20C997);
+                            background: linear-gradient(90deg, #0D0BD1);
                             -webkit-background-clip: text;
                             background-clip: text;
                             -webkit-text-fill-color: transparent;
@@ -657,13 +666,13 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            background: linear-gradient(135deg, #20C997, #FF8000);
+                            background: linear-gradient(135deg, #0D0BD1);
                             box-shadow: 0 4px 15px rgba(32, 201, 151, 0.2);
                         ">
                             <i class="fas fa-headset" style="color: white"></i>
                         </div>
                         <h3 class="h5 mb-3" style="
-                            background: linear-gradient(90deg, #20C997, #FF8000);
+                            background: linear-gradient(90deg, #0D0BD1);
                             -webkit-background-clip: text;
                             background-clip: text;
                             -webkit-text-fill-color: transparent;
@@ -687,13 +696,13 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            background: linear-gradient(135deg, #FF8000, #0D0BD1);
+                            background: linear-gradient(135deg, #0D0BD1);
                             box-shadow: 0 4px 15px rgba(255, 128, 0, 0.2);
                         ">
                             <i class="fas fa-code" style="color: white"></i>
                         </div>
                         <h3 class="h5 mb-3" style="
-                            background: linear-gradient(90deg, #FF8000, #0D0BD1);
+                            background: linear-gradient(90deg, #0D0BD1);
                             -webkit-background-clip: text;
                             background-clip: text;
                             -webkit-text-fill-color: transparent;
@@ -717,18 +726,25 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            background: linear-gradient(135deg, #0D0BD1, #20C997);
+                            background: linear-gradient(135deg, #0D0BD1);
                             box-shadow: 0 4px 15px rgba(0, 98, 255, 0.2);
                         ">
                             <i class="fas fa-graduation-cap" style="color: white"></i>
                         </div>
                         <h3 class="h5 mb-3" style="
-                            background: linear-gradient(90deg, #0D0BD1, #20C997);
+                            background: linear-gradient(90deg, #0D0BD1);
                             -webkit-background-clip: text;
                             background-clip: text;
                             -webkit-text-fill-color: transparent;
                             font-weight: bold;
                         ">Education & Community</h3>
+                        <!-- <h3 class="h5 mb-3" style="
+                            background: linear-gradient(90deg, #0D0BD1, #20C997);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            font-weight: bold;
+                        ">Education & Community</h3> -->
                         <p class="mb-0" style="color: #2c3e50">Access to educational resources, industry insights, and a supportive community for growth.</p>
                     </div>
                 </div>
@@ -759,7 +775,7 @@
         <div class="container p-5">
             <div class="text-center mb-5">
                 <h2 class="section-title mb-3" style="
-                    background: linear-gradient(90deg, #0D0BD1, #7B1FA2, #20C997);
+                    background: linear-gradient(90deg, #0D0BD1);
                     -webkit-background-clip: text;
                     background-clip: text;
                     -webkit-text-fill-color: transparent;
@@ -767,7 +783,7 @@
                     font-size: 2.5rem;
                 ">How It Works</h2>
                 <p class="lead" style="
-                    background: linear-gradient(90deg, #0D0BD1, #7B1FA2);
+                    background: linear-gradient(90deg, #0D0BD1);
                     -webkit-background-clip: text;
                     background-clip: text;
                     -webkit-text-fill-color: transparent;
@@ -790,14 +806,14 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            background: linear-gradient(135deg, #0D0BD1, #7B1FA2);
+                            background: linear-gradient(135deg, #0D0BD1);
                             box-shadow: 0 4px 15px rgba(0, 98, 255, 0.2);
                         ">
                             <span class="process-number" style="color: white; font-weight: bold; margin-right: 5px">01</span>
                             <i class="fa-solid fa-user-plus" style="color: white"></i>
                         </div>
                         <h4 class="process-title" style="
-                            background: linear-gradient(90deg, #0D0BD1, #7B1FA2);
+                            background: linear-gradient(90deg, #0D0BD1);
                             -webkit-background-clip: text;
                             background-clip: text;
                             -webkit-text-fill-color: transparent;
@@ -824,14 +840,14 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            background: linear-gradient(135deg, #7B1FA2, #20C997);
+                            background: linear-gradient(135deg, #0D0BD1);
                             box-shadow: 0 4px 15px rgba(123, 31, 162, 0.2);
                         ">
                             <span class="process-number" style="color: white; font-weight: bold; margin-right: 5px">02</span>
                             <i class="fa-solid fa-wallet" style="color: white"></i>
                         </div>
                         <h4 class="process-title" style="
-                            background: linear-gradient(90deg, #7B1FA2, #20C997);
+                            background: linear-gradient(90deg, #0D0BD1);
                             -webkit-background-clip: text;
                             background-clip: text;
                             -webkit-text-fill-color: transparent;
@@ -858,14 +874,14 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            background: linear-gradient(135deg, #20C997, #FF8000);
+                            background: linear-gradient(135deg, #0D0BD1);
                             box-shadow: 0 4px 15px rgba(32, 201, 151, 0.2);
                         ">
                             <span class="process-number" style="color: white; font-weight: bold; margin-right: 5px">03</span>
                             <i class="fas fa-tasks" style="color: white"></i>
                         </div>
                         <h4 class="process-title" style="
-                            background: linear-gradient(90deg, #20C997, #FF8000);
+                            background: linear-gradient(90deg, #0D0BD1);
                             -webkit-background-clip: text;
                             background-clip: text;
                             -webkit-text-fill-color: transparent;
@@ -892,14 +908,14 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            background: linear-gradient(135deg, #FF8000, #0D0BD1);
+                            background: linear-gradient(135deg, #0D0BD1);
                             box-shadow: 0 4px 15px rgba(255, 128, 0, 0.2);
                         ">
                             <span class="process-number" style="color: white; font-weight: bold; margin-right: 5px">04</span>
                             <i class="fa-solid fa-chart-line" style="color: white"></i>
                         </div>
                         <h4 class="process-title" style="
-                            background: linear-gradient(90deg, #FF8000, #0D0BD1);
+                            background: linear-gradient(90deg, #0D0BD1);
                             -webkit-background-clip: text;
                             background-clip: text;
                             -webkit-text-fill-color: transparent;
@@ -924,7 +940,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h2 class="section-title fw-bold mb-3 p-5" style="
-                        background: linear-gradient(90deg, #0033FF, #6B46C1, #4F30A2);
+                        background: linear-gradient(90deg, #0033FF);
                         -webkit-background-clip: text;
                         background-clip: text;
                         -webkit-text-fill-color: transparent;
@@ -934,16 +950,24 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="accordion custom-accordion" id="accordionExample" style="--bs-accordion-active-bg: #EEF2FF; --bs-accordion-btn-focus-border-color: #4F30A2; --bs-accordion-active-color: #4F30A2;">
-                        <div class="accordion-item">
+                <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 order-1 order-lg-2 ">
+                    <div class="faq-image-wrapper" style="position: sticky; top: 20px; border-radius:2rem;">
+                        <img src="assets/images/makara_faq2.jpg" 
+                             alt="FAQ Support" 
+                             class="img-fluid rounded-4 shadow-lg"
+                             style="width: 100%; height: 100%; object-fit: cover; border-radius:2rem;">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 order-2 order-lg-1">
+                    <!-- <div class="accordion custom-accordion" id="accordionExample" style="--bs-accordion-active-bg: #EEF2FF; --bs-accordion-btn-focus-border-color: #4F30A2; --bs-accordion-active-color: #4F30A2;">
+                        <div class="accordion-item" style="border-radius:2rem;">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     What are SMM panels?
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                <div class="accordion-body" style="color: whitesmoke;">
+                                <div class=" mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
                                     An SMM panel is an online shop that you can visit to purchase SMM services at great prices. We provide a user-friendly platform to help you grow your social media presence effectively.
                                 </div>
                             </div>
@@ -956,7 +980,7 @@
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                <div class="accordion-body" style="color: whitesmoke;">
+                                <div class=" mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
                                     We offer a comprehensive range of SMM services including:
                                     <ul class="mt-2 mb-0">
                                         <li>Social media likes and followers</li>
@@ -975,7 +999,7 @@
                                 </button>
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                <div class="accordion-body" style="color: whitesmoke;">
+                                <div class=" mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
                                     Yes, our services are completely safe! We use organic methods that comply with social media platform guidelines. Your account security is our top priority, and we guarantee that your accounts won't face any risks.
                                 </div>
                             </div>
@@ -988,25 +1012,29 @@
                                 </button>
                             </h2>
                             <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                                <div class="accordion-body" style="color: whitesmoke;">
+                                <div class=" mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
                                     Our mass order feature allows you to place multiple orders simultaneously. Simply upload a list of links and select your desired services for each. This saves time and streamlines your social media growth strategy.
                                 </div>
                             </div>
                         </div>
 
-                        <div class="accordion-item">
+                        <div class="accordion-item" style="border-radius:2rem;">
                             <h2 class="accordion-header" id="headingFive">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                     What does drip-feed mean?
                                 </button>
                             </h2>
                             <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-                                <div class="accordion-body" style="color: whitesmoke;">
+                                <div class=" mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
                                     Drip-feed is our smart delivery system that gradually distributes your order over time. For example, instead of getting 2000 likes at once, you can receive 200 likes daily for 10 days. This creates a more natural growth pattern and improves engagement authenticity.
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+
+<div class="accordion" id="accordionExample"
+     style="">
+</div>
                 </div>
             </div>
         </div>
@@ -1024,13 +1052,13 @@
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="section-title fw-bold" style="
-                    background: linear-gradient(90deg, #0033FF, #6B46C1, #4F30A2);
+                    background: linear-gradient(90deg, #0D0BD1);
                     -webkit-background-clip: text;
                     background-clip: text;
                     -webkit-text-fill-color: transparent;
                     font-size: 2.5rem;
                 ">What Our Clients Say</h2>
-                <p class="lead" style="color: #4F30A2;">Real stories from our satisfied customers</p>
+                <p class="lead" style="color: #0D0BD1;">Real stories from our satisfied customers</p>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -1039,9 +1067,9 @@
                             <div class="carousel-item active">
                                 <div class="testimonial-card bg-white p-4 p-lg-5 rounded-4 shadow-sm">
                                     <div class="testimonial-quote display-3 text-primary mb-3">"</div>
-                                    <p class="testimonial-text lead mb-4" style="color:  #0D0BD1;">Makara Social Hub is the real deal! I've used many platforms before, but none delivered results as fast as they did. My engagement improved almost instantly, and their customer service is always available to assist. Highly recommended!</p>
+                                    <p class="testimonial-text mb-4" style="color:  #0D0BD1;">Makara Social Hub is the real deal! I've used many platforms before, but none delivered results as fast as they did. My engagement improved almost instantly, and their customer service is always available to assist. Highly recommended!</p>
                                     <div class="testimonial-author d-flex align-items-center">
-                                        <img src="https://i.pravatar.cc/100?img=3" alt="Author" class="rounded-circle me-3" width="60">
+                                        <img src="https://media.istockphoto.com/id/1351018006/photo/smiling-male-student-sitting-in-university-classroom.jpg?s=612x612&w=0&k=20&c=G9doLib_ILUijluTSD5hstZBWqHHIcw4dBHhQcs-ON4=" alt="Author" class="rounded-circle me-3" width="60">
                                         <div>
                                             <div class="testimonial-author-name text-secondary fw-bold">PRECIOUS O.</div>
                                             <div class="testimonial-author-role text-muted">Content Creator</div>
@@ -1052,9 +1080,9 @@
                             <div class="carousel-item">
                                 <div class="testimonial-card bg-white p-4 p-lg-5 rounded-4 shadow-sm">
                                     <div class="testimonial-quote display-3 text-primary mb-3">"</div>
-                                    <p class="testimonial-text lead mb-4" style="color:  #0D0BD1;">I used to struggle with reaching the right audience, but Makara Social Hub changed everything. They are honest, reliable, and always deliver on time. No delays, no excuses just results!</p>
+                                    <p class="testimonial-text mb-4" style="color:  #0D0BD1;">I used to struggle with reaching the right audience, but Makara Social Hub changed everything. They are honest, reliable, and always deliver on time. No delays, no excuses just results!</p>
                                     <div class="testimonial-author d-flex align-items-center">
-                                        <img src="https://i.pravatar.cc/100?img=4" alt="Author" class="rounded-circle me-3" width="60">
+                                        <img src="https://media.istockphoto.com/id/2219635436/photo/professional-man-smiling-while-working-on-a-laptop-and-holding-a-smartphone.jpg?s=612x612&w=0&k=20&c=FMruqFxZIYv08Q5x98RroB_JQcmajf68A1WWBKg9gZ8=" alt="Author" class="rounded-circle me-3" width="60">
                                         <div>
                                             <div class="testimonial-author-name text-secondary fw-bold">Tima K.</div>
                                             <div class="testimonial-author-role text-muted">Fashion Entrepreneur</div>
@@ -1065,9 +1093,9 @@
                             <div class="carousel-item">
                                 <div class="testimonial-card bg-white p-4 p-lg-5 rounded-4 shadow-sm">
                                     <div class="testimonial-quote display-3 text-primary mb-3">"</div>
-                                    <p class="testimonial-text lead mb-4" style="color:  #0D0BD1;">As an artist, I need real and organic engagement, not fake numbers. Makara Social Hub delivered exactly what they promised. No scams, no shady practices, just quality promotion. If you're serious about your music, they are the right choice!</p>
+                                    <p class="testimonial-text mb-4" style="color:  #0D0BD1;">As an artist, I need real and organic engagement, not fake numbers. Makara Social Hub delivered exactly what they promised. No scams, no shady practices, just quality promotion. If you're serious about your music, they are the right choice!</p>
                                     <div class="testimonial-author d-flex align-items-center">
-                                        <img src="https://i.pravatar.cc/100?img=5" alt="Author" class="rounded-circle me-3" width="60">
+                                        <img src="https://media.istockphoto.com/id/2218333130/photo/confident-businessman-smiling-in-a-casual-suit-and-glasses-indoors.jpg?s=612x612&w=0&k=20&c=55XTe0b4HfkJfq_yq_ksnl9xYWKRUCgmPMdwcssWOL0=" alt="Author" class="rounded-circle me-3" width="60">
                                         <div>
                                             <div class="testimonial-author-name text-secondary fw-bold">Bayo A.</div>
                                             <div class="testimonial-author-role text-muted">Afrobeats Artist</div>
@@ -1078,9 +1106,9 @@
                             <div class="carousel-item">
                                 <div class="testimonial-card bg-white p-4 p-lg-5 rounded-4 shadow-sm">
                                     <div class="testimonial-quote display-3 text-primary mb-3">"</div>
-                                    <p class="testimonial-text lead mb-4" style="color:  #0D0BD1;">I've tried several social media promotion services before, and most of them either delay or don't respond when you have issues. But Makara Social Hub is different their customer support is top-notch, and they always deliver on time!</p>
+                                    <p class="testimonial-text mb-4" style="color:  #0D0BD1;">I've tried several social media promotion services before, and most of them either delay or don't respond when you have issues. But Makara Social Hub is different their customer support is top-notch, and they always deliver on time!</p>
                                     <div class="testimonial-author d-flex align-items-center">
-                                        <img src="https://i.pravatar.cc/100?img=6" alt="Author" class="rounded-circle me-3" width="60">
+                                        <img src="https://media.istockphoto.com/id/2203422382/photo/happy-young-black-woman-smiling-against-green-background.jpg?s=612x612&w=0&k=20&c=mpzra58ER5LkMChqMwUILIdGNRL8h5ytb9TSJr7Ia6I=" alt="Author" class="rounded-circle me-3" width="60">
                                         <div>
                                             <div class="testimonial-author-name text-secondary fw-bold">Blessing C.</div>
                                             <div class="testimonial-author-role text-muted">Online Vendor</div>
@@ -1091,7 +1119,7 @@
                             <div class="carousel-item">
                                 <div class="testimonial-card bg-white p-4 p-lg-5 rounded-4 shadow-sm">
                                     <div class="testimonial-quote display-3 text-primary mb-3">"</div>
-                                    <p class="testimonial-text lead mb-4" style="color:  #0D0BD1;">One thing I love about Makara Social Hub is their honesty. They don't just promise results; they actually deliver. Their team is also very professional and responsive. They helped my startup gain visibility, and I couldn't be happier!</p>
+                                    <p class="testimonial-text mb-4" style="color:  #0D0BD1;">One thing I love about Makara Social Hub is their honesty. They don't just promise results; they actually deliver. Their team is also very professional and responsive. They helped my startup gain visibility, and I couldn't be happier!</p>
                                     <div class="testimonial-author d-flex align-items-center">
                                         <img src="https://i.pravatar.cc/100?img=7" alt="Author" class="rounded-circle me-3" width="60">
                                         <div>
@@ -1104,9 +1132,9 @@
                             <div class="carousel-item">
                                 <div class="testimonial-card bg-white p-4 p-lg-5 rounded-4 shadow-sm">
                                     <div class="testimonial-quote display-3 text-primary mb-3">"</div>
-                                    <p class="testimonial-text lead mb-4" style="color:  #0D0BD1;">Registering my business with CAC was so smooth with Makara Social Hub! They handled everything professionally, and I didn't have to worry about unnecessary delays. Their service is fast, reliable, and completely stress-free!</p>
+                                    <p class="testimonial-text mb-4" style="color:  #0D0BD1;">Registering my business with CAC was so smooth with Makara Social Hub! They handled everything professionally, and I didn't have to worry about unnecessary delays. Their service is fast, reliable, and completely stress-free!</p>
                                     <div class="testimonial-author d-flex align-items-center">
-                                        <img src="https://i.pravatar.cc/100?img=8" alt="Author" class="rounded-circle me-3" width="60">
+                                        <img src="https://media.istockphoto.com/id/2135643049/photo/waist-up-shot-of-a-handsome-hispanic-latino-carefree-black-male-looking-at-the-camera-with.jpg?s=612x612&w=0&k=20&c=l505rTymOeB9yAE-F5N_aQeVJba7HmU-YFS9uzkx-DA=" alt="Author" class="rounded-circle me-3" width="60">
                                         <div>
                                             <div class="testimonial-author-name text-secondary fw-bold">Enobong A.</div>
                                             <div class="testimonial-author-role text-muted">Business Owner</div>
@@ -1167,101 +1195,127 @@
                         -webkit-text-fill-color: transparent;
                     ">Ready to Dominate <span style="color: #0033FF; -webkit-text-fill-color: #0033FF;">Social Media</span>?</h2>
                     <p class="keen-subtitle lead mb-5" style="color: #4F30A2;">Join thousands of successful brands who trust Makara for their social media growth</p>
-                    <div class="d-flex justify-content-center gap-3">
+                    <div class="d-flex justify-content-center gap-3 mb-4">
                         <a href="<?=cn('auth/signup')?>" class="btn btn-keen-primary btn-lg px-5 py-3 rounded-pill shadow-lg hover-lift">
                             Get Started Now
                             <i class="fas fa-arrow-right ms-2"></i>
                         </a>
                     </div>
-                    <div class="mt-4 pt-2 mb-4">
+                    <!-- <div class="mt-4 pt-2 mb-4">
                         <span class="badge bg-light text-dark px-3 py-2 rounded-pill shadow-sm">
                             <i class="fas fa-shield-alt me-2"></i>No Credit Card Required
                         </span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </section>
+<script>
+  // Accordion data (title, content, and optional HTML)
+  const faqData = [
+    {
+      title: "What are SMM panels?",
+      content: `An SMM panel is an online shop that you can visit to purchase SMM services at great prices. 
+      We provide a user-friendly platform to help you grow your social media presence effectively.`,
+      show: true
+    },
+    {
+      title: "What SMM services can I find?",
+      content: `
+        We offer a comprehensive range of SMM services including:
+        <ul class="mt-2 mb-0">
+          <li>Social media likes and followers</li>
+          <li>Video views and engagement</li>
+          <li>Comments and shares</li>
+          <li>Custom social media packages</li>
+        </ul>
+      `
+    },
+    {
+      title: "Are SMM services safe?",
+      content: `Yes, our services are completely safe! We use organic methods that comply with 
+      social media platform guidelines. Your account security is our top priority, and we guarantee 
+      that your accounts won't face any risks.`
+    },
+    {
+      title: "How does a mass order work?",
+      content: `Our mass order feature allows you to place multiple orders simultaneously. 
+      Simply upload a list of links and select your desired services for each. 
+      This saves time and streamlines your social media growth strategy.`
+    },
+    {
+      title: "What does drip-feed mean?",
+      content: `Drip-feed is our smart delivery system that gradually distributes your order over time. 
+      For example, instead of getting 2000 likes at once, you can receive 200 likes daily for 10 days. 
+      This creates a more natural growth pattern and improves engagement authenticity.`
+    }
+  ];
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0" style="color: #0D0BD1;">
-                    <div style="height: 120px; overflow: hidden;">
+  const accordion = document.getElementById("accordionExample");
 
-                        <img src="assets/images/makara_IMG_1663.PNG" alt="Makara Logo" style="height: 300px; width: 300px; margin-top: -100px;" class="footer-logo mb-4">
-                    </div>
-                    <p class="mb-4">Premium social media growth solutions for brands that want to stand out and succeed in the digital world.</p>
-                    <div class="footer-social">
-                        <a href="#" style="color: #0D0BD1; text-decoration: none;" class="me-3"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" style="color: #0D0BD1; text-decoration: none;" class="me-3"><i class="fab fa-twitter"></i></a>
-                        <a href="#" style="color: #0D0BD1; text-decoration: none;" class="me-3"><i class="fab fa-instagram"></i></a>
-                        <a href="#" style="color: #0D0BD1; text-decoration: none;"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="#" style="text-decoration: none; color: #0D0BD1;">About Us</a></li>
-                        <li><a href="#" style="text-decoration: none; color: #0D0BD1;">Features</a></li>
-                        <li><a href="#" style="text-decoration: none; color: #0D0BD1;">Pricing</a></li>
-                        <li><a href="#" style="text-decoration: none; color: #0D0BD1;">Blog</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-                    <h4>Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="#" style="text-decoration: none; color: #0D0BD1;">Help Center</a></li>
-                        <li><a href="#" style="text-decoration: none; color: #0D0BD1;">FAQ</a></li>
-                        <li><a href="#" style="text-decoration: none; color: #0D0BD1;">Contact Us</a></li>
-                        <li><a href="#" style="text-decoration: none; color: #0D0BD1;">API Docs</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <h4>Newsletter</h4>
-                    <p class="mb-4">Subscribe to get the latest news and updates.</p>
-                    <form class="footer-subscribe">
-                        <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Enter your email">
-                            <button class="btn btn-keen-primary" type="submit">Subscribe</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <hr class="mt-5 mb-4">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="mb-0">&copy; <?=date('Y')?> Makara Social Hub. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <a href="#" class="text-white me-3">Privacy Policy</a>
-                    <a href="#" class="text-white">Terms of Service</a>
-                </div>
-            </div>
+  // Generate Bootstrap accordion items dynamically
+  faqData.forEach((item, index) => {
+    const id = `collapse${index + 1}`;
+    const headingId = `heading${index + 1}`;
+    const isShow = item.show ? "show" : "";
+    const collapsed = item.show ? "" : "collapsed";
+    const expanded = item.show ? "true" : "false";
+
+    accordion.innerHTML += `
+      <div class="accordion-item" style="border-radius:2rem;">
+        <h2 class="accordion-header" id="${headingId}">
+          <button class="accordion-button ${collapsed}" type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#${id}"
+                  aria-expanded="${expanded}"
+                  aria-controls="${id}">
+            ${item.title}
+          </button>
+        </h2>
+        <div id="${id}" class="accordion-collapse collapse ${isShow}"
+             aria-labelledby="${headingId}"
+             data-bs-parent="#accordionExample">
+          <div class="mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
+            ${item.content}
+          </div>
         </div>
-    </footer>
-
-    <!-- Scripts -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="<?php echo BASE; ?>assets/js/vendors/jquery-3.2.1.min.js"></script>
-    <script src="<?php echo BASE; ?>themes/nico/assets/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/f94c035ae6.js" crossorigin="anonymous"></script>
-    <script src="<?php echo BASE; ?>themes/nico/assets/js/navbar-scroll.js"></script>
+      </div>
+    `;
+  });
+</script>
     
-    <!-- Initialize Font Awesome -->
-    <script>
-        // Ensure Font Awesome is loaded
-        window.onload = function() {
-            if (typeof FontAwesome !== 'undefined') {
-                FontAwesome.dom.watch();
-            }
-        };
-    </script>
-</body>
+<script>
+//   // Example data (you can load this from anywhere)
+//   const accordionData = [
+//     { title: "Section 1", content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit..." },
+//     { title: "Section 2", content: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris..." },
+//     { title: "Section 3", content: "Duis aute irure dolor in reprehenderit in voluptate velit esse..." }
+//   ];
 
+//   // Generate accordion HTML dynamically
+//   const container = document.getElementById("accordionContainer");
+//   accordionData.forEach(item => {
+//     container.innerHTML += `
+//       <button class="accordion">${item.title}</button>
+//       <div class="panel">
+//         <p>${item.content}</p>
+//       </div>
+//     `;
+//   });
+</script>
 
+<!-- ✅ Your existing accordion toggle script -->
+<script>
+//   var acc = document.getElementsByClassName("accordion");
+//   for (let i = 0; i < acc.length; i++) {
+//     acc[i].addEventListener("click", function() {
+//       this.classList.toggle("active");
+//       var panel = this.nextElementSibling;
+//       panel.style.display = (panel.style.display === "block") ? "none" : "block";
+//     });
+//   }
+</script>
+<?php
+require_once 'themes/nico/views/footer.php';
 
-
-
-</html>
+?>

@@ -113,4 +113,13 @@ class services extends My_UserController
             
         }
     }
+
+    public function about()
+    {
+        $data = array(
+            "controller_name" => $this->controller_name,
+        );
+        $this->template->set_layout(false);
+        $this->template->build("about", $data);
+    }
 }

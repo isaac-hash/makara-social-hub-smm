@@ -1,3 +1,5 @@
+
+
 <!-- Search -->
 <style>
   .form-control.ajaxSearchService {
@@ -23,7 +25,7 @@
 ?>
 
 
-<div class="row justify-content-md-center justify-content-xl-center m-t-30">
+<div class="row justify-content-md-center justify-content-xl-center m-t-30" style="margin-top: 6rem;">
   <?php
     if (!empty($filter_categories)) $this->load->view('child/btn_filter_categories', ['filter_categories' => $filter_categories]);
   ?>
@@ -76,7 +78,7 @@
                       ?>
                     </select>
                   </div>
-
+                  
                   <div class="form-group">
                     <label><?=lang("Category")?></label>
                     <select name="category_id" class="form-control square ajaxChangeCategory">

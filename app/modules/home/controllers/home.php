@@ -25,5 +25,11 @@ class home extends MX_Controller {
         $this->template->set_layout('blank_page');
         $this->template->build('../../../themes/'.$home_page_type.'/views/index', $data);
     }
-    
+
+    public function contact()
+    {
+        $data = [];
+        $this->template->set_layout('blank_page');
+        $this->template->build('contact', $data);
+    }
 }

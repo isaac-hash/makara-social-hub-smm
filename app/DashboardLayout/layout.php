@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +21,7 @@
             --light-gray: #f8f9fa;
             --text-dark: #2c3e50;
             --text-muted: #6c757d;
-            --sidebar-width: 180px;
+            --sidebar-width: 260px;
             --header-height: 70px;
             --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
@@ -86,11 +88,6 @@
             color: var(--primary-blue);
         }
 
-        .header-icon a {
-            color: inherit;
-            text-decoration: none;
-        }
-
         .notification-badge {
             position: absolute;
             top: -5px;
@@ -101,16 +98,6 @@
             padding: 2px 5px;
             border-radius: 10px;
             font-weight: 600;
-        }
-
-        .notification-badge.change_color {
-            background: #ff4444;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
         }
 
         .user-profile {
@@ -251,7 +238,115 @@
             text-align: center;
         }
 
-        /* Overlay for mobile */
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            margin-top: var(--header-height);
+            padding: 2rem;
+            min-height: calc(100vh - var(--header-height));
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .stat-icon.blue {
+            background: linear-gradient(135deg, var(--primary-blue), #4745d6);
+        }
+
+        .stat-icon.orange {
+            background: linear-gradient(135deg, var(--primary-orange), #ffb366);
+        }
+
+        .stat-icon.gradient {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-orange));
+        }
+
+        .stat-info {
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Content Section */
+        .content-section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .header {
+                padding: 0 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .overlay {
             display: none;
             position: fixed;
@@ -266,198 +361,72 @@
         .overlay.active {
             display: block;
         }
-
-        /* Main Content Area */
-        .main-content-wrapper {
-            margin-left: var(--sidebar-width);
-            margin-top: var(--header-height);
-            /* padding: 2rem; */
-            min-height: calc(100vh - var(--header-height));
-            transition: margin-left 0.3s ease;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .main-content-wrapper {
-                margin-left: 0;
-            }
-        }
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .sidebar {
-                transform: translateX(-100%);
-            }
-
-            .sidebar.active {
-                transform: translateX(0);
-            }
-
-            .header {
-                padding: 0 1rem;
-            }
-
-            .header-right {
-                gap: 0.75rem;
-            }
-
-            .header-icon {
-                font-size: 1.1rem;
-            }
-
-            .user-profile span {
-                display: none;
-            }
-
-            .logo img {
-                max-height: 35px !important;
-            }
-
-            .user-dropdown {
-                right: -10px;
-                min-width: 180px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header {
-                padding: 0 0.75rem;
-            }
-
-            .header-right {
-                gap: 0.5rem;
-            }
-
-            .header-icon {
-                font-size: 1rem;
-            }
-
-            .logo img {
-                max-height: 30px !important;
-            }
-
-            .sidebar {
-                width: 80vw;
-                max-width: 280px;
-            }
-
-            .menu-link {
-                padding: 0.75rem 1rem;
-                font-size: 0.95rem;
-            }
-
-            .user-avatar {
-                width: 35px;
-                height: 35px;
-                font-size: 0.9rem;
-            }
-
-            .notification-badge {
-                font-size: 0.65rem;
-                padding: 1px 4px;
-            }
-        }
     </style>
 </head>
 <body>
-    <?php
-      $balance = current_logged_user()->balance;
-      if (empty($balance) || $balance == 0) {
-        $balance = 0.00;
-      } else {
-        $balance = currency_format($balance);
-      }
-      $current_balance = get_option('currency_symbol',"$") . $balance;
-      $nav_item_user_title = sprintf('%s! <span class="text-uppercase">%s</span>', lang('Hi'), current_logged_user()->first_name);
-    ?>
-
     <!-- Header -->
     <header class="header">
         <div class="header-left">
             <button class="menu-toggle" onclick="toggleSidebar()">
                 <i class="fas fa-bars"></i>
             </button>
-            <a href="<?php echo cn(); ?>" class="logo">
-                <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1760352921/logo_famnk2.png" alt="Website Logo" style="max-height: 40px;">
-            
+            <a href="#" class="logo">
+                <i class="fas fa-chart-line"></i> Dashboard
             </a>
         </div>
         <div class="header-right">
-            <?php
-              if (session('sid') && session('uid')) {
-            ?>
             <div class="header-icon">
-                <a class="ajaxViewUser" href="<?=cn("back-to-admin")?>" data-toggle="tooltip" data-placement="bottom" title="<?=lang('Back_to_Admin')?>">
-                    <i class="fas fa-sign-out-alt"></i>
-                </a>
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
             </div>
-            <?php }?>
-
             <div class="header-icon">
-                <a href="#customize" data-toggle="modal" data-toggle="tooltip" data-placement="bottom" title="<?php echo lang('Theme_Customizer'); ?>">
-                    <i class="fas fa-sliders-h"></i>
-                </a>
+                <i class="fas fa-envelope"></i>
             </div>
-
-            <?php
-              if (get_option("enable_news_announcement") &&  get_option('news_announcement_button_position', "header") == 'header') {
-            ?>
-            <div class="header-icon">
-                <a class="ajaxModal" href="<?=cn("news-annoucement")?>" data-toggle="tooltip" data-placement="bottom" title="<?=lang("news__announcement")?>">
-                    <i class="fas fa-bell"></i>
-                    <span class="notification-badge <?=(isset($_COOKIE["news_annoucement"]) && $_COOKIE["news_annoucement"] == "clicked") ? "" : "change_color"?>"></span>
-                </a>
-            </div>
-            <?php }?>
-
-            <?php
-              $redirect = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-              $this->load->model('model');
-              $items_languages = $this->model->fetch('id, ids, country_code, code, is_default', LANGUAGE_LIST, ['status' => 1]);
-              $lang_current = get_lang_code_defaut();
-            ?>
-            <div class="header-icon dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <span class="flag-icon flag-icon-<?php echo strtolower($lang_current->country_code); ?>"></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                    <?php 
-                      foreach ($items_languages as $key => $item) {
-                    ?>
-                    <a class="dropdown-item ajaxChangeLanguageSecond" href="javascript:void(0)" data-url="<?php echo cn('set-language'); ?>" data-redirect="<?php echo strip_tags($redirect); ?>" data-ids="<?php echo strip_tags($item->ids); ?>"><i class="flag-icon flag-icon-<?php echo strtolower($item->country_code); ?>"></i> <?php echo language_codes($item->code); ?>
-                    </a>
-                    <?php }?>
-                </div>
-            </div>
-
             <div class="user-profile" onclick="toggleUserDropdown(event)">
                 <div class="user-avatar">
                     <i class="fas fa-user"></i>
                 </div>
-                <span><?= $nav_item_user_title; ?></span>
+                <span><?= $_SESSION['user_name'] ?? 'User' ?></span>
                 <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i>
                 
+                <!-- User Dropdown -->
                 <div class="user-dropdown" id="userDropdown">
                     <div class="dropdown-header">
-                        <div class="dropdown-user-name"><?= current_logged_user()->first_name ?> <?= current_logged_user()->last_name ?></div>
-                        <div class="dropdown-user-email"><?= current_logged_user()->email ?></div>
+                        <div class="dropdown-user-name"><?= $_SESSION['user_name'] ?? 'User' ?></div>
+                        <div class="dropdown-user-email"><?= $_SESSION['user_email'] ?? 'user@example.com' ?></div>
                     </div>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="<?php echo cn('profile'); ?>" class="dropdown-item">
+                            <a href="?page=profile" class="dropdown-item">
                                 <i class="fas fa-user"></i>
-                                <span><?php echo lang('Profile'); ?></span>
+                                <span>My Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="?page=account-settings" class="dropdown-item">
+                                <i class="fas fa-cog"></i>
+                                <span>Account Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="?page=billing" class="dropdown-item">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Billing</span>
                             </a>
                         </li>
                     </ul>
                     <div class="dropdown-divider"></div>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="<?php echo cn('auth/logout'); ?>" class="dropdown-item" style="color: var(--primary-orange);">
+                            <a href="?page=help" class="dropdown-item">
+                                <i class="fas fa-question-circle"></i>
+                                <span>Help Center</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="?page=logout" class="dropdown-item" style="color: var(--primary-orange);">
                                 <i class="fas fa-sign-out-alt"></i>
-                                <span><?php echo lang('Logout'); ?></span>
+                                <span>Logout</span>
                             </a>
                         </li>
                     </ul>
@@ -465,88 +434,54 @@
             </div>
         </div>
     </header>
-    <?php
-  $header_elements = app_config('controller')['user'];
-?>
-
 
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <ul class="sidebar-menu">
             <li class="menu-item">
-                <a href="<?=cn('statistics')?>" class="menu-link active">
+                <a href="?page=dashboard" class="menu-link active">
                     <i class="fas fa-home menu-icon"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
-            <!-- <li class="menu-item">
+            <li class="menu-item">
                 <a href="?page=analytics" class="menu-link">
                     <i class="fas fa-chart-bar menu-icon"></i>
                     <span>Analytics</span>
                 </a>
-            </li> -->
-            <!-- <li class="menu-item">
+            </li>
+            <li class="menu-item">
                 <a href="?page=users" class="menu-link">
                     <i class="fas fa-users menu-icon"></i>
                     <span>Users</span>
                 </a>
-            </li> -->
+            </li>
             <li class="menu-item">
-                <a href="<?=cn($header_elements['dripfeed']['route-name'])?>" class="menu-link">
-                    <i class="fa-solid fa-square-rss menu-icon"></i>
-                    <span>Dripfeed</span>
+                <a href="?page=products" class="menu-link">
+                    <i class="fas fa-box menu-icon"></i>
+                    <span>Products</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="<?=cn($header_elements['order']['route-name'])?>" class="menu-link">
+                <a href="?page=orders" class="menu-link">
                     <i class="fas fa-shopping-cart menu-icon"></i>
                     <span>Orders</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="<?=cn($header_elements['new_order']['route-name'])?>" class="menu-link">
-                    <i class="fas fa-cart-plus menu-icon"></i>
-                    <span>New Order</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?=cn($header_elements['subscriptions']['route-name'])?>" class="menu-link">
+                <a href="?page=reports" class="menu-link">
                     <i class="fas fa-file-alt menu-icon"></i>
-                    <span>Subscription</span>
+                    <span>Reports</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="<?=cn($header_elements['services']['route-name']); ?>" class="menu-link">
-                    <i class="fa-brands fa-servicestack menu-icon"></i>
-                    <span>Services</span>
+                <a href="?page=settings" class="menu-link">
+                    <i class="fas fa-cog menu-icon"></i>
+                    <span>Settings</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="<?=cn($header_elements['api']['route-name']); ?>" class="menu-link">
-                    <i class="fa-brands fa-nfc-symbol menu-icon"></i>
-                    <span>Api</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?=cn($header_elements['tickets']['route-name'])?>" class="menu-link">
-                    <i class="fa-solid fa-ticket menu-icon"></i>
-                    <span>Tickets</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?=cn($header_elements['add_funds']['route-name']); ?>" class="menu-link">
-                    <i class="fa-solid fa-wallet menu-icon"></i>
-                    <span>Add funds</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?=cn($header_elements['transactions']['route-name']); ?>" class="menu-link">
-                    <i class="fa-solid fa-money-bill-transfer menu-icon"></i>
-                    <span>Transactions</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?php echo cn('auth/logout'); ?>" class="menu-link">
+                <a href="?page=logout" class="menu-link">
                     <i class="fas fa-sign-out-alt menu-icon"></i>
                     <span>Logout</span>
                 </a>
@@ -557,19 +492,47 @@
     <!-- Overlay for mobile -->
     <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Stats Cards (if header_area data exists) -->
+        <?php if (!empty($header_area)) : ?>
+        <div class="stats-grid">
+            <?php foreach ($header_area as $key => $item) : ?>
+            <div class="stat-card">
+                <div class="stat-icon <?= $item['class'] ?? 'blue' ?>">
+                    <i class="<?= $item['icon'] ?>"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-value"><?= $item['value'] ?></div>
+                    <div class="stat-label"><?= $item['name'] ?></div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
+
+        <!-- Child Content Area -->
+        <div class="content-section">
+            <?php
+            // This is where child components/pages will be included
+            if (isset($content_page) && file_exists($content_page)) {
+                include $content_page;
+            } elseif (isset($page_content)) {
+                echo $page_content;
+            } else {
+                echo '<h2>Welcome to Dashboard</h2>';
+                echo '<p>Select a menu item to view content.</p>';
+            }
+            ?>
+        </div>
+    </main>
+
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
             sidebar.classList.toggle('active');
             overlay.classList.toggle('active');
-            
-            // Prevent body scroll when sidebar is open on mobile
-            if (sidebar.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
         }
 
         function toggleUserDropdown(event) {
@@ -595,26 +558,6 @@
                 link.classList.remove('active');
                 if (link.getAttribute('href').includes(currentPage)) {
                     link.classList.add('active');
-                }
-            });
-
-            // Close sidebar when menu item is clicked on mobile
-            if (window.innerWidth <= 768) {
-                document.querySelectorAll('.menu-link').forEach(link => {
-                    link.addEventListener('click', function() {
-                        toggleSidebar();
-                    });
-                });
-            }
-
-            // Handle window resize
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    const sidebar = document.getElementById('sidebar');
-                    const overlay = document.getElementById('overlay');
-                    sidebar.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
                 }
             });
         });

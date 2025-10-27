@@ -1,5 +1,4 @@
-
-<section class="page-title">
+<section class="page-title responsive-section-header">
   <div class="row justify-content-between">
     <div class="col-md-6">
       <h1 class="page-title d-flex">
@@ -77,7 +76,7 @@
   $form_attributes = ['class' => 'form actionForm', 'data-redirect' => $redirect_url, 'method' => "POST"];
 ?>
 
-<div class="row justify-content-end">
+<div class="row justify-content-end responsive-content-row">
   <div class="col-md-5 d-none d-sm-block">
     <div class="card">
       <div class="card-header">
@@ -134,3 +133,95 @@
     </div>
   </div>
 </div>
+
+<!-- Responsive Styles -->
+<style>
+  /* Desktop - with sidebar offset */
+  .responsive-section-header {
+    margin-top: 9rem;
+    margin-left: 9rem;
+  }
+  
+  .responsive-content-row {
+    margin-left: 6rem;
+  }
+  
+  /* Tablet Screens (768px to 991px) */
+  @media (max-width: 991px) {
+    .responsive-section-header {
+      margin-left: 5rem;
+      margin-top: 7rem;
+    }
+    
+    .responsive-content-row {
+      margin-left: 2.5rem;
+      margin-right: 1rem;
+    }
+  }
+  
+  /* Mobile Screens (below 768px) */
+  @media (max-width: 767px) {
+    .responsive-section-header {
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 6rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    .responsive-content-row {
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+    
+    .responsive-content-row .card {
+      margin-bottom: 1rem;
+    }
+  }
+  
+  /* Extra Small Screens (below 576px) */
+  @media (max-width: 575px) {
+    .responsive-section-header {
+      margin-top: 6rem;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+    
+    .responsive-section-header .page-title {
+      font-size: 1.25rem;
+    }
+    
+    .responsive-content-row {
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+    }
+    
+    .responsive-content-row .card-body {
+      padding: 1rem;
+    }
+    
+    /* Adjust search area on mobile */
+    .search-area {
+      margin-top: 1rem;
+    }
+    
+    .search-area .input-group {
+      width: 100%;
+    }
+  }
+  
+  /* When sidebar is collapsed or hidden */
+  @media (min-width: 768px) {
+    body.sidebar-collapsed .responsive-section-header,
+    body.sidebar-hidden .responsive-section-header {
+      margin-left: 1rem;
+    }
+    
+    body.sidebar-collapsed .responsive-content-row,
+    body.sidebar-hidden .responsive-content-row {
+      margin-left: 0.5rem;
+    }
+  }
+</style>

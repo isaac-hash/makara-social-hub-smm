@@ -159,6 +159,8 @@ body {
 .custom-accordion .accordion-item {
     border: none;
     border-bottom: 1px solid rgba(0,0,0,0.05);
+    max-height: 2rem;
+    padding: 1rem;
 }
 
 .custom-accordion .accordion-item:last-child {
@@ -166,7 +168,7 @@ body {
 }
 
 .custom-accordion .accordion-button {
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
     background: transparent;
     font-weight: 500;
     border: none;
@@ -208,7 +210,7 @@ body {
 }
 
 .custom-accordion .accordion-body {
-    padding: 0 1.5rem 1.5rem 5rem;
+    /* padding: 0 1.5rem 1.5rem 2rem; */
     color: var(--keen-text-muted);
 }
 

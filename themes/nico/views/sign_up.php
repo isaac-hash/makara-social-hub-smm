@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -212,6 +213,7 @@
         <div class="signup-card">
             <div class="logo-container">
                 <img src="<?=BASE?>assets/images/makara_IMG_1670.PNG" alt="Logo" style="max-width: 110px; max-height: 110px;">
+
             </div>
             
             <h2 class="signup-title">Create Account To Access Your Personal Dashboard</h2>

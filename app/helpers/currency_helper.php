@@ -80,6 +80,7 @@ if (!function_exists("currency_codes")) {
             "CHF" => "Swiss franc",
             "THB" => "Thai baht",
             "USD" => "United States dollar",
+            "NGN" => "Nigerian Naira",
         );
 
         return $data;
@@ -226,7 +227,7 @@ if (!function_exists("freekassa_payment_setting")) {
     }
 }
 
-if (!function_exists("currency_format")) {
+if (!function_exists("local_currency_code")) {
     function local_currency_code(){
         $data = array(   
                   'USD',

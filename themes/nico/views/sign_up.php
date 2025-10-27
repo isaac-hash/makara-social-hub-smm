@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=get_option('website_title', "Makara - Social Hub")?></title>
     <meta name="description" content="<?=get_option('website_desc', "Your one-stop solution for social media management.")?>">
     <meta name="keywords" content="<?=get_option('website_keywords', "social media, smm, panel, marketing")?>">
-    <link rel="shortcut icon" type="image/x-icon" href="<?=get_option('website_favicon', BASE."assets/images/favicon.ico")?>">
+    <link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1760352921/logo_famnk2.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -100,11 +100,34 @@
             font-size: 1rem;
         }
         
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 0.25rem;
+            transition: color 0.2s;
+            z-index: 10;
+        }
+        
+        .password-toggle:hover {
+            color: #0D0BD1;
+        }
+        
         .form-control {
             padding: 0.7rem 1rem 0.7rem 2.5rem;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
             font-size: 0.95rem;
+        }
+        
+        .form-control.with-toggle {
+            padding-right: 2.5rem;
         }
         
         .form-control:focus {
@@ -190,26 +213,7 @@
         <div class="signup-card">
             <div class="logo-container">
                 <img src="<?=BASE?>assets/images/makara_IMG_1670.PNG" alt="Logo" style="max-width: 110px; max-height: 110px;">
-=======
-  <?php 
-    include_once 'blocks/head.blade.php';
-    $form_url        = cn("/auth/ajax_sign_up");
-    $form_attributes = [
-      'id'            => 'signUpForm', 
-      'data-focus'    => 'false', 
-      'class'         => 'actionFormWithoutToast', 
-      'data-redirect' => cn('new_order'), 
-      'method'        => "POST"  
-    ];
-  ?>
-  <body>
-    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
-      <div class="container">
-        <div class="card login-card">
-          <div class="row no-gutters">
-            <div class="col-md-6 left-image mx-auto">
-              <a href="<?=cn();?>"><img src="<?php echo BASE; ?>themes/nico/assets/images/login.png" alt="login" class="login-card-img"></a>
->>>>>>> ede5ab0910aae871f4de1584a8f3133cd28ebb9f
+
             </div>
             
             <h2 class="signup-title">Create Account To Access Your Personal Dashboard</h2>
@@ -244,20 +248,39 @@
                 <div class="form-group">
                     <div class="input-with-icon">
                         <span class="input-icon">🔒</span>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                        <input type="password" class="form-control with-toggle" id="password" name="password" placeholder="Password" required>
+                        <button type="button" class="password-toggle" id="togglePassword">
+                            👁️
+                        </button>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-with-icon">
                         <span class="input-icon">🔒</span>
-                        <input type="password" class="form-control" id="confirm_password" name="re_password" placeholder="Confirm Password" required>
+                        <input type="password" class="form-control with-toggle" id="confirm_password" name="re_password" placeholder="Confirm Password" required>
+                        <button type="button" class="password-toggle" id="toggleConfirmPassword">
+                            👁️
+                        </button>
                     </div>
                 </div>
 
-                <?php echo form_close(); ?>
-                <p class="login-card-footer-text"><?=lang("already_have_account")?> <a href="<?=cn('/auth/login')?>"><?=lang("Login")?></a></p>
-              </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" name="terms" id="terms" required>
+                    <label class="form-check-label" for="terms">
+                        I agree to the <a href="<?=cn('terms')?>">Terms of Service</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-signup">
+                    ✓ Create Account
+                </button>
+                
+                <input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>">
+            </form>
+
+            <div class="signin-link">
+                Already have an account? <a href="<?=cn("auth/login")?>">Sign In</a>
             </div>
         </div>
     </div>
@@ -273,6 +296,35 @@
     });
 
     $(document).ready(function(){
+        // Password toggle functionality
+        $("#togglePassword").on("click", function(){
+            const passwordField = $("#password");
+            const toggleButton = $(this);
+            
+            if (passwordField.attr("type") === "password") {
+                passwordField.attr("type", "text");
+                toggleButton.text("🙈");
+            } else {
+                passwordField.attr("type", "password");
+                toggleButton.text("👁️");
+            }
+        });
+
+        // Confirm password toggle functionality
+        $("#toggleConfirmPassword").on("click", function(){
+            const confirmPasswordField = $("#confirm_password");
+            const toggleButton = $(this);
+            
+            if (confirmPasswordField.attr("type") === "password") {
+                confirmPasswordField.attr("type", "text");
+                toggleButton.text("🙈");
+            } else {
+                confirmPasswordField.attr("type", "password");
+                toggleButton.text("👁️");
+            }
+        });
+
+        // Form submission
         $(".actionForm").on("submit", function(e){
             e.preventDefault();
 

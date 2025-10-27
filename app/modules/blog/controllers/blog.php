@@ -44,7 +44,8 @@ class blog extends MX_Controller
                 'total_rows'       => $this->main_model->count_items($this->params, ['task' => 'count-items-for-pagination']),
             ])
         ];
-        $this->template->set_layout('blog');
+        // $this->template->set_layout('blog');
+        $this->template->set_layout(false);
         $this->template->build("index", $data);
     }
 
@@ -95,7 +96,8 @@ class blog extends MX_Controller
 			"page_meta_keywords"       => $item['meta_keywords'],
 			"page_meta_description"    => $item['meta_description'],
 		);
-		$this->template->set_layout('blog');
+		// $this->template->set_layout('blog');
+		$this->template->set_layout(false);
         $this->template->build("single_post", $data);
 	}
 
@@ -128,7 +130,8 @@ class blog extends MX_Controller
                 'total_rows'       => $this->main_model->count_items($this->params, ['task' => 'count-items-for-pagination']),
             ])
         ];
-        $this->template->set_layout('blog');
+        // $this->template->set_layout('blog');
+        $this->template->set_layout(false);
         $this->template->build("index", $data);
     }
 }

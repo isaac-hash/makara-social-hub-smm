@@ -1,7 +1,7 @@
 
 <?php
   if ($active_payments) : ?>
-<section class="add-funds m-t-30">   
+<section class="add-funds m-t-30" style="margin-top: 10rem;">   
   <div class="container-fluid">
     <div class="row justify-content-md-center" id="result_ajaxSearch">
       <div class="col-md-8">

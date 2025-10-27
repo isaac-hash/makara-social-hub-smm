@@ -39,7 +39,7 @@
           </div>
           <div class="form-group">
             <label class="form-label"><?=lang("website_title")?></label>
-            <input class="form-control" name="website_title" value="<?=get_option('website_title', "SmartPanel - SMM Panel Reseller Tool")?>">
+            <input class="form-control" name="website_title" value="<?=get_option('website_title', "Makara Social Hub - SMM Panel ")?>">
           </div>
         </div>
       </div>

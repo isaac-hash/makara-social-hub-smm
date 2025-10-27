@@ -165,6 +165,7 @@ $lang["twitter"] = "Twitter";
 $lang["paypal"] = "Paypal";
 $lang["2checkout"] = "2Checkout";
 $lang["stripe"] = "Stripe";
+$lang["new_payment_gateway"] = "New Payment Gateway";
 $lang["users"] = "Users";
 $lang["admin"] = "Admin";
 $lang["regular_user"] = "Regular User";

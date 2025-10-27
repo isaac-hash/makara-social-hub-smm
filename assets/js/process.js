@@ -1,21 +1,23 @@
 "use strict";
 var pageOverlay = pageOverlay || (function ($) {
   return {
-    show: function (message, options) {
+    show: function () {
       if (!$('#page-overlay').hasClass('active')) {
         $('#page-overlay').addClass('active');
-        $('#page-overlay .page-loading-image').removeClass('d-none');
+        $('#page-overlay .page-loading-image').removeClass('d-none'); 
       }
     },
+/*
+ * This script handles form submissions and AJAX responses.
+ */
 
     hide: function () {
       if ($('#page-overlay').hasClass('active')) {
         $('#page-overlay').removeClass('active');
         $('#page-overlay .page-loading-image').addClass('d-none');
-      }
+      } 
     }
   };
-
 })(jQuery);
 
 var alertMessage = alertMessage || (function ($) {
@@ -49,14 +51,11 @@ var alertMessage = alertMessage || (function ($) {
       $('.alert-message-reponse .content').removeClass('d-none');
       $('.alert-message-reponse .content .message').html(_message);
     },
-
     hide: function () {
       $('.alert-message-reponse').html('');
     }
   };
-
 })(jQuery);
-
 // Confirm notice
 function confirm_notice(_ms) {
   switch (_ms) {
@@ -463,6 +462,33 @@ function Common() {
 Common = new Common();
 $(function () {
   Common.init();
+});
+
+/*
+ * This script handles form submissions and AJAX responses.
+ */
+$(function(){
+    // Intercept all AJAX responses on the page
+    $(document).ajaxSuccess(function(event, xhr, settings) {
+        try {
+            var response = JSON.parse(xhr.responseText);
+
+            // Check for our custom 'debug' status from korapay.php
+            if (response.status === 'debug') {
+                console.group("--- PHP Debug Data ---");
+                console.log(response.message);
+                console.log("Credentials:", response.korapay_credentials);
+                console.log("Form Data:", response.form_data_received);
+                console.groupEnd();
+
+                // Display a notification to the user that debug mode is on
+                notify("Debug mode is active. Check the browser console for details.", "info");
+
+            }
+        } catch (e) {
+            // Not a JSON response, or JSON is malformed. Ignore it.
+        }
+    });
 });
 
 

@@ -32,6 +32,44 @@ $sections = [
     chartCallback: function(response) {
       Chart_template.chart_spline('#orders_chart_spline', JSON.parse(response.chart_spline));
       Chart_template.chart_pie('#orders_chart_pie', JSON.parse(response.chart_pie));
+
+      // Attach event listeners after the header area is loaded
+      const btnOrder = document.getElementById("btnPlaceOrder");
+      const btnFund = document.getElementById("btnFundWallet");
+      const toggleBalance = document.getElementById("toggleBalance");
+      const balanceAmount = document.getElementById("balanceAmount");
+      const eyeIcon = document.getElementById("eyeIcon");
+
+      if (btnOrder) {
+        btnOrder.addEventListener("click", (e) => {
+          e.preventDefault();
+          console.log("Place Order clicked");
+          window.location.href = btnOrder.getAttribute("href");
+        });
+      }
+
+      if (btnFund) {
+        btnFund.addEventListener("click", (e) => {
+          e.preventDefault();
+          console.log("Fund Wallet clicked");
+          window.location.href = btnFund.getAttribute("href");
+        });
+      }
+
+      if (toggleBalance && balanceAmount && eyeIcon) {
+        toggleBalance.addEventListener("click", (e) => {
+          e.preventDefault();
+          const isVisible = eyeIcon.classList.contains("fe-eye-off");
+          if (isVisible) {
+            balanceAmount.textContent = "₦**********";
+            eyeIcon.classList.replace("fe-eye-off", "fe-eye");
+          } else {
+            const actualBalance = balanceAmount.getAttribute("data-balance");
+            balanceAmount.textContent = "₦" + actualBalance;
+            eyeIcon.classList.replace("fe-eye", "fe-eye-off");
+          }
+        });
+      }
     }
   };
 

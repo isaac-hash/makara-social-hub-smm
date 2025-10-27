@@ -2,7 +2,7 @@
 <html lang="en">
   <?php 
     include_once 'blocks/head.blade.php';
-    $form_url        = cn("auth/ajax_sign_up");
+    $form_url        = cn("/auth/ajax_sign_up");
     $form_attributes = [
       'id'            => 'signUpForm', 
       'data-focus'    => 'false', 
@@ -91,7 +91,7 @@
                   <?php echo $social_login_html?>
 
                 <?php echo form_close(); ?>
-                <p class="login-card-footer-text"><?=lang("already_have_account")?> <a href="<?=cn('auth/login')?>"><?=lang("Login")?></a></p>
+                <p class="login-card-footer-text"><?=lang("already_have_account")?> <a href="<?=cn('/auth/login')?>"><?=lang("Login")?></a></p>
               </div>
             </div>
           </div>

@@ -1,0 +1,255 @@
+/* Global Fixes */
+body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* Fix for section shapes */
+.section-shape {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Who We Are Section */
+.who-we-are-content {
+    position: relative;
+    z-index: 2;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card-mini {
+    padding: 2rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.feature-card-mini:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: var(--keen-primary); */
+    /* color: white; */
+    font-size: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0, 0.3);
+}
+
+.who-we-are-image {
+    position: relative;
+    z-index: 2;
+}
+
+.floating-animation {
+    animation: floating 3s ease-in-out infinite;
+}
+
+.experience-badge {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.experience-badge .h2 {
+    color: var(--keen-primary);
+    margin-bottom: 0.5rem;
+}
+
+/* How It Works Section */
+.process-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    height: 100%;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.process-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.process-icon {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    background: var(--keen-light-gray);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--keen-primary);
+    margin-bottom: 1.5rem;
+}
+
+.process-number {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--keen-primary);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.process-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--keen-text-dark);
+}
+
+.process-text {
+    color: var(--keen-text-muted);
+    margin-bottom: 0;
+}
+
+.process-arrow {
+    position: absolute;
+    top: 30%;
+    right: -15%;
+    color: var(--keen-primary);
+    font-size: 1.5rem;
+    opacity: 0.5;
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .process-arrow {
+        display: block;
+    }
+}
+
+/* FAQ Section */
+.custom-accordion {
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    border-radius: 1rem;
+    background: white;
+}
+
+.custom-accordion .accordion-item {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.custom-accordion .accordion-item:last-child {
+    border-bottom: none;
+}
+
+.custom-accordion .accordion-button {
+    padding: 1.5rem;
+    background: transparent;
+    font-weight: 500;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+.custom-accordion .accordion-button:not(.collapsed) {
+    color: var(--keen-primary);
+    background: transparent;
+    box-shadow: none;
+}
+
+.custom-accordion .accordion-button:focus {
+    box-shadow: none;
+    border: none;
+}
+
+.faq-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--keen-light-gray);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    color: var(--keen-primary);
+    transition: all 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) .faq-icon {
+    background: var(--keen-primary);
+    color: white;
+}
+
+.faq-title {
+    flex: 1;
+}
+
+.custom-accordion .accordion-body {
+    padding: 0 1.5rem 1.5rem 5rem;
+    color: var(--keen-text-muted);
+}
+
+/* Section Shapes */
+.section-shape {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.section-shape.right {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) translateX(30%);
+}
+
+.section-shape.left {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%) translateX(-30%);
+}
+
+@media (min-width: 992px) {
+    .section-shape {
+        width: 500px;
+        height: 500px;
+    }
+}
+
+/* Animations */
+@keyframes floating {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

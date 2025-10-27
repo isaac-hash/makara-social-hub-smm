@@ -1,0 +1,45 @@
+/* Container and Row Fixes */
+.container {
+    max-width: 100%;
+    padding-right: var(--bs-gutter-x, 1rem);
+    padding-left: var(--bs-gutter-x, 1rem);
+    overflow: hidden;
+}
+
+.row {
+    margin-right: calc(var(--bs-gutter-x) * -0.5);
+    margin-left: calc(var(--bs-gutter-x) * -0.5);
+    max-width: 100%;
+}
+
+/* Section Utilities */
+section {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Image Responsiveness */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix for background images */
+[style*="background"] {
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+/* Mobile Responsiveness Fixes */
+@media (max-width: 768px) {
+    .container {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    
+    .row {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+}

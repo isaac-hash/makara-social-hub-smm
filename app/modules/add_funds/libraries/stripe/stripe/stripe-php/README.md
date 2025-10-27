@@ -74,11 +74,7 @@ If you are using PHP 5.2, you can download v1.18.0 ([zip](https://github.com/str
 
 This legacy version may be included via `require_once("/path/to/stripe-php/lib/Stripe.php");`, and used like:
 
-```php
-Stripe::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249');
-$charge = Stripe_Charge::create(array('source' => 'tok_XXXXXXXX', 'amount' => 2000, 'currency' => 'usd'));
-echo $charge;
-```
+
 
 ## Custom Request Timeouts
 
@@ -150,17 +146,7 @@ For apps that need to use multiple keys during the lifetime of a process, like
 one that uses [Stripe Connect][connect], it's also possible to set a
 per-request key and/or account:
 
-```php
-\Stripe\Charge::all([], [
-    'api_key' => 'sk_test_...',
-    'stripe_account' => 'acct_...'
-]);
 
-\Stripe\Charge::retrieve("ch_18atAXCdGbJFKhCuBAa4532Z", [
-    'api_key' => 'sk_test_...',
-    'stripe_account' => 'acct_...'
-]);
-```
 
 ### Configuring CA Bundles
 

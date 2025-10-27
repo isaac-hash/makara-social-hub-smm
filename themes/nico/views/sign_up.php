@@ -263,6 +263,7 @@
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" name="terms" id="terms" required>
                     <label class="form-check-label" for="terms">
@@ -279,6 +280,11 @@
 
             <div class="signin-link">
                 Already have an account? <a href="<?=cn("auth/login")?>">Sign In</a>
+=======
+                <?php echo form_close(); ?>
+                <p class="login-card-footer-text"><?=lang("already_have_account")?> <a href="<?=cn('/auth/login')?>"><?=lang("Login")?></a></p>
+              </div>
+>>>>>>> ede5ab0910aae871f4de1584a8f3133cd28ebb9f
             </div>
         </div>
     </div>

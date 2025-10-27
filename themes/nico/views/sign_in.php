@@ -240,8 +240,21 @@
                 <input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>">
             </form>
 
+<<<<<<< HEAD
             <div class="signup-link">
                 Don't have an account? <a href="<?=cn("auth/signup")?>">Sign Up</a>
+=======
+                <?php if (!session('uid')) : ?>
+                  <p class="login-card-footer-text"><?=lang("dont_have_account_yet")?> <a href="<?=cn('/auth/signup')?>" class="text-reset"><?=lang("Sign_Up")?></a></p>
+                <?php endif; ?> 
+
+                <?php if (!session('uid')) : ?>
+                  <nav class="login-card-footer-nav">
+                    <a href="<?=cn("/auth/forgot_password")?>" class="text-reset"><?=lang("forgot_password")?>?</a>
+                  </nav>
+                <?php endif; ?>
+              </div>
+>>>>>>> ede5ab0910aae871f4de1584a8f3133cd28ebb9f
             </div>
         </div>
     </div>

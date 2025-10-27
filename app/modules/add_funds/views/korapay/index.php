@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
   $min_amount = get_value($payment_params, 'min');
   $type       = get_value($payment_params, 'type');
 ?>
@@ -52,4 +52,11 @@
       </div>  
     </div>
   </form>
+</div> -->
+
+<div>
+  <h2>Manual Payment</h2>
+  <p>Account number: 3002544156</p>
+  <p>Account name: Makara social hub</p>
+  <p>Bank: Kuda bank</p>
 </div>

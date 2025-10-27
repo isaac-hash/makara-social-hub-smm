@@ -98,11 +98,33 @@
             font-size: 1rem;
         }
         
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 0.25rem;
+            transition: color 0.2s;
+        }
+        
+        .password-toggle:hover {
+            color: #0D0BD1;
+        }
+        
         .form-control {
             padding: 0.75rem 1rem 0.75rem 2.5rem;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
             font-size: 0.95rem;
+        }
+        
+        .form-control.with-toggle {
+            padding-right: 2.5rem;
         }
         
         .form-control:focus {
@@ -194,7 +216,10 @@
                 <div class="form-group">
                     <div class="input-with-icon">
                         <span class="input-icon">🔒</span>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                        <input type="password" class="form-control with-toggle" id="password" name="password" placeholder="Password" required>
+                        <button type="button" class="password-toggle" id="togglePassword">
+                            👁️
+                        </button>
                     </div>
                 </div>
 
@@ -226,6 +251,21 @@
     <script src="<?php echo BASE; ?>assets/js/vendors/jquery-3.2.1.min.js"></script>
     <script>
 $(document).ready(function(){
+    // Password toggle functionality
+    $("#togglePassword").on("click", function(){
+        const passwordField = $("#password");
+        const toggleButton = $(this);
+        
+        if (passwordField.attr("type") === "password") {
+            passwordField.attr("type", "text");
+            toggleButton.text("🙈");
+        } else {
+            passwordField.attr("type", "password");
+            toggleButton.text("👁️");
+        }
+    });
+
+    // Form submission
     $(".actionForm").on("submit", function(e){
         e.preventDefault();
 

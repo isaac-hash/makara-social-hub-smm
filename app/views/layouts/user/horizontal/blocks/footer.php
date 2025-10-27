@@ -121,3 +121,45 @@
   </div>
 </footer>
  -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btnOrder = document.getElementById("btnPlaceOrder");
+    const btnFund = document.getElementById("btnFundWallet");
+    const toggleBalance = document.getElementById("toggleBalance");
+    const balanceAmount = document.getElementById("balanceAmount");
+    const eyeIcon = document.getElementById("eyeIcon");
+    
+    let balanceVisible = false;
+
+    btnOrder.addEventListener("click", (e) => {
+      e.preventDefault();
+      console.log("Place Order clicked");
+      window.location.href = btnOrder.getAttribute("href");
+    });
+
+    btnFund.addEventListener("click", (e) => {
+      e.preventDefault();
+      console.log("Fund Wallet clicked");
+      window.location.href = btnFund.getAttribute("href");
+    });
+    
+    // Toggle balance visibility
+    toggleBalance.addEventListener("click", (e) => {
+      e.preventDefault();
+      balanceVisible = !balanceVisible;
+      
+      if (balanceVisible) {
+        const actualBalance = balanceAmount.getAttribute("data-balance");
+        balanceAmount.textContent = "$" + actualBalance;
+        eyeIcon.classList.remove("fe-eye");
+        eyeIcon.classList.add("fe-eye-off");
+        console.log("Balance shown");
+      } else {
+        balanceAmount.textContent = "$**********";
+        eyeIcon.classList.remove("fe-eye-off");
+        eyeIcon.classList.add("fe-eye");
+        console.log("Balance hidden");
+      }
+    });
+  });
+</script>

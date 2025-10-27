@@ -22,16 +22,16 @@ class statistics_model extends MY_Model
         $total_orders = $this->count_results('id', $this->tb_order, ['uid' => session('uid')]);
         $total_tickets = $this->count_results('id', $this->tb_tickets, ['uid' => session('uid')]);
         $result = [
-            'users' => [
-                'name' => lang("your_balance"),
-                'value' => $this->currency_symbol . currency_format($user_balance),
-                'class' => 'bg-success-gradient',
-                'icon' => 'fe fe-dollar-sign'],
+            // 'users' => [
+            //     'name' => lang("your_balance"),
+            //     'value' => $this->currency_symbol . currency_format($user_balance),
+            //     'class' => 'bg-success-gradient',
+            //     'icon' => 'fe fe-dollar-sign'],
             'transactions' => [
                 'name' => lang("total_amount_spent"),
                 'value' => $this->currency_symbol . currency_format($total_amount_sent),
                 'class' => 'bg-info-gradient',
-                'icon' => 'fe fe-dollar-sign'],
+                'icon' => 'fa-solid fa-naira-sign'],
             'orders' => [
                 'name' => lang("total_orders"),
                 'value' => $total_orders,

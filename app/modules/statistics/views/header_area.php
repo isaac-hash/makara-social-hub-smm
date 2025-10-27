@@ -5,7 +5,6 @@
 <?php
 $user = current_logged_user();
 $user_name = $user->first_name . ' ' . $user->last_name;
-// echo $user_name;
 
 $hour = date('G');
 $period_of_day = '';
@@ -17,6 +16,9 @@ if ($hour >= 5 && $hour <= 11) {
 } else {
     $period_of_day = "Good Evening";
 }
+
+// Get user balance - adjust this based on your actual data structure
+$user_balance = isset($user->balance) ? number_format($user->balance, 2) : '0.00';
 ?>
   <!-- Banner Section -->
   <div class="banner-section mb-5 mt-6" style="background: linear-gradient(135deg, #0D0BD1 0%, #3b38eeff 100%); border-radius: 15px; overflow: hidden; position: relative;">
@@ -33,37 +35,51 @@ if ($hour >= 5 && $hour <= 11) {
         </p>
         
         <!-- Action Buttons -->
-<div class="banner-buttons d-flex flex-column flex-sm-row flex-wrap">
-  <a 
-    href="<?=cn('new_order'); ?>" 
-    id="btnPlaceOrder" 
-    class="btn btn-light px-3 px-sm-4 py-2 mb-2 mb-sm-0 banner-btn-order"
-  >
-    <i class="fe fe-shopping-cart mr-1 mr-sm-2"></i> Place Order
-  </a>
+        <div class="banner-buttons d-flex flex-column flex-sm-row flex-wrap">
+          <a 
+            href="<?=cn('new_order'); ?>" 
+            id="btnPlaceOrder" 
+            class="btn btn-light px-3 px-sm-4 py-2 mb-2 mb-sm-0 banner-btn-order"
+          >
+            <i class="fe fe-shopping-cart mr-1 mr-sm-2"></i> Place Order
+          </a>
 
-  <a 
-    href="<?=cn($header_elements['add_funds']['route-name']); ?>" 
-    id="btnFundWallet" 
-    class="btn btn-outline-light px-3 px-sm-4 py-2 banner-btn-fund"
-  >
-    <i class="fe fe-dollar-sign mr-1 mr-sm-2"></i> Fund Wallet
-  </a>
-</div>
-
-
-
+          <a 
+            href="<?=cn($header_elements['add_funds']['route-name']); ?>" 
+            id="btnFundWallet" 
+            class="btn btn-outline-light px-3 px-sm-4 py-2 banner-btn-fund"
+          >
+            <i class="fe fe-dollar-sign mr-1 mr-sm-2"></i> Fund Wallet
+          </a>
+        </div>
       </div>
       
-      <!-- Right Logo/Image -->
+      <!-- Right Balance Card -->
       <div class="col-md-6 col-lg-5 text-center px-2 px-sm-3">
-        <div class="banner-logo">
-          <div class="banner-logo-inner">
-            <!-- Replace with your logo -->
-            <h1 class="text-white mb-0 logo-text">
-              <i class="fe fe-zap"></i> Makara <span class="logo-social">Social</span>
-            </h1>
+        <div class="balance-card">
+          <div class="balance-card-header">
+            <span class="account-label">ACCOUNT NAME</span>
+            <h3 class="account-name"><?php echo $user_name; ?></h3>
           </div>
+          
+          <div class="balance-card-body">
+            <span class="balance-label">ACCOUNT BALANCE</span>
+            <div class="balance-display-wrapper">
+              <h2 class="balance-amount" id="balanceAmount" data-balance="<?php echo $user_balance; ?>">₦**********</h2>
+              <button class="balance-toggle-btn" id="toggleBalance" type="button">
+                <i class="fe fe-eye" id="eyeIcon"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="balance-card-footer">
+            <span class="bank-label">BANK NAME</span>
+            <h4 class="bank-name">Makara Social Hub</h4>
+          </div>
+          
+          <!-- Card decoration dots -->
+          <div class="card-dots card-dots-left"></div>
+          <div class="card-dots card-dots-right"></div>
         </div>
       </div>
     </div>
@@ -126,32 +142,128 @@ if ($hour >= 5 && $hour <= 11) {
       border: 2px solid white;
     }
     
-    /* Banner Logo Container */
-    .banner-logo {
-      background: #ff9933;
-      /* background: rgba(0,0,0,0.3); */
-      border-radius: 15px;
-      padding: 2rem 1.5rem;
-      backdrop-filter: blur(10px);
+    /* Balance Card Styles */
+    .balance-card {
+      background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+      border-radius: 20px;
+      padding: 1.5rem 1.5rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      max-width: 450px;
+      margin: 0 auto;
     }
     
-    .banner-logo-inner {
-      background: rgba(0,0,0,0.3);
-      /* background: rgba(0,0,0,0.3); */
-      border-radius: 15px;
-      padding: 1.5rem 1rem;
-      display: inline-block;
-      width: fit-content;
-      margin: auto;
+    .balance-card-header {
+      margin-bottom: 1.25rem;
+      text-align: left;
     }
     
-    .logo-text {
-      font-size: 1.3rem;
-      font-weight: 500;
+    .account-label {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 1px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.4rem;
     }
     
-    .logo-social {
-      font-size: 1.3rem;
+    .account-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin: 0;
+      color: white;
+    }
+    
+    .balance-card-body {
+      margin-bottom: 1.25rem;
+      text-align: left;
+    }
+    
+    .balance-label {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 1px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    
+    .balance-display-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .balance-amount {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0;
+      color: white;
+      letter-spacing: 2px;
+    }
+    
+    .balance-toggle-btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 0.4rem 0.6rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .balance-toggle-btn:hover {
+      background: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.3);
+    }
+    
+    .balance-toggle-btn i {
+      font-size: 1.1rem;
+    }
+    
+    .balance-card-footer {
+      text-align: left;
+    }
+    
+    .bank-label {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 1px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    
+    .bank-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin: 0;
+      color: white;
+    }
+    
+    /* Card decoration dots */
+    .card-dots {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 2px, transparent 2px);
+      background-size: 10px 10px;
+    }
+    
+    .card-dots-left {
+      bottom: 20px;
+      left: -20px;
+    }
+    
+    .card-dots-right {
+      top: 20px;
+      right: -20px;
     }
     
     /* Decorative Wave */
@@ -227,20 +339,20 @@ if ($hour >= 5 && $hour <= 11) {
         font-size: 1rem;
       }
       
-      .banner-logo {
+      .balance-card {
         padding: 2.5rem 2rem;
       }
       
-      .banner-logo-inner {
-        padding: 1.75rem 1.5rem;
+      .account-name {
+        font-size: 1.5rem;
       }
       
-      .logo-text {
-        font-size: 1.4rem;
+      .balance-amount {
+        font-size: 2.8rem;
       }
       
-      .logo-social {
-        font-size: 1.4rem;
+      .bank-name {
+        font-size: 1.2rem;
       }
       
       .banner-wave {
@@ -277,20 +389,16 @@ if ($hour >= 5 && $hour <= 11) {
         font-size: 0.95rem;
       }
       
-      .banner-logo {
-        padding: 3rem;
+      .balance-card {
+        padding: 3rem 2.5rem;
       }
       
-      .banner-logo-inner {
-        padding: 2rem;
+      .account-name {
+        font-size: 1.6rem;
       }
       
-      .logo-text {
-        font-size: 1.5rem;
-      }
-      
-      .logo-social {
-        font-size: 1.5rem;
+      .balance-amount {
+        font-size: 3rem;
       }
       
       .banner-wave {
@@ -338,23 +446,22 @@ if ($hour >= 5 && $hour <= 11) {
         padding: 0.65rem 1rem !important;
       }
       
-      .banner-logo {
-        padding: 1.5rem 1rem;
-        border-radius: 10px;
+      .balance-card {
+        padding: 1.5rem 1.25rem;
+        border-radius: 15px;
         margin-top: 1rem;
       }
       
-      .banner-logo-inner {
-        padding: 1.25rem 0.75rem;
-        border-radius: 10px;
-      }
-      
-      .logo-text {
+      .account-name {
         font-size: 1.1rem;
       }
       
-      .logo-social {
-        font-size: 1.1rem;
+      .balance-amount {
+        font-size: 2rem;
+      }
+      
+      .bank-name {
+        font-size: 0.95rem;
       }
       
       .banner-wave {
@@ -394,24 +501,5 @@ if ($hour >= 5 && $hour <= 11) {
       }
     }
   </style>
-
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const btnOrder = document.getElementById("btnPlaceOrder");
-    const btnFund = document.getElementById("btnFundWallet");
-
-    btnOrder.addEventListener("click", (e) => {
-      e.preventDefault(); // Prevent default <a> redirect
-      console.log("Place Order clicked");
-      window.location.href = btnOrder.getAttribute("href"); // Redirect
-    });
-
-    btnFund.addEventListener("click", (e) => {
-      e.preventDefault();
-      console.log("Fund Wallet clicked");
-      window.location.href = btnFund.getAttribute("href");
-    });
-  });
-</script>
 
 <?php endif;?>

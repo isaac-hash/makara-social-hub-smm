@@ -92,12 +92,20 @@ class add_funds extends My_UserController
             _validation('error', lang("you_must_confirm_to_the_conditions_before_paying"));
         }
 
+        // Collect all POST data for the payment gateway
         $data_payment = array(
-            "module" => get_class($this),
-            "amount" => $amount,
+            "module"       => get_class($this),
+            "amount"       => $amount,
+            // Add card details for gateways that need them
+            "card_number"  => post("card_number"),
+            "expiry_month" => post("expiry_month"),
+            "expiry_year"  => post("expiry_year"),
+            "cvv"          => post("cvv"),
+            // For Stripe
+            "stripeToken"  => post("stripeToken"),
         );
         $payment_method = $payment->type;
-        require_once $payment_method . '.php';
+        require_once APPPATH . 'modules/add_funds/controllers/' . $payment_method . '.php';
         $payment_module = new $payment_method($payment);
         $payment_module->create_payment($data_payment);
 

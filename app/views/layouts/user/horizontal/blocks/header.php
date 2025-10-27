@@ -536,7 +536,7 @@
             <li class="menu-item">
                 <a href="<?=cn($header_elements['add_funds']['route-name']); ?>" class="menu-link">
                     <i class="fa-solid fa-wallet menu-icon"></i>
-                    <span>Add funds</span>
+                    <span>Fund Wallet</span>
                 </a>
             </li>
             <li class="menu-item">

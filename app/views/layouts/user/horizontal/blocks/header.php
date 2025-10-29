@@ -439,21 +439,21 @@
                 <span><?= $nav_item_user_title; ?></span>
                 <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i>
                 
-                <div class="user-dropdown" id="userDropdown">
+                <div class="user-dropdown" id="userDropdown" style="height: fit-content;">
                     <div class="dropdown-header">
                         <div class="dropdown-user-name"><?= current_logged_user()->first_name ?> <?= current_logged_user()->last_name ?></div>
                         <div class="dropdown-user-email"><?= current_logged_user()->email ?></div>
                     </div>
-                    <ul class="dropdown-menu">
+                    <div class="dropdown-header" style="color: blueviolet;">
                         <li>
                             <a href="<?php echo cn('profile'); ?>" class="dropdown-item">
                                 <i class="fas fa-user"></i>
                                 <span><?php echo lang('Profile'); ?></span>
                             </a>
                         </li>
-                    </ul>
+                    </div>
                     <div class="dropdown-divider"></div>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-header">
                         <li>
                             <a href="<?php echo cn('auth/logout'); ?>" class="dropdown-item" style="color: var(--primary-orange);">
                                 <i class="fas fa-sign-out-alt"></i>

@@ -43,9 +43,10 @@ $user_balance = isset($user->balance) ? number_format($user->balance, 2) : '0.00
           >
             <i class="fe fe-shopping-cart mr-1 mr-sm-2"></i> Place Order
           </a>
-
+            <!-- href="<?=cn($header_elements['add_funds']['route-name']); ?>" -->
           <a 
-            href="<?=cn($header_elements['add_funds']['route-name']); ?>" 
+            href="<?=cn('add_funds'); ?>"
+
             id="btnFundWallet" 
             class="btn btn-outline-light px-3 px-sm-4 py-2 banner-btn-fund"
           >

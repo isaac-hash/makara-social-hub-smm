@@ -1,4 +1,5 @@
 <?php
+// config.php
 //Config Database
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');

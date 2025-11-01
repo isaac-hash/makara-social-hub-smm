@@ -53,7 +53,8 @@ $route['default_controller']                    = 'home';
 $route['404_override']                          = 'custom_page/page_404';
 $route['translate_uri_dashes']                  = FALSE;
 $route['set_language']                          = 'blocks/set_language';
-$route['about-services'] = 'services/about';
+// $route['about-services'] = 'services/about';
+$route['about-services'] = 'services/index';
 $route['cac'] = 'cac';
 $route['api-page'] = 'api_page';
 

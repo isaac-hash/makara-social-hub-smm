@@ -100,7 +100,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item"><a class="nav-link px-3" href="<?=cn('')?>" style="color:#0D0BD1;font-weight:500;">Home</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="<?=cn('about-services')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">Services</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="<?=cn('about-services')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">Our Services</a></li>
         <li class="nav-item"><a class="nav-link px-3" href="<?=cn('cac')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">CAC</a></li>
         <li class="nav-item"><a class="nav-link px-3" href="<?=cn('api-page')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">API</a></li>
         <!-- <li class="nav-item"><a class="nav-link px-3" href="#features" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">Features</a></li> -->
@@ -125,7 +125,7 @@
   <div class="offcanvas-body">
     <ul class="navbar-nav">
       <li class="nav-item"><a class="nav-link" href="<?=cn('')?>">Home</a></li>
-      <li class="nav-item"><a class="nav-link" href="<?=cn('about-services')?>">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="<?=cn('about-services')?>">Our Services</a></li>
       <li class="nav-item"><a class="nav-link" href="<?=cn('cac')?>">CAC</a></li>
       <li class="nav-item"><a class="nav-link" href="<?=cn('api-page')?>">API</a></li>
       <!-- <li class="nav-item"><a class="nav-link" href="#features">Features</a></li> -->

@@ -308,7 +308,7 @@
             }
 
             .user-profile span {
-                display: none;
+                /* display: none; */
             }
 
             .logo img {
@@ -444,7 +444,7 @@
                         <div class="dropdown-user-name"><?= current_logged_user()->first_name ?> <?= current_logged_user()->last_name ?></div>
                         <div class="dropdown-user-email"><?= current_logged_user()->email ?></div>
                     </div>
-                    <div class="dropdown-header" style="color: blueviolet;">
+                    <div class="dropdown-item" style="color: blueviolet;">
                         <li>
                             <a href="<?php echo cn('profile'); ?>" class="dropdown-item">
                                 <i class="fas fa-user"></i>
@@ -453,7 +453,7 @@
                         </li>
                     </div>
                     <div class="dropdown-divider"></div>
-                    <ul class="dropdown-header">
+                    <ul class="dropdown-item">
                         <li>
                             <a href="<?php echo cn('auth/logout'); ?>" class="dropdown-item" style="color: var(--primary-orange);">
                                 <i class="fas fa-sign-out-alt"></i>

@@ -72,9 +72,10 @@
         .payment-card {
             background: white;
             border-radius: 20px;
-            padding: 40px;
+            /* padding: 20rem; */
             margin: 0 auto;
-            max-width: 80%;
+            max-width: 100%;
+            font-size: large;
             width: 100%;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             position: relative;

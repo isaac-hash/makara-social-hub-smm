@@ -61,7 +61,7 @@ $sections = [
           e.preventDefault();
           const isVisible = eyeIcon.classList.contains("fe-eye-off");
           if (isVisible) {
-            balanceAmount.textContent = "₦**********";
+            balanceAmount.textContent = "₦*******";
             eyeIcon.classList.replace("fe-eye-off", "fe-eye");
           } else {
             const actualBalance = balanceAmount.getAttribute("data-balance");

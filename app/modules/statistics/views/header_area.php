@@ -50,7 +50,7 @@ $user_balance = isset($user->balance) ? number_format($user->balance, 2) : '0.00
             id="btnFundWallet" 
             class="btn btn-outline-light px-3 px-sm-4 py-2 banner-btn-fund"
           >
-            <i class="fe fe-dollar-sign mr-1 mr-sm-2"></i> Fund Wallet
+            <i class="fa-solid fa-naira-sign mr-1 mr-sm-2"></i> Fund Wallet
           </a>
         </div>
       </div>
@@ -66,7 +66,7 @@ $user_balance = isset($user->balance) ? number_format($user->balance, 2) : '0.00
           <div class="balance-card-body">
             <span class="balance-label">ACCOUNT BALANCE</span>
             <div class="balance-display-wrapper">
-              <h2 class="balance-amount" id="balanceAmount" data-balance="<?php echo $user_balance; ?>">₦**********</h2>
+              <h2 class="balance-amount" id="balanceAmount" data-balance="<?php echo $user_balance; ?>">₦********</h2>
               <button class="balance-toggle-btn" id="toggleBalance" type="button">
                 <i class="fe fe-eye" id="eyeIcon"></i>
               </button>

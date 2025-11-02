@@ -67,6 +67,11 @@
     display: block !important;
   }
 }
+.navbar .container {
+    overflow: visible !important;
+    position: static !important;
+}
+
 </style>
 
 </head>
@@ -77,9 +82,10 @@
 <!-- ✅ Header -->
 <nav class="navbar navbar-expand-lg fixed-top" style="
     background: white;
-    backdrop-filter: blur(10px);
+    backdrop-filter: none;
     box-shadow: 0 4px 20px rgba(0, 98, 255, 0.1);
-    overflow: hidden;
+    overflow: visible;
+    z-index: 9999;
 ">
   <div class="container">
     <!-- Brand -->
@@ -101,11 +107,38 @@
       <ul class="navbar-nav mx-auto">
         <li class="nav-item"><a class="nav-link px-3" href="<?=cn('')?>" style="color:#0D0BD1;font-weight:500;">Home</a></li>
         <li class="nav-item"><a class="nav-link px-3" href="<?=cn('about-services')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">Our Services</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="<?=cn('cac')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">CAC</a></li>
+        
         <li class="nav-item"><a class="nav-link px-3" href="<?=cn('api-page')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">API</a></li>
-        <!-- <li class="nav-item"><a class="nav-link px-3" href="#features" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">Features</a></li> -->
-        <li class="nav-item"><a class="nav-link px-3" href="<?=cn('blog')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Blog</a></li>
         <li class="nav-item"><a class="nav-link px-3" href="<?=cn('home/contact')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Contact</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="<?=cn('cac')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">CAC</a></li>
+        <li class="nav-item dropdown" style="position: relative; z-index: 10000;">
+                  <a 
+                    class="nav-link dropdown-toggle px-3" 
+                    href="#" 
+                    id="resourcesDropdown" 
+                    role="button" 
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false"
+                    style="color:#4F30A2;font-weight:500;transition:color .3s;"
+                    onmouseover="this.style.color='#0D0BD1'" 
+                    onmouseout="this.style.color='#4F30A2'"
+                  >
+                    More
+                  </a>
+
+                  <ul 
+                    class="dropdown-menu" 
+                    aria-labelledby="resourcesDropdown"
+                    style="border:1px solid rgba(13,11,209,0.1);
+                          box-shadow:0 4px 15px rgba(0,0,0,0.1);
+                          background:white;
+                          z-index:10001;"
+                  >
+                    <li><a class="dropdown-item" href="<?=cn('prices-services')?>">Prices and Services</a></li>
+                    
+                    <li><a class="dropdown-item" href="<?=cn('blog')?>">Blog</a></li>
+                  </ul>
+        </li>
       </ul>
 
       <div class="navbar-buttons d-flex align-items-center">
@@ -126,6 +159,7 @@
     <ul class="navbar-nav">
       <li class="nav-item"><a class="nav-link" href="<?=cn('')?>">Home</a></li>
       <li class="nav-item"><a class="nav-link" href="<?=cn('about-services')?>">Our Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="<?=cn('about-services')?>">Prices and Services</a></li>
       <li class="nav-item"><a class="nav-link" href="<?=cn('cac')?>">CAC</a></li>
       <li class="nav-item"><a class="nav-link" href="<?=cn('api-page')?>">API</a></li>
       <!-- <li class="nav-item"><a class="nav-link" href="#features">Features</a></li> -->

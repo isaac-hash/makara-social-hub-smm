@@ -54,13 +54,50 @@ class services extends My_UserController
             "items_category" => $items_category,
         );
         if (session('uid')) {
-            $this->template->set_layout('user');
             // $this->template->set_layout('user');
-            $this->template->build("index", $data);
+            $this->template->set_layout(false);
+            $this->template->build("about", $data);
         } else {
             // $this->template->set_layout('general_page');
             $this->template->set_layout(false);
             $this->template->build("about", $data);
+        }
+    }
+    public function prices_and_services()
+    {
+        if (!session('uid') && get_option("enable_service_list_no_login") != 1) {
+            redirect(cn());
+        }
+        if (session('uid')) {
+            $fav_column = [
+                "fav" => ['name' => '#', 'class' => 'text-center'],
+            ];
+            $order_button_column = [
+                "order_btn" => ['name' => '', 'class' => 'text-center'],
+            ];
+            $this->columns = $fav_column + $this->columns + $order_button_column;
+        }
+        $this->params = [
+            'cate_id' => 0,
+        ];
+        $items = $this->main_model->list_items($this->params, ['task' => 'list-items', 'no_group' => false]);
+        $this->load->model('client/client_model', 'client_model');
+        $items_category = $this->client_model->list_items($this->params, ['task' => 'list-items-category-in-services']);
+        $data = array(
+            "controller_name" => $this->controller_name,
+            "params" => $this->params,
+            "columns" => $this->columns,
+            "items" => $items,
+            "items_category" => $items_category,
+        );
+        if (session('uid')) {
+            // $this->template->set_layout('user');
+            $this->template->set_layout(false);
+            $this->template->build("index", $data);
+        } else {
+            // $this->template->set_layout('general_page');
+            $this->template->set_layout(false);
+            $this->template->build("index", $data);
         }
     }
 

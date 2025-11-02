@@ -1,7 +1,51 @@
 <?php
+    require_once 'themes/nico/views/nav.php';
+    ?>
+
+<?php
   $items_category = array_column($items_category, 'id', 'name');
   $items_category = array_flip(array_intersect_key($items_category, array_flip(array_keys($items))));
 ?>
+
+<style>
+        :root {
+            /* Makara Social Hub Brand Colors */
+            --makara-blue: #0D0BD1;
+            --makara-orange: #FF9933;
+        }
+
+        .bg-makara-blue {
+            background-color: var(--makara-blue) !important;
+        }
+
+        .text-makara-blue {
+            color: var(--makara-blue) !important;
+        }
+
+        .text-makara-orange {
+            color: var(--makara-orange) !important;
+        }
+
+        .border-makara-orange {
+            border-left: 5px solid var(--makara-orange);
+            padding-left: 1rem;
+        }
+        
+        /* Custom card style for services */
+        .service-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            min-height: 100%; /* Ensures all cards in a row are same height */
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+        }
+        body{
+         background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(236, 246, 255, 0.9));
+        /*  backdrop-filter: blur(10px); */
+        }
+    </style>
 <!-- Responsive Styles -->
 <style>
   /* Desktop - with sidebar offset */
@@ -93,7 +137,7 @@
     }
   }
 </style>
-<section class="page-title responsive-section-header">
+<section class="page-title responsive-section-header" style="max-width: 80%; margin:auto; margin-top: 6rem;">
   <div class="row justify-content-between ">
     <div class="col-md-6">
       <h1 class="page-title">
@@ -121,7 +165,7 @@
     </div>
   </div>
 </section>
-<div class="row m-t-5 responsive-content-row" id="result_ajaxSearch">
+<div class="row m-t-5 responsive-content-row" id="result_ajaxSearch" style="max-width: 90%; margin:auto;">
   <?php 
     if(!empty($items)){
       $data = array(
@@ -137,6 +181,9 @@
   ?>
 </div>
 
+
+<section class="py-5">
+   </section>
 <script>
   $(document).ready(function() {
     function filterServices() {
@@ -167,3 +214,9 @@
   });
 
 </script>
+
+
+<?php
+require_once 'themes/nico/views/footer.php';
+
+?>

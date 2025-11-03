@@ -141,10 +141,22 @@
         </li>
       </ul>
 
-      <div class="navbar-buttons d-flex align-items-center">
-        <a href="<?=cn('auth/login')?>" class="btn me-3 px-4 rounded-pill fw-medium" style="color:#0D0BD1;background-color:white;outline:1px solid #0D0BD1;">Login</a>
-        <a href="<?=cn('auth/signup')?>" class="btn px-4 rounded-pill fw-medium shadow-sm hover-lift" style="color:white;background-color:#0D0BD1;">Sign Up</a>
-      </div>
+      <?php if (session('uid')) : ?>
+        <div class="navbar-buttons d-flex align-items-center">
+            <a href="<?= cn('statistics') ?>" class="btn px-4 rounded-pill fw-medium shadow-sm hover-lift" style="color:white;background-color:#0D0BD1;">
+                <i class="fa-solid fa-user me-2"></i> <?= lang('Hi') . ', ' . current_logged_user()->first_name ?>
+            </a>
+        </div>
+        <script>
+          // alert('Welcome back, <?= current_logged_user()->first_name ?>! Explore our latest services and offers to boost your social media presence.');
+        </script>
+        
+      <?php else : ?>
+        <div class="navbar-buttons d-flex align-items-center">
+            <a href="<?= cn('auth/login') ?>" class="btn me-3 px-4 rounded-pill fw-medium" style="color:#0D0BD1;background-color:white;outline:1px solid #0D0BD1;">Login</a>
+            <a href="<?= cn('auth/signup') ?>" class="btn px-4 rounded-pill fw-medium shadow-sm hover-lift" style="color:white;background-color:#0D0BD1;">Sign Up</a>
+        </div>
+      <?php endif; ?>
     </div>
   </div>
 </nav>

@@ -33,10 +33,11 @@
     'other'          => lang("Other"),
   ];
   $form_payments = [
-    'paypal'         => lang("Paypal"),
-    'stripe'         => lang("Cancellation"),
-    'speed_up'       => lang("Stripe"),
-    'other'          => lang("Other"),
+    // 'paypal'         => lang("Paypal"),
+    // 'stripe'         => lang("Cancellation"),
+    // 'speed_up'       => lang("Stripe"),
+    'korapay'         => lang("Korapay"),
+    'manual_payment'  => lang("Manual_Payment"), 'other'          => lang("Other"),
   ];
 
   $elements = [

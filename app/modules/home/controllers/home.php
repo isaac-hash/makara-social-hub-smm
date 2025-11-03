@@ -7,9 +7,9 @@ class home extends MX_Controller {
     {
         parent::__construct();
         $this->load->model(get_class($this).'_model', 'model');
-        if (session('uid')) {
-            redirect(cn('new_order'));
-        }
+        // if (session('uid')) {
+        //     redirect(cn('new_order'));
+        // }
     }
 
     public function index()

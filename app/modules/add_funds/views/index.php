@@ -199,4 +199,43 @@
 </section>
 <?php }?>
 
+<script>
+  $(document).ready(function() {
+    // Use event delegation for the form inside the modal
+    $(document).on('submit', '#uploadReceiptForm', function(e) {
+        e.preventDefault();
+        pageOverlay.show();
 
+        var form = $(this);
+        var actionUrl = form.attr('action');
+        var formData = new FormData(this);
+        
+        // Add CSRF token to FormData if it exists
+        if (typeof token !== 'undefined') {
+          formData.append('token', token);
+        }
+
+        $.ajax({
+            url: actionUrl,
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                pageOverlay.hide();
+                if (response.status === 'success') {
+                    $('#uploadReceiptModal').modal('hide');
+                    form[0].reset();
+                }
+                notify(response.message, response.status);
+            },
+            error: function(xhr, status, error) {
+                pageOverlay.hide();
+                console.error("Upload Error:", xhr.responseText);
+                notify("An unexpected error occurred. Please try again.", "error");
+            }
+        });
+    });
+  });
+</script>

@@ -25,6 +25,7 @@ $config['controller'] = [
         'service_area'     => ['name' => 'Service',         'icon' => '',                    'area_title' => true,  'route-name' => '#'],
         'order'            => ['name' => 'Orders',          'icon' => 'fe fe-shopping-cart', 'area_title' => false, 'route-name' => 'order'],
         'dripfeed'         => ['name' => 'Dripfeed',        'icon' => 'fe fe-droplet',       'area_title' => false, 'route-name' => 'dripfeed'],
+        'receipts'         => ['name' => 'Receipts',   'icon' => 'fe fe-file-text',   'area_title' => false, 'route-name' => 'receipts'],
         'subscriptions'    => ['name' => 'Subscriptions',   'icon' => 'fe fe-thumbs-up',     'area_title' => false, 'route-name' => 'subscriptions'],
         'refill'           => ['name' => 'Refill',          'icon' => 'fe fe-refresh-cw',    'area_title' => false, 'route-name' => 'refill'],
         'cancel'           => ['name' => 'Cancel',          'icon' => 'fe fe-trash-2',    'area_title' => false, 'route-name' => 'cancel'],
@@ -60,6 +61,7 @@ $config['controller'] = [
         'language'         => ['name' => 'Languages',       'icon' => 'fa fa-language',      'area_title' => false, 'route-name' => 'language'],
         'faqs'             => ['name' => 'FAQs',            'icon' => 'fe fe-help-circle',   'area_title' => false, 'route-name' => 'faqs'],
         'cronjobs'         => ['name' => 'Cronjobs link',   'icon' => 'fe fe-rotate-cw',   'area_title' => false, 'route-name' => 'cronjobs'],
+        
     ]
 ];
 

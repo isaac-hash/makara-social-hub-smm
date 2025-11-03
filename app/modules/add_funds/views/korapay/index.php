@@ -249,7 +249,42 @@
         <div class="footer-note">
             💡 After payment, please upload your receipt for verification
         </div>
+
+        <div class="text-center mt-3 p-4">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#uploadReceiptModal">
+                <i class="fe fe-upload"></i> Upload Receipt
+            </button>
+        </div>
     </div>
+
+<!-- Upload Receipt Modal -->
+<div class="modal fade" id="uploadReceiptModal" tabindex="-1" role="dialog" aria-labelledby="uploadReceiptModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="uploadReceiptForm" action="<?=cn('add_funds/upload_receipt')?>" method="POST" enctype="multipart/form-data">
+        <div class="modal-header">
+          <h5 class="modal-title" id="uploadReceiptModalLabel">Upload Payment Receipt</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="amount" class="form-label">Amount Sent (<?php echo $currency_code; ?>)</label>
+            <input type="number" class="form-control" id="amount" name="amount" placeholder="e.g., 5000" required>
+          </div>
+          <div class="form-group">
+            <label for="receipt" class="form-label">Receipt (Image or PDF)</label>
+            <input type="file" class="form-control-file" id="receipt" name="receipt" accept="image/*,application/pdf" required>
+          </div>
+          <div id="alert-message"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary btn-submit">Submit Receipt</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
       <!-- PIN Modal -->
 <div class="modal fade" id="pinModal" tabindex="-1">
@@ -293,138 +328,3 @@
             });
         }
     </script>
-
-<script>
-$(document).ready(function () {
-
-    console.log("✅ Inline payment JS LOADED");
-
-    // Add Funds Form Handler
-    $(document).on("submit", ".actionAddFundsForm", function (event) {
-
-        event.preventDefault();
-        pageOverlay.show();
-
-        let _that = $(this);
-        let _action = PATH + 'add_funds/process';
-        let _redirect = _that.data("redirect");
-        let _dataObj = _that.serializeArray();
-        let _data = _that.serialize() + '&' + $.param({ token: token });
-
-        console.log("✅ Form Submitted");
-        console.log("✅ Data Sent:", _dataObj);
-
-        $.post(_action, _data, function (_result) {
-
-            setTimeout(() => pageOverlay.hide(), 800);
-
-            console.log("✅ Server Response:", _result);
-
-            if (!is_json(_result)) {
-                $(".add-funds-form-content").html(_result);
-                return;
-            }
-
-            _result = JSON.parse(_result);
-            console.log("Initial Response Parsed:", _result);
-         
-
-
-            // ✅ PIN REQUIRED
-            if (_result.status === "requires_pin") {
-                console.log("🟦 PIN HANDLER REACHED");
-                window.korapayTransactionReference = _result.transaction_reference;
-                window.korapayReference = _result.reference;
-                console.log("Transaction Reference set for PIN:", window.korapayTransactionReference);
-                console.log("Original Reference set for PIN:", window.korapayReference);
-                $("#pinModal").modal("show");
-
-                return;
-            }
-
-            // ✅ OTP REQUIRED
-            if (_result.status === "requires_otp") {
-                console.log("🟩 OTP HANDLER REACHED");
-                window.korapayTransactionReference = _result.transaction_reference;
-                window.korapayReference = _result.reference;
-
-                $("#otpModal").modal("show");
-                return;
-            }
-
-            // ✅ Normal success
-            if (_result.status === "success" && _result.redirect_url) {
-                window.location.href = _result.redirect_url;
-                return;
-            }
-
-            notify(_result.message, _result.status);
-        });
-
-        return false;
-    });
-
-    // ✅ PIN Submit
-$(document).on("click", "#submitPinBtn", function () {
-    let pin = $("#pinInput").val().trim();
-    if (!pin || pin.length !== 4) {
-        notify("Enter a 4-digit PIN", "error");
-        return;
-    }
-
-    pageOverlay.show();
-
-    $.post(PATH + "add_funds/korapay/validate_charge", {
-        transaction_reference: window.korapayTransactionReference,
-        type: "pin",
-        value: pin,
-        token: token
-    }, function (res) {
-        pageOverlay.hide();
-        handleValidationResponse(res);
-    });
-});
-
-// ✅ OTP Submit
-$(document).on("click", "#submitOtpBtn", function () {
-    let otp = $("#otpInput").val().trim();
-    if (!otp) {
-        notify("OTP is required", "error");
-        return;
-    }
-
-    pageOverlay.show();
-
-    $.post(PATH + "add_funds/korapay/validate_charge", {
-        transaction_reference: window.korapayTransactionReference,
-        type: "otp",
-        value: otp,
-        token: token
-    }, function (res) {
-        pageOverlay.hide();
-        handleValidationResponse(res);
-    });
-});
-
-// Helper to avoid duplication
-function handleValidationResponse(res) {
-    if (!is_json(res)) return;
-
-    res = JSON.parse(res);
-
-    if (res.status === "requires_otp") {
-        $("#pinModal").modal("hide");
-        $("#otpModal").modal("show");
-        return;
-    }
-
-    if (res.status === "success" && res.redirect_url) {
-        window.location.href = res.redirect_url;
-        return;
-    }
-
-    notify(res.message || "Validation failed", "error");
-}
-
-});
-</script>

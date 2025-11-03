@@ -256,6 +256,57 @@ class add_funds extends My_UserController
         }
     }
 
+    public function upload_receipt()
+    {
+        _is_ajax($this->module);
+
+        $amount = (double)post("amount");
+
+        if ($amount <= 0) {
+            ms(["status" => "error", "message" => "Please enter a valid amount."]);
+        }
+
+        if (empty($_FILES['receipt']['name'])) {
+            // echo json_encode(["file" => ])
+            ms(["status" => "error", "message" => "Please select a receipt file to upload."]);
+        }
+
+        $upload_path = FCPATH . "assets/uploads/receipts/";
+        if (!is_dir($upload_path)) {
+            mkdir($upload_path, 0755, true);
+        }
+
+        $config['upload_path']   = $upload_path;
+        $config['allowed_types'] = 'gif|jpg|jpeg|png|pdf';
+        $config['max_size']      = 2048; // 2MB
+        $config['encrypt_name']  = TRUE;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('receipt')) {
+            ms(["status" => "error", "message" => strip_tags($this->upload->display_errors())]);
+        }
+
+        $upload_data = $this->upload->data();
+        $receipt_path = 'assets/uploads/receipts/' . $upload_data['file_name'];
+
+        $data = [
+            'ids'          => ids(),
+            'user_id'      => session('uid'),
+            'amount'       => $amount,
+            'receipt_path' => $receipt_path,
+            'status'       => 'pending',
+            'created_at'   => NOW,
+        ];
+
+        $this->db->insert('manual_payment_receipts', $data);
+
+        ms([
+            "status"  => "success",
+            "message" => "Receipt uploaded successfully. We will review it and credit your account shortly.",
+        ]);
+    }
+
 
     public function success()
     {

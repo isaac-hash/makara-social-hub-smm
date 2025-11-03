@@ -541,6 +541,12 @@
                 </a>
             </li>
             <li class="menu-item">
+                <a href="<?=cn('user/receipts'); ?>" class="menu-link">
+                    <i class="fa-solid fa-wallet menu-icon"></i>
+                    <span>My Receipts</span>
+                </a>
+            </li>
+            <li class="menu-item">
                 <a href="<?=cn($header_elements['transactions']['route-name']); ?>" class="menu-link">
                     <i class="fa-solid fa-money-bill-transfer menu-icon"></i>
                     <span>Transactions</span>
@@ -620,5 +626,7 @@
             });
         });
     </script>
+    <script src="<?php echo BASE; ?>themes/nico/assets/js/widget-manager.js"></script>
+<script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
 </body>
 </html>

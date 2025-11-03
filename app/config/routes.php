@@ -58,6 +58,8 @@ $route['about-services'] = 'services/index';
 $route['cac'] = 'cac';
 $route['api-page'] = 'api_page';
 $route['add_funds/korapay/validate_charge'] = 'add_funds/korapay/validate_charge';
+$route['user/receipts'] = 'manual_payment/index';
+// $route['admin/receipts'] = 'manual_payment/admin';
 
 
 // Settings page
@@ -139,10 +141,11 @@ $route['cron/picpay']                                = 'add_funds/picpay/complet
  */##################################
 $GLOBALS['ADMIN_URL_PREFIX'] = 'admin';
 
-$route['upload_files']                                      = 'admin/file_manager/upload_files';
-$route[$GLOBALS['ADMIN_URL_PREFIX']]                        = 'admin/login';
-$route[$GLOBALS['ADMIN_URL_PREFIX'] . '/settings/store']    = 'admin/settings/store';
-$route[$GLOBALS['ADMIN_URL_PREFIX'] . '/settings/(:any)']   = 'admin/settings/index/$1';
+$route['upload_files']                                               = 'admin/file_manager/upload_files';
+$route[$GLOBALS['ADMIN_URL_PREFIX']]                                 = 'admin/login';
+$route[$GLOBALS['ADMIN_URL_PREFIX'] . '/receipts']                   = 'admin/receipts';
+$route[$GLOBALS['ADMIN_URL_PREFIX'] . '/settings/store']             = 'admin/settings/store';
+$route[$GLOBALS['ADMIN_URL_PREFIX'] . '/settings/(:any)']            = 'admin/settings/index/$1';
 
 $route[$GLOBALS['ADMIN_URL_PREFIX'] . '/(:any)']                            = 'admin/$1';
 $route[$GLOBALS['ADMIN_URL_PREFIX'] . '/(:any)/(:any)']                     = 'admin/$1/$2';

@@ -159,7 +159,7 @@
     <ul class="navbar-nav">
       <li class="nav-item"><a class="nav-link" href="<?=cn('')?>">Home</a></li>
       <li class="nav-item"><a class="nav-link" href="<?=cn('about-services')?>">Our Services</a></li>
-      <li class="nav-item"><a class="nav-link" href="<?=cn('about-services')?>">Prices and Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="<?=cn('prices-services')?>">Prices and Services</a></li>
       <li class="nav-item"><a class="nav-link" href="<?=cn('cac')?>">CAC</a></li>
       <li class="nav-item"><a class="nav-link" href="<?=cn('api-page')?>">API</a></li>
       <!-- <li class="nav-item"><a class="nav-link" href="#features">Features</a></li> -->

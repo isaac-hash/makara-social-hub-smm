@@ -57,6 +57,8 @@ $route['prices-services'] = 'services/prices_and_services';
 $route['about-services'] = 'services/index';
 $route['cac'] = 'cac';
 $route['api-page'] = 'api_page';
+$route['add_funds/korapay/validate_charge'] = 'add_funds/korapay/validate_charge';
+
 
 // Settings page
 $route['new_order']                             = 'order/new_order';

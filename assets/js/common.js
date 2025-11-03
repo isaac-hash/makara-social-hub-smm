@@ -36,44 +36,266 @@ function Common(){
         });
     }
 
-    this.add_funds = function(){
-      $(document).on("submit", ".actionAddFundsForm", function(){
-        pageOverlay.show();
-        event.preventDefault();
-        _that         = $(this);
-        _action       = PATH + 'add_funds/process';
-        _redirect     = _that.data("redirect");
-        _data         = _that.serialize();
-        _data         = _data + '&' + $.param({token:token});
-        $.post(_action, _data, function(_result){
-            setTimeout(function(){
-              pageOverlay.hide();
-            },1500)
-            if (is_json(_result)) {
-                _result = JSON.parse(_result);
+//     this.add_funds = function(){
+//     $(document).on("submit", ".actionAddFundsForm", function(event){
+        
+//         event.preventDefault();
+//         pageOverlay.show();
 
-                if (_result.status == 'success' && typeof _result.redirect_url != "undefined") {
-                    window.location.href = _result.redirect_url;
-                }
+//         let _that = $(this);
+//         let _action = PATH + 'add_funds/process';
+//         let _redirect = _that.data("redirect");
+//         let _dataObj = _that.serializeArray(); // raw array for checking
+//         let _data = _that.serialize() + '&' + $.param({token:token});
 
-                setTimeout(function(){
-                    notify(_result.message, _result.status);
-                },1500)
+//         console.log("✅ Form Submitted");
+//         console.log("✅ Raw form data:", _dataObj);
 
-                setTimeout(function(){
-                    if(_result.status == 'success' && typeof _redirect != "undefined"){
-                        reloadPage(_redirect);
-                    }
-                }, 2000)
-            }else{
-                setTimeout(function(){
-                    $(".add-funds-form-content").html(_result);
-                }, 100)
-            }
-        })
-        return false;
-      })
-    }
+//         // ✅ Check for empty fields BEFORE sending to server
+//         for (let i = 0; i < _dataObj.length; i++) {
+//             if (_dataObj[i].value === "" || _dataObj[i].value === null) {
+//                 pageOverlay.hide();
+//                 console.error("❌ Missing field:", _dataObj[i].name);
+//                 notify(`Field '${_dataObj[i].name}' is required`, "error");
+//                 return false;
+//             }
+//         }
+
+//         // ✅ Send AJAX request after validation passes
+//         $.post(_action, _data, function(_result){
+
+//             setTimeout(() => pageOverlay.hide(), 1500);
+
+//             console.log("✅ Server response:", _result);
+
+//             if (is_json(_result)) {
+
+//                 _result = JSON.parse(_result);
+
+//                 // Success → redirect
+//                 if (_result.status === 'success' && typeof _result.redirect_url !== "undefined") {
+//                     window.location.href = _result.redirect_url;
+//                 }
+
+//                 // Notification
+//                 setTimeout(() => notify(_result.message, _result.status), 1500);
+
+//                 // Optional reload page
+//                 setTimeout(() => {
+//                     if (_result.status === 'success' && typeof _redirect !== "undefined") {
+//                         reloadPage(_redirect);
+//                     }
+//                 }, 2000);
+
+//             } else {
+//                 // Non-JSON HTML response
+//                 setTimeout(() => {
+//                     $(".add-funds-form-content").html(_result);
+//                 }, 100);
+//             }
+//         });
+
+//         return false;
+//     });
+// }
+//     this.add_funds = function () {
+
+//     // Keep modal instances available globally inside function
+//     let pinModal = null;
+//     let otpModal = null;
+
+//     // HANDLE ADD FUNDS FORM SUBMIT
+//     $(document).on("submit", ".actionAddFundsForm", function (event) {
+
+//         event.preventDefault();
+//         pageOverlay.show();
+
+//         let _that = $(this);
+//         let _action = PATH + 'add_funds/process';
+//         let _redirect = _that.data("redirect");
+//         let _dataObj = _that.serializeArray();
+//         let _data = _that.serialize() + '&' + $.param({ token: token });
+
+//         console.log("✅ Form Submitted:", _dataObj);
+
+//         // Validate empty fields
+//         for (let i = 0; i < _dataObj.length; i++) {
+//             if (_dataObj[i].value === "" || _dataObj[i].value === null) {
+//                 pageOverlay.hide();
+//                 notify(`Field '${_dataObj[i].name}' is required`, "error");
+//                 return false;
+//             }
+//         }
+
+//         // NORMAL CHARGE REQUEST
+//         $.post(_action, _data, function (_result) {
+
+//             setTimeout(() => pageOverlay.hide(), 700);
+
+//             console.log("✅ Server Response:", _result);
+
+//             if (!is_json(_result)) {
+//                 $(".add-funds-form-content").html(_result);
+//                 return;
+//             }
+
+//             _result = JSON.parse(_result);
+
+//             // ✅ SUCCESS WITH REDIRECT (Visa or no authentication)
+//             if (_result.status === "success" && _result.redirect_url) {
+//                 window.location.href = _result.redirect_url;
+//                 return;
+//             }
+
+//             // ✅ PIN REQUIRED
+//             if (_result.status === "requires_pin") {
+//                 console.log("🟦 We reached the requires_pin block!!");
+
+//                 console.log("🔐 PIN required. Charge ID:", _result.charge_id);
+
+//                 window.korapayChargeId = _result.charge_id;
+
+//                 // Bootstrap 5 modal
+//                 pinModal = new bootstrap.Modal(document.getElementById("pinModal"));
+//                 pinModal.show();
+
+//                 notify("Please enter your card PIN", "info");
+//                 return;
+//             }
+
+//             // ✅ OTP REQUIRED
+//             if (_result.status === "requires_otp") {
+
+//                 console.log("📩 OTP required. Charge ID:", _result.charge_id);
+
+//                 window.korapayChargeId = _result.charge_id;
+
+//                 otpModal = new bootstrap.Modal(document.getElementById("otpModal"));
+//                 otpModal.show();
+
+//                 notify("Enter OTP sent to your phone", "info");
+//                 return;
+//             }
+
+//             // ❌ ERROR
+//             notify(_result.message, _result.status);
+
+//             // Optional reload on success
+//             setTimeout(() => {
+//                 if (_result.status === 'success' && typeof _redirect !== "undefined") {
+//                     reloadPage(_redirect);
+//                 }
+//             }, 2000);
+
+//         });
+
+//         return false;
+//     });
+
+//     // ✅ SUBMIT PIN HANDLER
+//     $(document).on("click", "#submitPinBtn", function () {
+
+//         let pin = $("#pinInput").val();
+
+//         if (!pin) {
+//             notify("PIN is required", "error");
+//             return;
+//         }
+
+//         pageOverlay.show();
+
+//         $.post(PATH + "add_funds/korapay/validate_charge", {
+//             charge_id: window.korapayChargeId,
+//             type: "pin",
+//             value: pin,
+//             token: token
+//         }, function (res) {
+
+//             setTimeout(() => pageOverlay.hide(), 800);
+
+//             console.log("✅ PIN Validation Response:", res);
+
+//             if (!is_json(res)) {
+//                 notify("Invalid response", "error");
+//                 return;
+//             }
+
+//             res = JSON.parse(res);
+
+//             // ✅ PIN accepted → OTP required
+//             if (res.status === "requires_otp") {
+
+//                 console.log("📩 Switching to OTP modal...");
+
+//                 if (pinModal) pinModal.hide();
+
+//                 otpModal = new bootstrap.Modal(document.getElementById("otpModal"));
+//                 otpModal.show();
+
+//                 notify("OTP is required to continue", "info");
+//                 return;
+//             }
+
+//             // ✅ Payment completed after PIN
+//             if (res.status === "success") {
+//                 window.location.href = res.redirect_url;
+//                 return;
+//             }
+
+//             // ❌ Failed
+//             notify(res.message, res.status);
+
+//         });
+
+//     });
+
+//     // ✅ SUBMIT OTP HANDLER
+//     $(document).on("click", "#submitOtpBtn", function () {
+
+//         let otp = $("#otpInput").val();
+
+//         if (!otp) {
+//             notify("OTP is required", "error");
+//             return;
+//         }
+
+//         pageOverlay.show();
+
+//         $.post(PATH + "add_funds/korapay/validate_charge", {
+//             charge_id: window.korapayChargeId,
+//             type: "otp",
+//             value: otp,
+//             token: token
+//         }, function (res) {
+
+//             setTimeout(() => pageOverlay.hide(), 800);
+
+//             console.log("✅ OTP Validation Response:", res);
+
+//             if (!is_json(res)) {
+//                 notify("Invalid response", "error");
+//                 return;
+//             }
+
+//             res = JSON.parse(res);
+
+//             // ✅ SUCCESS after OTP
+//             if (res.status === "success") {
+//                 window.location.href = res.redirect_url;
+//                 return;
+//             }
+
+//             // ❌ Error
+//             notify(res.message, res.status);
+
+//         });
+
+//     });
+
+// };
+
+
+
 
     this.users = function(){
 
@@ -848,5 +1070,6 @@ function Common(){
 }
 Common = new Common();
 $(function(){
+    // console.log("✅ common.js LOADED VERSION 3");
     Common.init();
 });

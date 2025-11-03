@@ -50,7 +50,7 @@ class add_funds extends My_UserController
         $this->template->build('index', $data);
     }
 
-    public function process()
+    public function process_old()
     {
         _is_ajax($this->module);
         $payment_id     = (int)post("payment_id");
@@ -110,6 +110,152 @@ class add_funds extends My_UserController
         $payment_module->create_payment($data_payment);
 
     }
+    public function process()
+    {
+        // STEP 0 — Basic debug wrapper
+        try {
+
+            // ===== STEP 1: Check AJAX module =====
+            // echo json_encode(["debug_step" => "STEP 1", "module_received" => $this->module]);
+            // _is_ajax($this->module);
+
+            // ===== STEP 2: POST values =====
+            $payment_id = (int)post("payment_id");
+            $amount     = (double)post("amount");
+            $agree      = post("agree");
+
+            // echo json_encode([
+            //     "debug_step" => "STEP 2",
+            //     "payment_id" => $payment_id,
+            //     "amount" => $amount,
+            //     "agree" => $agree,
+            //     "raw_post" => $_POST
+            // ]);
+
+            if ($amount == "") {
+                // echo json_encode(["error" => "amount_is_required"]);
+                ms(["error" => "amount_is_required"]);
+            }
+            if ($amount < 0) {
+                // echo json_encode(["error" => "amount_must_be_greater_than_zero"]);
+                ms(["error" => "amount_must_be_greater_than_zero"]);
+            }
+
+            // ===== STEP 3: Load payment method from DB =====
+            $payment = $this->model->get(
+                'id, type, name, params',
+                $this->tb_payments,
+                ['id' => $payment_id]
+            );
+
+            // echo json_encode([
+            //     "debug_step" => "STEP 3",
+            //     "payment_from_db" => $payment
+            // ]);
+
+            if (!$payment) {
+                // echo json_encode(["error" => "Payment ID not found"]);
+                ms(["error" => "Payment ID not found"]);
+            }
+
+            // ===== STEP 4: Validate min/max =====
+            $min_payment = get_value($payment->params, 'min');
+            $max_payment = get_value($payment->params, 'max');
+
+            // echo json_encode([
+            //     "debug_step" => "STEP 4",
+            //     "min_payment" => $min_payment,
+            //     "max_payment" => $max_payment
+            // ]);
+
+            if ($amount < $min_payment) {
+                // echo json_encode(["error" => "Less than min: $min_payment"]);
+                ms(["error" => "Less than min: $min_payment"]);
+            }
+            if ($max_payment > 0 && $amount > $max_payment) {
+                // echo json_encode(["error" => "More than max: $max_payment"]);
+                ms(["error" => "More than max: $max_payment"]);
+            }
+            if (!$agree) {
+                // echo json_encode(["error" => "Must agree to terms"]);
+                ms(["error" => "Must agree to terms"]);
+            }
+
+            // ===== STEP 5: Build gateway data =====
+            $data_payment = [
+                "module"       => get_class($this),
+                "amount"       => $amount,
+                "card_number"  => post("card_number"),
+                "expiry_month" => post("expiry_month"),
+                "expiry_year"  => post("expiry_year"),
+                "cvv"          => post("cvv"),
+                "stripeToken"  => post("stripeToken"),
+            ];
+
+            // echo json_encode([
+            //     "debug_step" => "STEP 5",
+            //     "data_payment_array" => $data_payment
+            // ]);
+
+            // ===== STEP 6: Load gateway file =====
+            $payment_method = $payment->type;
+            $file_path = APPPATH . 'modules/add_funds/controllers/' . $payment_method . '.php';
+
+            // echo json_encode([
+            //     "debug_step" => "STEP 6",
+            //     "gateway_file_path" => $file_path,
+            //     "file_exists" => file_exists($file_path)
+            // ]);
+
+            if (!file_exists($file_path)) {
+                // echo json_encode(["error" => "Gateway file does NOT exist at: ".$file_path]);
+                ms(["error" => "Gateway file does NOT exist at: ".$file_path]);
+            }
+
+            require_once $file_path;
+
+            // ===== STEP 7: Instantiate gateway controller =====
+            // echo json_encode([
+            //     "debug_step" => "STEP 7",
+            //     "class_name_to_instantiate" => $payment_method,
+            //     "class_exists" => class_exists($payment_method)
+            // ]);
+
+            if (!class_exists($payment_method)) {
+                // echo json_encode(["error" => "Class '$payment_method' does NOT exist inside file"]);
+                ms(["error" => "Class '$payment_method' does NOT exist inside file"]);
+            }
+
+            $payment_module = new $payment_method($payment);
+
+            // echo json_encode([
+            //     "debug_step" => "STEP 8",
+            //     "gateway_object_created" => get_class($payment_module)
+            // ]);
+
+            // ===== STEP 9: Call gateway =====
+            $payment_module->create_payment($data_payment);
+
+            // echo json_encode([
+            //     "debug_step" => "STEP 9",
+            //     "status" => "create_payment CALLED successfully"
+            // ]);
+
+        } catch (Throwable $e) {
+
+            // CATCH ANY 500 ERROR & RETURN JSON INSTEAD
+            // echo json_encode([
+            //     "status" => "fatal_error",
+            //     "message" => $e->getMessage(),
+            //     "file" => $e->getFile(),
+            //     "line" => $e->getLine(),
+            //     "trace" => $e->getTraceAsString()
+            // ]);
+            ms(["status" => "fatal_error", "message" => $e->getMessage()]);
+
+        }
+    }
+
 
     public function success()
     {

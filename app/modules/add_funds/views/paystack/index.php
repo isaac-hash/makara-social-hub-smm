@@ -276,7 +276,7 @@
         <div class="modal-body">
           <div class="form-group">
             <label for="amount" class="form-label">Amount Sent (<?php echo $currency_code; ?>)</label>
-            <input type="number" class="form-control" id="amount" name="amount" placeholder="e.g., 5000" required>
+            <input type="number" class="form-control" id="amount" name="amount" placeholder="e.g., 5000" min="1050" required>
           </div>
           <div class="form-group">
             <label for="receipt" class="form-label">Receipt (Image or PDF)</label>

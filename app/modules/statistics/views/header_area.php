@@ -94,7 +94,7 @@ $user_balance = isset($user->balance) ? number_format($user->balance, 2) : '0.00
     <?php
       foreach ($header_area as $key => $item) {
     ?>
-      <div class="col-sm-6 col-lg-3 mb-3 mb-sm-4">
+      <div class="col-sm-6 col-lg-5 mb-3 mb-sm-4">
         <div class="card shadow-sm border-0 h-100 stats-card">
           <div class="card-body p-3 p-sm-4">
             <div class="d-flex align-items-center flex-column flex-sm-row text-center text-sm-left">

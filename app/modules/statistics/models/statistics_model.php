@@ -28,10 +28,15 @@ class statistics_model extends MY_Model
             //     'class' => 'bg-success-gradient',
             //     'icon' => 'fe fe-dollar-sign'],
             'transactions' => [
-                'name' => lang("total_amount_spent"),
+                'name' => 'Total Amount Credited',
                 'value' => $this->currency_symbol . currency_format($total_amount_sent),
                 'class' => 'bg-info-gradient',
                 'icon' => 'fa-solid fa-naira-sign'],
+            // 'transactions' => [
+            //     'name' => lang("total_amount_spent"),
+            //     'value' => $this->currency_symbol . currency_format($total_amount_sent),
+            //     'class' => 'bg-info-gradient',
+            //     'icon' => 'fa-solid fa-naira-sign'],
             'orders' => [
                 'name' => lang("total_orders"),
                 'value' => $total_orders,

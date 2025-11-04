@@ -517,7 +517,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a href="<?=cn($header_elements['services']['route-name']); ?>" class="menu-link">
+                <a href="<?=cn('prices-services'); ?>" class="menu-link">
                     <i class="fa-brands fa-servicestack menu-icon"></i>
                     <span>Services</span>
                 </a>

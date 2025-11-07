@@ -1,142 +1,4 @@
 <style>
-  /* Desktop - with sidebar offset */
-  .responsive-section-header {
-    margin-top: 9rem;
-    margin-left: 9rem;
-  }
-  
-  .responsive-content-row {
-    margin-left: 6rem;
-  }
-  
-  /* Tablet Screens (768px to 991px) */
-  @media (max-width: 991px) {
-    .responsive-section-header {
-      margin-left: 5rem;
-      margin-top: 7rem;
-    }
-    
-    .responsive-content-row {
-      margin-left: 2.5rem;
-      margin-right: 1rem;
-    }
-  }
-  
-  /* Mobile Screens (below 768px) */
-  @media (max-width: 767px) {
-    .responsive-section-header {
-      margin-left: 0;
-      margin-right: 0;
-      margin-top: 6rem;
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-    
-    .responsive-content-row {
-      margin-left: 0;
-      margin-right: 0;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-    }
-    
-    .responsive-content-row .card {
-      margin-bottom: 1rem;
-    }
-  }
-  
-  /* Extra Small Screens (below 576px) */
-  @media (max-width: 575px) {
-    .responsive-section-header {
-      margin-top: 6rem;
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
-    }
-    
-    .responsive-section-header .page-title {
-      font-size: 1.25rem;
-    }
-    
-    .responsive-content-row {
-      padding-left: 0.25rem;
-      padding-right: 0.25rem;
-    }
-    
-    .responsive-content-row .card-body {
-      padding: 1rem;
-    }
-    
-    /* Adjust search area on mobile */
-    .search-area {
-      margin-top: 1rem;
-    }
-    
-    .search-area .input-group {
-      width: 100%;
-    }
-  }
-  
-  /* When sidebar is collapsed or hidden */
-  @media (min-width: 768px) {
-    body.sidebar-collapsed .responsive-section-header,
-    body.sidebar-hidden .responsive-section-header {
-      margin-left: 1rem;
-    }
-    
-    body.sidebar-collapsed .responsive-content-row,
-    body.sidebar-hidden .responsive-content-row {
-      margin-left: 0.5rem;
-    }
-  }
-</style>
-
-
-
-<?php
-  if ($active_payments) : ?>
-<section class="add-funds m-t-30 responsive-section-header" >   
-  <div class="container-fluid">
-    <div class="row justify-content-md-center" id="result_ajaxSearch">
-      <div class="col-md-12 responsive-content-row">
-        <div class="card">
-          <div class="card-header d-flex align-items-center">
-            <div class="tabs-list">
-              <ul class="nav nav-tabs">
-                <?php
-                  $i = 0;
-                  foreach ($active_payments as $key => $row) {
-                    if ($row) {
-                      $i++;
-                ?>
-                <li class="m-t-10">
-                  <a class="<?php echo ($i == 1) ? 'active show' : ''?>" data-toggle="tab" href="#<?php echo $row['type'] ?>"><i class="fa fa-credit-card"></i> <?= esc($row['name']); ?></a>
-                </li>
-                <?php }} ?>
-              </ul>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="tab-content">
-              <?php
-                $i = 0;
-                foreach ($active_payments as $key => $row) {
-                  $i++;
-              ?>
-                <div id="<?php echo $row['type']; ?>" class="tab-pane fade  <?php echo ($i == 1) ? 'in active show' : ''?>">
-                  <?php
-                    $this->load->view($row['type'].'/index', ['payment_id' => $row['id'], 'payment_params' => $row['params']]);
-                  ?>
-                </div>  
-              <?php } ?>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<?php endif; ?>
-
-<style>
   .page-title h1{
     margin-bottom: 5px; }
     .page-title .border-line {
@@ -176,10 +38,379 @@
     }
   }
 </style>
+
+    <style>
+        :root {
+            --makara-blue: #0D0BD1;
+            --makara-orange: #FF9933;
+            --makara-border: #020c68ff;
+            --makara-blue-bg: #020c6867;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+    
+
+        .payment-card {
+            background: white;
+            border-radius: 20px;
+            /* padding: 20rem; */
+            margin: 0 auto;
+            max-width: 70%;
+            font-size: large;
+            width: 100%;
+            /* box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--makara-blue), var(--makara-orange));
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .header h2 {
+            color: #2d3748;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        /* .bank-logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--makara-blue), var(--makara-orange));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 8px 16px rgba(13, 11, 209, 0.2);
+        } */
+
+        .payment-details {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .detail-row {
+            margin-bottom: 20px;
+            transition: transform 0.2s;
+        }
+
+        .detail-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-row:hover {
+            transform: translateX(4px);
+        }
+
+        .detail-label {
+            font-size: 12px;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .detail-value {
+            font-size: 18px;
+            color: #2d3748;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .copy-btn {
+            background: var(--makara-blue);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .copy-btn:hover {
+            background: var(--makara-orange);
+            transform: scale(1.05);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        .copy-btn.copied {
+            background: #48bb78;
+        }
+
+        .footer-note {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 13px;
+            color: #718096;
+            padding: 15px;
+            background: #fff5e6;
+            border-radius: 8px;
+            border-left: 4px solid var(--makara-orange);
+        }
+
+        @media (max-width: 480px) {
+            .payment-card {
+                padding: 30px 20px;
+            }
+
+            .header h2 {
+                font-size: 24px;
+            }
+
+            .detail-value {
+                font-size: 16px;
+            }
+        }
+    </style>
+
+<div class="col-lg-8 col-md-10 mx-auto" style="margin-top: 6rem;">
+  <!-- Header Section -->
+  <div style="text-align: center; margin-bottom: 2rem;">
+    <h2 style="
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    ">
+      Fund Your Wallet
+    </h2>
+    <p style="
+      font-size: 1rem;
+      color: #666;
+      margin: 0;
+    ">
+      Choose from our various secure payment methods
+    </p>
+  </div>
+
+  <!-- Info Card -->
+  <div style="
+    background: linear-gradient(135deg, var(--makara-blue-bg) 0%, rgba(59, 130, 246, 0.05) 100%);
+    border: 1px solid var(--makara-blue);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  ">
+    <!-- Icon and Title -->
+    <div style="display: flex; align-items: start; gap: 12px; margin-bottom: 12px;">
+      <div style="
+        background: var(--makara-blue);
+        color: white;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      ">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+      </div>
+      <div>
+        <h4 style="
+          font-size: 1rem;
+          font-weight: 600;
+          color: var(--makara-blue);
+          margin: 0 0 8px 0;
+        ">
+          Important Information
+        </h4>
+        <p style="
+          font-size: 0.925rem;
+          color: #4a5568;
+          line-height: 1.6;
+          margin: 0;
+        ">
+          Your wallet will be credited instantly after successful payment. All transactions are secured with industry-standard encryption. For manual bank transfers, please allow 10-30 minutes for verification and processing.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment Methods Section Header -->
+  <div style="
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 1rem;
+  ">
+    Select Payment Method
+  </div>
+</div>
+<?php if (!empty($active_payments)): ?>
+  <div class="responsive-section-header">    
+    <?php
+      $i = 0;
+      foreach ($active_payments as $key => $row) {
+        $i++;
+    ?>
+      <div id="<?php echo $row['type']; ?>" class="tab-pane fade  <?php echo ($i == 1) ? 'in active show' : ''?>">
+        <?php
+          $this->load->view($row['type'].'/index', ['payment_id' => $row['id'], 'payment_params' => $row['params']]);
+        ?>
+      </div>  
+    <?php } ?>
+  </div>
+<?php endif; ?>
+
+
+
 <?php
   if (get_option("is_active_manual")) {
 ?>
-<section class="add-funds m-t-30">   
+<section class="add-funds m-t-30">
+
+<div style=" margin:0 auto; margin-bottom:20px;">
+    <div id="manualcard" 
+         data-toggle="modal" 
+         data-target="#manualPaymentModal" 
+         style="
+           
+           background:#000000;
+           color:#ffffff;
+           
+           
+           border-radius:8px;
+           cursor:pointer;
+           font-family:Arial, sans-serif;
+           font-size:13px;
+           
+           gap:8px;
+           transition:background 0.3s ease;
+         "
+         class="text-center text-lg-left d-flex align-items-center justify-content-center justify-content-lg-start btn col-lg-7 col-md-7 col-10 mx-auto p-3"
+         onmouseover="this.style.background='#1a1a1a'"
+         onmouseout="this.style.background='#000000'">
+      <!-- <svg width="20" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+        <line x1="1" y1="10" x2="23" y2="10"></line>
+      </svg> -->
+      <i class="fa-solid fa-credit-card"></i>
+      <span>Fund With manual bank transfer</span>
+    </div>
+  
+</div>
+
+
+  <!-- Manual Payment Modal -->
+  <div class="modal fade" id="manualPaymentModal" tabindex="-1" role="dialog" aria-labelledby="manualPaymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content payment-card">
+          <div class="p-5">
+              <div class=""></div>
+              <h2>Manual Payment</h2>
+              <p>Transfer funds to the account below</p>
+          </div>
+
+          <div class="payment-details">
+              <div class="detail-row">
+                  <div class="detail-label">Account Number</div>
+                  <div class="detail-value">
+                      <span id="accountNumber">3002544156</span>
+                      <button class="copy-btn" onclick="copyToClipboard('accountNumber', this)">Copy</button>
+                  </div>
+              </div>
+
+              <div class="detail-row">
+                  <div class="detail-label">Account Name</div>
+                  <div class="detail-value">
+                      <span id="accountName">Makara Social Hub</span>
+                      <button class="copy-btn" onclick="copyToClipboard('accountName', this)">Copy</button>
+                  </div>
+              </div>
+
+              <div class="detail-row">
+                  <div class="detail-label">Bank Name</div>
+                  <div class="detail-value">
+                      <span>Kuda Bank</span>
+                  </div>
+              </div>
+          </div>
+
+          <div class="footer-note">
+              💡 After payment, please upload your receipt for verification
+          </div>
+
+          <div class="text-center mt-3 p-4">
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#uploadReceiptModal" data-dismiss="modal">
+                  <i class="fe fe-upload"></i> Upload Receipt
+              </button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- Upload Receipt Modal -->
+<div class="modal fade" id="uploadReceiptModal" tabindex="-1" role="dialog" aria-labelledby="uploadReceiptModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <form id="uploadReceiptForm" action="<?=cn('add_funds/upload_receipt')?>" method="POST" enctype="multipart/form-data">
+        <div class="modal-header">
+          <h5 class="modal-title" id="uploadReceiptModalLabel">Upload Payment Receipt</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="amount" class="form-label">Amount Sent (<?php echo $currency_code; ?>)</label>
+            <input type="number" class="form-control" id="amount" name="amount" placeholder="e.g., 5000" required>
+          </div>
+          <div class="form-group">
+            <label for="receipt" class="form-label">Receipt (Image or PDF)</label>
+            <input type="file" class="form-control-file" id="receipt" name="receipt" accept="image/*,application/pdf" required>
+          </div>
+          <div id="alert-message"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary btn-submit">Submit Receipt</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>   
   <div class="container-fluid">
     <div class="row justify-content-center m-t-50">
       <div class="col-md-8">

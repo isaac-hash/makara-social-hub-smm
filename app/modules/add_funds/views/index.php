@@ -201,6 +201,120 @@
 
 <script>
   $(document).ready(function() {
+    let transactionReference = null;
+    let originalReference = null;
+
+    // Handle the main payment form submission
+    $(document).on('submit', '.actionAddFundsForm', function(e) {
+        e.preventDefault();
+        pageOverlay.show();
+
+        var form = $(this);
+        var formData = new FormData(this);
+        
+        if (typeof token !== 'undefined') {
+            formData.append('token', token);
+        }
+
+        $.ajax({
+            url: '<?= cn("add_funds/process") ?>',
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                pageOverlay.hide();
+
+                if (response.status === 'success' && response.redirect_url) {
+                    window.location.href = response.redirect_url;
+                } else if (response.status === 'requires_pin') {
+                    transactionReference = response.transaction_reference;
+                    originalReference = response.reference;
+                    $('#pinModal').modal('show');
+                    if (response.message) {
+                      notify(response.message, 'info');
+                    }
+                } else if (response.status === 'requires_otp') {
+                    transactionReference = response.transaction_reference;
+                    originalReference = response.reference;
+                    $('#otpModal').modal('show');
+                     if (response.message) {
+                      notify(response.message, 'info');
+                    }
+                } else {
+                    var message = response.message || 'An unknown error occurred.';
+                    notify(message, 'error');
+                }
+            },
+            error: function(xhr, status, error) {
+                pageOverlay.hide();
+                console.error("Payment Error:", xhr.responseText);
+                notify("An unexpected error occurred. Please try again.", "error");
+            }
+        });
+    });
+
+    // Handle PIN submission
+    $('#submitPinBtn').on('click', function() {
+        var pin = $('#pinInput').val();
+        if (!pin) {
+            notify('Please enter your PIN.', 'error');
+            return;
+        }
+        pageOverlay.show();
+        $('#pinModal').modal('hide');
+
+        $.post('<?= cn("add_funds/korapay/validate_charge") ?>', {
+            transaction_reference: transactionReference,
+            type: 'pin',
+            value: pin,
+            token: token 
+        }, function(response) {
+            pageOverlay.hide();
+            if (response.status === 'success' && response.redirect_url) {
+                window.location.href = response.redirect_url;
+            } else {
+                var message = response.message || 'PIN validation failed.';
+                notify(message, 'error');
+            }
+        }, 'json').fail(function(xhr) {
+            pageOverlay.hide();
+            console.error("PIN Validation Error:", xhr.responseText);
+            notify('An error occurred during PIN validation.', 'error');
+        });
+    });
+
+    // Handle OTP submission
+    $('#submitOtpBtn').on('click', function() {
+        var otp = $('#otpInput').val();
+        if (!otp) {
+            notify('Please enter the OTP.', 'error');
+            return;
+        }
+        pageOverlay.show();
+        $('#otpModal').modal('hide');
+
+        $.post('<?= cn("add_funds/korapay/validate_charge") ?>', {
+            transaction_reference: transactionReference,
+            type: 'otp',
+            value: otp,
+            token: token
+        }, function(response) {
+            pageOverlay.hide();
+            if (response.status === 'success' && response.redirect_url) {
+                window.location.href = response.redirect_url;
+            } else {
+                var message = response.message || 'OTP validation failed.';
+                notify(message, 'error');
+            }
+        }, 'json').fail(function(xhr) {
+            pageOverlay.hide();
+            console.error("OTP Validation Error:", xhr.responseText);
+            notify('An error occurred during OTP validation.', 'error');
+        });
+    });
+
     // Use event delegation for the form inside the modal
     $(document).on('submit', '#uploadReceiptForm', function(e) {
         e.preventDefault();

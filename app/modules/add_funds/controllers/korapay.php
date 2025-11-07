@@ -83,6 +83,16 @@ class Korapay extends MX_Controller {
         $card_number  = $data_payment['card_number']  ?? post("card_number");
         $expiry_month = $data_payment['expiry_month'] ?? post("expiry_month");
         $expiry_year  = $data_payment['expiry_year']  ?? post("expiry_year");
+        // Normalize to 2 digits
+        $expiry_year = trim((string)$expiry_year);
+        if (strlen($expiry_year) === 4) {
+            $expiry_year = substr($expiry_year, -2);  // 2030 → 30
+        }
+
+        // Update validation to enforce 2 digits
+        if (!preg_match('/^\d{2}$/', $expiry_year)) {
+            $jsonError("Invalid expiry year: Must be 2 digits (e.g., 30).");
+        }
         $cvv          = $data_payment['cvv']          ?? post("cvv");
         $amount       = (double) ($data_payment['amount'] ?? post("amount"));
 

@@ -1,3 +1,6 @@
+
+
+
 <?php
   $min_amount = get_value($payment_params, 'min');
   $type       = get_value($payment_params, 'type');
@@ -7,7 +10,7 @@
        data-toggle="modal"
        data-target="#addFundsModal"
        style="
-         background:#583405ff;
+         background:var(--makara-orange);
            color:#ffffff;
            outline:2px solid black;
            border:2px solid oldlace;
@@ -20,7 +23,7 @@
        "
        class="text-center text-lg-left d-flex align-items-center justify-content-center justify-content-lg-start btn col-lg-8 col-md-8 col-11 mx-auto p-3"
        onmouseover="this.style.background='#1a1a1a'"
-       onmouseout="this.style.background='#583405ff'">
+       onmouseout="this.style.background='var(--makara-orange)'">
       <i class="fa-solid fa-credit-card"></i>
       <span>Fund With Korapay</span>
     </div>

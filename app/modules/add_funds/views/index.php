@@ -266,7 +266,7 @@
         </h4>
         <p style="
           font-size: 0.925rem;
-          color: #e68f1dff;
+          color: #fff;
           line-height: 1.6;
           margin: 0;
         ">
@@ -315,7 +315,7 @@
          data-target="#manualPaymentModal" 
          style="
            
-           background:#583405ff;
+           background:var(--makara-orange);
            color:#ffffff;
            outline:2px solid black;
            border:2px solid oldlace;
@@ -331,7 +331,7 @@
          "
          class="text-center text-lg-left d-flex align-items-center justify-content-center justify-content-lg-start btn col-lg-7 col-md-7 col-10 mx-auto p-3"
          onmouseover="this.style.background='#1a1a1a'"
-         onmouseout="this.style.background='#583405ff'">
+         onmouseout="this.style.background='var(--makara-orange)'">
       <!-- <svg width="20" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
         <line x1="1" y1="10" x2="23" y2="10"></line>

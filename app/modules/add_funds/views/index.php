@@ -184,6 +184,12 @@
             border-left: 4px solid var(--makara-orange);
         }
 
+        @media (max-width: 767px) {
+            .payment-card {
+                max-width: 95%;
+            }
+        }
+
         @media (max-width: 480px) {
             .payment-card {
                 padding: 30px 20px;
@@ -220,10 +226,11 @@
     </p>
   </div>
 
+  <!-- background: linear-gradient(135deg, var(--makara-blue-bg) 0%, rgba(59, 130, 246, 0.05) 100%); -->
   <!-- Info Card -->
   <div style="
-    background: linear-gradient(135deg, var(--makara-blue-bg) 0%, rgba(59, 130, 246, 0.05) 100%);
-    border: 1px solid var(--makara-blue);
+    background: var(--makara-blue);
+    border: 1px solid var(--makara-blue-bg);
     border-radius: 12px;
     padding: 1.5rem;
     margin-bottom: 2rem;
@@ -250,16 +257,16 @@
       </div>
       <div>
         <h4 style="
-          font-size: 1rem;
+          font-size: 1rem;  
           font-weight: 600;
-          color: var(--makara-blue);
+          color: white;
           margin: 0 0 8px 0;
         ">
           Important Information
         </h4>
         <p style="
           font-size: 0.925rem;
-          color: #4a5568;
+          color: #e68f1dff;
           line-height: 1.6;
           margin: 0;
         ">
@@ -308,10 +315,12 @@
          data-target="#manualPaymentModal" 
          style="
            
-           background:#000000;
+           background:#583405ff;
            color:#ffffff;
+           outline:2px solid black;
+           border:2px solid oldlace;
            
-           
+           /*#e68f1dff  */
            border-radius:8px;
            cursor:pointer;
            font-family:Arial, sans-serif;
@@ -322,7 +331,7 @@
          "
          class="text-center text-lg-left d-flex align-items-center justify-content-center justify-content-lg-start btn col-lg-7 col-md-7 col-10 mx-auto p-3"
          onmouseover="this.style.background='#1a1a1a'"
-         onmouseout="this.style.background='#000000'">
+         onmouseout="this.style.background='#583405ff'">
       <!-- <svg width="20" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
         <line x1="1" y1="10" x2="23" y2="10"></line>
@@ -336,9 +345,9 @@
 
   <!-- Manual Payment Modal -->
   <div class="modal fade" id="manualPaymentModal" tabindex="-1" role="dialog" aria-labelledby="manualPaymentModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content payment-card">
-          <div class="p-5">
+          <div class="p-2" style="">
               <div class=""></div>
               <h2>Manual Payment</h2>
               <p>Transfer funds to the account below</p>
@@ -373,7 +382,7 @@
               💡 After payment, please upload your receipt for verification
           </div>
 
-          <div class="text-center mt-3 p-4">
+          <div class="text-center mt-2 mt-md-3 p-2">
               <button type="button" class="btn btn-success" data-toggle="modal" data-target="#uploadReceiptModal" data-dismiss="modal">
                   <i class="fe fe-upload"></i> Upload Receipt
               </button>
@@ -412,7 +421,7 @@
   </div>
 </div>   
   <div class="container-fluid">
-    <div class="row justify-content-center m-t-50">
+    <!-- <div class="row justify-content-center m-t-50">
       <div class="col-md-8">
         <div class="page-title m-b-30">
           <h1><i class="fa fa-hand-o-right"></i> 
@@ -424,7 +433,7 @@
           <?php echo htmlspecialchars_decode(get_option('manual_payment_content', ''), ENT_QUOTES)?>
         </div>
       </div> 
-    </div>
+    </div> -->
 
   </div>
 </section>

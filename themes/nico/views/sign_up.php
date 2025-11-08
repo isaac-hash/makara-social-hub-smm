@@ -244,6 +244,18 @@
                         <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="input-with-icon">
+                        <span class="input-icon">👤</span>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-with-icon">
+                        <span class="input-icon"><i class="fa fa-phone"></i></span>
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone Number" required>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <div class="input-with-icon">
@@ -264,6 +276,22 @@
                         </button>
                     </div>
                 </div>
+
+                <div class="form-group">
+                              <select  name="timezone" class="form-control square">
+                                <?php $time_zones = tz_list();
+                                  if (!empty($time_zones)) {
+                                    $location = get_location_info_by_ip(get_client_ip());
+                                    $user_timezone = $location->timezone;
+                                    if ($user_timezone == "" || $user_timezone == 'Unknow') {
+                                      $user_timezone = get_option("default_timezone", 'UTC');
+                                    }
+                                    foreach ($time_zones as $key => $time_zone) {
+                                ?>
+                                <option value="<?=$time_zone['zone']?>" <?=($user_timezone == $time_zone["zone"])? 'selected': ''?>><?=$time_zone['time']?></option>
+                                <?php }}?>
+                              </select>
+                            </div>
 
                 <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" name="terms" id="terms" required>
@@ -352,5 +380,19 @@
         });
     });
     </script>
+
+    <script>
+      $(document).ready(function(){
+        var is_notification_popup = "<?=get_option('enable_notification_popup', 0)?>"
+        setTimeout(function(){
+            if (is_notification_popup == 1) {
+              $("#notification").modal('show');
+            }else{
+              $("#notification").modal('hide');
+            }
+        },500);
+     });
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

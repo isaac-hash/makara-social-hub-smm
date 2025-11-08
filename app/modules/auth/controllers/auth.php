@@ -199,11 +199,13 @@ class auth extends My_UserController
         $terms       = post('terms');
         $first_name  = post('first_name');
         $last_name   = post('last_name');
+        $username   = post('username');
         $email       = post('email');
+        $phone       = post('phone');
         $password    = post('password');
         $re_password = post('re_password');
         $timezone    = post('timezone');
-        if ($first_name == '' || $last_name == '' || $password == '' || $email == '') {
+        if ($first_name == '' || $last_name == '' || $password == '' || $email == '' || $re_password == '' || $timezone == '' || $username == '' || $phone == '') {
             ms(array(
                 'status' => 'error',
                 'message' => lang("please_fill_in_the_required_fields"),
@@ -278,6 +280,7 @@ class auth extends My_UserController
             "ids"            => ids(),
             "first_name"     => $first_name,
             "last_name"      => $last_name,
+            "username"      => $username,
             "password"       => $this->model->app_password_hash($password),
             "timezone"       => $timezone,
             "status"         => get_option('is_verification_new_account', 0) ? 0 : 1,
@@ -308,6 +311,7 @@ class auth extends My_UserController
             }
             $more_information['skype_id'] = $skype_id;
         }
+        // $more_information['phone'] = $phone;
        
         if (get_option("enable_signup_whatsapp_field", '')) {
             $whatsapp = post("whatsapp");
@@ -326,6 +330,8 @@ class auth extends My_UserController
             }
             $more_information['what_asap'] = $whatsapp;
         }
+        $more_information['what_asap'] = $phone;
+
 
         if ($more_information) {
             $data['more_information'] = json_encode($more_information);

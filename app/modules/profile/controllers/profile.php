@@ -34,10 +34,11 @@ class profile extends My_UserController
         $id          = session('uid');
         $first_name  = post('first_name');
         $last_name   = post('last_name');
+        $username   = post('username');
         $password    = post('password');
         $re_password = post('re_password');
         $timezone    = post('timezone');
-        if ($first_name == '' || $last_name == '') {
+        if ($first_name == '' || $last_name == '' || $username == '') {
             ms([
                 'status'  => 'error',
                 'message' => lang("please_fill_in_the_required_fields"),
@@ -46,6 +47,7 @@ class profile extends My_UserController
         $data = [
             "first_name" => $first_name,
             "last_name"  => $last_name,
+            "username"   => $username,
             "timezone"   => $timezone,
             "changed"    => NOW,
         ];

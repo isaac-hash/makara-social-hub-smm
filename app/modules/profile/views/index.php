@@ -130,6 +130,13 @@
               </div> 
 
               <div class="col-md-6 col-sm-6 col-xs-6">
+                  <div class="form-group">
+                    <label for="userinput5">Username</label>
+                    <input class="form-control square" name="username" type="text" value="<?=esc($item['username'] ?? '')?>">
+                  </div>
+              </div> 
+
+              <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="form-group">
                   <label for="projectinput5"><?=lang('Email')?></label>
                   <input class="form-control square" name="email" type="email" value="<?=esc($item['email'] ?? '')?>" readonly>

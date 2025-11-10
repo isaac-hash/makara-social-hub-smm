@@ -501,7 +501,7 @@
             <li class="menu-item">
                 <a href="<?=cn($header_elements['order']['route-name'])?>" class="menu-link">
                     <i class="fas fa-shopping-cart menu-icon"></i>
-                    <span>Orders</span>
+                    <span>Order History</span>
                 </a>
             </li>
             <li class="menu-item">
@@ -549,7 +549,7 @@
             <li class="menu-item">
                 <a href="<?=cn($header_elements['transactions']['route-name']); ?>" class="menu-link">
                     <i class="fa-solid fa-money-bill-transfer menu-icon"></i>
-                    <span>Transactions</span>
+                    <span>Transaction History</span>
                 </a>
             </li>
             <li class="menu-item">

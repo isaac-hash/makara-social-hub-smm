@@ -575,7 +575,7 @@ if (! function_exists('show_filter_status_button')) {
                 $current_class  = ($current_status == $item) ? 'btn-primary' : '';
                 $xhtml .= sprintf(
                     '<li class="list-inline-item">
-                        <a class="btn %s" href="%s">%s %s</a>
+                        <a class="btn  %s" href="%s">%s %s</a>
                     </li>', $current_class, $link, $tmpl_orders_status[$item]['name'], $xhtml_count_items
                 );
             }
@@ -1187,7 +1187,7 @@ if (! function_exists('show_item_transaction_type')) {
         $image_payment_path = 'assets/images/payments/' . $payment_method . '.png';
         if (file_exists($image_payment_path)) {
             $image_payment_link = BASE . 'assets/images/payments/' . $payment_method . '.png';
-            $xhtml              = sprintf('<img class="payment" src="%s" alt="%s">', $image_payment_link, $payment_method);
+            $xhtml              = sprintf('<img class="" src="%s" alt="%s">', $image_payment_link, $payment_method);
         } else {
             $xhtml = sprintf('<span class="badge bg-azure">%s</span>', ucfirst($payment_method));
         }

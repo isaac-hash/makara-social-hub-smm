@@ -106,8 +106,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item"><a class="nav-link px-3" href="<?=cn('')?>" style="color:#0D0BD1;font-weight:500;">Home</a></li>
+        <?php if (session('uid')) : ?>
+          <li class="nav-item"><a class="nav-link px-3" href="<?=cn('statistics')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Dashboard</a></li>
+        <?php endif; ?>
         <li class="nav-item"><a class="nav-link px-3" href="<?=cn('about-services')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0D0BD1'" onmouseout="this.style.color='#4F30A2'">Our Services</a></li>
-        
         <li class="nav-item"><a class="nav-link px-3" href="<?=cn('api-page')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">API</a></li>
         <li class="nav-item"><a class="nav-link px-3" href="<?=cn('home/contact')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">Contact</a></li>
         <li class="nav-item"><a class="nav-link px-3" href="<?=cn('cac')?>" style="color:#4F30A2;font-weight:500;transition:color .3s;" onmouseover="this.style.color='#0033FF'" onmouseout="this.style.color='#4F30A2'">CAC</a></li>
@@ -142,11 +144,33 @@
       </ul>
 
       <?php if (session('uid')) : ?>
-        <div class="navbar-buttons d-flex align-items-center">
-            <a href="<?= cn('statistics') ?>" class="btn px-4 rounded-pill fw-medium shadow-sm hover-lift" style="color:white;background-color:#0D0BD1;">
-                <i class="fa-solid fa-user me-2"></i> <?= lang('Hi') . ', ' . current_logged_user()->first_name ?>
-            </a>
-        </div>
+<div class="dropdown">
+
+    <a 
+        href="#" 
+        id="resourcesDropdown"
+        class="btn px-4 rounded-pill fw-medium shadow-sm hover-lift dropdown-toggle navbar-buttons d-flex align-items-center" 
+        style="color:white;background-color:#0D0BD1;"
+        data-bs-toggle="dropdown" 
+        aria-expanded="false"
+    >
+        <i class="fa-solid fa-user me-2"></i>
+        <?= lang('Hi') . ', ' . current_logged_user()->first_name ?>
+    </a>
+
+    <ul 
+        class="dropdown-menu" 
+        aria-labelledby="resourcesDropdown"
+        style="border:1px solid rgba(13,11,209,0.1);
+               box-shadow:0 4px 15px rgba(0,0,0,0.1);
+               background:white;
+               z-index:10001;"
+    >
+        <li><a class="dropdown-item" href="<?= cn('auth/logout') ?>">Logout</a></li>
+    </ul>
+
+</div>
+
         <script>
           // alert('Welcome back, <?= current_logged_user()->first_name ?>! Explore our latest services and offers to boost your social media presence.');
         </script>
@@ -170,6 +194,9 @@
   <div class="offcanvas-body">
     <ul class="navbar-nav">
       <li class="nav-item"><a class="nav-link" href="<?=cn('')?>">Home</a></li>
+      <?php if (session('uid')) : ?>
+        <li class="nav-item"><a class="nav-link" href="<?=cn('statistics')?>">Dashboard</a></li>
+      <?php endif; ?>
       <li class="nav-item"><a class="nav-link" href="<?=cn('about-services')?>">Our Services</a></li>
       <li class="nav-item"><a class="nav-link" href="<?=cn('prices-services')?>">Prices and Services</a></li>
       <li class="nav-item"><a class="nav-link" href="<?=cn('cac')?>">CAC</a></li>
@@ -178,9 +205,15 @@
       <li class="nav-item"><a class="nav-link" href="<?=cn('blog')?>">Blog</a></li>
       <li class="nav-item"><a class="nav-link" href="<?=cn('home/contact')?>">Contact</a></li>
     </ul>
+    <?php if (session('uid')) : ?>
+      <div class="mt-4">
+        <a href="<?php echo cn('auth/logout'); ?>" class="btn w-100 mb-2 rounded-pill" style="color:white;background-color:#0D0BD1;">Logout</a>
+      </div>
+    <?php else : ?>
     <div class="mt-4">
       <a href="<?=cn('auth/login')?>" class="btn w-100 mb-2 rounded-pill" style="color:#0D0BD1;background-color:white;outline:1px solid #0D0BD1;">Login</a>
       <a href="<?=cn('auth/signup')?>" class="btn w-100 rounded-pill" style="color:white;background-color:#0D0BD1;">Sign Up</a>
     </div>
+    <?php endif; ?>
   </div>
 </div>

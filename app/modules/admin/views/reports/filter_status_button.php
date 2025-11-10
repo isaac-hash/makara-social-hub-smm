@@ -2,7 +2,7 @@
   <?php 
     foreach ($report_filters as $key => $item_field) {
       $class_item = ($task == $key) ? 'btn-primary' : '';
-      echo sprintf('<li class="list-inline-item"><a class="btn %s" href="?type=%s">%s</a>', $class_item, $key, $item_field['name']);
+      echo sprintf('<li class="list-inline-item"><a class="btn text-white %s" href="?type=%s"">%s</a>', $class_item, $key, $item_field['name']);
     }
   ?>
 </ul>

@@ -224,7 +224,7 @@ if (! function_exists('user_show_filter_status_button')) {
             $current_class  = ($current_status == $item) ? 'btn-primary' : '';
             $xhtml .= sprintf(
                 '<li class="list-inline-item">
-                    <a class="btn %s" href="%s">%s %s</a>
+                    <a class="btn btn-outline-primary m-1 %s" style="color: #fff" href="%s">%s %s</a>
                 </li>', $current_class, $link, $tmpl_orders_status[$item]['name'], $xhtml_count_items
             );
         }

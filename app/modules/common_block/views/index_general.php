@@ -91,7 +91,7 @@
     }
   }
 </style>
-<div class="lists-index-ajax">
+<div class="lists-index-ajax" style="margin-top:6rem;">
   <?php include('ajax_index_overplay.php'); ?>
 
   <div class="page-title m-b-20">

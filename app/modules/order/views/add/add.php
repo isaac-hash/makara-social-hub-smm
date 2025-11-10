@@ -12,7 +12,13 @@
     border: 1px solid #fcfaff;
     box-shadow: none;
   }
-</style>
+:root {
+            --makara-blue: #0D0BD1;
+            --makara-orange: #FF9933;
+            --makara-border: #020c68ff;
+            --makara-blue-bg: #020c6867;
+        }
+</style> 
 
 <?php
   $filter_categories = [];
@@ -30,7 +36,7 @@
     if (!empty($filter_categories)) $this->load->view('child/btn_filter_categories', ['filter_categories' => $filter_categories]);
   ?>
 
-  <div class="col-md-10 col-xl-10">
+  <div class="col-md-10 col-xl-10" >
     <div class="card">
       <div class="card-header d-flex align-items-center">
         <div class="tabs-list">

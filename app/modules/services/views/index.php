@@ -141,7 +141,7 @@
   <div class="row justify-content-between ">
     <div class="col-md-6">
       <h1 class="page-title">
-        <i class="fe fe-list" aria-hidden="true"> </i> 
+        <i class="fe fe-list" style="font-size: 20px;" aria-hidden="true"> </i> 
         <?=lang("Services")?>
       </h1>
     </div>

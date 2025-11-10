@@ -90,15 +90,22 @@
       margin-left: 0.5rem;
     }
   }
+
+  :root {
+            --makara-blue: #0D0BD1;
+            --makara-orange: #FF9933;
+            --makara-border: #020c68ff;
+            --makara-blue-bg: #020c6867;
+        }
 </style>
-<div class="lists-index-ajax">
+<div class="lists-index-ajax" style="margin-top: 6rem;">
   <?php include('ajax_index_overplay.php'); ?>
 
   <div class="page-title m-b-20">
     <div class="row justify-content-between responsive-section-header" >
-      <div class="col-md-2">
+      <div class="col-md-4">
         <h1 class="page-title">
-          <span class="fe fe-calendar"></span> <?=lang($controller_name)?>
+          <span class="fe fe-calendar"></span> <Obj>Order History</Obj>
         </h1>
       </div>
       <div class="col-md-4">
@@ -110,8 +117,8 @@
         </div>
       </div>
       <div class="col-md-12">
-        <div class="row justify-content-between">
-          <div class="col-md-10"  id="btn-filter-group">
+        <div class="row justify-content-between  p-2 mb-2" style="background: var(--makara-blue); border-radius: 8px;">
+          <div class="col-md-10" style=" color:wheat;"  id="btn-filter-group">
             
           </div>
           <div class="col-md-2">

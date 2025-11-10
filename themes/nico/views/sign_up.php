@@ -277,21 +277,15 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                              <select  name="timezone" class="form-control square">
-                                <?php $time_zones = tz_list();
-                                  if (!empty($time_zones)) {
-                                    $location = get_location_info_by_ip(get_client_ip());
-                                    $user_timezone = $location->timezone;
-                                    if ($user_timezone == "" || $user_timezone == 'Unknow') {
-                                      $user_timezone = get_option("default_timezone", 'UTC');
-                                    }
-                                    foreach ($time_zones as $key => $time_zone) {
-                                ?>
-                                <option value="<?=$time_zone['zone']?>" <?=($user_timezone == $time_zone["zone"])? 'selected': ''?>><?=$time_zone['time']?></option>
-                                <?php }}?>
-                              </select>
-                            </div>
+                <?php
+                  $location = get_location_info_by_ip(get_client_ip());
+                  $user_timezone = $location->timezone;
+                  if ($user_timezone == "" || $user_timezone == 'Unknow') {
+                    // $user_timezone = get_option("default_timezone", 'UTC');
+                    $user_timezone = 'Africa/Lagos';
+                  }
+                ?>
+                <input type="hidden" name="timezone" value="<?= $user_timezone ?>">
 
                 <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" name="terms" id="terms" required>

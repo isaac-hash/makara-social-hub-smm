@@ -171,8 +171,8 @@ header .admin-profile {
 }
 
 .mass_order_error .table tr td:first-child{
-  text-overflow: ellipsis;
-  overflow: hidden;
+  /* text-overflow: ellipsis; */
+  overflow: scroll;
 }
 
 /*data-empty*/
@@ -578,6 +578,7 @@ stroke-width: 2px;
 .table th, .text-wrap table th {
   text-transform: capitalize !important;
   font-size: 0.75rem  !important;
+  overflow: scroll;
 }
 
 

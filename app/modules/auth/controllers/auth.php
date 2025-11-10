@@ -204,7 +204,7 @@ class auth extends My_UserController
         $phone       = post('phone');
         $password    = post('password');
         $re_password = post('re_password');
-        $timezone    = post('timezone');
+        $timezone    = "Africa/Lagos"; //post('timezone');
         if ($first_name == '' || $last_name == '' || $password == '' || $email == '' || $re_password == '' || $timezone == '' || $username == '' || $phone == '') {
             ms(array(
                 'status' => 'error',
@@ -282,7 +282,7 @@ class auth extends My_UserController
             "last_name"      => $last_name,
             "username"      => $username,
             "password"       => $this->model->app_password_hash($password),
-            "timezone"       => $timezone,
+            "timezone"       => $timezone ? $timezone : 'Africa/Lagos',
             "status"         => get_option('is_verification_new_account', 0) ? 0 : 1,
             "api_key"        => create_random_string_key(32),
             "settings"       => json_encode($settings),
@@ -547,7 +547,8 @@ class auth extends My_UserController
                 'email' => $user->email,
                 'first_name' => $user->first_name,
                 'last_name' => $user->last_name,
-                'timezone' => $user->timezone,
+                // 'timezone' => $user->timezone,
+                'timezone' => "Africa/Lagos",
             );
             set_session('user_current_info', $data_session);
             $this->model->history_ip($user->id);

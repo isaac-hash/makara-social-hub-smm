@@ -869,7 +869,7 @@ if (!function_exists('get_location_info_by_ip')) {
             $ip_data = json_decode($response);
             if (!empty($ip_data) && isset($ip_data->geoplugin_countryName)) {
                 $result->country  = $ip_data->geoplugin_countryName ?? 'Unknown';
-                $result->timezone = $ip_data->geoplugin_timezone ?? 'Unknown';
+                $result->timezone = $ip_data->geoplugin_timezone ?? 'Africa/Lagos';
                 $result->city     = $ip_data->geoplugin_city ?? 'Unknown';
             }
         }

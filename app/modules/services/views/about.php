@@ -162,7 +162,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 mx-auto text-center">
-                    <h1 class="display-4 fw-bolder text-makara-blue">Our Services: Fueling Your Digital Success</h1>
+                    <h1 class=" fw-bold text-makara-blue">Our Services: Fueling Your Digital Success</h1>
                     <p class="lead mt-3">At Makara Social Hub, we provide premium engagement, advertising, and branding solutions designed to help businesses, influencers, and creators boost visibility, grow audiences, and maximize impact across all digital platforms. We don't just offer services; we deliver measurable growth.</p>
                 </div>
             </div>

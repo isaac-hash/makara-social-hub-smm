@@ -149,7 +149,7 @@
         }
 
         .order-info-value {
-            font-size: 25px;
+            font-size: 15px;
             color: #333;
             font-weight: 500;
             word-break: break-word;
@@ -194,7 +194,7 @@
         }
 
         .order-footer-number {
-            font-size: 24px;
+            font-size: 15px;
             font-weight: 700;
             display: block;
             margin-bottom: 4px;

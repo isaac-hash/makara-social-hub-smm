@@ -1187,7 +1187,7 @@ if (! function_exists('show_item_transaction_type')) {
         $image_payment_path = 'assets/images/payments/' . $payment_method . '.png';
         if (file_exists($image_payment_path)) {
             $image_payment_link = BASE . 'assets/images/payments/' . $payment_method . '.png';
-            $xhtml              = sprintf('<img class="" src="%s" alt="%s">', $image_payment_link, $payment_method);
+            $xhtml              = sprintf('<img class="w-50" src="%s" alt="%s">', $image_payment_link, $payment_method);
         } else {
             $xhtml = sprintf('<span class="badge bg-azure">%s</span>', ucfirst($payment_method));
         }

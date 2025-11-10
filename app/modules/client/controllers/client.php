@@ -88,13 +88,23 @@ class client extends My_UserController {
         }
     }
 
-    public function terms()
+    public function termsold()
     {
         $data = array();
         if (session('uid')) {
             $this->template->set_layout('user');
         } else {
             $this->template->set_layout('general_page');
+        }
+        $this->template->build("terms/index", $data);
+    }
+    public function terms()
+    {
+        $data = array();
+        if (session('uid')) {
+            $this->template->set_layout(false);
+        } else {
+            $this->template->set_layout(false);
         }
         $this->template->build("terms/index", $data);
     }

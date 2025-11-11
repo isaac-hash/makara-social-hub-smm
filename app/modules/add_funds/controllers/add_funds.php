@@ -39,12 +39,25 @@ class add_funds extends My_UserController
                 });
             }
         }
+
+        // Manually load Korapay payment to check its debug mode status
+        $korapay_payment = $this->model->get('id, type, name, params', $this->tb_payments, ['type' => 'korapay']);
+        $korapay_debug_mode = false;
+        if ($korapay_payment) {
+            $params = json_decode($korapay_payment->params, true);
+            $option = get_value($params, 'option');
+            if (get_value($option, 'environment') === 'sandbox') {
+                $korapay_debug_mode = true;
+            }
+        }
       
         $data = array(
             "module"          => get_class($this),
             "active_payments" => $active_payments,
             "currency_code"   => get_option("currency_code", 'USD'),
             "currency_symbol" => get_option("currency_symbol", '$'),
+            // Pass the debug mode status to the view
+            "korapay_debug_mode" => $korapay_debug_mode,
         );
         $this->template->set_layout('user');
         $this->template->build('index', $data);

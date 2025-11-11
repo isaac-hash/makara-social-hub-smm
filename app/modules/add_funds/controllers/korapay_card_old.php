@@ -15,43 +15,45 @@ class Korapay extends MX_Controller {
     public $take_fee_from_user;
 
     // Toggle this to false in production
-    public $debug_mode = true;
+    protected $debug_mode = true;
 
     public function __construct($payment = "") {
-    parent::__construct();
+        parent::__construct();
 
-    $this->load->model('add_funds_model', 'model');
-    $this->load->helper('string');
+        // model + helpers
+        $this->load->model('add_funds_model', 'model');
+        $this->load->helper('string'); // for random_string if needed elsewhere
 
-    $this->tb_users            = USERS;
-    $this->tb_transaction_logs = TRANSACTION_LOGS;
-    $this->tb_payments         = PAYMENTS_METHOD;
-    $this->payment_type        = 'korapay';
+        // tables & defaults
+        $this->tb_users            = USERS;
+        $this->tb_transaction_logs = TRANSACTION_LOGS;
+        $this->tb_payments         = PAYMENTS_METHOD;
+        $this->payment_type        = 'korapay';
 
-    if (empty($payment)) {
-        $payment = $this->model->get('id, type, name, params', $this->tb_payments, ['type' => $this->payment_type]);
+        if (empty($payment)) {
+            $payment = $this->model->get(
+                'id, type, name, params',
+                $this->tb_payments,
+                ['type' => $this->payment_type]
+            );
+        }
+
+        if (empty($payment)) exit("Error: Payment method 'korapay' not configured.");
+
+        $this->payment_id = $payment->id;
+
+        $params                   = json_decode($payment->params, true);
+        $option                   = get_value($params, 'option');
+        $this->take_fee_from_user = get_value($params, 'take_fee_from_user');
+
+        $this->secret_key     = get_value($option, 'secret_key');
+        $this->encryption_key = get_value($option, 'encryption_key');
+
+        $this->api_base = "https://api.korapay.com/merchant/api/v1";
+
+        // Korapay card payments only support NGN
+        $this->currency_code = "NGN";
     }
-    if (empty($payment)) exit("Error: Payment method 'korapay' not configured.");
-
-    $this->payment_id = $payment->id;
-    $params = json_decode($payment->params, true);
-    $option = get_value($params, 'option');
-    $this->take_fee_from_user = get_value($params, 'take_fee_from_user');
-
-    $this->secret_key     = get_value($option, 'secret_key');
-    $this->encryption_key = get_value($option, 'encryption_key');
-
-    // AUTO DETECT MODE
-    $is_sandbox = get_value($option, 'environment') === 'sandbox';
-    $this->debug_mode = $is_sandbox;
-
-    // $this->api_base = $is_sandbox
-    //     ? "https://api.sandbox.korapay.com/merchant/api/v1"
-    //     : "https://api.korapay.com/merchant/api/v1";
-    $this->api_base = "https://api.korapay.com/merchant/api/v1/";
-
-    $this->currency_code = "NGN";
-}
 
     public function index() {
         redirect(cn("add_funds"));
@@ -323,201 +325,6 @@ class Korapay extends MX_Controller {
         // Failed or abandoned
         $this->db->update($this->tb_transaction_logs, ['status' => -1], ['id' => $transaction->id]);
         redirect(cn("add_funds/unsuccess"));
-    }
-
-    /**
-     * Create a bank transfer payment request.
-     *
-     * Returns JSON with virtual account details for the user to pay.
-     */
-    public function charge_with_bank_transfer()
-    {
-        _is_ajax(post('module') ?? 'add_funds');
-
-        $amount = (double)post("amount");
-
-        if (!$amount || $amount <= 0) {
-            ms(['status' => 'error', 'message' => 'Invalid amount.']);
-        }
-        if (!$this->secret_key) {
-            ms(['status' => 'error', 'message' => 'Korapay configuration missing.']);
-        }
-
-        try {
-            $reference = 'makara_bank_' . bin2hex(random_bytes(7));
-        } catch (\Throwable $e) {
-            $reference = 'makara_bank_' . uniqid() . random_string('alnum', 4);
-        }
-
-        $user_info = session('user_current_info');
-        $payload = [
-            "reference" => $reference,
-            "amount"    => $amount,
-            "currency"  => $this->currency_code,
-            "narration" => "Add funds to account",
-            "customer"  => [
-                "name"  => trim(($user_info['first_name'] ?? '') . ' ' . ($user_info['last_name'] ?? '')),
-                "email" => $user_info['email'] ?? ''
-            ]
-        ];
-
-        $response = $this->korapay_request("charges/bank-transfer", $payload);
-        log_message('debug', 'Korapay Bank Transfer Response: ' . json_encode($response));
-
-
-        $debug = $this->debug_mode ? [
-            "payload" => $payload,
-            "response" => $response
-        ] : null;
-
-        if (!isset($response['status']) || $response['status'] !== true || !isset($response['data']['bank_account'])) {
-            ms([
-                'status'  => 'error',
-                'message' => $response['message'] ?? "Failed to generate bank account.",
-                'debug'   => $debug
-            ]);
-        }
-
-        // Save PENDING transaction
-        $this->db->insert($this->tb_transaction_logs, [
-            "ids"            => ids(),
-            "uid"            => session("uid"),
-            "type"           => $this->payment_type . '_bank', // Differentiate from card
-            "transaction_id" => $reference,
-            "amount"         => $amount,
-            "status"         => 0, // Pending
-            "created"        => NOW,
-        ]);
-
-        $account_details = $response['data']['bank_account'];
-        ms([
-            'status'          => 'success',
-            'message'         => 'Bank account details generated successfully.',
-            'account_details' => [
-                'bank_name'      => $account_details['bank_name'],
-                'account_number' => $account_details['account_number'],
-                'account_name'   => $account_details['account_name'],
-                'amount'         => $amount,
-                'reference'      => $reference, // The reference is now inside bank_account
-                'expires_at'     => $account_details['expiry_date_in_utc'] ?? null
-            ],
-            'debug' => $debug
-        ]);
-    }
-
-    /**
-     * Simulate a successful bank transfer for testing.
-     * This should only be callable in debug/sandbox mode.
-     */
-    public function simulate_bank_transfer_success()
-    {
-        _is_ajax(post('module') ?? 'add_funds');
-
-        // Security: Ensure this can only run in debug mode.
-        if (!$this->debug_mode) {
-            ms(['status' => 'error', 'message' => 'This action is only available in test mode.']);
-        }
-
-        $reference = post('reference');
-        if (!$reference) {
-            ms(['status' => 'error', 'message' => 'Transaction reference is missing.']);
-        }
-
-        // Find the pending transaction
-        $transaction = $this->model->get('*', $this->tb_transaction_logs, [
-            'transaction_id' => $reference,
-            'status'         => 0, // Pending
-        ]);
-
-        if (!$transaction) {
-            ms(['status' => 'error', 'message' => 'Pending transaction not found.']);
-        }
-
-        // Mark transaction as successful
-        $this->db->update($this->tb_transaction_logs, ['status' => 1], ['id' => $transaction->id]);
-
-        // Add funds to user's balance
-        $this->model->add_funds_bonus_email($transaction, $this->payment_id);
-
-        set_session("transaction_id", $transaction->id);
-        ms(['status' => 'success', 'message' => 'Test credit applied successfully.', 'redirect_url' => cn('add_funds/success')]);
-    }
-
-    /**
-     * Handle incoming webhooks from Korapay.
-     */
-    public function webhook()
-    {
-        // 1. Get signature from header
-        $signature = $_SERVER['HTTP_X_KORAPAY_SIGNATURE'] ?? '';
-        if (!$signature) {
-            http_response_code(401);
-            exit('No signature');
-        }
-
-        // 2. Get raw request body
-        $payload = file_get_contents('php://input');
-
-        // 3. Verify signature
-        $hash = hash_hmac('sha256', $payload, $this->secret_key);
-        if (!hash_equals($hash, $signature)) {
-            http_response_code(401);
-            exit('Invalid signature');
-        }
-
-        // 4. Decode payload
-        $data = json_decode($payload, true);
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            http_response_code(400);
-            exit('Invalid JSON payload');
-        }
-
-        // 5. Check event type
-        if (isset($data['event']) && $data['event'] === 'charge.success') {
-            $charge_data = $data['data'];
-            $reference = $charge_data['reference'] ?? null;
-
-            if (!$reference) {
-                http_response_code(400);
-                exit('No reference in payload');
-            }
-
-            // 6. Find pending transaction
-            $transaction = $this->model->get('*', $this->tb_transaction_logs, [
-                'transaction_id' => $reference,
-                'status'         => 0 // Look for pending
-            ]);
-
-            if ($transaction) {
-                // 7. Verify amount matches
-                $paid_amount = (double)$charge_data['amount'];
-                if ($paid_amount >= (double)$transaction->amount) {
-                    // 8. Update transaction
-                    $txn_fee = ($this->take_fee_from_user && isset($charge_data['fee']))
-                        ? $charge_data['fee']
-                        : 0;
-
-                    $this->db->update($this->tb_transaction_logs, [
-                        'status'  => 1, // Success
-                        'txn_fee' => $txn_fee,
-                    ], ['id' => $transaction->id]);
-
-                    // 9. Add funds to user balance
-                    $transaction->txn_fee = $txn_fee;
-                    $this->model->add_funds_bonus_email($transaction, $this->payment_id);
-
-                    log_message('debug', "Korapay webhook: Successfully processed reference {$reference}.");
-                } else {
-                    log_message('error', "Korapay webhook: Amount mismatch for reference {$reference}. Expected {$transaction->amount}, got {$paid_amount}.");
-                }
-            } else {
-                log_message('warning', "Korapay webhook: Received success for an unknown or already processed transaction reference {$reference}.");
-            }
-        }
-
-        // 10. Acknowledge receipt
-        http_response_code(200);
-        echo 'Webhook received.';
     }
 
     /**

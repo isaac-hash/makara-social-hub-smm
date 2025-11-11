@@ -1,213 +1,221 @@
-
-
-
-<?php
-  $min_amount = get_value($payment_params, 'min');
-  $type       = get_value($payment_params, 'type');
-?>
-  
-  <div id="korapayCardButton"
-       data-toggle="modal"
-       data-target="#addFundsModal"
-       style="
-         background:var(--makara-orange);
-           color:#ffffff;
-           outline:2px solid black;
-           border:2px solid oldlace;
-         border-radius:8px;
-         cursor:pointer;
-         font-family:Arial, sans-serif;
-         font-size:13px;
-         gap:8px;
-         transition:background 0.3s ease;
-       "
-       class="text-center text-lg-left d-flex align-items-center justify-content-center justify-content-lg-start btn col-lg-8 col-md-8 col-11 mx-auto p-3"
-       onmouseover="this.style.background='#1a1a1a'"
-       onmouseout="this.style.background='var(--makara-orange)'">
-      <i class="fa-solid fa-credit-card"></i>
-      <span>Fund With Korapay</span>
-    </div>
-  
-  </div>
-  
-  
-  
-  <div class="modal fade" id="addFundsModal" tabindex="-1" role="dialog" aria-labelledby="addFundsModalLabel" aria-hidden="true">
-  
-    <div class="modal-dialog" role="document">
-  
-      <div class="modal-content">
-  
-        <form id="actionAddFundsForm" class="form actionAddFundsForm" action="#" method="POST">
-  
-          <div class="modal-header">
-  
-            <h5 class="modal-title" id="addFundsModalLabel">Add Funds</h5>
-  
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-  
-              <!-- <span aria-hidden="true">&times;</span> -->
-  
-            </button>
-  
-          </div>
-  
-          <div class="modal-body">
-  
-              <div class="row">
-  
-                <div class="col-md-12">
-  
-                  
-  
-                  <div class="form-group">
-  
-                      <label class="form-label">Card Number</label>
-  
-                      <input type="text" name="card_number" class="form-control" placeholder="1234 5678 1234 5678">
-  
-                  </div>
-  
-                  <div class="row">
-  
-                      <div class="col-sm-8">
-  
-                          <div class="form-group">
-  
-                              <label class="form-label">Expiration Date</label>
-  
-                              <div class="input-group">
-  
-                                  <input type="text" name="expiry_month" class="form-control" placeholder="MM">
-  
-                                  <input type="text" name="expiry_year" class="form-control" placeholder="YY">
-  
-                              </div>
-  
-                          </div>
-  
-                      </div>
-  
-                      <div class="col-sm-4">
-  
-                          <div class="form-group">
-  
-                              <label class="form-label">CVV</label>
-  
-                              <input type="text" name="cvv" class="form-control" placeholder="123">
-  
-                          </div>
-  
-                      </div>
-  
-                  </div>
-  
-  
-  
-                  <div class="form-group">
-  
-                    <label><?=sprintf(lang("amount_usd"), $currency_code)?></label>
-  
-                    <input class="form-control square" type="number" name="amount" placeholder="<?php echo $min_amount; ?>">
-  
-                  </div>                      
-  
-  
-  
-                  <div class="form-group">
-  
-                    <label class="custom-control custom-checkbox">
-  
-                      <input type="checkbox" class="custom-control-input" name="agree" value="1">
-  
-                      <span class="custom-control-label text-uppercase"><strong><?=lang("yes_i_understand_after_the_funds_added_i_will_not_ask_fraudulent_dispute_or_chargeback")?></strong></span>
-  
-                    </label>
-  
-                  </div>
-  
-                  
-  
-                  <input type="hidden" name="payment_id" value="<?php echo $payment_id; ?>">
-  
-                  <input type="hidden" name="payment_method" value="<?php echo $type; ?>">
-  
-                  
-  
-                </div>  
-  
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card" id="korapay-bank-transfer-card">
+        <div class="card-header">
+          Korapay Bank Transfer
+        </div>
+        <div class="card-body">
+          <!-- Amount Input Form -->
+          <div id="bank-transfer-form-container">
+            <form id="korapay-bank-transfer-form" action="<?php echo cn('add_funds/korapay/charge_with_bank_transfer'); ?>" method="POST">
+              <div class="form-group">
+                <label for="amount">Amount (NGN)</label>
+                <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount" required>
               </div>
-  
+              <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
+              <input type="hidden" name="module" value="add_funds">
+              <button type="submit" class="btn btn-primary w-100 mt-3" id="generate-account-btn">
+                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                Generate Bank Account
+              </button>
+            </form>
           </div>
-  
-          <div class="modal-footer">
-  
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-  
-            <button type="submit" class="btn round btn-primary btn-min-width mr-1 mb-1">
-  
-              <?=lang("Pay")?>
-  
-            </button>
-  
-          </div>
-  
-        </form>
-  
+
+          <!-- Account Details Display -->
+          <div id="account-details-container" class="d-none">
+    <div class="text-center mb-3">
+        <p class="lead">Please make a bank transfer to the account details below.</p>
+        <p class="text-danger">This account is temporary and will expire. Please pay the exact amount.</p>
+
+        <!-- SANDBOX MODE BADGE -->
+        <?php if (isset($korapay_debug_mode) && $korapay_debug_mode): ?>
+            <div class="badge bg-warning text-dark mb-2">SANDBOX MODE</div>
+        <?php else: ?>
+            <div class="badge bg-success mb-2">LIVE MODE</div>
+        <?php endif; ?>
+    </div>
+
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>Bank Name:</span>
+            <strong id="detail-bank-name"></strong>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>Account Name:</span>
+            <strong id="detail-account-name"></strong>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>Account Number:</span>
+            <strong id="detail-account-number"></strong>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>Amount:</span>
+            <strong>₦<span id="detail-amount"></span></strong>
+        </li>
+        <li id="expires-at-container" class="list-group-item d-flex justify-content-between align-items-center d-none">
+            <span>Expires At:</span>
+            <strong id="detail-expires-at"></strong>
+        </li>
+    </ul>
+
+    <div class="alert alert-success mt-3">
+        We will automatically detect your payment and credit your wallet.
+    </div>
+
+    <!-- Hidden field to store the reference -->
+    <span id="detail-reference" class="d-none"></span>
+
+    <div id="test-button-container"></div>
+</div>
+
+          <!-- Error Display -->
+          <div id="error-container" class="alert alert-danger d-none mt-3"></div>
+        </div>
       </div>
-  
     </div>
-  
   </div>
+</div>
 
+<script>
+  function copyToClipboard(elementId, button) {
+    const text = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const originalText = button.innerHTML;
+      button.innerHTML = 'Copied!';
+      setTimeout(() => {
+        button.innerHTML = originalText;
+      }, 2000);
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+      alert('Failed to copy text.');
+    });
+  }
 
-
-
+  $(document).ready(function() {
     
+    $('#korapay-bank-transfer-form').submit(function(event) {
+      event.preventDefault();
+      
+      var form = $(this);
+      var btn = $('#generate-account-btn');
+      var spinner = btn.find('.spinner-border');
+      var errorContainer = $('#error-container');
 
-      <!-- PIN Modal -->
-<div class="modal fade" id="pinModal" tabindex="-1">
-  <div class="modal-dialog modal-sm modal-dialog-centered">
-    <div class="modal-content p-3">
-      <h5 class="mb-2 text-center">Enter Card PIN</h5>
-      <input type="password" id="pinInput" class="form-control mb-3" placeholder="4-digit PIN">
-      <button class="btn btn-primary btn-block" id="submitPinBtn">Submit PIN</button>
-    </div>
-  </div>
-</div>
+      // Disable button and show spinner
+      btn.attr('disabled', true);
+      spinner.removeClass('d-none');
+      errorContainer.addClass('d-none');
 
-<!-- OTP Modal -->
-<div class="modal fade" id="otpModal" tabindex="-1">
-  <div class="modal-dialog modal-sm modal-dialog-centered">
-    <div class="modal-content p-3">
-      <h5 class="mb-2 text-center">Enter OTP</h5>
-      <input type="text" id="otpInput" class="form-control mb-3" placeholder="OTP sent to your phone">
-      <button class="btn btn-primary btn-block" id="submitOtpBtn">Submit OTP</button>
-    </div>
-  </div>
-</div>
+      $.ajax({
+        url: form.attr('action'),
+        type: 'POST',
+        dataType: 'json',
+        data: form.serialize(),
+        success: function(response) {
+          if (response.status === 'success' && response.account_details) {
+            var details = response.account_details;
 
-<div class="modal fade" id="actionAddFundsFormModal" tabindex="-1" role="dialog" aria-labelledby="actionAddFundsFormModalLabel" aria-hidden="true">
-  <div>Modal Content Here</div>
-</div>
+            // Populate details
+            $('#detail-bank-name').text(details.bank_name);
+            $('#detail-account-name').text(details.account_name);
+            $('#detail-account-number').text(details.account_number);
+            $('#detail-amount').text(details.amount.toFixed(2));
+            $('#detail-reference').text(details.reference); // This is the reference we need
 
+            // Dynamically add the test button only if in debug mode
+            <?php if (isset($korapay_debug_mode) && $korapay_debug_mode): ?>
+            var testButtonHtml = `
+              <div class="text-center mt-3">
+                  <button id="credit-test-btn" class="btn btn-warning">
+                      <span class="spinner-border spinner-border-sm d-none"></span>
+                      Credit ₦<span id="test-amount">${details.amount.toFixed(2)}</span> (Test Only)
+                  </button>
+                  <small class="text-muted d-block">Simulates payment instantly</small>
+              </div>
+            `;
+            $('#test-button-container').html(testButtonHtml);
+            <?php endif; ?>
 
+            if (details.expires_at) {
+              $('#detail-expires-at').text(new Date(details.expires_at).toLocaleString());
+              $('#expires-at-container').removeClass('d-none');
+            }
 
+            // Switch views
+            $('#bank-transfer-form-container').addClass('d-none');
+            $('#account-details-container').removeClass('d-none');
 
-    <script>
-        function copyToClipboard(elementId, button) {
-            const text = document.getElementById(elementId).textContent;
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = button.textContent;
-                button.textContent = 'Copied!';
-                button.classList.add('copied');
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.classList.remove('copied');
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy:', err);
-            });
+          } else {
+            // Show error message
+            var message = response.message || 'An unknown error occurred.';
+            errorContainer.text(message).removeClass('d-none');
+          }
+        },
+        error: function(xhr) {
+          var message = 'An error occurred while communicating with the server. Please try again.';
+          try {
+            var response = JSON.parse(xhr.responseText);
+            if (response.message) {
+              message = response.message;
+            }
+          } catch (e) {
+            // silent catch
+          }
+          errorContainer.text(message).removeClass('d-none');
+        },
+        complete: function() {
+          // Re-enable button and hide spinner
+          btn.attr('disabled', false);
+          spinner.addClass('d-none');
         }
-    </script>
+      });
+    });
+
+    // Handler for the test credit button
+    $(document).on('click', '#credit-test-btn', function() {
+      var btn = $(this);
+      var spinner = btn.find('.spinner-border');
+      var errorContainer = $('#error-container');
+      var reference = $('#detail-reference').text();
+
+      btn.attr('disabled', true);
+      spinner.removeClass('d-none');
+      errorContainer.addClass('d-none');
+
+      $.ajax({
+        url: '<?php echo cn('add_funds/korapay/simulate_bank_transfer_success'); ?>',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
+          module: 'add_funds',
+          reference: reference
+        },
+        success: function(response) {
+          if (response.status === 'success') {
+            // Redirect to success page
+            window.location.href = response.redirect_url;
+          } else {
+            errorContainer.text(response.message || 'An unknown error occurred.').removeClass('d-none');
+          }
+        },
+        error: function() {
+          errorContainer.text('A server error occurred. Please try again.').removeClass('d-none');
+        },
+        complete: function() {
+          // Re-enable button and hide spinner
+          btn.attr('disabled', false);
+          spinner.addClass('d-none');
+        }
+      });
+    });
+
+  });
+</script>
+<script>
+  $(document).ready(function() {
+    $('#korapay-form').submit(function(event) {
+    });
+  });
+</script>

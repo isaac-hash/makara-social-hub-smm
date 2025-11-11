@@ -57,8 +57,8 @@
                     <p class="mb-0">&copy; <?=date('Y')?> Makara Social Hub. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <a href="<?=cn('privacy')?>" class="text-white me-3">Privacy Policy</a>
-                    <a href="<?=cn('terms')?>" class="text-white">Terms of Service</a>
+                    <!-- <a href="<?=cn('privacy')?>" class="text-white me-3">Privacy Policy</a>
+                    <a href="<?=cn('terms')?>" class="text-white">Terms of Service</a> -->
                 </div>
             </div>
         </div>

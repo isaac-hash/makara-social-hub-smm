@@ -70,6 +70,7 @@ $route['tickets/(:num)'] = 'tickets/view/$1';
 $route['login']                   = 'auth/login';
 $route['faq']                     = 'client/faq';
 $route['terms']                   = 'client/terms';
+$route['privacy']                   = 'client/terms';
 $route['impressum']               = 'client/impressum';
 $route['cookie-policy']           = 'client/cookie_policy';
 $route['news-annoucement']        = 'client/news_annoucement';

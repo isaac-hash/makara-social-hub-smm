@@ -13,11 +13,11 @@
                         <a href="https://www.facebook.com/profile.php?id=61572953819089&mibextid=wwXIfr" style="color: #0D0BD1; text-decoration: none;" class="me-3"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://x.com/makarasocialhub?s=21" style="color: #0D0BD1; text-decoration: none;" class="me-3"><i class="fab fa-twitter"></i></a>
                         <a href="https://www.instagram.com/makarasocialhub?igsh=ZXF5cXpzMjB0OWJl&utm_source=qr" style="color: #0D0BD1; text-decoration: none;" class="me-3"><i class="fab fa-instagram"></i></a>
-                        <a href="#" style="color: #0D0BD1; text-decoration: none;" class="me-3"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.linkedin.com/company/makarasocialhub/" style="color: #0D0BD1; text-decoration: none;" class="me-3"><i class="fab fa-linkedin-in"></i></a>
                         <a href="https://www.tiktok.com/@makarasocialhub?_r=1&_d=ecf2hdem7bi0hg&sec_uid=MS4wLjABAAAAqgni1MQ5BeGFAl4X3wMQsdxs3dyHb3Lkj67QtqEJBm-1JCUcYrT-2JmHq4mZ4orL&share_author_id=6667708048776626182&sharer_language=en&source=h5_m&u_code=d55lff70k0f6m0&ug_btm=b8727,b0&social_share_type=4&utm_source=copy&sec_user_id=MS4wLjABAAAAqgni1MQ5BeGFAl4X3wMQsdxs3dyHb3Lkj67QtqEJBm-1JCUcYrT-2JmHq4mZ4orL&tt_from=copy&utm_medium=ios&utm_campaign=client_share&enable_checksum=1&user_id=6667708048776626182&share_link_id=EE22C52F-7B8F-45C9-A091-26894181DA39&share_app_id=1233" style="color: #0D0BD1; text-decoration: none;" class="me-3"><i class="fab fa-tiktok"></i></a>
                         <a href="https://youtube.com/@makarasocialhub?si=Sfm6A9WWLcShyrAD" style="color: #0D0BD1; text-decoration: none;" class="me-3"><i class="fab fa-youtube"></i></a>
-                        <a href="#" style="color: #0D0BD1; text-decoration: none;" class="me-3"><i class="fab fa-telegram"></i></a>
-                        <a href="#" style="color: #0D0BD1; text-decoration: none;" class="me-3"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/makarasocialhub" style="color: #0D0BD1; text-decoration: none;" class="me-3"><i class="fab fa-telegram"></i></a>
+                        <a href="https://chat.whatsapp.com/CsXMbFKkU5d3xHZgRG5Yji?mode=wwt" style="color: #0D0BD1; text-decoration: none;" class="me-3"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
@@ -28,6 +28,7 @@
                         <li><a href="#" style="text-decoration: none; color: #FFF;">Pricing</a></li> -->
                         <li><a href="<?=cn('home/contact')?>" style="text-decoration: none; color: #FFF;">Contact Us</a></li>
                         <li><a href="#" style="text-decoration: none; color: #FFF;">Blog</a></li>
+                        <li><a href="<?=cn('terms')?>" style="text-decoration: none; color: #FFF;">Terms and Conditions</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
@@ -56,8 +57,8 @@
                     <p class="mb-0">&copy; <?=date('Y')?> Makara Social Hub. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <a href="#" class="text-white me-3">Privacy Policy</a>
-                    <a href="#" class="text-white">Terms of Service</a>
+                    <a href="<?=cn('privacy')?>" class="text-white me-3">Privacy Policy</a>
+                    <a href="<?=cn('terms')?>" class="text-white">Terms of Service</a>
                 </div>
             </div>
         </div>

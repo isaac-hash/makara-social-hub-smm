@@ -526,7 +526,7 @@
                     <p>Sign up now to unlock powerful features and grow your audience.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Let's Get Started! 🚀</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Let's Get Started!</button>
                 </div>
             </div>
         </div>

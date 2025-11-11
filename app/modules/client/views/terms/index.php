@@ -1,73 +1,3 @@
-
-<style>
-  /* .page-title h1{
-    margin-bottom: 5px; }
-    .page-title .border-line {
-      height: 5px;
-      width: 300px;
-      background: #eca28d;
-      background: -webkit-linear-gradient(45deg, #eca28d, #f98c6b) !important;
-      background: -moz- oldlinear-gradient(45deg, #eca28d, #f98c6b) !important;
-      background: -o-linear-gradient(45deg, #eca28d, #f98c6b) !important;
-      background: linear-gradient(45deg, #eca28d, #f98c6b) !important;
-      position: relative;
-      border-radius: 30px; }
-    .page-title .border-line::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: -2.7px;
-      height: 10px;
-      width: 10px;
-      border-radius: 50%;
-      background: #fa6d7e;
-      -webkit-animation-duration: 6s;
-      animation-duration: 6s;
-      -webkit-animation-timing-function: linear;
-      animation-timing-function: linear;
-      -webkit-animation-iteration-count: infinite;
-      animation-iteration-count: infinite;
-      -webkit-animation-name: moveIcon;
-      animation-name: moveIcon; }
-
-  @-webkit-keyframes moveIcon {
-    from {
-      -webkit-transform: translateX(0);
-    }
-    to { 
-      -webkit-transform: translateX(300px);
-    }
-  } */
-</style>
-
-<!-- <div class="row justify-content-center">
-
-  <div class="col-md-8">
-    <div class="page-title m-b-30">
-      <h1>
-        <?php echo lang('Terms__Privacy_Policy'); ?>
-      </h1>
-      <div class="border-line"></div>
-    </div>
-    <div class="content">
-      <div class="title">
-        <h2><?=lang("Terms")?></h2>
-      </div>
-      <?php echo get_option("terms_content", ""); ?>
-    </div>
-  </div> 
-
-  <div class="col-md-8">
-    <div class="content m-t-30">
-      <div class="title">
-        <h2><?=lang("Privacy_Policy")?></h2>
-      </div>
-      <?php echo get_option("policy_content", ""); ?>
-    </div>
-  </div> 
-
-</div> -->
-
 <?php
 require_once 'themes/nico/views/nav.php';
 ?>
@@ -330,6 +260,7 @@ require_once 'themes/nico/views/nav.php';
             }
         }
     </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -342,75 +273,127 @@ require_once 'themes/nico/views/nav.php';
 
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                <div class="page-header">
-                    <h1>Terms & Conditions</h1>
+                <div>
+                    </div>
+                    <div class="page-header">
+                    <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1760352921/logo_famnk2.png" width="30%" alt="">
+                    <h1>Terms & Conditions & Privacy Policy</h1>
                     <p>Please read our terms and conditions carefully</p>
                 </div>
 
-                <div class="document-container">
-                    <div class="document-toolbar">
-                        <h2 class="document-title">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-                            </svg>
-                            Makara Social Hub - Terms of Service
-                        </h2>
-                        <div class="toolbar-actions">
-                            <a href="assets/uploads/Docs/Terms And Conditions.pdf" download class="toolbar-btn">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"/>
-                                </svg>
-                                Download
-                            </a>
-                            <button onclick="printDocument()" class="toolbar-btn">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M18,3H6V7H18M19,12A1,1 0 0,1 18,11A1,1 0 0,1 19,10A1,1 0 0,1 20,11A1,1 0 0,1 19,12M16,19H8V14H16M19,8H5A3,3 0 0,0 2,11V17H6V21H18V17H22V11A3,3 0 0,0 19,8Z"/>
-                                </svg>
-                                Print
-                            </button>
-                            <button onclick="toggleFullscreen()" class="toolbar-btn">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5,5H10V7H7V10H5V5M14,5H19V10H17V7H14V5M17,14H19V19H14V17H17V14M10,17V19H5V14H7V17H10Z"/>
-                                </svg>
-                                Fullscreen
-                            </button>
-                        </div>
-                    </div>
+                <div class="container my-5">
+  <div class="row">
+    <div class="mx-auto">
+      <div class="card shadow-lg">
+        
+        <div class="card-body p-4">
+          <div class="mb-4 text-center">
+            <h2 class="h5 text-secondary">Welcome to Makara Social Hub!</h2>
+            <p class="text-muted">By using our website and services, you agree to these Terms and Conditions and our Privacy Policy. Please read them carefully. If you do not agree with any part of these terms, <strong class="text-danger">DO NOT USE THIS SITE</strong>.</p>
+          </div>
 
-                    <div class="pdf-viewer-wrapper">
-                        <div class="loading-overlay" id="loadingOverlay">
-                            <div class="spinner"></div>
-                            <div class="loading-text">Loading document...</div>
-                        </div>
+          <div class="mb-4">
+            <h3 class="h5 text-primary border-bottom pb-2 mb-3">1. General Terms</h3>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">By placing an order with Makara Social Hub, you automatically accept these terms, whether you have read them or not.</li>
+              <li class="list-group-item">We reserve the right to modify these terms at any time without prior notice. You are responsible for checking updates before placing an order.</li>
+              <li class="list-group-item">You agree to use Makara Social Hub in compliance with the Terms of Service of all social media platforms (Instagram, Facebook, Twitter/X, TikTok, YouTube, etc.).</li>
+              <li class="list-group-item">Our rates may change at any time without prior notice. The refund policy remains valid regardless of rate adjustments.</li>
+              <li class="list-group-item">Makara Social Hub does not guarantee a specific delivery time for services. Estimated delivery times are subject to variations, and refunds will not be issued for processing delays.</li>
+              <li class="list-group-item">We reserve the right to modify service types when necessary to complete an order.</li>
+            </ul>
+          </div>
 
-                        <iframe 
-                            id="pdfViewer"
-                            class="pdf-viewer" 
-                            src="assets/uploads/Docs/Terms And Conditions.pdf"
-                            onload="hideLoading()"
-                            onerror="showFallback()">
-                        </iframe>
+          <div class="mb-4">
+            <h3 class="h5 text-primary border-bottom pb-2 mb-3">2. Service Disclaimer & Risks Involved</h3>
+            <p class="text-muted">By using Makara Social Hub, you acknowledge and accept the following:</p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">We are not responsible for any account suspensions, content deletions, or penalties imposed by social media platforms after using our services.</li>
+              <li class="list-group-item">Our services do not guarantee engagement, interaction, or permanent retention of followers, likes, or views.</li>
+              <li class="list-group-item">We procure services from third-party suppliers, and order fulfillment depends on their response. If a supplier does not refund an incorrectly placed order, we cannot issue a refund either.</li>
+              <li class="list-group-item">Social media algorithms change frequently, which may affect service efficiency, speed, or retention.</li>
+              <li class="list-group-item">You are expected to read service descriptions carefully before placing an order. We do not guarantee the quality or longevity of low-cost services.</li>
+              <li class="list-group-item">Private accounts will not receive services or refunds. Ensure your account is public before ordering.</li>
+              <li class="list-group-item">Uploading inappropriate content (nudity, hate speech, violence, fraud, etc.) is strictly prohibited.</li>
+            </ul>
+          </div>
 
-                        <div class="fallback-message" id="fallbackMessage">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H9V10H13V12L11,16H14V19H10Z"/>
-                            </svg>
-                            <h3>Unable to Display PDF</h3>
-                            <p>Your browser doesn't support inline PDF viewing. Please download the document to view it.</p>
-                            <a href="assets/uploads/Docs/Terms And Conditions.pdf" download class="fallback-btn">
-                                Download Terms & Conditions
-                            </a>
-                        </div>
-                    </div>
-                </div>
+          <div class="mb-4">
+            <h3 class="h5 text-primary border-bottom pb-2 mb-3">3. Refund & Dispute Policy</h3>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">No refunds will be issued to your original payment method after a deposit has been made. Funds must be used for future orders within Makara Social Hub.</li>
+              <li class="list-group-item">If an order is undeliverable, a refund will be credited to your Makara Social wallet.</li>
+              <li class="list-group-item">Incorrect, misplaced, or private account orders are non-refundable. Double-check all details before placing an order.</li>
+              <li class="list-group-item">Filing a chargeback or dispute against us will result in account suspension and service revocation without refund.</li>
+              <li class="list-group-item">Fraudulent activities (such as using stolen payment methods) will lead to account termination without exception.</li>
+              <li class="list-group-item">Do not place duplicate or overlapping orders for the same service/link, as we cannot guarantee accurate results. Such orders will not be refunded.</li>
+            </ul>
+          </div>
+
+          <div class="mb-4">
+            <h3 class="h5 text-primary border-bottom pb-2 mb-3">4. Privacy Policy</h3>
+            <div class="mb-3">
+              <h4 class="h6 text-dark">How We Use Your Information</h4>
+              <p class="text-muted">Makara Social Hub collects and processes user data solely for the purpose of providing services and improving user experience. We use your data to:</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Process orders and manage your account</li>
+                <li class="list-group-item">Provide customer support and service updates</li>
+                <li class="list-group-item">Improve website performance and user experience</li>
+                <li class="list-group-item">Prevent fraudulent activity and unauthorized access</li>
+                <li class="list-group-item">Send promotional materials (if opted in)</li>
+              </ul>
             </div>
+            <div class="mb-3">
+              <h4 class="h6 text-dark">Data Protection & Sharing</h4>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Your personal information is never sold, rented, or shared with third parties without consent.</li>
+                <li class="list-group-item">We may share data with trusted third-party service providers to facilitate order processing and payment security.</li>
+                <li class="list-group-item">In cases of legal requirements, Makara Social Hub may disclose data to comply with law enforcement requests or prevent fraudulent activities.</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="h6 text-dark">Cookies & Tracking</h4>
+              <p class="text-muted">Makara Social Hub uses cookies and tracking technologies to enhance your browsing experience. By using our website, you agree to the collection of data through cookies. You can disable cookies in your browser settings, but some features may not function properly.</p>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h3 class="h5 text-primary border-bottom pb-2 mb-3">5. Prohibited Activities</h3>
+            <p class="text-muted">By using Makara Social Hub, you agree NOT to:</p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Use the platform for illegal or deceptive activities.</li>
+              <li class="list-group-item">Violate the Terms of Service of any social media platform.</li>
+              <li class="list-group-item">Engage in spamming, hacking, or fraudulent transactions.</li>
+              <li class="list-group-item">Attempt to manipulate Makara Social Hub's pricing, services, or operations.</li>
+              <li class="list-group-item">Disrupt the security of the platform or any affiliated networks.</li>
+            </ul>
+          </div>
+
+          <div class="mb-4">
+            <h3 class="h5 text-primary border-bottom pb-2 mb-3">6. Account Termination & Service Discretion</h3>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Makara Social Hub reserves the right to terminate any account found in violation of these terms.</li>
+              <li class="list-group-item">We may refuse service to anyone at our discretion if we detect fraudulent or abusive behavior.</li>
+            </ul>
+          </div>
+
+          <div class="mb-4">
+            <h3 class="h5 text-primary border-bottom pb-2 mb-3">7. Contact & Complaints</h3>
+            <p class="text-muted">For inquiries, complaints, or disputes, contact our support team:</p>
+            <ul class="list-unstyled">
+              <li><i class="far fa-envelope text-primary me-2"></i>Email: <a href="mailto:Makarasocialhub@gmail.com">Makarasocialhub@gmail.com</a></li>
+              <li><i class="fab fa-whatsapp text-success me-2"></i>WhatsApp Support: <a href="https://wa.me/2348120054028">+234 812 005 4028</a></li>
+            </ul>
+          </div>
+
+          <div class="text-center text-muted">
+            <p>By using Makara Social Hub, you agree to these terms and acknowledge that we are not responsible for any risks or consequences arising from the use of our services.</p>
+            <p class="fw-bold">Thank you for choosing Makara Social Hub</p>
+          </div>
         </div>
+      </div>
     </div>
-<div class="p-5">
-
-</div>
-<div class="p-5">
-
+  </div>
 </div>
     <script>
         function hideLoading() {
@@ -457,9 +440,24 @@ require_once 'themes/nico/views/nav.php';
             }
         });
     </script>
-
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
 <?php
 require_once 'themes/nico/views/footer.php';
 ?>
-
-

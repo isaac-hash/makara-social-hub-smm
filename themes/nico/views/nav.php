@@ -139,7 +139,7 @@
                     <li><a class="dropdown-item" href="<?=cn('prices-services')?>">Prices and Services</a></li>
                     
                     <li><a class="dropdown-item" href="<?=cn('blog')?>">Blog</a></li>
-                    <li><a class="dropdown-item" href="<?=cn('terms')?>">Terms and Conditions</a></li>
+                    <!-- <li><a class="dropdown-item" href="<?=cn('terms')?>">Terms and Conditions</a></li> -->
                   </ul>
         </li>
       </ul>
@@ -205,7 +205,7 @@
       <!-- <li class="nav-item"><a class="nav-link" href="#features">Features</a></li> -->
       <li class="nav-item"><a class="nav-link" href="<?=cn('blog')?>">Blog</a></li>
       <li class="nav-item"><a class="nav-link" href="<?=cn('home/contact')?>">Contact</a></li>
-      <li class="nav-item"><a class="nav-link" href="<?=cn('terms')?>">Terms and Conditions</a></li>
+      <!-- <li class="nav-item"><a class="nav-link" href="<?=cn('terms')?>">Terms and Conditions</a></li> -->
     </ul>
     <?php if (session('uid')) : ?>
       <div class="mt-4">

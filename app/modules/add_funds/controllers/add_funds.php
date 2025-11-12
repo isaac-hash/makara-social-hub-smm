@@ -353,8 +353,6 @@ class add_funds extends My_UserController
             $this->template->set_layout('user');
             $this->template->build('payment_successfully', $data);
             log_message('debug', 'Add_Funds_Success: Transaction status is 1. Displaying success page.');
-        } else {
-            redirect(cn("add_funds/unsuccess"));
         }
     }
 

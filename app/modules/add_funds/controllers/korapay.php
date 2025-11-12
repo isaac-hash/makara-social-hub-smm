@@ -577,13 +577,18 @@ class Korapay extends MX_Controller {
                 log_message('debug', 'Korapay Webhook: Found pending transaction for reference ' . $reference . '. Current status: ' . $transaction->status);
                 $paid_amount = (double)$charge_data['amount'];
                 if ($paid_amount >= (double)$transaction->amount) {
-                    $txn_fee = ($this->take_fee_from_user && isset($charge_data['fee']))
+                    // $txn_fee = ($this->take_fee_from_user && isset($charge_data['fee']))
+                    //     ? $charge_data['fee']
+                    //     : 0;
+                    $note = ($this->take_fee_from_user && isset($charge_data['fee']))
                         ? $charge_data['fee']
                         : 0;
+                    $txn_fee = 50;
 
                     $this->db->update($this->tb_transaction_logs, [
                         'status'  => 1,
                         'txn_fee' => $txn_fee,
+                        'note' => $note,
                     ], ['id' => $transaction->id]);
 
                     $transaction->txn_fee = $txn_fee;

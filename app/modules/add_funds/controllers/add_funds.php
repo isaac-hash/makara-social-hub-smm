@@ -334,12 +334,18 @@ class add_funds extends My_UserController
             $lookup_column = 'id';
         }
         $transaction = $this->model->get("*", $this->tb_transaction_logs, [$lookup_column => $lookup_value, 'uid' => session('uid')], '', '', true);
-        if (!empty($transaction)) {
+
+        // Ensure a lookup value is present
+        if (!$lookup_value) {
+            redirect(cn("add_funds/unsuccess"));
+        }
+
+        // Check if transaction exists and is successful (status == 1)
+        if (!empty($transaction) && $transaction->status == 1) {
             $data = array(
                 "module" => get_class($this),
                 "transaction" => $transaction,
             );
-            unset_session("transaction_id");
             $this->template->set_layout('user');
             $this->template->build('payment_successfully', $data);
         } else {

@@ -97,6 +97,46 @@
   }
 
   $(document).ready(function() {
+
+    // Polling for bank transfer status
+    function startPollingTransactionStatus(reference) {
+      const pollInterval = 5000; // Poll every 5 seconds
+      let pollAttempts = 0;
+      const maxPollAttempts = 60; // Max 5 minutes (60 * 5 seconds)
+
+      const poll = setInterval(() => {
+        pollAttempts++;
+        if (pollAttempts > maxPollAttempts) {
+          clearInterval(poll);
+          console.log('Max poll attempts reached for transaction ' + reference);
+          // Optionally, show a message to the user or suggest manual refresh
+          return;
+        }
+
+        $.ajax({
+          url: '<?php echo cn('add_funds/korapay/check_transaction_status'); ?>',
+          type: 'POST',
+          dataType: 'json',
+          data: {
+            reference: reference,
+            '<?php echo $this->security->get_csrf_token_name();?>': '<?php echo $this->security->get_csrf_hash();?>'
+          },
+          success: function(response) {
+            if (response.status === 'success' && response.transaction_status == 1) { // Assuming 1 is 'completed'
+              clearInterval(poll);
+              window.location.href = '<?php echo cn("add_funds/success"); ?>?transaction_id=' + reference;
+            } else if (response.status === 'error') {
+              console.error('Polling error:', response.message);
+              clearInterval(poll); // Stop polling on error
+            }
+          },
+          error: function(xhr) {
+            console.error('Polling AJAX error:', xhr.responseText);
+            // Optionally, stop polling after a few errors or on specific HTTP codes
+          }
+        });
+      }, pollInterval);
+    }
     
     $('#korapay-bank-transfer-form').submit(function(event) {
       event.preventDefault();
@@ -130,6 +170,9 @@
             // Update the manual redirect button with the transaction reference
             $('#continue-to-success-btn').attr('href', '<?php echo cn("add_funds/success"); ?>?transaction_id=' + details.reference);
             $('#continue-to-success-btn').removeClass('d-none'); // Show the button
+
+            // Start polling for bank transfer status
+            startPollingTransactionStatus(details.reference);
 
             // Dynamically add the test button only if in debug mode
             <?php if (isset($korapay_debug_mode) && $korapay_debug_mode): ?>

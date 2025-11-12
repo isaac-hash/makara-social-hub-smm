@@ -45,10 +45,9 @@ class Korapay extends MX_Controller {
     $is_sandbox = get_value($option, 'environment') === 'sandbox';
     $this->debug_mode = $is_sandbox;
 
-    // $this->api_base = $is_sandbox
-    //     ? "https://api.sandbox.korapay.com/merchant/api/v1"
-    //     : "https://api.korapay.com/merchant/api/v1";
-    $this->api_base = "https://api.korapay.com/merchant/api/v1/";
+    $this->api_base = $is_sandbox
+        ? "https://api.sandbox.korapay.com/merchant/api/v1"
+        : "https://api.korapay.com/merchant/api/v1";
 
     $this->currency_code = "NGN";
 }
@@ -549,7 +548,10 @@ class Korapay extends MX_Controller {
         exit('Invalid JSON payload');
     }
 
-    // 2️⃣ Log the payload to confirm Korapay is calling your endpoint
+    // ⚠️ IMPORTANT: The current webhook implementation explicitly skips signature verification.
+    // For production environments, it is CRITICAL to implement signature verification
+    // using $_SERVER['HTTP_X_KORAPAY_SIGNATURE'] and $this->secret_key.
+    // 2️⃣ Log the payload to confirm Korapay is calling your endpoint (and for debugging)
     log_message('debug', 'Korapay Webhook Payload: ' . $payload);
 
     // 3️⃣ Handle successful payments
@@ -593,6 +595,30 @@ class Korapay extends MX_Controller {
     echo 'Webhook received (no signature check).';
 }
 
+    /**
+     * AJAX endpoint to check the status of a transaction by its reference.
+     * Used for client-side polling for bank transfers.
+     */
+    public function check_transaction_status()
+    {
+        _is_ajax(); // Ensure it's an AJAX request
+
+        $reference = post('reference');
+        if (!$reference) {
+            ms(['status' => 'error', 'message' => 'Reference is missing.']);
+        }
+
+        $transaction = $this->model->get('*', $this->tb_transaction_logs, [
+            'transaction_id' => $reference,
+            'uid'            => session('uid'),
+        ]);
+
+        if ($transaction) {
+            ms(['status' => 'success', 'transaction_status' => $transaction->status]);
+        } else {
+            ms(['status' => 'error', 'message' => 'Transaction not found.']);
+        }
+    }
 
     /**
      * Encrypts payment data exactly as Korapay expects:

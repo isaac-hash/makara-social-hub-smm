@@ -306,6 +306,7 @@ class Korapay extends MX_Controller {
         }
 
         if (!$transaction) redirect(cn("add_funds/unsuccess"));
+        log_message('debug', 'Korapay_Complete: Found pending transaction. Internal ID: ' . $transaction->id . ', External Ref: ' . $lookup_reference);
         
         $lookup_reference = $transaction->transaction_id;
 
@@ -317,7 +318,8 @@ class Korapay extends MX_Controller {
             $verify['status'] == true &&
             isset($verify['data']['status']) &&
             $verify['data']['status'] == "success"
-        ) {
+        ) { 
+            log_message('debug', 'Korapay_Complete: Korapay verification successful for Ref: ' . $lookup_reference . '. Response: ' . json_encode($verify));
             // Update transaction
             $txn_fee = ($this->take_fee_from_user && isset($verify['data']['fee']))
                 ? $verify['data']['fee']
@@ -332,10 +334,12 @@ class Korapay extends MX_Controller {
             // For bonus emails etc.
             $transaction->txn_fee = $txn_fee;
             $this->model->add_funds_bonus_email($transaction, $this->payment_id);
+            log_message('debug', 'Korapay_Complete: DB updated to status 1 for Internal ID: ' . $transaction->id);
 
             set_session("transaction_id", $transaction->id);
             redirect(cn("add_funds/success"));
         }
+        log_message('debug', 'Korapay_Complete: Korapay verification FAILED or not successful for Ref: ' . $lookup_reference . '. Response: ' . json_encode($verify));
 
         // Failed or abandoned
         $this->db->update($this->tb_transaction_logs, ['status' => -1], ['id' => $transaction->id]);
@@ -544,6 +548,7 @@ class Korapay extends MX_Controller {
     $data = json_decode($payload, true);
 
     if (json_last_error() !== JSON_ERROR_NONE) {
+        log_message('error', 'Korapay Webhook: Invalid JSON payload received.');
         http_response_code(400);
         exit('Invalid JSON payload');
     }
@@ -566,6 +571,7 @@ class Korapay extends MX_Controller {
             ]);
 
             if ($transaction) {
+                log_message('debug', 'Korapay Webhook: Found pending transaction for reference ' . $reference . '. Current status: ' . $transaction->status);
                 $paid_amount = (double)$charge_data['amount'];
                 if ($paid_amount >= (double)$transaction->amount) {
                     $txn_fee = ($this->take_fee_from_user && isset($charge_data['fee']))

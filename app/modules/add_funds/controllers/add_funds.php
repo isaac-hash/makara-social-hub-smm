@@ -338,10 +338,12 @@ class add_funds extends My_UserController
         }
 
         // If no transaction is found by either method, redirect to unsuccess.
-        if (empty($transaction)) {
+        if (empty($transaction)) { 
+            log_message('debug', 'Add_Funds_Success: No transaction found. Redirecting to unsuccess.');
             redirect(cn("add_funds/unsuccess"));
         }
 
+        log_message('debug', 'Add_Funds_Success: Transaction found. ID: ' . $transaction->id . ', Status: ' . $transaction->status . ', Type: ' . $transaction->type . ', Transaction_ID (external): ' . $transaction->transaction_id);
         // Check if transaction exists and is successful (status == 1)
         if (!empty($transaction) && $transaction->status == 1) {
             $data = array(
@@ -350,6 +352,7 @@ class add_funds extends My_UserController
             );
             $this->template->set_layout('user');
             $this->template->build('payment_successfully', $data);
+            log_message('debug', 'Add_Funds_Success: Transaction status is 1. Displaying success page.');
         } else {
             redirect(cn("add_funds"));
         }

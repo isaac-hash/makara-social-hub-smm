@@ -24,10 +24,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = '';
-$config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
-$config['base_url'] .= "://" . $_SERVER['HTTP_HOST'];
-$config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']);
+// It's better to hardcode the base URL for consistency and to avoid protocol detection issues.
+// The auto-detection logic below can be unreliable behind proxies or with certain server configs,
+// leading to issues like 307 redirects if HTTPS is enforced at the server level.
+$protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http";
+$host = $_SERVER['HTTP_HOST'];
+$script_name = str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']);
+$config['base_url'] = "https://" . $host . $script_name;
 
 
 /*

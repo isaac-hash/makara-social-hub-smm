@@ -125,7 +125,8 @@
                             </li>
                             <li>
                                 <span class="detail-label">Fee</span>
-                                <span class="detail-value"><?php echo currency_format($transaction['txn_fee'], get_option("currency_code", "NGN")); ?></span>
+                                <span class="detail-value">₦ 50</span>
+                                <!-- <span class="detail-value"><?php echo currency_format($transaction['txn_fee'], get_option("currency_code", "NGN")); ?></span> -->
                             </li>
                             <li>
                                 <span class="detail-label">Payment Method</span>

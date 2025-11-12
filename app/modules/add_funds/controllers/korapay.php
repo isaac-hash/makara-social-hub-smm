@@ -202,12 +202,12 @@ class Korapay extends MX_Controller {
             // Auto-complete in test mode
             $this->db->update($this->tb_transaction_logs, [
                 'status' => 1,
-                'txn_fee' => 0
+                'txn_fee' => 50
             ], ['transaction_id' => $reference]);
 
             $this->model->add_funds_bonus_email((object)[
                 'amount' => $amount,
-                'txn_fee' => 0
+                'txn_fee' => 50
             ], $this->payment_id);
 
             ms([
@@ -321,9 +321,10 @@ class Korapay extends MX_Controller {
         ) { 
             log_message('debug', 'Korapay_Complete: Korapay verification successful for Ref: ' . $lookup_reference . '. Response: ' . json_encode($verify));
             // Update transaction
-            $txn_fee = ($this->take_fee_from_user && isset($verify['data']['fee']))
-                ? $verify['data']['fee']
-                : 0;
+            $txn_fee = 50; // Fixed fee
+            // $txn_fee = ($this->take_fee_from_user && isset($verify['data']['fee']))
+            //     ? $verify['data']['fee']
+            //     : 0;
 
             $this->db->update($this->tb_transaction_logs, [
                 'transaction_id' => $verify['data']['reference'],

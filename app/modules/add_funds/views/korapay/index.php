@@ -12,7 +12,7 @@
               <div class="form-group">
                 <label for="amount">Amount (NGN)</label>
                 <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount" required>
-              </div>
+              </div> 
               <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
               <input type="hidden" name="module" value="add_funds">
               <button type="submit" class="btn btn-primary w-100 mt-3" id="generate-account-btn">
@@ -52,6 +52,7 @@
         <li class="list-group-item d-flex justify-content-between align-items-center">
             <span>Amount:</span>
             <strong>₦<span id="detail-amount"></span></strong>
+            <h3>A fee of ₦50 will be charged</h3>
         </li>
         <li id="expires-at-container" class="list-group-item d-flex justify-content-between align-items-center d-none">
             <span>Expires At:</span>
@@ -157,6 +158,11 @@
         dataType: 'json',
         data: form.serialize(),
         success: function(response) {
+          var amount = parseFloat($('#amount').val());
+          if (!isNaN(amount)) {
+            amount += 50;
+          }
+
           if (response.status === 'success' && response.account_details) {
             var details = response.account_details;
 
@@ -168,7 +174,7 @@
             $('#detail-reference').text(details.reference); // This is the reference we need
 
             // Update the manual redirect button with the transaction reference
-            $('#continue-to-success-btn').attr('href', '<?php echo cn("add_funds/success"); ?>?transaction_id=' + details.reference);
+            $('#continue-to-success-btn').attr('href', '<?php echo cn("add_funds/success"); ?>?transaction_id=' + details.reference); 
             $('#continue-to-success-btn').removeClass('d-none'); // Show the button
 
             // Start polling for bank transfer status
@@ -178,7 +184,7 @@
             <?php if (isset($korapay_debug_mode) && $korapay_debug_mode): ?>
             var testButtonHtml = `
               <div class="text-center mt-3">
-                  <button id="credit-test-btn" class="btn btn-warning">
+                  <button id="credit-test-btn" class="btn btn-warning"> 
                       <span class="spinner-border spinner-border-sm d-none"></span>
                       Credit ₦<span id="test-amount">${details.amount.toFixed(2)}</span> (Test Only)
                   </button>

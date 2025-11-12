@@ -121,7 +121,11 @@
                             </li>
                             <li>
                                 <span class="detail-label">Amount Paid</span>
-                                <span class="detail-value"><?php echo currency_format($transaction['amount'], get_option("currency_code", "USD")); ?></span>
+                                <span class="detail-value"><?php echo currency_format($transaction['amount'], get_option("currency_code", "NGN")); ?></span>
+                            </li>
+                            <li>
+                                <span class="detail-label">Fee</span>
+                                <span class="detail-value"><?php echo currency_format($transaction['txn_fee'], get_option("currency_code", "NGN")); ?></span>
                             </li>
                             <li>
                                 <span class="detail-label">Payment Method</span>

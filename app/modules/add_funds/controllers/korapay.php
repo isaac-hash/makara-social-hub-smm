@@ -280,25 +280,35 @@ class Korapay extends MX_Controller {
      */
     public function complete()
     {
-        $reference = $this->input->get('reference'); // Original reference from our system
-        $korapay_reference = $this->input->get('transaction_reference'); // Reference from Korapay redirect
+        $session_txn_id = session("transaction_id"); // Internal DB transaction ID
+        $get_reference = $this->input->get('reference'); // Our internal reference (e.g., makara_...)
+        $get_korapay_reference = $this->input->get('transaction_reference'); // Korapay's reference
 
-        if (!$reference && !$korapay_reference) {
+        if (!$session_txn_id && !$get_reference && !$get_korapay_reference) {
             redirect(cn("add_funds/unsuccess"));
         }
 
-        // Use our internal reference if Korapay's isn't available (e.g., direct success, not 3DS redirect)
-        $lookup_reference = $korapay_reference ?: $reference;
-        if (!$lookup_reference) redirect(cn("add_funds/unsuccess"));
+        $transaction = null;
 
-        // find pending transaction
-        $transaction = $this->model->get('*', $this->tb_transaction_logs, [
-            'transaction_id' => $lookup_reference,
-            'status'         => 0, // Must be pending
-            'type'           => $this->payment_type
-        ]);
+        // 1. Prioritize finding by internal DB ID from session
+        if ($session_txn_id) {
+            $transaction = $this->model->get('*', $this->tb_transaction_logs, ['id' => $session_txn_id, 'status' => 0]);
+        }
+
+        // 2. Fallback to finding by reference from URL
+        if (!$transaction) {
+            $lookup_reference = $get_korapay_reference ?: $get_reference;
+            if ($lookup_reference) {
+                $transaction = $this->model->get('*', $this->tb_transaction_logs, [
+                    'transaction_id' => $lookup_reference,
+                    'status'         => 0, // Must be pending
+                ]);
+            }
+        }
 
         if (!$transaction) redirect(cn("add_funds/unsuccess"));
+        
+        $lookup_reference = $transaction->transaction_id;
 
         // Verify with Korapay
         $verify = $this->korapay_request("charges/{$lookup_reference}", [], "GET");

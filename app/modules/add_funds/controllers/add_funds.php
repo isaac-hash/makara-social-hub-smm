@@ -344,9 +344,15 @@ class add_funds extends My_UserController
         }
 
         log_message('debug', 'Add_Funds_Success: Transaction found. ID: ' . $transaction->id . ', Status: ' . $transaction->status . ', Type: ' . $transaction->type . ', Transaction_ID (external): ' . $transaction->transaction_id);
-        
-        echo json_encode(["debug_step" => "STEP FINAL", "transaction" => $transaction]);
-        exit; // Stop further execution to ensure only JSON is outputted.
+
+        // echo json_encode(["debug_step" => "STEP FINAL", "transaction" => $transaction]);
+        // exit; // Stop further execution to ensure only JSON is outputted.
+        $data = array(
+            "module"      => get_class($this),
+            "transaction" => (array)$transaction, // Cast to array for consistency in view
+        );
+        $this->template->set_layout('user');
+        $this->template->build('payment_successfully', $data);
     }
 
     public function unsuccess()

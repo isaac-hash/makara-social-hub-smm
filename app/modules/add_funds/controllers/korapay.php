@@ -356,6 +356,9 @@ class Korapay extends MX_Controller {
         _is_ajax(post('module') ?? 'add_funds');
 
         $amount = (double)post("amount");
+        $fee = 50; // Your fixed fee
+        $total_amount = $amount + $fee;
+
 
         if (!$amount || $amount <= 0) {
             ms(['status' => 'error', 'message' => 'Invalid amount.']);
@@ -373,7 +376,7 @@ class Korapay extends MX_Controller {
         $user_info = session('user_current_info');
         $payload = [
             "reference" => $reference,
-            "amount"    => $amount,
+            "amount"    => $total_amount,
             "currency"  => $this->currency_code,
             "narration" => "Add funds to account",
             "customer"  => [
@@ -406,6 +409,7 @@ class Korapay extends MX_Controller {
             "type"           => $this->payment_type . '_bank', // Differentiate from card
             "transaction_id" => $reference,
             "amount"         => $amount,
+            "txn_fee"        => $fee,
             "status"         => 0, // Pending
             "created"        => NOW,
         ]);
@@ -418,7 +422,7 @@ class Korapay extends MX_Controller {
                 'bank_name'      => $account_details['bank_name'],
                 'account_number' => $account_details['account_number'],
                 'account_name'   => $account_details['account_name'],
-                'amount'         => $amount,
+                'amount'         => $total_amount,
                 'reference'      => $reference, // The reference is now inside bank_account
                 'expires_at'     => $account_details['expiry_date_in_utc'] ?? null
             ],

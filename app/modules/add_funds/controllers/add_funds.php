@@ -323,8 +323,17 @@ class add_funds extends My_UserController
 
     public function success()
     {
-        $id = session("transaction_id");
-        $transaction = $this->model->get("*", $this->tb_transaction_logs, ['id' => $id, 'uid' => session('uid')], '','', true);
+        $lookup_value = null;
+        $lookup_column = null;
+
+        if ($this->input->get('transaction_id')) { // Prioritize Korapay reference from GET parameter (for manual redirects)
+            $lookup_value = $this->input->get('transaction_id');
+            $lookup_column = 'transaction_id';
+        } elseif (session("transaction_id")) { // Fallback to internal DB ID from session (for automatic redirects)
+            $lookup_value = session("transaction_id");
+            $lookup_column = 'id';
+        }
+        $transaction = $this->model->get("*", $this->tb_transaction_logs, [$lookup_column => $lookup_value, 'uid' => session('uid')], '', '', true);
         if (!empty($transaction)) {
             $data = array(
                 "module" => get_class($this),

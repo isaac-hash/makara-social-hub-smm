@@ -85,6 +85,8 @@ $route['blog/(:any)']                           = 'blog/detail/$1';
 $route['blog/category/(:any)']                  = 'blog/category/$1';
 
 // Payment IPN
+$route['add_funds/korapay/webhook'] = 'add_funds/korapay/webhook';
+
 $route['unitpay_ipn'] 	    = 'add_funds/unitpay/unitpay_ipn/';
 $route['cashmaal_ipn'] 		= 'add_funds/cashmaal/cashmaal_ipn/';
 $route['ehot_ipn'] 			= 'add_funds/ehot/ipn/';

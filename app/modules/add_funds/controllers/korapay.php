@@ -280,20 +280,28 @@ class Korapay extends MX_Controller {
      */
     public function complete()
     {
-        $reference = $this->input->get('reference');
-        if (!$reference) redirect(cn("add_funds/unsuccess"));
+        $reference = $this->input->get('reference'); // Original reference from our system
+        $korapay_reference = $this->input->get('transaction_reference'); // Reference from Korapay redirect
+
+        if (!$reference && !$korapay_reference) {
+            redirect(cn("add_funds/unsuccess"));
+        }
+
+        // Use our internal reference if Korapay's isn't available (e.g., direct success, not 3DS redirect)
+        $lookup_reference = $korapay_reference ?: $reference;
+        if (!$lookup_reference) redirect(cn("add_funds/unsuccess"));
 
         // find pending transaction
         $transaction = $this->model->get('*', $this->tb_transaction_logs, [
-            'transaction_id' => $reference,
-            'status'         => 0,
+            'transaction_id' => $lookup_reference,
+            'status'         => 0, // Must be pending
             'type'           => $this->payment_type
         ]);
 
         if (!$transaction) redirect(cn("add_funds/unsuccess"));
 
         // Verify with Korapay
-        $verify = $this->korapay_request("charges/{$reference}", [], "GET");
+        $verify = $this->korapay_request("charges/{$lookup_reference}", [], "GET");
 
         if (
             isset($verify['status']) &&

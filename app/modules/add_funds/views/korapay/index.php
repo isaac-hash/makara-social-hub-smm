@@ -63,6 +63,10 @@
         We will automatically detect your payment and credit your wallet.
     </div>
 
+    <div class="mt-2 text-center" id="manual-redirect-button-container">
+        <a href="#" id="continue-to-success-btn" class="btn btn-info d-none">Continue to Success Page</a>
+    </div>
+
     <!-- Hidden field to store the reference -->
     <span id="detail-reference" class="d-none"></span>
 
@@ -122,6 +126,10 @@
             $('#detail-account-number').text(details.account_number);
             $('#detail-amount').text(details.amount.toFixed(2));
             $('#detail-reference').text(details.reference); // This is the reference we need
+
+            // Update the manual redirect button with the transaction reference
+            $('#continue-to-success-btn').attr('href', '<?php echo cn("add_funds/success"); ?>?transaction_id=' + details.reference);
+            $('#continue-to-success-btn').removeClass('d-none'); // Show the button
 
             // Dynamically add the test button only if in debug mode
             <?php if (isset($korapay_debug_mode) && $korapay_debug_mode): ?>

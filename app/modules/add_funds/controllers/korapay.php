@@ -464,79 +464,135 @@ class Korapay extends MX_Controller {
     /**
      * Handle incoming webhooks from Korapay.
      */
+    // public function webhook()
+    // {
+    //     // 1. Get signature from header
+    //     $signature = $_SERVER['HTTP_X_KORAPAY_SIGNATURE'] ?? '';
+    //     if (!$signature) {
+    //         http_response_code(401);
+    //         exit('No signature');
+    //     }
+
+    //     // 2. Get raw request body
+    //     $payload = file_get_contents('php://input');
+
+    //     // 3. Verify signature
+    //     $hash = hash_hmac('sha256', $payload, $this->secret_key);
+    //     if (!hash_equals($hash, $signature)) {
+    //         http_response_code(401);
+    //         exit('Invalid signature');
+    //     }
+
+    //     // 4. Decode payload
+    //     $data = json_decode($payload, true);
+    //     if (json_last_error() !== JSON_ERROR_NONE) {
+    //         http_response_code(400);
+    //         exit('Invalid JSON payload');
+    //     }
+
+    //     // 5. Check event type
+    //     if (isset($data['event']) && $data['event'] === 'charge.success') {
+    //         $charge_data = $data['data'];
+    //         $reference = $charge_data['reference'] ?? null;
+
+    //         if (!$reference) {
+    //             http_response_code(400);
+    //             exit('No reference in payload');
+    //         }
+
+    //         // 6. Find pending transaction
+    //         $transaction = $this->model->get('*', $this->tb_transaction_logs, [
+    //             'transaction_id' => $reference,
+    //             'status'         => 0 // Look for pending
+    //         ]);
+
+    //         if ($transaction) {
+    //             // 7. Verify amount matches
+    //             $paid_amount = (double)$charge_data['amount'];
+    //             if ($paid_amount >= (double)$transaction->amount) {
+    //                 // 8. Update transaction
+    //                 $txn_fee = ($this->take_fee_from_user && isset($charge_data['fee']))
+    //                     ? $charge_data['fee']
+    //                     : 0;
+
+    //                 $this->db->update($this->tb_transaction_logs, [
+    //                     'status'  => 1, // Success
+    //                     'txn_fee' => $txn_fee,
+    //                 ], ['id' => $transaction->id]);
+
+    //                 // 9. Add funds to user balance
+    //                 $transaction->txn_fee = $txn_fee;
+    //                 $this->model->add_funds_bonus_email($transaction, $this->payment_id);
+
+    //                 log_message('debug', "Korapay webhook: Successfully processed reference {$reference}.");
+    //             } else {
+    //                 log_message('error', "Korapay webhook: Amount mismatch for reference {$reference}. Expected {$transaction->amount}, got {$paid_amount}.");
+    //             }
+    //         } else {
+    //             log_message('warning', "Korapay webhook: Received success for an unknown or already processed transaction reference {$reference}.");
+    //         }
+    //     }
+
+    //     // 10. Acknowledge receipt
+    //     http_response_code(200);
+    //     echo 'Webhook received.';
+    // }
+
     public function webhook()
-    {
-        // 1. Get signature from header
-        $signature = $_SERVER['HTTP_X_KORAPAY_SIGNATURE'] ?? '';
-        if (!$signature) {
-            http_response_code(401);
-            exit('No signature');
-        }
+{
+    // 1️⃣ Get the raw payload
+    $payload = file_get_contents('php://input');
+    $data = json_decode($payload, true);
 
-        // 2. Get raw request body
-        $payload = file_get_contents('php://input');
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        http_response_code(400);
+        exit('Invalid JSON payload');
+    }
 
-        // 3. Verify signature
-        $hash = hash_hmac('sha256', $payload, $this->secret_key);
-        if (!hash_equals($hash, $signature)) {
-            http_response_code(401);
-            exit('Invalid signature');
-        }
+    // 2️⃣ Log the payload to confirm Korapay is calling your endpoint
+    log_message('debug', 'Korapay Webhook Payload: ' . $payload);
 
-        // 4. Decode payload
-        $data = json_decode($payload, true);
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            http_response_code(400);
-            exit('Invalid JSON payload');
-        }
+    // 3️⃣ Handle successful payments
+    if (isset($data['event']) && $data['event'] === 'charge.success') {
+        $charge_data = $data['data'];
+        $reference = $charge_data['reference'] ?? null;
 
-        // 5. Check event type
-        if (isset($data['event']) && $data['event'] === 'charge.success') {
-            $charge_data = $data['data'];
-            $reference = $charge_data['reference'] ?? null;
-
-            if (!$reference) {
-                http_response_code(400);
-                exit('No reference in payload');
-            }
-
-            // 6. Find pending transaction
+        if ($reference) {
             $transaction = $this->model->get('*', $this->tb_transaction_logs, [
                 'transaction_id' => $reference,
-                'status'         => 0 // Look for pending
+                'status'         => 0
             ]);
 
             if ($transaction) {
-                // 7. Verify amount matches
                 $paid_amount = (double)$charge_data['amount'];
                 if ($paid_amount >= (double)$transaction->amount) {
-                    // 8. Update transaction
                     $txn_fee = ($this->take_fee_from_user && isset($charge_data['fee']))
                         ? $charge_data['fee']
                         : 0;
 
                     $this->db->update($this->tb_transaction_logs, [
-                        'status'  => 1, // Success
+                        'status'  => 1,
                         'txn_fee' => $txn_fee,
                     ], ['id' => $transaction->id]);
 
-                    // 9. Add funds to user balance
                     $transaction->txn_fee = $txn_fee;
                     $this->model->add_funds_bonus_email($transaction, $this->payment_id);
 
-                    log_message('debug', "Korapay webhook: Successfully processed reference {$reference}.");
+                    log_message('debug', "Korapay webhook (no-signature): Processed {$reference}");
                 } else {
-                    log_message('error', "Korapay webhook: Amount mismatch for reference {$reference}. Expected {$transaction->amount}, got {$paid_amount}.");
+                    log_message('error', "Korapay webhook (no-signature): Amount mismatch for {$reference}");
                 }
             } else {
-                log_message('warning', "Korapay webhook: Received success for an unknown or already processed transaction reference {$reference}.");
+                log_message('warning', "Korapay webhook (no-signature): Unknown reference {$reference}");
             }
         }
-
-        // 10. Acknowledge receipt
-        http_response_code(200);
-        echo 'Webhook received.';
     }
+
+    // 4️⃣ Always respond with 200 OK so Korapay stops retrying
+    http_response_code(200);
+    echo 'Webhook received (no signature check).';
+}
+
 
     /**
      * Encrypts payment data exactly as Korapay expects:

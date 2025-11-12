@@ -355,13 +355,11 @@ class Korapay extends MX_Controller {
     {
         _is_ajax(post('module') ?? 'add_funds');
 
-        // $amount = (double)post("amount");
-        $total_amount = (double)post("amount");
+        $amount = (double)post("amount");
         $fee = 50; // Your fixed fee
-        // $total_amount = $amount + $fee;
+        $total_amount = $amount + $fee;
 
-
-        if (!$total_amount || $total_amount <= 0) {
+        if (!$amount || $amount <= 0) {
             ms(['status' => 'error', 'message' => 'Invalid amount.']);
         }
         if (!$this->secret_key) {
@@ -409,7 +407,7 @@ class Korapay extends MX_Controller {
             "uid"            => session("uid"),
             "type"           => $this->payment_type . '_bank', // Differentiate from card
             "transaction_id" => $reference,
-            "amount"         => $total_amount,
+            "amount"         => $amount,
             "txn_fee"        => $fee,
             "status"         => 0, // Pending
             "created"        => NOW,

@@ -124,7 +124,7 @@
           success: function(response) {
             if (response.status === 'success' && response.transaction_status == 1) { // Assuming 1 is 'completed'
               clearInterval(poll);
-              window.location.href = '<?php echo cn("add_funds/success"); ?>?transaction_id=' + reference;
+              window.location.href = '<?php echo cn("add_funds/success"); ?>?transaction_id=' + response.transaction_id;
             } else if (response.status === 'error') {
               console.error('Polling error:', response.message);
               clearInterval(poll); // Stop polling on error

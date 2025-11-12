@@ -323,20 +323,22 @@ class add_funds extends My_UserController
 
     public function success()
     {
-        $lookup_value = null;
-        $lookup_column = null;
+        $transaction = null;
+        $transaction_id_from_get = $this->input->get('transaction_id');
+        $transaction_id_from_session = session("transaction_id");
 
-        if ($this->input->get('transaction_id')) { // Prioritize Korapay reference from GET parameter (for manual redirects)
-            $lookup_value = $this->input->get('transaction_id');
-            $lookup_column = 'transaction_id';
-        } elseif (session("transaction_id")) { // Fallback to internal DB ID from session (for automatic redirects)
-            $lookup_value = session("transaction_id");
-            $lookup_column = 'id';
+        // Prioritize transaction_id from GET parameter (used by Korapay bank transfer polling)
+        if ($transaction_id_from_get) {
+            $transaction = $this->model->get("*", $this->tb_transaction_logs, ['transaction_id' => $transaction_id_from_get, 'uid' => session('uid')], '', '', true);
         }
-        $transaction = $this->model->get("*", $this->tb_transaction_logs, [$lookup_column => $lookup_value, 'uid' => session('uid')], '', '', true);
 
-        // Ensure a lookup value is present
-        if (!$lookup_value) {
+        // Fallback to internal DB ID from session (used by most gateways)
+        if (!$transaction && $transaction_id_from_session) {
+            $transaction = $this->model->get("*", $this->tb_transaction_logs, ['id' => $transaction_id_from_session, 'uid' => session('uid')], '', '', true);
+        }
+
+        // If no transaction is found by either method, redirect to unsuccess.
+        if (empty($transaction)) {
             redirect(cn("add_funds/unsuccess"));
         }
 

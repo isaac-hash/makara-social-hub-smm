@@ -614,7 +614,11 @@ class Korapay extends MX_Controller {
         ]);
 
         if ($transaction) {
-            ms(['status' => 'success', 'transaction_status' => $transaction->status]);
+            ms([
+                'status' => 'success', 
+                'transaction_status' => $transaction->status,
+                'transaction_id' => $transaction->transaction_id // Return the actual transaction_id
+            ]);
         } else {
             ms(['status' => 'error', 'message' => 'Transaction not found.']);
         }

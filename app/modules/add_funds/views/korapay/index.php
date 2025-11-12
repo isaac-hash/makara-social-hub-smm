@@ -52,8 +52,12 @@
         <li class="list-group-item d-flex justify-content-between align-items-center">
             <span>Amount:</span>
             <strong>₦<span id="detail-amount"></span></strong>
-            <p>A fee of ₦50 will be charged</p>
         </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>Fee:</span>
+            <strong>A fee of ₦50 will be charged</span></strong>
+        </li>
+        
         <li id="expires-at-container" class="list-group-item d-flex justify-content-between align-items-center d-none">
             <span>Expires At:</span>
             <strong id="detail-expires-at"></strong>

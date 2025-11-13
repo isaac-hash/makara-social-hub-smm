@@ -108,7 +108,7 @@
     }
 </style>
 
-<div class="payment-success-container">
+<div class="payment-success-container" style="margin-top: 4rem;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-7">

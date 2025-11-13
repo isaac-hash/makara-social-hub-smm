@@ -23,28 +23,28 @@
     <div class="col-md-8 offset-md-2">
       <div class="card" id="korapay-bank-transfer-card">
         <div class="card-header">
-          Korapay Bank Transfer
+          Bank Transfer
         </div>
         <div class="card-body">
-          <!-- Amount Input Form -->
-          <div id="bank-transfer-form-container">
-            <form id="korapay-bank-transfer-form" action="<?php echo cn('add_funds/korapay/charge_with_bank_transfer'); ?>" method="POST">
-              <div class="form-group">
-                <b>Note:</b> A fee of ₦50 is charged for each transaction. <br>
-                <b>Note:</b> Minimum deposit amount is ₦1,000.
-                <br><br>
-                <b>Please note that this requirement and fee stands for both Korapay and manual payment options.</b>
-                
-              </div> 
-              <div class="form-group">
-                <label for="amount">Amount (NGN)</label>
-                <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount" min="1000" required>
-              </div> 
-              <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
-              <input type="hidden" name="module" value="add_funds">
-              <button type="submit" class="text-center text-lg-left d-flex align-items-center justify-content-center justify-content-lg-start btn col-lg-7 col-md-7 col-10 mx-auto p-3"
-         onmouseover="this.style.background='#1a1a1a'"
-         onmouseout="this.style.background='var(--makara-orange)'" style="
+          <div class="mb-4">
+
+            <p>Click the button below to start a bank transfer. </p>
+            <span>
+              <strong>Note:</strong> A fee of ₦50 is charged for each transaction. Minimum deposit amount is ₦1,000. Bringing it to a charge of ₦1050
+            </span>
+            <br>
+            <span>
+              <strong>Important:</strong> Please ensure you transfer the exact amount displayed, including the fee, to avoid delays in processing your payment.
+            </span>
+            <br>
+            <span>
+              <strong>
+                Note:</strong> The fees and requirements apply to both korapay and manual payment methods.
+              </strong>
+            </span> 
+            <br>
+          </div>
+          <button type="button" style="
            
            background:var(--makara-orange);
            color:#ffffff;
@@ -59,22 +59,40 @@
            
            gap:8px;
            transition:background 0.3s ease;
-         " id="generate-account-btn">
-                <span class="spinner-border spinner-border-sm d-none"  role="status" aria-hidden="true"></span>
-                Get Account Number
-              </button>
-            </form>
-          </div>
+         "
+         class="text-center text-lg-left d-flex align-items-center justify-content-center justify-content-lg-start btn col-lg-7 col-md-7 col-10 mx-auto p-3"
+         onmouseover="this.style.background='#1a1a1a'"
+         onmouseout="this.style.background='var(--makara-orange)'" data-toggle="modal" data-target="#accountDetailsModal">
+            <i class="fe fe-credit-card"></i> Fund with Bank Transfer
+          </button>
 
           <!-- Account Details Modal -->
           <div class="modal fade" id="accountDetailsModal" tabindex="-1" role="dialog" aria-labelledby="accountDetailsModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="accountDetailsModalLabel">Bank Transfer Payment</h5>
+                  <h5 class="modal-title" id="accountDetailsModalLabel">Fund with Bank Transfer</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="modal-body-content">
+                  <!-- Initial state: Amount input -->
+                  <div id="amount-input-container">
+                    <form id="korapay-bank-transfer-form" action="<?php echo cn('add_funds/korapay/charge_with_bank_transfer'); ?>" method="POST">
+                      <div class="form-group">
+                        <label for="amount">Amount (NGN)</label>
+                        <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount (e.g. 1000)" min="1000" required>
+                      </div>
+                      <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
+                      <input type="hidden" name="module" value="add_funds">
+                      <button type="submit" class="btn btn-primary w-100" id="generate-account-btn">
+                        <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        Get Account Number
+                      </button>
+                    </form>
+                  </div>
+
+                  <!-- Second state: Account details (to be populated by JS) -->
+                  <div id="account-details-display" class="d-none">
                   <div class="text-center mb-3">
                     <p class="text-muted">Transfer to the account details below to complete your payment.</p>
                   </div>
@@ -93,14 +111,14 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                       <span>Account Name:</span>
                       <div>
-                        <strong id="detail-account-name" class="me-2" style="font-size: 0.7rem;"></strong>
+                        <strong id="detail-account-name" class="me-2" style="font-size: 0.9rem;"></strong>
                         <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboard('detail-account-name', this)"><i class="fe fe-copy"></i></button>
                       </div>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                       <span>Account Number:</span>
                       <div>
-                        <strong id="detail-account-number" style="font-size: 0.7rem;" class="me-2"></strong>
+                        <strong id="detail-account-number" style="font-size: 0.9rem;" class="me-2"></strong>
                         <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboard('detail-account-number', this)"><i class="fe fe-copy"></i></button>
                       </div>
                     </li>
@@ -114,20 +132,21 @@
                     </li>
                     <li id="expires-at-container" class="list-group-item d-flex justify-content-between align-items-center d-none">
                       <span>Expires At:</span>
-                      <strong  id="detail-expires-at" style="font-size: 0.7rem;"></strong>
+                      <strong id="detail-expires-at" style="font-size: 0.9rem;"></strong>
                     </li>
                   </ul>
 
                   <div class="alert alert-info mt-3">
                     We will automatically detect your payment and credit your wallet. This may take a few minutes.
                   </div>
-
+                  
                   <div id="test-button-container" class="mt-3"></div>
 
                   <!-- Hidden field to store the reference -->
                   <span id="detail-reference" class="d-none"></span>
-
+                  </div>
                 </div>
+
                 <div class="modal-footer">
                   <a href="#" id="continue-to-success-btn" class="btn btn-info d-none">I Have Paid, Continue</a>
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -229,6 +248,9 @@
             var details = response.account_details;
 
             // Populate details
+            $('#amount-input-container').addClass('d-none');
+            $('#account-details-display').removeClass('d-none');
+
             $('#detail-bank-name').text(details.bank_name);
             $('#detail-account-name').text(details.account_name);
             $('#detail-account-number').text(details.account_number);
@@ -260,9 +282,6 @@
               $('#detail-expires-at').text(new Date(details.expires_at).toLocaleString());
               $('#expires-at-container').removeClass('d-none');
             }
-
-            // Switch views
-            $('#accountDetailsModal').modal('show');
 
           } else {
             // Show error message

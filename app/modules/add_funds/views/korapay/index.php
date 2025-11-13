@@ -69,7 +69,7 @@
     </div>
 
     <div class="mt-2 text-center" id="manual-redirect-button-container">
-        <a href="#" id="continue-to-success-btn" class="btn btn-info d-none">Yes I have paid</a>
+        <a href="#" id="continue-to-success-btn" class="btn btn-info d-none">YES, I HAVE PAID</a>
     </div>
 
     <!-- Hidden field to store the reference -->

@@ -63,7 +63,7 @@
          class="text-center text-lg-left d-flex align-items-center justify-content-center justify-content-lg-start btn col-lg-7 col-md-7 col-10 mx-auto p-3"
          onmouseover="this.style.background='#1a1a1a'"
          onmouseout="this.style.background='var(--makara-orange)'" data-toggle="modal" data-target="#accountDetailsModal">
-            <i class="fe fe-credit-card"></i> Fund with Bank Transfer
+            <i class="fe fe-credit-card"></i> Fund with Korapay
           </button>
 
           <!-- Account Details Modal -->

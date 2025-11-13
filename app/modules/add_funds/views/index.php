@@ -184,10 +184,19 @@
             border-left: 4px solid var(--makara-orange);
         }
 
+        .responsive-content-row{
+          width: 40%;
+          margin: 0 auto 15px;
+        }
+
         @media (max-width: 767px) {
             .payment-card {
                 max-width: 95%;
             }
+            .responsive-content-row{
+          width: 80%;
+          margin: 0 auto 15px;
+        }
         }
 
         @media (max-width: 480px) {
@@ -310,6 +319,9 @@
 <section class="add-funds m-t-30">
 
 <div style=" margin:0 auto; margin-bottom:20px;">
+  <div class="responsive-content-row">
+    <b>Note:</b> A fee of ₦50 is charged for each transaction.
+  </div>
     <div id="manualcard" 
          data-toggle="modal" 
          data-target="#manualPaymentModal" 

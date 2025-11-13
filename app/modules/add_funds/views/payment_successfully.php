@@ -48,12 +48,12 @@
 
     .success-card-header h3 {
         font-weight: 700;
-        color: #fff;
+        color: #000000ff;
         font-size: 1.75rem;
     }
 
     .success-card-header p {
-        color: #fff;
+        color: #000000ff;
         margin-bottom: 0;
     }
 

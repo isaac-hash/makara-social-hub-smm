@@ -7,8 +7,8 @@
     }
 
     .payment-success-container {
-        padding-top: 5rem;
-        padding-bottom: 5rem;
+        padding-top: 3rem;
+        padding-bottom: 1rem;
         background-color: var(--makara-blue);
         color: white;
     }
@@ -42,7 +42,7 @@
 
     .success-card-header {
         text-align: center;
-        padding: 2rem 1.5rem 1.5rem;
+        padding: 1rem 0.5rem 0.5rem;
         background-color: #fff;
     }
 

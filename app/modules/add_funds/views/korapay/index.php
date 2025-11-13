@@ -32,6 +32,8 @@
               <div class="form-group">
                 <b>Note:</b> A fee of ₦50 is charged for each transaction. <br>
                 <b>Note:</b> Minimum deposit amount is ₦1,000.
+                <br><br>
+                <b>Please note that this requirement and fee stands for both Korapay and manual payment options.</b>
                 
               </div> 
               <div class="form-group">
@@ -40,8 +42,25 @@
               </div> 
               <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
               <input type="hidden" name="module" value="add_funds">
-              <button type="submit" class="btn btn-primary w-100 mt-3" id="generate-account-btn">
-                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+              <button type="submit" class="text-center text-lg-left d-flex align-items-center justify-content-center justify-content-lg-start btn col-lg-7 col-md-7 col-10 mx-auto p-3"
+         onmouseover="this.style.background='#1a1a1a'"
+         onmouseout="this.style.background='var(--makara-orange)'" style="
+           
+           background:var(--makara-orange);
+           color:#ffffff;
+           outline:2px solid black;
+           border:2px solid oldlace;
+           
+           /*#e68f1dff  */
+           border-radius:8px;
+           cursor:pointer;
+           font-family:Arial, sans-serif;
+           font-size:13px;
+           
+           gap:8px;
+           transition:background 0.3s ease;
+         " id="generate-account-btn">
+                <span class="spinner-border spinner-border-sm d-none"  role="status" aria-hidden="true"></span>
                 Get Account Number
               </button>
             </form>

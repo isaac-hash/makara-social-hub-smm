@@ -319,10 +319,10 @@
 <section class="add-funds m-t-30">
 
 <div style=" margin:0 auto; margin-bottom:20px;">
-  <div class="responsive-content-row">
+  <!-- <div class="responsive-content-row">
     <b>Note:</b> A fee of ₦50 is charged for each transaction. <br>
     <b>Note:</b> Minimum deposit amount is ₦1,000.
-  </div>
+  </div> -->
     <div id="manualcard" 
          data-toggle="modal" 
          data-target="#manualPaymentModal" 

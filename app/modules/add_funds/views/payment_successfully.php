@@ -25,7 +25,7 @@
         background-color: var(--makara-orange);
         color: white;
         width: 80px;
-        height: 80px;
+        height: 50px;
         border-radius: 50%;
         display: flex;
         align-items: center;

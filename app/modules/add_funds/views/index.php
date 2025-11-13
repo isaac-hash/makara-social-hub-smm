@@ -320,7 +320,8 @@
 
 <div style=" margin:0 auto; margin-bottom:20px;">
   <div class="responsive-content-row">
-    <b>Note:</b> A fee of ₦50 is charged for each transaction.
+    <b>Note:</b> A fee of ₦50 is charged for each transaction. <br>
+    <b>Note:</b> Minimum deposit amount is ₦1,000.
   </div>
     <div id="manualcard" 
          data-toggle="modal" 

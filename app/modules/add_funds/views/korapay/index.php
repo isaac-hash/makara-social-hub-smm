@@ -30,7 +30,8 @@
           <div id="bank-transfer-form-container">
             <form id="korapay-bank-transfer-form" action="<?php echo cn('add_funds/korapay/charge_with_bank_transfer'); ?>" method="POST">
               <div class="form-group">
-                <b>Note:</b> A fee of ₦50 is charged for each transaction.
+                <b>Note:</b> A fee of ₦50 is charged for each transaction. <br>
+                <b>Note:</b> Minimum deposit amount is ₦1,000.
                 
               </div> 
               <div class="form-group">

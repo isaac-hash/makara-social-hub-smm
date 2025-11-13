@@ -32,7 +32,7 @@
         <?php if (isset($korapay_debug_mode) && $korapay_debug_mode): ?>
             <div class="badge bg-warning text-dark mb-2">SANDBOX MODE</div>
         <?php else: ?>
-            <div class="badge bg-success mb-2">LIVE MODE</div>
+            <div class="badge bg-success mb-2"></div>
         <?php endif; ?>
     </div>
 
@@ -69,7 +69,7 @@
     </div>
 
     <div class="mt-2 text-center" id="manual-redirect-button-container">
-        <a href="#" id="continue-to-success-btn" class="btn btn-info d-none">Continue to Success Page</a>
+        <a href="#" id="continue-to-success-btn" class="btn btn-info d-none">Yes I have paid</a>
     </div>
 
     <!-- Hidden field to store the reference -->

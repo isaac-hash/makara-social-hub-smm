@@ -1,3 +1,23 @@
+<style>
+    #account-details-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    #account-details-container .card {
+        border-radius: 12px;
+    }
+    
+    #account-details-container .alert {
+        border-radius: 8px;
+    }
+    
+    #account-details-container .badge {
+        border-radius: 20px;
+        font-weight: 600;
+    }
+</style>
+
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2">
@@ -24,17 +44,82 @@
 
           <!-- Account Details Display -->
           <div id="account-details-container" class="d-none">
-    <div class="text-center mb-3">
-        <p class="lead">Please make a bank transfer to the account details below.</p>
-        <p class="text-danger">This account is temporary and will expire. Please pay the exact amount.</p>
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+            <!-- Header Section -->
+            <div class="text-center mb-4">
+                <div class="mb-3">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block;">
+                        <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="#0D0BD1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 22V12H15V22" stroke="#0D0BD1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h4 class="fw-bold mb-2" style="color: #0D0BD1;">Bank Transfer Payment</h4>
+                <p class="text-muted mb-2">Transfer to the account details below to complete your payment</p>
+                
+                <!-- Alert Box -->
+                <div class="alert alert-warning border-0 d-flex align-items-start gap-2 mb-0" style="background-color: #FFF4E6; border-left: 4px solid #FF9933 !important;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; margin-top: 2px;">
+                        <path d="M12 2L2 19.5H22L12 2Z" stroke="#FF9933" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 9V13" stroke="#FF9933" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="12" cy="17" r="1" fill="#FF9933"/>
+                    </svg>
+                    <div class="text-start">
+                        <small class="d-block fw-semibold" style="color: #CC7A29;">Important Notice</small>
+                        <small style="color: #996633;">This account is temporary and will expire. Please pay the exact amount shown.</small>
+                    </div>
+                </div>
+            </div>
 
-        <!-- SANDBOX MODE BADGE -->
-        <?php if (isset($korapay_debug_mode) && $korapay_debug_mode): ?>
-            <div class="badge bg-warning text-dark mb-2">SANDBOX MODE</div>
-        <?php else: ?>
-            <div class="badge bg-success mb-2"></div>
-        <?php endif; ?>
+            <!-- SANDBOX MODE BADGE -->
+            <?php if (isset($korapay_debug_mode) && $korapay_debug_mode): ?>
+                <div class="text-center mb-3">
+                    <span class="badge px-3 py-2" style="background: linear-gradient(135deg, #FFC107 0%, #FF9933 100%); color: #fff; font-size: 0.85rem; letter-spacing: 0.5px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; margin-right: 4px; vertical-align: text-top;">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        SANDBOX MODE
+                    </span>
+                </div>
+            <?php else: ?>
+                <div class="text-center mb-3">
+                    <!-- <span class="badge px-3 py-2" style="background: linear-gradient(135deg, #0D0BD1 0%, #0908A0 100%); color: #fff; font-size: 0.85rem; letter-spacing: 0.5px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; margin-right: 4px; vertical-align: text-top;">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        LIVE MODE
+                    </span> -->
+                </div>
+            <?php endif; ?>
+
+            <!-- Account Details Section (Placeholder) -->
+            <div class="border rounded-3 p-4 mt-3" style="background-color: #F8F9FA; border-color: #E9ECEF !important;">
+                <div class="row g-3">
+                    <!-- Add your account details rows here -->
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted small">Account details will appear here</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Note -->
+            <div class="text-center mt-4">
+                <small class="text-muted">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: text-top; margin-right: 2px;">
+                        <path d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Payment confirmation may take a few minutes after transfer
+                </small>
+            </div>
+        </div>
     </div>
+</div>
+
+
 
     <ul class="list-group">
         <li class="list-group-item d-flex justify-content-between align-items-center">

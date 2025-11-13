@@ -9,7 +9,8 @@
     .payment-success-container {
         padding-top: 5rem;
         padding-bottom: 5rem;
-        background-color: var(--light-gray-bg);
+        background-color: var(--makara-blue);
+        color: white;
     }
 
     .success-card {
@@ -17,11 +18,11 @@
         border-radius: 15px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         overflow: hidden;
-        border-top: 5px solid var(--success-green);
+        border-top: 5px solid var(--makara-orange);
     }
 
     .success-icon-wrapper {
-        background-color: var(--success-green);
+        background-color: var(--makara-orange);
         color: white;
         width: 80px;
         height: 80px;
@@ -47,18 +48,18 @@
 
     .success-card-header h3 {
         font-weight: 700;
-        color: #333;
+        color: #fff;
         font-size: 1.75rem;
     }
 
     .success-card-header p {
-        color: #6c757d;
+        color: #fff;
         margin-bottom: 0;
     }
 
     .success-card-body {
         padding: 2rem;
-        background-color: #fff;
+        background-color:var(--makara-blue);
     }
 
     .transaction-details-list {
@@ -79,12 +80,12 @@
     }
 
     .transaction-details-list .detail-label {
-        color: #6c757d;
+        color: #fff;
     }
 
     .transaction-details-list .detail-value {
         font-weight: 600;
-        color: #343a40;
+        color: #fff;
         word-break: break-all;
         text-align: right;
     }
@@ -95,9 +96,12 @@
     }
 
     .success-card-footer {
-        background-color: var(--light-gray-bg);
+        background-color: var(--makara-blue);
         padding: 1.5rem;
         text-align: center;
+    }
+    .button{
+        background: var(--makara-blue);
     }
 </style>
 
@@ -143,7 +147,7 @@
                         </ul>
                     </div>
                     <div class="success-card-footer">
-                        <a href="<?php echo cn('statistics'); ?>" class="btn btn-primary">
+                        <a href="<?php echo cn('statistics'); ?>" class="btn button">
                             <i class="fe fe-home"></i> Back to Dashboard
                         </a>
                     </div>

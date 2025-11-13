@@ -406,7 +406,7 @@ class Korapay extends MX_Controller {
         $this->db->insert($this->tb_transaction_logs, [
             "ids"            => ids(),
             "uid"            => session("uid"),
-            "type"           => $this->payment_type . '_bank', // Differentiate from card
+            "type"           => $this->payment_type, // Differentiate from card
             "transaction_id" => $reference,
             "amount"         => $amount,
             "txn_fee"        => $fee,

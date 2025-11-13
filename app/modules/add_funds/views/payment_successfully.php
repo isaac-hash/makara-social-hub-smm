@@ -103,6 +103,8 @@
     .button{
         background: var(--makara-blue);
         outline: 1px solid var(--makara-orange);
+        padding: 2rem;
+        color: white;
     }
 </style>
 

@@ -17,7 +17,7 @@
               <input type="hidden" name="module" value="add_funds">
               <button type="submit" class="btn btn-primary w-100 mt-3" id="generate-account-btn">
                 <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                Generate Bank Account
+                Get Account Number
               </button>
             </form>
           </div>

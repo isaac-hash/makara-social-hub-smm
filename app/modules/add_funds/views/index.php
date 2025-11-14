@@ -292,7 +292,7 @@
     color: #2d3748;
     margin-bottom: 1rem;
   ">
-    Select Payment Method
+    <!-- Select Payment Method -->
   </div>
 </div>
 <?php if (!empty($active_payments)): ?>
@@ -317,6 +317,28 @@
   if (get_option("is_active_manual")) {
 ?>
 <section class="add-funds m-t-30">
+
+<button type="button" style="
+           
+           background:var(--makara-orange);
+           color:#ffffff;
+           outline:2px solid black;
+           border:2px solid oldlace;
+           
+           /*#e68f1dff  */
+           border-radius:8px;
+           cursor:pointer;
+           font-family:Arial, sans-serif;
+           font-size:13px;
+           
+           gap:8px;
+           transition:background 0.3s ease;
+         "
+         class="text-center text-lg-left d-flex align-items-center justify-content-center justify-content-lg-start btn col-lg-7 col-md-7 col-10 mx-auto p-3 mb-4"
+         onmouseover="this.style.background='#1a1a1a'"
+         onmouseout="this.style.background='var(--makara-orange)'" data-toggle="modal" data-target="#accountDetailsModal">
+            <i class="fe fe-credit-card"></i> Fund with Korapay
+          </button>
 
 <div style=" margin:0 auto; margin-bottom:20px;">
   <!-- <div class="responsive-content-row">

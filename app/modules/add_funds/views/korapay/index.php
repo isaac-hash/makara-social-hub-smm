@@ -1,4 +1,5 @@
 <style>
+  
     #account-details-container {
         max-width: 600px;
         margin: 0 auto;
@@ -16,6 +17,10 @@
         border-radius: 20px;
         font-weight: 600;
     }
+    .card-header{
+      background-color: var(--makara-blue);
+      color: white;
+    }
 </style>
 
 <div class="container">
@@ -23,18 +28,18 @@
     <div class="col-md-8 offset-md-2">
       <div class="card" id="korapay-bank-transfer-card">
         <div class="card-header">
-          Bank Transfer
+          Select Payment Method
         </div>
         <div class="card-body">
           <div class="mb-4">
 
-            <p>Click the button below to start a bank transfer. </p>
+            <p>Click the button below to fund your wallet. </p>
             <span>
-              <strong>Note:</strong> A fee of ₦50 is charged for each transaction. Minimum deposit amount is ₦1,000. Bringing it to a charge of ₦1050
+              <strong>Note:</strong> A service fee of ₦50 applies to each transaction across all payment methods. The minimum deposit amount is ₦1,000, bringing the total charge to ₦1,050.
             </span>
             <br>
             <span>
-              <strong>Important:</strong> Please ensure you transfer the exact amount displayed, including the fee, to avoid delays in processing your payment.
+              <strong>Important:</strong> Please ensure the amount you transfer matches the exact amount you entered for deposit, including the transaction fee. Any difference may cause delays in processing your payment.
             </span>
             <br>
             <span>
@@ -44,27 +49,7 @@
             </span> 
             <br>
           </div>
-          <button type="button" style="
-           
-           background:var(--makara-orange);
-           color:#ffffff;
-           outline:2px solid black;
-           border:2px solid oldlace;
-           
-           /*#e68f1dff  */
-           border-radius:8px;
-           cursor:pointer;
-           font-family:Arial, sans-serif;
-           font-size:13px;
-           
-           gap:8px;
-           transition:background 0.3s ease;
-         "
-         class="text-center text-lg-left d-flex align-items-center justify-content-center justify-content-lg-start btn col-lg-7 col-md-7 col-10 mx-auto p-3"
-         onmouseover="this.style.background='#1a1a1a'"
-         onmouseout="this.style.background='var(--makara-orange)'" data-toggle="modal" data-target="#accountDetailsModal">
-            <i class="fe fe-credit-card"></i> Fund with Korapay
-          </button>
+          
 
           <!-- Account Details Modal -->
           <div class="modal fade" id="accountDetailsModal" tabindex="-1" role="dialog" aria-labelledby="accountDetailsModalLabel" aria-hidden="true">

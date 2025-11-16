@@ -29,6 +29,7 @@
                         <li><a href="<?=cn('home/contact')?>" style="text-decoration: none; color: #FFF;">Contact Us</a></li>
                         <li><a href="#" style="text-decoration: none; color: #FFF;">Blog</a></li>
                         <li><a href="<?=cn('terms')?>" style="text-decoration: none; color: #FFF;">Terms and Conditions</a></li>
+                        <li><a href="<?=cn('terms')?>" style="text-decoration: none; color: #FFF;">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-4 mb-md-0">

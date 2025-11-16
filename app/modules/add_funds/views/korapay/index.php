@@ -110,6 +110,8 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                       <span>Amount to Pay:</span>
                       <strong style="font-size: 0.9rem;">₦<span id="detail-amount"></span></strong>
+                      <strong id="detail-amount" class="me-2" style="font-size: 0.9rem;"></strong>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboard('detail-amount', this)"><i class="fe fe-copy"></i></button>
                     </li>
                      <li class="list-group-item d-flex justify-content-between align-items-center">
                         <span>Fee:</span>

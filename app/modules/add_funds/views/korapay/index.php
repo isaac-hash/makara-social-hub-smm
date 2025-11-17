@@ -42,11 +42,11 @@
               <strong>Important:</strong> Please ensure the amount you transfer matches the exact amount you entered for deposit, including the transaction fee. Any difference may cause delays in processing your payment.
             </span>
             <br>
-            <span>
+            <!-- <span>
               <strong>
                 Note:</strong> The fees and requirements apply to both korapay and manual payment methods.
               </strong>
-            </span> 
+            </span>  -->
             <br>
           </div>
           

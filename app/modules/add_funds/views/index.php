@@ -42,7 +42,8 @@
     <style>
         :root {
             --makara-blue: #0D0BD1;
-            --makara-orange: #FF9933;
+            --makara-orange: #c65102;
+            --makara-orange-old: #FF9933;
             --makara-border: #020c68ff;
             --makara-blue-bg: #020c6867;
         }

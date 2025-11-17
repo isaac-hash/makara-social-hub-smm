@@ -1,3 +1,5 @@
+
+
 <?php
 require_once 'themes/nico/views/nav.php';
 ?>
@@ -15,11 +17,12 @@ require_once 'themes/nico/views/nav.php';
             margin: 0;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--makara-blue-light) 0%, var(--makara-orange-light) 100%);
-            min-height: 100vh;
-            padding: 2rem 0;
+
+        .content {
+            width: 100%;
+            max-width: 60rem;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
 
         .page-header {
@@ -29,226 +32,75 @@ require_once 'themes/nico/views/nav.php';
             background: white;
             border-radius: 15px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 6rem;
         }
 
         .page-header h1 {
             color: var(--makara-blue);
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            /* margin-bottom: 0.5rem; */
             background: linear-gradient(135deg, var(--makara-blue) 0%, var(--makara-orange) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         .page-header p {
             color: #666;
             font-size: 1rem;
             margin: 0;
         }
 
-        .document-container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            position: relative;
+        /* Fix Bootstrap row negative margins */
+        .content .row {
+            margin-left: 0;
+            margin-right: 0;
         }
 
-        .document-toolbar {
-            background: linear-gradient(135deg, var(--makara-blue) 0%, #1a18e0 100%);
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+        .content .row > * {
+            padding-left: 0;
+            padding-right: 0;
         }
 
-        .document-title {
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .document-title svg {
-            width: 24px;
-            height: 24px;
-            fill: white;
-        }
-
-        .toolbar-actions {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .toolbar-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-        }
-
-        .toolbar-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            color: white;
-        }
-
-        .toolbar-btn svg {
-            width: 18px;
-            height: 18px;
-            fill: white;
-        }
-
-        .pdf-viewer-wrapper {
-            position: relative;
-            background: #f5f5f5;
-            min-height: 80vh;
-        }
-
-        .pdf-viewer {
-            width: 100%;
-            height: 80vh;
-            border: none;
-            display: block;
-        }
-
-        .loading-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            z-index: 10;
-        }
-
-        .loading-overlay.hidden {
-            display: none;
-        }
-
-        .spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid var(--makara-blue-light);
-            border-top: 4px solid var(--makara-blue);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .loading-text {
-            color: var(--makara-blue);
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .fallback-message {
-            padding: 3rem 2rem;
-            text-align: center;
-            display: none;
-        }
-
-        .fallback-message.active {
-            display: block;
-        }
-
-        .fallback-message svg {
-            width: 80px;
-            height: 80px;
-            fill: var(--makara-blue);
-            margin-bottom: 1.5rem;
-        }
-
-        .fallback-message h3 {
-            color: var(--makara-blue);
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .fallback-message p {
-            color: #666;
-            font-size: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .fallback-btn {
-            background: linear-gradient(135deg, var(--makara-blue) 0%, var(--makara-orange) 100%);
-            color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 50px;
-            border: none;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .fallback-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(13, 11, 209, 0.4);
-            color: white;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--makara-blue);
-            text-decoration: none;
-            font-weight: 500;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .back-link:hover {
-            color: var(--makara-orange);
-            transform: translateX(-5px);
-        }
-
-        .back-link svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
-        .content{
-            width: 60rem;
-            margin: 0 auto;
-        
-        }
-
+        /* Tablet and mobile view */
         @media (max-width: 768px) {
-            .content{
-                width: 30rem;
+            body {
+                padding: 1rem 0;
             }
+            
+            .container {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            
+            .content {
+                /* max-width: 100%; */
+                width: 100%;
+                padding: 0 1rem;
+                margin: 0 auto;
+            }
+            
+            /* Override Bootstrap row spacing on mobile */
+            .content .row {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            .content .row > * {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            
+            .page-header {
+                width: 100%;
+                max-width: 100%;
+                margin: 0 0 2.5rem 0;
+                margin-top: 6rem;
+                padding: 1.5rem 1rem;
+            }
+            
             .page-header h1 {
                 font-size: 1.8rem;
             }
@@ -266,40 +118,103 @@ require_once 'themes/nico/views/nav.php';
             .pdf-viewer {
                 height: 70vh;
             }
-        }
-        @media (max-width: 480px) {
-            .content{
-                width: 20rem;
+            
+            /* Ensure card is full width and centered */
+            .card {
+                width: 100%;
+                margin: 0 auto;
+            }
+            
+            .back-link {
+                margin-left: 1rem;
             }
         }
-        .mx-auto > .card {
-  width: 100%; /* or remove this rule entirely */
-  margin: 0 auto;
-}
 
-    </style>
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            .content {
+                /* max-width: 100%; */
+                width: 100%;
+                padding: 0 0.4rem;
+                margin: 0 auto; /* CRITICAL: centers the content */
+            }
+            
+            .page-header {
+                width: 100%;
+                max-width: 100%;
+                margin: auto;
+                margin-right: -.7rem; 
+                margin-top: 6rem;
+                margin-bottom: 3rem;
+                padding: 1.5rem 0.75rem;
+            }
+            
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .page-header img {
+                width: 50%;
+            }
+            
+            .list-group-item {
+                padding: 0.3rem;
+                font-size: 0.9rem;
+            }
+            
+            .card-body {
+                padding: 1.5rem !important;
+            }
+        }
+
+        /* Ensure the card inside content takes full width */
+        .mx-auto > .card,
+        .content .card {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Container adjustments */
+        .container {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1200px;
+            }
+        }
+
+</style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <a href="#" class="back-link" onclick="window.history.back(); return false;">
+        <!-- <a href="#" class="back-link" onclick="window.history.back(); return false;">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
             </svg>
             Back
-        </a>
+        </a> -->
 
         <div class="row justify-content-center">
             <div class="col-lg-12">
                 <div>
-                    </div>
-                    <div class="page-header">
+                </div>
+                <div class="page-header">
                     <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1760352921/logo_famnk2.png" width="30%" alt="">
                     <h1>Terms & Conditions & Privacy Policy</h1>
                     <p>Please read our terms and conditions carefully</p>
                 </div>
+            </div>
+        </div>
+    </div>
 
-<div class="content my-5" style="">
+<div class="content" style="">
     <div class="row">
             <div class="mx-auto">
                 <div class="card shadow-lg">

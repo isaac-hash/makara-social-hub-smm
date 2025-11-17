@@ -11,7 +11,6 @@
   if ($items_top_best_seller) {
 ?>
   <div class="row justify-content-center">
-    HELLO WORLD
     <div class="col-md-12 col-xl-12">
       <div class="card">
         <div class="card-header">

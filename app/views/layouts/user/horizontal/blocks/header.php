@@ -380,7 +380,7 @@
             <button class="menu-toggle" onclick="toggleSidebar()">
                 <i class="fas fa-bars"></i>
             </button>
-            <a href="<?php echo cn(); ?>" class="logo">
+            <a href="#" class="logo">
                 <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1760352921/logo_famnk2.png" alt="Website Logo" style="max-height: 40px;">
             
             </a>
@@ -475,8 +475,14 @@
     <aside class="sidebar" id="sidebar">
         <ul class="sidebar-menu">
             <li class="menu-item">
-                <a href="<?=cn('statistics')?>" class="menu-link active">
+                <a href="<?=cn('')?>" class="menu-link">
                     <i class="fas fa-home menu-icon"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn('statistics')?>" class="menu-link active">
+                    <i class="fa-solid fa-chart-area"></i>
                     <span>Dashboard</span>
                 </a>
             </li>

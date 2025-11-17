@@ -76,47 +76,55 @@ class statistics_model extends MY_Model
         $total_refunded = (isset($data_orders_statistics['refunded'])) ? $data_orders_statistics['refunded'] : 0;
 
         $result = [
-            'orders' => [
-                'name' => lang("total_orders"),
-                'value' => $total_orders,
-                'class' => 'bg-success-gradient',
-                'icon' => 'fe fe-list'],
-            'completed' => [
-                'name' => lang("Completed"),
-                'value' => $total_completed,
-                'class' => 'bg-info-gradient',
-                'icon' => 'fe fe-check'],
-            'processing' => [
-                'name' => lang("Processing"),
-                'value' => $total_processing,
-                'class' => 'bg-warning-gradient',
-                'icon' => 'fe fe-trending-up'],
-            'inprogress' => [
-                'name' => lang("In_progress"),
-                'value' => $total_inprogress,
-                'class' => 'bg-danger-gradient',
-                'icon' => 'fe fe-loader'],
-            'pending' => [
-                'name' => lang("Pending"),
-                'value' => $total_pending,
-                'class' => 'bg-success-gradient',
-                'icon' => 'fe fe-pie-chart'],
-            'partial' => [
-                'name' => lang("Partial"),
-                'value' => $total_partial,
-                'class' => 'bg-info-gradient',
-                'icon' => 'fa fa-hourglass-half'],
-            'canceled' => [
-                'name' => lang("Canceled"),
-                'value' => $total_cancelled,
-                'class' => 'bg-warning-gradient',
-                'icon' => 'fe fe-x-square'],
-            'refunded' => [
-                'name' => lang("Refunded"),
-                'value' => $total_refunded,
-                'class' => 'bg-danger-gradient',
-                'icon' => 'fe fe-rotate-ccw'],
-        ];
+    'orders' => [
+        'name' => lang("total_orders"),
+        'value' => $total_orders,
+        'class' => 'outline outline-white bg-gradient-primary',
+        'icon' => 'fa-solid fa-clipboard-list'
+    ],
+    'completed' => [
+        'name' => lang("Completed"),
+        'value' => $total_completed,
+        'class' => 'outline outline-white bg-gradient-success',
+        'icon' => 'fa-solid fa-circle-check'
+    ],
+    'processing' => [
+        'name' => lang("Processing"),
+        'value' => $total_processing,
+        'class' => 'outline outline-white bg-gradient-info',
+        'icon' => 'fa-solid fa-spinner'
+    ],
+    'inprogress' => [
+        'name' => lang("In_progress"),
+        'value' => $total_inprogress,
+        'class' => 'outline outline-white bg-gradient-warning',
+        'icon' => 'fa-solid fa-arrows-spin'
+    ],
+    'pending' => [
+        'name' => lang("Pending"),
+        'value' => $total_pending,
+        'class' => 'outline outline-white bg-gradient-secondary',
+        'icon' => 'fa-solid fa-clock'
+    ],
+    'partial' => [
+        'name' => lang("Partial"),
+        'value' => $total_partial,
+        'class' => 'outline outline-white bg-gradient-purple',
+        'icon' => 'fa-solid fa-hourglass-half'
+    ],
+    'canceled' => [
+        'name' => lang("Canceled"),
+        'value' => $total_cancelled,
+        'class' => 'outline outline-white bg-gradient-danger',
+        'icon' => 'fa-solid fa-circle-xmark'
+    ],
+    'refunded' => [
+        'name' => lang("Refunded"),
+        'value' => $total_refunded,
+        'class' => 'outline outline-white bg-gradient-dark',
+        'icon' => 'fa-solid fa-rotate-left'
+    ],
+];
         return $result;
     }
 

@@ -59,20 +59,44 @@
                   <h5 class="modal-title" id="accountDetailsModalLabel">Fund with Bank Transfer</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" id="modal-body-content">
+                <div class="modal-body" id="modal-body-content" style="background: linear-gradient(135deg, #1a1a4d 0%, var(--makara-blue) 100%); color:aliceblue;">
                   <!-- Initial state: Amount input -->
-                  <div id="amount-input-container">
-                    <form id="korapay-bank-transfer-form" action="<?php echo cn('add_funds/korapay/charge_with_bank_transfer'); ?>" method="POST">
-                      <div class="form-group">
-                        <label for="amount">Amount (NGN)</label>
-                        <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount (e.g. 1000)" min="1000" required>
-                      </div>
-                      <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
-                      <input type="hidden" name="module" value="add_funds">
-                      <button type="submit" class="btn btn-primary w-100" id="generate-account-btn">
-                        <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                        Get Account Number
-                      </button>
+                  <div id="amount-input-container" >
+                    <form id="korapay-payment-form" action="<?php echo cn('add_funds/korapay/charge_with_payment'); ?>" method="POST">
+                        <div class="form-group">
+                          <div style="width: 70%; height: 8.5rem; margin:auto;">
+                            <img src="assets\images\payments\korapay.png" style=" object-fit: contain;" alt=""> 
+                          </div>
+                            <label for="amount" style="color: white;">Amount (NGN)</label>
+                            <input type="number" class="form-control" id="amount" name="amount" placeholder="100" min="100" required value="100">
+                        </div>
+
+                        <div class="note-section mt-4 mb-4">
+                            <p><strong>Note:</strong></p>
+                            <ul class="" style="padding-left: 15px;">
+                                <li>Minimum Payment Amount: ₦1000</li>
+                                <li>Maximum Payment Amount: ₦1000000</li>
+                                <li>Do Not Click <span style="color:#c65102; font-weight:bold">Cancel Button</span> after payment has been successfully completed, you will be redirected automatically.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="agreement-checkbox" required>
+                                <label class="form-check-label" style="color: white;" for="agreement-checkbox">
+                                    YES, I UNDERSTAND AFTER THE FUNDS ADDED I WILL NOT ASK FRAUDULENT DISPUTE OR CHARGE-BACK!
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
+                        <input type="hidden" name="module" value="add_funds">
+                        
+                        <button type="submit" class="btn btn-primary w-100" id="make-payment-btn">
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                            Make Payment
+                        </button>
                     </form>
                   </div>
 

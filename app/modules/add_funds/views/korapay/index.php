@@ -59,16 +59,16 @@
                   <h5 class="modal-title" id="accountDetailsModalLabel">Fund with Bank Transfer</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" id="modal-body-content" style="background: linear-gradient(135deg, #1a1a4d 0%, var(--makara-blue) 100%); color:aliceblue;">
+                <div class="modal-body" id="modal-body-content">
                   <!-- Initial state: Amount input -->
-                  <div id="amount-input-container" >
-                    <form id="korapay-payment-form" action="<?php echo cn('add_funds/korapay/charge_with_payment'); ?>" method="POST">
-                        <div class="form-group">
+                  <div id="amount-input-container">
+                    <form id="korapay-bank-transfer-form" action="<?php echo cn('add_funds/korapay/charge_with_bank_transfer'); ?>" method="POST">
+                       <div class="form-group">
                           <div style="width: 70%; height: 8.5rem; margin:auto;">
                             <img src="assets\images\payments\korapay.png" style=" object-fit: contain;" alt=""> 
                           </div>
-                            <label for="amount" style="color: white;">Amount (NGN)</label>
-                            <input type="number" class="form-control" id="amount" name="amount" placeholder="100" min="100" required value="100">
+                            <label for="amount" style="color: black;">Amount (NGN)</label>
+                            <input type="number" class="form-control" id="amount" name="amount" placeholder="1000" min="1000" required value="1000">
                         </div>
 
                         <div class="note-section mt-4 mb-4">
@@ -84,7 +84,7 @@
                         <div class="form-group mb-4">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="agreement-checkbox" required>
-                                <label class="form-check-label" style="color: white;" for="agreement-checkbox">
+                                <label class="form-check-label" style="color: black;" for="agreement-checkbox">
                                     YES, I UNDERSTAND AFTER THE FUNDS ADDED I WILL NOT ASK FRAUDULENT DISPUTE OR CHARGE-BACK!
                                 </label>
                             </div>
@@ -97,6 +97,7 @@
                             <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                             Make Payment
                         </button>
+
                     </form>
                   </div>
 

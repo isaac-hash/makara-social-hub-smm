@@ -256,10 +256,10 @@
             background: linear-gradient(135deg, var(--primary-blue));
             color: white;
             border: none;
-            padding: 18px 50px;
+            padding: 13px 40px;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: .8rem;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 10px 25px rgba(13, 11, 209, 0.3);
@@ -328,8 +328,8 @@
         }
         
         .social-link {
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--primary-blue));
             display: flex;

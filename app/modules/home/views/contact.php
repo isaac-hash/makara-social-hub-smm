@@ -467,11 +467,11 @@
                 <div class="social-section">
                     <h4>Connect With Us</h4>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61572953819089&mibextid=wwXIfr" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/makarasocialhub?s=21" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/makarasocialhub.ng?igsh=MXd1cWlsbjdxZjFzbw==" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/makarasocialhub/" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://youtube.com/@makarasocialhub?si=Sfm6A9WWLcShyrAD" class="social-link"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
 

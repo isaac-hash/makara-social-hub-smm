@@ -107,7 +107,7 @@
   }
 
   .price-badge::before {
-    content: "$";
+    content: "₦";
     margin-right: 2px;
     opacity: 0.7;
   }

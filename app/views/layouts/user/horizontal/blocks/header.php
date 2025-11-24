@@ -491,7 +491,7 @@
 
 
     <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
+    <aside class="sidebar" style="background-color: var(--background-color);" id="sidebar">
         <ul class="sidebar-menu">
     <li class="menu-item">
         <a href="<?=cn('')?>" class="menu-link">

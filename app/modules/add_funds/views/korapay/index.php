@@ -27,11 +27,11 @@
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <div class="card" id="korapay-bank-transfer-card">
-        <div class="card-header">
+        <div class="card-header" >
           Select Payment Method
         </div>
         <div class="card-body">
-          <div class="mb-4">
+          <div class="mb-4" style="color: gray;">
 
             <p>Click the button below to fund your wallet. </p>
             <span>
@@ -56,7 +56,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="accountDetailsModalLabel">Fund with Bank Transfer</h5>
+                  <h5 class="modal-title" style="color: black;" id="accountDetailsModalLabel">Fund with Bank Transfer</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="modal-body-content">
@@ -71,7 +71,7 @@
                             <input type="number" class="form-control" id="amount" name="amount" placeholder="1000" min="1000" required value="1000">
                         </div>
 
-                        <div class="note-section mt-4 mb-4">
+                        <div class="note-section mt-4 mb-4" style="color: black;">
                             <p><strong>Note:</strong></p>
                             <ul class="" style="padding-left: 15px;">
                                 <li>Minimum Payment Amount: ₦1000</li>

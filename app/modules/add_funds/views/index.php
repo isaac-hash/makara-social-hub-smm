@@ -221,7 +221,7 @@
     <h2 style="
       font-size: 1.75rem;
       font-weight: 600;
-      color: #1a1a1a;
+      color: var(--text-color);
       margin-bottom: 0.5rem;
       line-height: 1.3;
     ">
@@ -229,7 +229,7 @@
     </h2>
     <p style="
       font-size: 1rem;
-      color: #666;
+      color: var(--text-color);
       margin: 0;
     ">
       Choose from our various secure payment methods
@@ -383,7 +383,7 @@
   <div class="modal fade" id="manualPaymentModal" tabindex="-1" role="dialog" aria-labelledby="manualPaymentModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content payment-card">
-          <div class="p-2" style="">
+          <div class="p-2" style="color: black;">
               <div class=""></div>
               <h2>Manual Payment</h2>
               <p>Transfer funds to the account below</p>

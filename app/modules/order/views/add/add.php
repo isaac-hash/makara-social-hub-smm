@@ -57,7 +57,7 @@
               <div class="row">
                 <div class="col-md-7">
                   <div class="content-header-title">
-                    <h4><i class="fa fa-shopping-cart"></i> <?=lang('add_new')?></h4>
+                    <h4 style="color: black;"><i class="fa fa-shopping-cart"></i> <?=lang('add_new')?></h4>
                   </div>
 
                   <!-- Success Message -->

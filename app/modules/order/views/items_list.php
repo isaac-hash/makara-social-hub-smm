@@ -32,7 +32,7 @@
                         <div class="order-icon order-icon-red">#</div>
                         <div class="order-info-content">
                             <div class="order-info-label">Order ID</div>
-                            <div class="order-info-value"><?php echo $item_id; ?></div>
+                            <div class="order-info-value" style="color: var(--text-color);"><?php echo $item_id; ?></div>
                         </div>
                     </div>
 
@@ -42,7 +42,7 @@
                         <div class="order-icon order-icon-red">🔗</div>
                         <div class="order-info-content">
                             <div class="order-info-label">Link</div>
-                            <div class="order-info-value order-link"><?php echo esc($order_link); ?></div>
+                            <div class="order-info-value" style="color: var(--text-color);" order-link><?php echo esc($order_link); ?></div>
                         </div>
                     </div>
                     <?php endif; ?>
@@ -52,7 +52,7 @@
                         <div class="order-icon order-icon-red">📅</div>
                         <div class="order-info-content">
                             <div class="order-info-label">Order Date</div>
-                            <div class="order-info-value"><?php echo convert_timezone($item['created'], "user"); ?></div>
+                            <div class="order-info-value" style="color: var(--text-color);"><?php echo convert_timezone($item['created'], "user"); ?></div>
                         </div>
                     </div>
 
@@ -61,7 +61,7 @@
                         <div class="order-icon order-icon-red">💰</div>
                         <div class="order-info-content">
                             <div class="order-info-label">Amount Paid</div>
-                            <div class="order-info-value"><?php echo $currency_symbol . number_format($order_amount, 4); ?></div>
+                            <div class="order-info-value" style="color: var(--text-color);"><?php echo $currency_symbol . number_format($order_amount, 4); ?></div>
                         </div>
                     </div>
 
@@ -70,7 +70,7 @@
                         <div class="order-icon order-icon-red">📋</div>
                         <div class="order-info-content">
                             <div class="order-info-label">Order Status</div>
-                            <div class="order-info-value">
+                            <div class="order-info-value" style="color: var(--text-color);">
                                 <?php echo show_item_status($controller_name, $item['id'], $item_status, 'order-status-badge', 'user'); ?>
                             </div>
                         </div>

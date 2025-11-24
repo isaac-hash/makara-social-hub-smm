@@ -7,6 +7,7 @@
         border-radius: 10px;
         padding: 25px;
         background: #fafaff;
+        color:black;
     }
     .order_resume .service-title {
         margin-left: -10px;

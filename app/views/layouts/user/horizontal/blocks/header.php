@@ -13,7 +13,11 @@
             box-sizing: border-box;
         }
 
+        /* Default = dark mode */
         :root {
+            --toggle-bg: #1e1e1e;
+            --text-color: #ebe8e8ff;
+            --background-color: #303030ff;
             --primary-blue: #0D0BD1;
             --primary-orange: #FF9933;
             --white: #fff;
@@ -26,9 +30,19 @@
         }
 
         body {
+            background: var(--background-color);
+            color: var(--text-color);
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--light-gray);
-            color: var(--text-dark);
+            /* background: var(--light-gray); */
+            /* color: var(--text-dark); */
+        }
+        
+
+        /* Light mode */
+        :root.light {
+            --toggle-bg: #ffffff;
+            --text-color: #2c3e50;
+            --background-color: #f7f7f7;
         }
 
         /* Header */
@@ -38,7 +52,7 @@
             left: 0;
             right: 0;
             height: var(--header-height);
-            background: var(--white);
+            /* background: var(--white); */
             box-shadow: var(--shadow);
             display: flex;
             align-items: center;
@@ -208,7 +222,7 @@
             left: 0;
             width: var(--sidebar-width);
             height: calc(100vh - var(--header-height));
-            background: var(--white);
+            /* background: var(--white); */
             box-shadow: var(--shadow);
             overflow-y: auto;
             transition: transform 0.3s ease;
@@ -229,7 +243,7 @@
             align-items: center;
             gap: 1rem;
             padding: 0.875rem 1.5rem;
-            color: var(--text-dark);
+            color: var(--text-color);
             text-decoration: none;
             transition: all 0.3s;
             border-left: 3px solid transparent;
@@ -397,9 +411,14 @@
             <?php }?>
 
             <div class="header-icon">
-                <a href="#customize" data-toggle="modal" data-toggle="tooltip" data-placement="bottom" title="<?php echo lang('Theme_Customizer'); ?>">
+                <!-- <a href="#customize" data-toggle="modal" data-toggle="tooltip" data-placement="bottom" title="<?php echo lang('Theme_Customizer'); ?>">
                     <i class="fas fa-sliders-h"></i>
-                </a>
+                </a> -->
+                <div class="sticky-bottom-left-btn">
+    <a href="#" class="sticky-btn" onclick="toggleTheme(event)">
+        <i id="theme-icon" class="fas fa-moon"></i>
+    </a>
+</div>
             </div>
 
             <?php
@@ -437,8 +456,8 @@
                 <div class="user-avatar">
                     <i class="fas fa-user"></i>
                 </div>
-                <span><?= $nav_item_user_title; ?></span>
-                <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i>
+                <span style="color: #2c3e50"><?= $nav_item_user_title; ?></span>
+                <i class="fas fa-chevron-down" style="font-size: 0.75rem; color: #2c3e50"></i>
                 
                 <div class="user-dropdown" id="userDropdown" style="height: fit-content;">
                     <div class="dropdown-header">
@@ -474,101 +493,91 @@
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <ul class="sidebar-menu">
-            <li class="menu-item">
-                <a href="<?=cn('')?>" class="menu-link">
-                    <i class="fas fa-home menu-icon"></i>
-                    <span>Home</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?=cn('statistics')?>" class="menu-link active">
-                    <i class="fa-solid fa-chart-area"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <!-- <li class="menu-item">
-                <a href="?page=analytics" class="menu-link">
-                    <i class="fas fa-chart-bar menu-icon"></i>
-                    <span>Analytics</span>
-                </a>
-            </li> -->
-            <!-- <li class="menu-item">
-                <a href="?page=users" class="menu-link">
-                    <i class="fas fa-users menu-icon"></i>
-                    <span>Users</span>
-                </a>
-            </li> -->
-            <li class="menu-item">
-                <a href="<?=cn($header_elements['dripfeed']['route-name'])?>" class="menu-link">
-                    <i class="fa-solid fa-square-rss menu-icon"></i>
-                    <span>Dripfeed</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?=cn($header_elements['order']['route-name'])?>" class="menu-link">
-                    <i class="fas fa-shopping-cart menu-icon"></i>
-                    <span>Order History</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?=cn($header_elements['new_order']['route-name'])?>" class="menu-link">
-                    <i class="fas fa-cart-plus menu-icon"></i>
-                    <span>New Order</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?=cn($header_elements['subscriptions']['route-name'])?>" class="menu-link">
-                    <i class="fas fa-file-alt menu-icon"></i>
-                    <span>Subscription</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?=cn('prices-services'); ?>" class="menu-link">
-                    <i class="fa-brands fa-servicestack menu-icon"></i>
-                    <span>Services</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?=cn($header_elements['api']['route-name']); ?>" class="menu-link">
-                    <i class="fa-brands fa-nfc-symbol menu-icon"></i>
-                    <span>Api</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?=cn($header_elements['tickets']['route-name'])?>" class="menu-link">
-                    <i class="fa-solid fa-ticket menu-icon"></i>
-                    <span>Tickets</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?=cn($header_elements['add_funds']['route-name']); ?>" class="menu-link">
-                    <i class="fa-solid fa-wallet menu-icon"></i>
-                    <span>Fund Wallet</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?=cn('user/receipts'); ?>" class="menu-link">
-                    <i class="fa-solid fa-wallet menu-icon"></i>
-                    <span>My Receipts</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?=cn($header_elements['transactions']['route-name']); ?>" class="menu-link">
-                    <i class="fa-solid fa-money-bill-transfer menu-icon"></i>
-                    <span>Transaction History</span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<?php echo cn('auth/logout'); ?>" class="menu-link">
-                    <i class="fas fa-sign-out-alt menu-icon"></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-        </ul>
+    <li class="menu-item">
+        <a href="<?=cn('')?>" class="menu-link">
+            <i class="fas fa-house menu-icon"></i>
+            <span>Home</span>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="<?=cn('statistics')?>" class="menu-link active">
+            <i class="fas fa-chart-line menu-icon"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="<?=cn($header_elements['dripfeed']['route-name'])?>" class="menu-link">
+            <i class="fas fa-droplet menu-icon"></i>
+            <span>Dripfeed</span>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="<?=cn($header_elements['order']['route-name'])?>" class="menu-link">
+            <i class="fas fa-clock-rotate-left menu-icon"></i>
+            <span>Order History</span>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="<?=cn($header_elements['new_order']['route-name'])?>" class="menu-link">
+            <i class="fas fa-circle-plus menu-icon"></i>
+            <span>New Order</span>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="<?=cn($header_elements['subscriptions']['route-name'])?>" class="menu-link">
+            <i class="fas fa-repeat menu-icon"></i>
+            <span>Subscription</span>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="<?=cn('prices-services'); ?>" class="menu-link">
+            <i class="fas fa-layer-group menu-icon"></i>
+            <span>Services</span>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="<?=cn($header_elements['api']['route-name']); ?>" class="menu-link">
+            <i class="fas fa-code menu-icon"></i>
+            <span>Api</span>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="<?=cn($header_elements['tickets']['route-name'])?>" class="menu-link">
+            <i class="fas fa-headset menu-icon"></i>
+            <span>Tickets</span>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="<?=cn($header_elements['add_funds']['route-name']); ?>" class="menu-link">
+            <i class="fas fa-credit-card menu-icon"></i>
+            <span>Fund Wallet</span>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="<?=cn('user/receipts'); ?>" class="menu-link">
+            <i class="fas fa-receipt menu-icon"></i>
+            <span>My Receipts</span>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="<?=cn($header_elements['transactions']['route-name']); ?>" class="menu-link">
+            <i class="fas fa-arrow-right-arrow-left menu-icon"></i>
+            <span>Transaction History</span>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="<?php echo cn('auth/logout'); ?>" class="menu-link">
+            <i class="fas fa-right-from-bracket menu-icon"></i>
+            <span>Logout</span>
+        </a>
+    </li>
+</ul>
     </aside>
 
     <!-- Overlay for mobile -->
     <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+    <!-- Sticky Button Component - Add this anywhere in your body -->
+
 
     <script>
         function toggleSidebar() {
@@ -634,5 +643,37 @@
     </script>
     <script src="<?php echo BASE; ?>themes/nico/assets/js/widget-manager.js"></script>
 <script type="text/javascript" src="https://app.getbeamer.com/js/beamer-embed.js" defer="defer"></script>
+<script>
+    // Load theme on start
+    document.addEventListener("DOMContentLoaded", () => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "light") {
+            document.documentElement.classList.add("light");
+            document.getElementById("theme-icon").className = "fas fa-sun";
+        } else {
+            document.documentElement.classList.remove("light");
+            document.getElementById("theme-icon").className = "fas fa-moon";
+        }
+    });
+
+    function toggleTheme(event) {
+        event.preventDefault();
+
+        const html = document.documentElement;
+        const icon = document.getElementById("theme-icon");
+
+        if (html.classList.contains("light")) {
+            // Switch to dark mode
+            html.classList.remove("light");
+            icon.className = "fas fa-moon";
+            localStorage.setItem("theme", "dark");
+        } else {
+            // Switch to light mode
+            html.classList.add("light");
+            icon.className = "fas fa-sun";
+            localStorage.setItem("theme", "light");
+        }
+    }
+</script>
 </body>
 </html>

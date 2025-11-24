@@ -24,7 +24,7 @@
                         <div class="order-icon order-icon-red">📄</div>
                         <div class="order-info-content">
                             <div class="order-info-label">Payment Type</div>
-                            <div class="order-info-value"><?php echo $item_payment_type; ?></div>
+                            <div style="color: var(--text-color);" class="order-info-value"><?php echo $item_payment_type; ?></div>
                         </div>
                     </div>
 
@@ -33,7 +33,7 @@
                         <div class="order-icon order-icon-red">📅</div>
                         <div class="order-info-content">
                             <div class="order-info-label">Date</div>
-                            <div class="order-info-value"><?php echo $created; ?></div>
+                            <div style="color: var(--text-color);" class="order-info-value"><?php echo $created; ?></div>
                         </div>
                     </div>
                 </div>

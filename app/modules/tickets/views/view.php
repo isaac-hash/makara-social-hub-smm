@@ -98,7 +98,7 @@
     <div class="col-md-4">
         <div class="card">
             <div class="card-header d-flex align-items-center">
-                <h3 class="h4"><i class="fa fa-ticket"></i> Ticket #<?php echo $item['id']; ?></h3>
+                <h3 class="h4" style="color: black;"><i class="fa fa-ticket"></i> Ticket #<?php echo $item['id']; ?></h3>
             </div>
             <div class="card-body">
                 <div class="ticket-details">
@@ -131,7 +131,7 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-header d-flex align-items-center">
-                <h3 class="h4 ticket-title"><?php echo $item['subject']; ?></h3>
+                <h3 class="h4 ticket-title" style="color: black;"><?php echo $item['subject']; ?></h3>
             </div>
             <?php 
                 if ($item['status'] != 'closed') {

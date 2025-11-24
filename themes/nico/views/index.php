@@ -244,8 +244,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="who-we-are-content pe-lg-5">
-                        <h2 class="section-title text-dark fw-bold mb-4">Who We Are</h2>
-                        <p class="lead text-dark mb-4">Makara Social Hub is your go-to digital growth and marketing hub, helping individuals and businesses boost visibility, grow engagement, and build a powerful online presence.</p>
+                        <h2 class="section-title  fw-bold mb-4">Who We Are</h2>
+                        <p class="lead  mb-4">Makara Social Hub is your go-to digital growth and marketing hub, helping individuals and businesses boost visibility, grow engagement, and build a powerful online presence.</p>
                         <div class="vision-mission mb-5">
                             <div class="vision-card p-4 rounded-4 shadow-sm mb-4" style="
                                 background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(236, 246, 255, 0.9));
@@ -259,7 +259,7 @@
                                     -webkit-text-fill-color: transparent;
                                     font-weight: bold;
                                 ">Our Vision</h3>
-                                <p class="mb-0">To become the world's leading one-stop digital powerhouse, empowering businesses, influencers, and creators with innovative tools for growth.</p>
+                                <p class="mb-0" style="color: #2c3e50">To become the world's leading one-stop digital powerhouse, empowering businesses, influencers, and creators with innovative tools for growth.</p>
                             </div>
                             <div class="mission-card p-4 rounded-4 shadow-sm" style="
                                 background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(236, 246, 255, 0.9));
@@ -273,11 +273,11 @@
                                     -webkit-text-fill-color: transparent;
                                     font-weight: bold;
                                 ">Our Mission</h3>
-                                <p class="mb-0">To help individuals and businesses showcase their value by giving their platforms the boost they need to gain visibility and recognition both locally and globally.</p>
+                                <p class="mb-0" style="color: #2c3e50">To help individuals and businesses showcase their value by giving their platforms the boost they need to gain visibility and recognition both locally and globally.</p>
                             </div>
                         </div>
                         <div class="work-culture mt-4 py-4">
-                            <h3 class="h4 text-dark mb-4">Our Values</h3>
+                            <h3 class="h4  mb-4">Our Values</h3>
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="value-card bg-white p-3 rounded-3 shadow-sm">
@@ -285,7 +285,7 @@
                                             <div class="icon-box me-3" style="width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
                                             <i class="fa-solid fa-seedling" style="color: #0D0BD1;"></i>
                                             </div>
-                                            <h4 class="h6 mb-0">Empowerment & Growth</h4>
+                                            <h4 class="h6 mb-0" style="color: #2c3e50">Empowerment & Growth</h4>
                                         </div>
                                         <p class="small mb-0 text-muted">Supporting continuous learning and innovation</p>
                                     </div>
@@ -296,7 +296,7 @@
                                             <div class="icon-box me-3" style="width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(13, 110, 253, 0.1);">
                                             <i class="fas fa-shield-alt" style="color: #FF9933;"></i>
                                             </div>
-                                            <h4 class="h6 mb-0">Transparency & Trust</h4>
+                                            <h4 class="h6 mb-0" style="color: #2c3e50">Transparency & Trust</h4>
                                         </div>
                                         <p class="small mb-0 text-muted">Built on honesty and clear communication</p>
                                     </div>
@@ -364,10 +364,10 @@
                             font-weight: bold;
                         ">Social Media Growth</h3>
                         <ul class="list-unstyled mb-0">
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Instagram, Facebook, TikTok Growth</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>YouTube, Twitter, LinkedIn Services</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Engagement & Interaction Boost</li>
-                            <li><i class="fas fa-check text-primary me-2"></i>WhatsApp Status & Channel Growth</li>
+                            <li class="mb-2" style="color: #2c3e50"><i class="fas fa-check text-primary me-2"></i>Instagram, Facebook, TikTok Growth</li>
+                            <li class="mb-2" style="color: #2c3e50"><i class="fas fa-check text-primary me-2"></i>YouTube, Twitter, LinkedIn Services</li>
+                            <li class="mb-2" style="color: #2c3e50"><i class="fas fa-check text-primary me-2"></i>Engagement & Interaction Boost</li>
+                            <li style="color: #2c3e50"><i class="fas fa-check text-primary me-2"></i>WhatsApp Status & Channel Growth</li>
                         </ul>
                     </div>
                 </div>
@@ -398,10 +398,10 @@
                             font-weight: bold;
                         ">Advertising & Promotion</h3>
                         <ul class="list-unstyled mb-0">
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Targeted Social Media Ads</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>SEO-Optimized Campaigns</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>App Store Promotion</li>
-                            <li><i class="fas fa-check text-primary me-2"></i>Brand Visibility Enhancement</li>
+                            <li class="mb-2" style="color: #2c3e50"><i class="fas fa-check text-primary me-2"></i>Targeted Social Media Ads</li>
+                            <li class="mb-2" style="color: #2c3e50"><i class="fas fa-check text-primary me-2"></i>SEO-Optimized Campaigns</li>
+                            <li class="mb-2" style="color: #2c3e50"><i class="fas fa-check text-primary me-2"></i>App Store Promotion</li>
+                            <li style="color: #2c3e50"><i class="fas fa-check text-primary me-2"></i>Brand Visibility Enhancement</li>
                         </ul>
                     </div>
                 </div>
@@ -433,10 +433,10 @@
                             font-weight: bold;
                         ">Music & Streaming</h3>
                         <ul class="list-unstyled mb-0">
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Spotify & Apple Music Growth</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Audiomack & SoundCloud Promotion</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>YouTube Music Marketing</li>
-                            <li><i class="fas fa-check text-primary me-2"></i>Boomplay Streams & Engagement</li>
+                            <li class="mb-2" style="color: #2c3e50"><i class="fas fa-check text-primary me-2"></i>Spotify & Apple Music Growth</li>
+                            <li class="mb-2" style="color: #2c3e50"><i class="fas fa-check text-primary me-2"></i>Audiomack & SoundCloud Promotion</li>
+                            <li class="mb-2" style="color: #2c3e50"><i class="fas fa-check text-primary me-2"></i>YouTube Music Marketing</li>
+                            <li style="color: #2c3e50"><i class="fas fa-check text-primary me-2"></i>Boomplay Streams & Engagement</li>
                         </ul>
                     </div>
                 </div>
@@ -870,7 +870,7 @@
                         -webkit-text-fill-color: transparent;
                         font-size: 2.5rem;
                     ">Frequently Asked Questions</h2>
-                    <p class="lead mb-5" style="color: #4F30A2;">Find quick answers to common questions about our services</p>
+                    <p class="lead mb-5" style="color: #4F30A2; font-weight: 600;">Find quick answers to common questions about our services</p>
                 </div>
             </div>
             <div class="row justify-content-center">

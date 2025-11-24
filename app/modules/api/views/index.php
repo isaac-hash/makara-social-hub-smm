@@ -10,15 +10,15 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("api_documentation")?></h3>
+        <h3 class="card-title" style="color: black;"><?=lang("api_documentation")?></h3>
         <div class="card-options">
-          <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
-          <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
+          <a href="#" class="card-options-collapse" style="color: black;"data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
+          <a href="#" class="card-options-remove" style="color: black;" data-toggle="card-remove"><i class="fe fe-x"></i></a>
         </div>
       </div>
       <div class="card-body collapse show">
         <div class="x_content">
-          <p class="note"><?=lang("note_please_read_the_api_intructions_carefully_its_your_solo_responsability_what_you_add_by_our_api")?></p>
+          <p class="note" style="color: black;"><?=lang("note_please_read_the_api_intructions_carefully_its_your_solo_responsability_what_you_add_by_our_api")?></p>
           <table class="table table-hover table-bordered projects">
             <thead>
               <tr>
@@ -56,7 +56,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("place_new_order")?></h3>
+        <h3 class="card-title" style="color: black;"><?=lang("place_new_order")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -463,7 +463,7 @@
             </tbody>
           </table>
 
-          <div class="title"><h4><?=lang("example_response")?></h4></div>
+          <div class="title" style="color: black;"><h4><?=lang("example_response")?></h4></div>
           <div class="card-body">
             <pre>
 {
@@ -642,7 +642,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("status_order")?></h3>
+        <h3 class="card-title" style="color: black;"><?=lang("status_order")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -693,7 +693,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"> <?=lang("multiple_orders_status")?></h3>
+        <h3 class="card-title" style="color: black;"> <?=lang("multiple_orders_status")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -722,7 +722,7 @@
           </table>
 
 
-          <div class="title"><h4><?=lang("example_response")?></h4></div>
+          <div class="title" style="color: black;"><h4><?=lang("example_response")?></h4></div>
           <div class="card-body">
             <pre>
   {
@@ -753,7 +753,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("services_lists")?></h3>
+        <h3 class="card-title" style="color: black;"><?=lang("services_lists")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -780,7 +780,7 @@
               <?php }} ?>
             </tbody>
           </table>
-          <div class="title"><h4><?=lang("example_response")?></h4></div>
+          <div class="title" style="color: black;"><h4><?=lang("example_response")?></h4></div>
           <div class="card-body">
             <pre>
 [
@@ -828,7 +828,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("Balance")?></h3>
+        <h3 class="card-title" style="color: black;"><?=lang("Balance")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -856,7 +856,7 @@
               <?php }} ?>
             </tbody>
           </table>
-          <div class="title"><h4><?=lang("example_response")?></h4></div>
+          <div class="title" style="color: black;"><h4><?=lang("example_response")?></h4></div>
           <div class="card-body">
             <pre>
   {

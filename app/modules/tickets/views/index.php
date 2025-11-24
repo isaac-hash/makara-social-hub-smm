@@ -82,7 +82,7 @@
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">
-          <h4 class="modal-title"><i class="fe fe-edit"></i> <?=lang("add_new_ticket")?></h4>
+          <h4 class="modal-title" style="color: black;"><i class="fe fe-edit"></i> <?=lang("add_new_ticket")?></h4>
         </h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
@@ -109,7 +109,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title"><i class="fe fe-list"></i> <?=lang("Lists")?></h3>
+            <h3 class="card-title" style="color: black;"><i class="fe fe-list"></i> <?=lang("Lists")?></h3>
             <div class="card-options">
               <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
               <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>

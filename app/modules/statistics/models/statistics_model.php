@@ -41,12 +41,12 @@ class statistics_model extends MY_Model
                 'name' => lang("total_orders"),
                 'value' => $total_orders,
                 'class' => 'bg-warning-gradient',
-                'icon' => 'fe fe-shopping-cart'],
+                'icon' => 'fas fa-clock-rotate-left'],
             'tickets' => [
                 'name' => lang("total_tickets"),
                 'value' => $total_tickets,
                 'class' => 'bg-danger-gradient',
-                'icon' => 'fa fa-ticket'],
+                'icon' => 'fas fa-headset'],
         ];
         return $result;
     }

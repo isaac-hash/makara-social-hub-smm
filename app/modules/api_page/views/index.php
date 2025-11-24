@@ -15,7 +15,7 @@ require_once 'themes/nico/views/nav.php';
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("api_documentation")?></h3>
+        <h3 class="card-title" style="color: #2c3e50"><?=lang("api_documentation")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -38,12 +38,12 @@ require_once 'themes/nico/views/nav.php';
               </tr>
               <tr>
                 <td>API URL</td>
-                <td><a href="<?=$api_url?>"><?=$api_url?></a></td>
+                <td><a href="<?=$api_url?>" style="color: #2c3e50"><?=$api_url?></a></td>
               </tr>
 
               <tr>
                 <td><?=lang("api_key")?></td>
-                <td><?=$api_key?></td>
+                <td style="color: #2c3e50"><?=$api_key?></td>
               </tr>
           </table>
           <div class="card-footer">

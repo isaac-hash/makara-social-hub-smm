@@ -54,9 +54,10 @@
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
         }
         body{
-         background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(236, 246, 255, 0.9));
+         /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(236, 246, 255, 0.9)); */
         /*  backdrop-filter: blur(10px); */
         }
+
     </style>
 
     <!-- Responsive Styles -->
@@ -163,7 +164,7 @@
             <div class="row">
                 <div class="col-lg-10 mx-auto text-center">
                     <h1 class=" fw-bold text-makara-blue">Our Services: Fueling Your Digital Success</h1>
-                    <p class="lead mt-3">At Makara Social Hub, we provide premium engagement, advertising, and branding solutions designed to help businesses, influencers, and creators boost visibility, grow audiences, and maximize impact across all digital platforms. We don't just offer services; we deliver measurable growth.</p>
+                    <p class="lead mt-3" style="color: #2c3e50">At Makara Social Hub, we provide premium engagement, advertising, and branding solutions designed to help businesses, influencers, and creators boost visibility, grow audiences, and maximize impact across all digital platforms. We don't just offer services; we deliver measurable growth.</p>
                 </div>
             </div>
         </div>
@@ -178,14 +179,14 @@
             <div class="row mb-5">
                 <div class="col-12">
                     <h3 class="fw-bold text-makara-orange border-makara-orange">Social Media Growth & Engagement</h3>
-                    <p class="lead text-muted mb-4">Skyrocket your brand's presence with authentic engagement and follower growth across the platforms that matter.</p>
+                    <p class="lead text-muted mb-4" style="color: #2c3e50">Skyrocket your brand's presence with authentic engagement and follower growth across the platforms that matter.</p>
                 </div>
                 
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="card service-card shadow-sm h-100">
                         <div class="card-body">
                             <h5 class="card-title fw-bold text-makara-blue">Multi-Platform Reach</h5>
-                            <p class="card-text">We drive growth across Instagram, Facebook, TikTok, YouTube, Twitter (X), Telegram, Threads, & LinkedIn.</p>
+                            <p class="card-text" style="color: #2c3e50">We drive growth across Instagram, Facebook, TikTok, YouTube, Twitter (X), Telegram, Threads, & LinkedIn.</p>
                         </div>
                     </div>
                 </div>
@@ -194,7 +195,7 @@
                     <div class="card service-card shadow-sm h-100">
                         <div class="card-body">
                             <h5 class="card-title fw-bold text-makara-blue">Engagement Metrics</h5>
-                            <p class="card-text">Increase your Likes, Followers, Comments, Views, Shares, & Retweets.</p>
+                            <p class="card-text" style="color: #2c3e50">Increase your Likes, Followers, Comments, Views, Shares, & Retweets.</p>
                         </div>
                     </div>
                 </div>
@@ -203,7 +204,7 @@
                     <div class="card service-card shadow-sm h-100">
                         <div class="card-body">
                             <h5 class="card-title fw-bold text-makara-blue">WhatsApp & Live Growth</h5>
-                            <p class="card-text">Get real, targeted Status Views and specialized Live Stream Engagement & Custom Interactions.</p>
+                            <p class="card-text" style="color: #2c3e50">Get real, targeted Status Views and specialized Live Stream Engagement & Custom Interactions.</p>
                         </div>
                     </div>
                 </div>
@@ -212,14 +213,14 @@
             <div class="row mb-5">
                 <div class="col-12">
                     <h3 class="fw-bold text-makara-orange border-makara-orange">Reseller API & White-Label Solutions</h3>
-                    <p class="lead text-muted mb-4">Launch your own successful social media growth business effortlessly with our reliable infrastructure.</p>
+                    <p class="lead text-muted mb-4" style="color: #2c3e50">Launch your own successful social media growth business effortlessly with our reliable infrastructure.</p>
                 </div>
                 
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="card service-card shadow-sm h-100">
                         <div class="card-body">
                             <h5 class="card-title fw-bold text-makara-blue">Seamless API Integration</h5>
-                            <p class="card-text">Easy integration allows you to sell our services under your own brand with minimal effort.</p>
+                            <p class="card-text" style="color: #2c3e50">Easy integration allows you to sell our services under your own brand with minimal effort.</p>
                         </div>
                     </div>
                 </div>
@@ -228,7 +229,7 @@
                     <div class="card service-card shadow-sm h-100">
                         <div class="card-body">
                             <h5 class="card-title fw-bold text-makara-blue">Bulk Growth Packages</h5>
-                            <p class="card-text">Offer your clients likes, followers, views, and more at competitive, scalable rates.</p>
+                            <p class="card-text" style="color: #2c3e50">Offer your clients likes, followers, views, and more at competitive, scalable rates.</p>
                         </div>
                     </div>
                 </div>
@@ -237,7 +238,7 @@
                     <div class="card service-card shadow-sm h-100">
                         <div class="card-body">
                             <h5 class="card-title fw-bold text-makara-blue">Automated Processing</h5>
-                            <p class="card-text">Guarantee fast and efficient service delivery for all your reseller orders with automated processing.</p>
+                            <p class="card-text" style="color: #2c3e50">Guarantee fast and efficient service delivery for all your reseller orders with automated processing.</p>
                         </div>
                     </div>
                 </div>
@@ -246,14 +247,14 @@
             <div class="row mb-5">
                 <div class="col-12">
                     <h3 class="fw-bold text-makara-orange border-makara-orange">Advertising & Brand Promotion</h3>
-                    <p class="lead text-muted mb-4">Turn attention into action with highly targeted campaigns that drive tangible results.</p>
+                    <p class="lead text-muted mb-4" style="color: #2c3e50">Turn attention into action with highly targeted campaigns that drive tangible results.</p>
                 </div>
                 
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="card service-card shadow-sm h-100">
                         <div class="card-body">
                             <h5 class="card-title fw-bold text-makara-blue">Targeted Social Ads</h5>
-                            <p class="card-text">Precision advertising on platforms including Instagram, Facebook, TikTok, YouTube, Twitter, and more.</p>
+                            <p class="card-text" style="color: #2c3e50">Precision advertising on platforms including Instagram, Facebook, TikTok, YouTube, Twitter, and more.</p>
                         </div>
                     </div>
                 </div>

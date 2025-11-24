@@ -1,5 +1,10 @@
 
 <style> 
+.table-responsive{
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
   .table-responsive td,
   .table-responsive td a {
     white-space: normal !important;
@@ -97,6 +102,9 @@
     body.sidebar-hidden .responsive-content-row {
       margin-left: 0.5rem;
     }
+  }
+  .card-title{
+    color: black;
   }
 </style>
 

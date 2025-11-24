@@ -2,7 +2,7 @@
 if ($chart_and_orders_area) {
 ?>
   <!-- Orders Statistics Cards -->
-  <div class="row g-4 mb-4 rounded chart-orders-statistics">
+  <div class="row g-4 mb-4 rounded chart-orders-statistics mt-5">
     <?php
       foreach ($chart_and_orders_area['orders_statistics'] as $key => $item) {
     ?>

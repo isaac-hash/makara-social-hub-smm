@@ -1,5 +1,102 @@
+<!-- Sticky Button Component - Add this anywhere in your body -->
+<!-- Light/Dark Mode Toggle Button -->
+<div class="sticky-bottom-left-btn">
+    <a href="#" class="sticky-btn" onclick="toggleTheme(event)">
+        <i id="theme-icon" class="fas fa-moon"></i>
+    </a>
+</div>
 
-    <!-- Footer -->
+
+<style>
+   .sticky-bottom-left-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 8px;
+    z-index: 9999;
+}
+
+.sticky-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 60px;
+    height: 60px;
+
+    padding: 0;
+
+    background: var(--toggle-bg, #1e1e1e);
+    color: var(--makara-blue);
+    text-decoration: none;
+    border-radius: 50%;
+
+    box-shadow: 0 4px 15px rgba(13, 11, 209, 0.3);
+    transition: all 0.3s ease;
+}
+
+.sticky-btn:hover {
+    transform: translateY(-3px);
+}
+
+.sticky-btn i {
+    font-size: 1.8rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .sticky-bottom-left-btn {
+        bottom: 15px;
+        left: 8px;
+    }
+
+    .sticky-btn {
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .sticky-btn i {
+        font-size: 1.3rem;
+    }
+}
+
+</style>
+
+<script>
+    // Load theme on start
+    document.addEventListener("DOMContentLoaded", () => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "light") {
+            document.documentElement.classList.add("light");
+            document.getElementById("theme-icon").className = "fas fa-sun";
+        } else {
+            document.documentElement.classList.remove("light");
+            document.getElementById("theme-icon").className = "fas fa-moon";
+        }
+    });
+
+    function toggleTheme(event) {
+        event.preventDefault();
+
+        const html = document.documentElement;
+        const icon = document.getElementById("theme-icon");
+
+        if (html.classList.contains("light")) {
+            // Switch to dark mode
+            html.classList.remove("light");
+            icon.className = "fas fa-moon";
+            localStorage.setItem("theme", "dark");
+        } else {
+            // Switch to light mode
+            html.classList.add("light");
+            icon.className = "fas fa-sun";
+            localStorage.setItem("theme", "light");
+        }
+    }
+</script>
+
+  <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="row">

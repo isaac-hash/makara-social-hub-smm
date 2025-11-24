@@ -32,7 +32,7 @@
                         <div class="order-icon order-icon-red">#</div>
                         <div class="order-info-content">
                             <div class="order-info-label">Subscription ID</div>
-                            <div class="order-info-value"><?php echo $item_id; ?></div>
+                            <div style="color: var(--text-color);" class="order-info-value"><?php echo $item_id; ?></div>
                         </div>
                     </div>
 
@@ -42,7 +42,7 @@
                         <div class="order-icon order-icon-red">👤</div>
                         <div class="order-info-content">
                             <div class="order-info-label">Username</div>
-                            <div class="order-info-value order-link"><?php echo esc($sub_username); ?></div>
+                            <div style="color: var(--text-color);" class="order-info-value order-link"><?php echo esc($sub_username); ?></div>
                         </div>
                     </div>
                     <?php endif; ?>
@@ -52,7 +52,7 @@
                         <div class="order-icon order-icon-red">📅</div>
                         <div class="order-info-content">
                             <div class="order-info-label">Created Date</div>
-                            <div class="order-info-value"><?php echo convert_timezone($item['created'], "user"); ?></div>
+                            <div style="color: var(--text-color);" class="order-info-value"><?php echo convert_timezone($item['created'], "user"); ?></div>
                         </div>
                     </div>
 
@@ -62,7 +62,7 @@
                         <div class="order-icon order-icon-red">⌛</div>
                         <div class="order-info-content">
                             <div class="order-info-label">Expiry</div>
-                            <div class="order-info-value"><?php echo convert_timezone($item['expiry'], "user"); ?></div>
+                            <div style="color: var(--text-color);" class="order-info-value"><?php echo convert_timezone($item['expiry'], "user"); ?></div>
                         </div>
                     </div>
                     <?php endif; ?>
@@ -72,7 +72,7 @@
                         <div class="order-icon order-icon-red">📋</div>
                         <div class="order-info-content">
                             <div class="order-info-label">Status</div>
-                            <div class="order-info-value">
+                            <div style="color: var(--text-color);" class="order-info-value">
                                 <?php echo show_item_status($controller_name, $item['id'], $item_status, 'order-status-badge', 'user'); ?>
                             </div>
                         </div>

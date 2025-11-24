@@ -28,6 +28,30 @@
           BASE  = '<?php echo BASE; ?>';
     </script>
     <style>
+/* Default = dark mode */
+:root {
+    --toggle-bg: #1e1e1e;
+    --text-color: #ffffff;
+    --background-color: #000000;
+    --makara-blue: #0D0BD1;
+            --makara-orange: #FF9933;
+            --makara-blue-light: rgba(13, 11, 209, 0.08);
+            --makara-orange-light: rgba(255, 153, 51, 0.08);
+}
+
+/* Light mode */
+:root.light {
+    --toggle-bg: #ffffff;
+    --text-color: #000000;
+    --background-color: #f7f7f7;
+}
+
+body {
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+
 /* ✅ Tweak navbar for mid-size screens (1024px - 1399px) */
 @media (min-width: 1024px) and (max-width: 1399px) {
   .navbar .navbar-brand img {

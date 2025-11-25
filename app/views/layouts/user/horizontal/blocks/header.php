@@ -374,6 +374,41 @@
                 padding: 1px 4px;
             }
         }
+
+        .sticky-btn {
+        width: 60px;
+    height: 60px;
+
+    padding: 14px;
+
+    background: var(--toggle-bg, #1e1e1e);
+    color: var(--makara-blue);
+    text-decoration: none;
+    border-radius: 50%;
+    margin-left: .5rem;
+
+    box-shadow: 0 4px 15px rgba(13, 11, 209, 0.3);
+    transition: all 0.3s ease;
+
+    }
+
+    .sticky-btn i {
+        font-size: 1.3rem;
+    }
+    /* Mobile responsive */
+@media (max-width: 768px) {
+
+    .sticky-btn {
+        width: 50px;
+        height: 50px;
+        padding: 14px;
+        justify-content: center;
+    }
+
+    .sticky-btn i {
+        font-size: 1.3rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -485,99 +520,129 @@
             </div>
         </div>
     </header>
+    <div class="text-slide" style="--speed: 14s; margin-top: 4rem;">
+        <span>Welcome to your dashboard — stay updated with the latest announcements!</span>
+    </div>
+
     <?php
   $header_elements = app_config('controller')['user'];
 ?>
 
 
+
     <!-- Sidebar -->
     <aside class="sidebar" style="background-color: var(--background-color);" id="sidebar">
         <ul class="sidebar-menu">
-    <li class="menu-item">
-        <a href="<?=cn('')?>" class="menu-link">
-            <i class="fas fa-house menu-icon"></i>
-            <span>Home</span>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="<?=cn('statistics')?>" class="menu-link active">
-            <i class="fas fa-chart-line menu-icon"></i>
-            <span>Dashboard</span>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="<?=cn($header_elements['dripfeed']['route-name'])?>" class="menu-link">
-            <i class="fas fa-droplet menu-icon"></i>
-            <span>Dripfeed</span>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="<?=cn($header_elements['order']['route-name'])?>" class="menu-link">
-            <i class="fas fa-clock-rotate-left menu-icon"></i>
-            <span>Order History</span>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="<?=cn($header_elements['new_order']['route-name'])?>" class="menu-link">
-            <i class="fas fa-circle-plus menu-icon"></i>
-            <span>New Order</span>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="<?=cn($header_elements['subscriptions']['route-name'])?>" class="menu-link">
-            <i class="fas fa-repeat menu-icon"></i>
-            <span>Subscription</span>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="<?=cn('prices-services'); ?>" class="menu-link">
-            <i class="fas fa-layer-group menu-icon"></i>
-            <span>Services</span>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="<?=cn($header_elements['api']['route-name']); ?>" class="menu-link">
-            <i class="fas fa-code menu-icon"></i>
-            <span>Api</span>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="<?=cn($header_elements['tickets']['route-name'])?>" class="menu-link">
-            <i class="fas fa-headset menu-icon"></i>
-            <span>Tickets</span>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="<?=cn($header_elements['add_funds']['route-name']); ?>" class="menu-link">
-            <i class="fas fa-credit-card menu-icon"></i>
-            <span>Fund Wallet</span>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="<?=cn('user/receipts'); ?>" class="menu-link">
-            <i class="fas fa-receipt menu-icon"></i>
-            <span>My Receipts</span>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="<?=cn($header_elements['transactions']['route-name']); ?>" class="menu-link">
-            <i class="fas fa-arrow-right-arrow-left menu-icon"></i>
-            <span>Transaction History</span>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a href="<?php echo cn('auth/logout'); ?>" class="menu-link">
-            <i class="fas fa-right-from-bracket menu-icon"></i>
-            <span>Logout</span>
-        </a>
-    </li>
-</ul>
+            <li class="menu-item">
+                <a href="<?=cn('')?>" class="menu-link">
+                    <i class="fas fa-house menu-icon"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn('statistics')?>" class="menu-link active">
+                    <i class="fas fa-chart-line menu-icon"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn($header_elements['dripfeed']['route-name'])?>" class="menu-link">
+                    <i class="fas fa-droplet menu-icon"></i>
+                    <span>Dripfeed</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn($header_elements['order']['route-name'])?>" class="menu-link">
+                    <i class="fas fa-clock-rotate-left menu-icon"></i>
+                    <span>Order History</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn($header_elements['new_order']['route-name'])?>" class="menu-link">
+                    <i class="fas fa-circle-plus menu-icon"></i>
+                    <span>New Order</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn($header_elements['subscriptions']['route-name'])?>" class="menu-link">
+                    <i class="fas fa-repeat menu-icon"></i>
+                    <span>Subscription</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn('prices-services'); ?>" class="menu-link">
+                    <i class="fas fa-layer-group menu-icon"></i>
+                    <span>Services</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn($header_elements['api']['route-name']); ?>" class="menu-link">
+                    <i class="fas fa-code menu-icon"></i>
+                    <span>Api</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn($header_elements['tickets']['route-name'])?>" class="menu-link">
+                    <i class="fas fa-headset menu-icon"></i>
+                    <span>Tickets</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn($header_elements['add_funds']['route-name']); ?>" class="menu-link">
+                    <i class="fas fa-credit-card menu-icon"></i>
+                    <span>Fund Wallet</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn('user/receipts'); ?>" class="menu-link">
+                    <i class="fas fa-receipt menu-icon"></i>
+                    <span>My Receipts</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn($header_elements['transactions']['route-name']); ?>" class="menu-link">
+                    <i class="fas fa-arrow-right-arrow-left menu-icon"></i>
+                    <span>Transaction History</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?php echo cn('auth/logout'); ?>" class="menu-link">
+                    <i class="fas fa-right-from-bracket menu-icon"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
     </aside>
 
     <!-- Overlay for mobile -->
     <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
     <!-- Sticky Button Component - Add this anywhere in your body -->
 
+ <style>
+    .text-slide {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        background: var(--primary-blue);
+        color: var(--white);
+        padding: 8px 0;
+        box-shadow: var(--shadow);
+    }
+
+    .text-slide span {
+        display: inline-block;
+        padding-left: 100%;
+        animation: slide var(--speed, 15s) linear infinite;
+        font-weight: 500;
+    }
+
+    @keyframes slide {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
+    }
+
+
+ </style>
 
     <script>
         function toggleSidebar() {

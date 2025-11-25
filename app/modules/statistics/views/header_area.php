@@ -21,7 +21,7 @@ if ($hour >= 5 && $hour <= 11) {
 $user_balance = isset($user->balance) ? number_format($user->balance, 2) : '0.00';
 ?>
   <!-- Banner Section -->
-  <div class="banner-section mb-5 mt-6" style="background: linear-gradient(135deg, 
+  <div class="banner-section mb-5 mt-2" style="background: linear-gradient(135deg, 
         var(--makara-blue) 0%, 
         var(--makara-blue-dark) 50%, 
         #1a0a4e 100%

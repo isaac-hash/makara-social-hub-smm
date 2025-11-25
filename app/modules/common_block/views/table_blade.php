@@ -1,9 +1,9 @@
 
 <style> 
-.table-responsive{
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
+  .table-responsive{
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
 
   .table-responsive td,
   .table-responsive td a {
@@ -17,7 +17,7 @@
   }
   /* Desktop - with sidebar offset */
   .responsive-section-header {
-    margin-top: 6rem;
+    margin-top: 3rem;
     margin-left: 7rem;
   }
   
@@ -29,7 +29,7 @@
   @media (max-width: 991px) {
     .responsive-section-header {
       margin-left: 3rem;
-      margin-top: 5rem;
+      margin-top: 3rem;
     }
     
     .responsive-content-row {
@@ -43,7 +43,7 @@
     .responsive-section-header {
       margin-left: 0;
       margin-right: 0;
-      margin-top: 4rem;
+      margin-top: 2rem;
       padding-left: 1rem;
       padding-right: 1rem;
     }
@@ -63,7 +63,7 @@
   /* Extra Small Screens (below 576px) */
   @media (max-width: 575px) {
     .responsive-section-header {
-      margin-top: 3.5rem;
+      margin-top: 1.5rem;
       padding-left: 0.75rem;
       padding-right: 0.75rem;
     }

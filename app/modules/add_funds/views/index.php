@@ -215,7 +215,7 @@
         }
     </style>
 
-<div class="col-lg-8 col-md-10 mx-auto" style="margin-top: 6rem;">
+<div class="col-lg-8 col-md-10 mx-auto" style="margin-top: 3rem;">
   <!-- Header Section -->
   <div style="text-align: center; margin-bottom: 2rem;">
     <h2 style="

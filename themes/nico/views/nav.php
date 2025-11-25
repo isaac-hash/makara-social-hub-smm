@@ -27,74 +27,74 @@
           PATH  = '<?php echo PATH; ?>',
           BASE  = '<?php echo BASE; ?>';
     </script>
-    <style>
-/* Default = dark mode */
-:root {
-    --toggle-bg: #1e1e1e;
-    --text-color: #ffffff;
-    --background-color: #000000;
-    --makara-blue: #0D0BD1;
-            --makara-orange: #FF9933;
-            --makara-blue-light: rgba(13, 11, 209, 0.08);
-            --makara-orange-light: rgba(255, 153, 51, 0.08);
-}
-
-/* Light mode */
-:root.light {
-    --toggle-bg: #ffffff;
-    --text-color: #000000;
-    --background-color: #f7f7f7;
-}
-
-body {
-    background: var(--background-color);
-    color: var(--text-color);
-}
-
-
-/* ✅ Tweak navbar for mid-size screens (1024px - 1399px) */
-@media (min-width: 1024px) and (max-width: 1399px) {
-  .navbar .navbar-brand img {
-    width: 150px !important; /* smaller logo */
-    height: auto;
+<style>
+  /* Default = dark mode */
+  :root {
+      --toggle-bg: #1e1e1e;
+      --text-color: #ffffff;
+      --background-color: #000000;
+      --makara-blue: #0D0BD1;
+              --makara-orange: #FF9933;
+              --makara-blue-light: rgba(13, 11, 209, 0.08);
+              --makara-orange-light: rgba(255, 153, 51, 0.08);
   }
 
-  .navbar-nav .nav-link {
-    padding-left: 0.75rem !important;
-    padding-right: 0.75rem !important;
-    font-size: 0.95rem !important; /* slightly smaller text */
+  /* Light mode */
+  :root.light {
+      --toggle-bg: #ffffff;
+      --text-color: #000000;
+      --background-color: #f7f7f7;
   }
 
-  .navbar-buttons .btn {
-    padding: 0.45rem 1rem !important;
-    font-size: 0.9rem !important;
+  body {
+      background: var(--background-color);
+      color: var(--text-color);
   }
 
+
+  /* ✅ Tweak navbar for mid-size screens (1024px - 1399px) */
+  @media (min-width: 1024px) and (max-width: 1399px) {
+    .navbar .navbar-brand img {
+      width: 150px !important; /* smaller logo */
+      height: auto;
+    }
+
+    .navbar-nav .nav-link {
+      padding-left: 0.75rem !important;
+      padding-right: 0.75rem !important;
+      font-size: 0.95rem !important; /* slightly smaller text */
+    }
+
+    .navbar-buttons .btn {
+      padding: 0.45rem 1rem !important;
+      font-size: 0.9rem !important;
+    }
+
+    .navbar .container {
+      max-width: 100% !important;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    /* Optional: Reduce gap between nav links and buttons */
+    .navbar-buttons {
+      margin-left: 0.5rem;
+    }
+  }
+
+  /* ✅ Optional: Trigger mobile menu (offcanvas) earlier at 1200px */
+  @media (max-width: 1200px) {
+    .navbar-collapse {
+      display: none !important;
+    }
+    .navbar-toggler {
+      display: block !important;
+    }
+  }
   .navbar .container {
-    max-width: 100% !important;
-    padding-left: 1rem;
-    padding-right: 1rem;
+      overflow: visible !important;
+      position: static !important;
   }
-
-  /* Optional: Reduce gap between nav links and buttons */
-  .navbar-buttons {
-    margin-left: 0.5rem;
-  }
-}
-
-/* ✅ Optional: Trigger mobile menu (offcanvas) earlier at 1200px */
-@media (max-width: 1200px) {
-  .navbar-collapse {
-    display: none !important;
-  }
-  .navbar-toggler {
-    display: block !important;
-  }
-}
-.navbar .container {
-    overflow: visible !important;
-    position: static !important;
-}
 
 </style>
 
@@ -116,6 +116,11 @@ body {
     <a class="navbar-brand" href="<?=cn('')?>">
       <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1760352921/logo_famnk2.png" alt="Makara Logo" class="navbar-logo" style="height: 45px; width: 190px;" />
     </a>
+    <div class="sticky-bottom-left-btn">
+    <a href="#" class="sticky-btn" onclick="toggleTheme(event)">
+        <i id="theme-icon" class="fas fa-moon"></i>
+    </a>
+</div>
 
     <!-- ✅ Bootstrap 5 Toggler -->
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle navigation" style="
@@ -167,6 +172,7 @@ body {
                   </ul>
         </li>
       </ul>
+      
 
       <?php if (session('uid')) : ?>
 <div class="dropdown">
@@ -208,12 +214,16 @@ body {
       <?php endif; ?>
     </div>
   </div>
+  <div class="text-slide" style="--speed: 14s; margin-top:0rem;">
+        <span>Welcome to your dashboard — stay updated with the latest announcements!</span>
+    </div>
 </nav>
 
 <!-- ✅ Offcanvas (Mobile Menu) -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel" style="z-index: 9999;">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="mobileMenuLabel">Menu</h5>
+    <!-- <h5 class="offcanvas-title" id="mobileMenuLabel">Menu</h5> -->
+     
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
@@ -243,3 +253,32 @@ body {
     <?php endif; ?>
   </div>
 </div>
+
+
+
+ <style>
+    .text-slide {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        background: var(--makara-blue);
+        color: var(--white);
+        padding: 8px 0;
+        box-shadow: var(--shadow);
+        z-index: 0;
+    }
+
+    .text-slide span {
+        display: inline-block;
+        padding-left: 100%;
+        animation: slide var(--speed, 15s) linear infinite;
+        font-weight: 500;
+    }
+
+    @keyframes slide {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
+    }
+
+
+ </style>

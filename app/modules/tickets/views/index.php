@@ -90,7 +90,7 @@
         </div>
       </div>
 
-      <div class="card-body o-auto" style="height: calc(100vh - 180px);">
+      <div class="card-body o-auto" style="height: calc(100vh - 180px); background-color: var(--background-color); color: var(--text-color);">
         <?php echo form_open($form_url, $form_attributes); ?>
           <div class="form-body" id="add_new_ticket">
             <div class="row justify-content-md-center">
@@ -115,7 +115,7 @@
               <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
             </div>
           </div>
-          <div class="card-body o-auto" style="height: calc(100vh - 180px);">
+          <div class="card-body o-auto" style="height: calc(100vh - 180px); background-color: var(--background-color); color: var(--text-color);">
             <?php if(!empty($items)){?>
               <div class="ticket-lists">
                 <?php

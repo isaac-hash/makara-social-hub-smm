@@ -100,10 +100,10 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">My Receipts</h3>
+        <h3 class="card-title" style="color: black;">My Receipts</h3>
       </div>
       <div class="table-responsive">
-        <table class="table table-hover table-bordered table-vcenter card-table">
+        <table class="table table-hover table-bordered table-vcenter card-table" style="background-color: var(--background-color); color: var(--text-color);">
           <thead>
             <tr>
               <th>Amount</th>

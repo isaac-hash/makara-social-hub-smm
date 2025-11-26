@@ -20,12 +20,12 @@
     align-items: center;
     justify-content: center;
 
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
 
     padding: 0;
 
-    background: var(--toggle-bg, #1e1e1e);
+    background: var(--toggle-bg, #2e2e2eff);
     color: var(--makara-blue);
     text-decoration: none;
     border-radius: 50%;
@@ -52,8 +52,8 @@
     }
 
     .sticky-btn {
-        width: 50px;
-        height: 50px;
+        width: 33px;
+        height: 33px;
         padding: 14px;
         justify-content: center;
     }

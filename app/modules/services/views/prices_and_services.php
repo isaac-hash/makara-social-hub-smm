@@ -1,4 +1,6 @@
-
+<?php
+    require_once 'themes/nico/views/nav.php';
+    ?>
 
 <?php
   $items_category = array_column($items_category, 'id', 'name');
@@ -53,7 +55,7 @@
   }
   
   .responsive-content-row {
-    margin-left: 12rem;
+    margin-left: 6rem;
   }
   
   /* Tablet Screens (768px to 991px) */
@@ -212,3 +214,9 @@
   });
 
 </script>
+
+
+<?php
+require_once 'themes/nico/views/footer.php';
+
+?>

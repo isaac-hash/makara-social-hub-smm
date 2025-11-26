@@ -194,31 +194,35 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="py-5 bg-light">
+    <section class="py-5 " style="background-color: var(--toggle-bg); background: linear-gradient(135deg,
+            rgba(0, 42, 255, 0.05) 0%,
+            rgba(0, 98, 255, 0.1) 50%,
+            rgba(64, 224, 208, 0.15) 100%
+        );">
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-3 col-6 mb-4 mb-md-0">
                     <div class="keen-stat">
-                        <div class="keen-stat-number">50K+</div>
-                        <div class="keen-stat-label">Active Users</div>
+                        <div style="color: var(--text-color)" class="keen-stat-number">50K+</div>
+                        <div style="color: var(--text-color)" class="keen-stat-label">Active Users</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 mb-4 mb-md-0">
                     <div class="keen-stat">
-                        <div class="keen-stat-number">1M+</div>
-                        <div class="keen-stat-label">Orders</div>
+                        <div style="color: var(--text-color)" class="keen-stat-number">1M+</div>
+                        <div style="color: var(--text-color)" class="keen-stat-label">Orders</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 mb-4 mb-md-0">
                     <div class="keen-stat">
-                        <div class="keen-stat-number">99%</div>
-                        <div class="keen-stat-label">Success Rate</div>
+                        <div style="color: var(--text-color)" class="keen-stat-number">99%</div>
+                        <div style="color: var(--text-color)" class="keen-stat-label">Success Rate</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="keen-stat">
-                        <div class="keen-stat-number">24/7</div>
-                        <div class="keen-stat-label">Support</div>
+                        <div style="color: var(--text-color)" class="keen-stat-number">24/7</div>
+                        <div style="color: var(--text-color)" class="keen-stat-label">Support</div>
                     </div>
                 </div>
             </div>
@@ -244,7 +248,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="who-we-are-content pe-lg-5">
-                        <h2 class="section-title  fw-bold mb-4">Who We Are</h2>
+                        <h2 class="section-title  fw-bold mb-4 mt-3">Who We Are</h2>
                         <p class="lead  mb-4">Makara Social Hub is your go-to digital growth and marketing hub, helping individuals and businesses boost visibility, grow engagement, and build a powerful online presence.</p>
                         <div class="vision-mission mb-5">
                             <div class="vision-card p-4 rounded-4 shadow-sm mb-4" style="

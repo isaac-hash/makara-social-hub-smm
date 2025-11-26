@@ -603,7 +603,8 @@ if ( ! function_exists('form_label'))
 	function form_label($label_text = '', $id = '', $attributes = array())
 	{
 
-		$label = '<label';
+		$label = '<label style="color: var(--text-color);"';
+		// $label = '<label';
 
 		if ($id !== '')
 		{

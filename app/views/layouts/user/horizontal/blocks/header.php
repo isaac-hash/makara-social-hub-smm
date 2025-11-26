@@ -20,6 +20,7 @@
             --background-color: #303030ff;
             --primary-blue: #0D0BD1;
             --primary-orange: #FF9933;
+            --makara-orange: #c65102;
             --white: #fff;
             --light-gray: #f8f9fa;
             --text-dark: #2c3e50;
@@ -375,20 +376,20 @@
             }
         }
 
-        .sticky-btn {
-        width: 60px;
-    height: 60px;
+    .sticky-btn {
+        width:30px;
+        height:20px;
 
-    padding: 14px;
+        padding: 9px;
 
-    background: var(--toggle-bg, #1e1e1e);
-    color: var(--makara-blue);
-    text-decoration: none;
-    border-radius: 50%;
-    margin-left: .5rem;
+        background: var(--toggle-bg, #1e1e1e);
+        color: var(--makara-blue);
+        text-decoration: none;
+        border-radius: 100%;
+        margin-left: .5rem;
 
-    box-shadow: 0 4px 15px rgba(13, 11, 209, 0.3);
-    transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(13, 11, 209, 0.3);
+        transition: all 0.3s ease;
 
     }
 
@@ -396,19 +397,19 @@
         font-size: 1.3rem;
     }
     /* Mobile responsive */
-@media (max-width: 768px) {
+    @media (max-width: 768px) {
 
-    .sticky-btn {
-        width: 50px;
-        height: 50px;
-        padding: 14px;
-        justify-content: center;
-    }
+        .sticky-btn {
+            width: 30px;
+            height: 30px;
+            padding: 8px;
+            justify-content: center;
+        }
 
-    .sticky-btn i {
-        font-size: 1.3rem;
+        .sticky-btn i {
+            font-size: 1.3rem;
+        }
     }
-}
     </style>
 </head>
 <body>
@@ -570,7 +571,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a href="<?=cn('prices-services'); ?>" class="menu-link">
+                <a href="<?=cn('services'); ?>" class="menu-link">
                     <i class="fas fa-layer-group menu-icon"></i>
                     <span>Services</span>
                 </a>
@@ -623,7 +624,7 @@
         width: 100%;
         overflow: hidden;
         white-space: nowrap;
-        background: var(--primary-blue);
+        background: var(--makara-orange);
         color: var(--white);
         padding: 8px 0;
         box-shadow: var(--shadow);

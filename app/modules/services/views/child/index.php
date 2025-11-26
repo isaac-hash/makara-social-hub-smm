@@ -18,7 +18,7 @@
         }
 </style>
 
-<div class="col-md-12 col-xl-12">
+<div class="col-md-12 col-xl-12" >
   <?php
     $class_favorite = 'fa-heart';
     $class_unfavorite = 'fa-heart-o';
@@ -27,7 +27,7 @@
     foreach ($items as $key => $item_category) {
   ?>
     <div class="card">
-      <div class="card-header">
+      <div class="card-header" style="color: black;">
         <h3 class="card-title font"><?php echo $key; ?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
@@ -45,7 +45,7 @@
                 $show_item_view     = show_item_details('services', $item);
                 $item_price         = (double) $item['price'];
             ?>
-              <tr class="tr_<?php echo esc($item['id']); ?> service-item" data-cate-id="<?= esc($item['cate_id']) ?>" data-id="<?= esc($item['id'])?>" data-name="<?= esc($item['name'])?>">
+              <tr class="tr_<?php echo esc($item['id']); ?> service-item" data-cate-id="<?= esc($item['cate_id']) ?>" data-id="<?= esc($item['id'])?>" data-name="<?= esc($item['name'])?>" style="background-color: var(--background-color); color: var(--text-color);">
                 <?php if (session('uid')) :?>
                   <td class="text-center w-1p">
                     <i class="favorite-icon fs-16 fa <?= $item['favorite'] ? $class_favorite : $class_unfavorite ?>" 

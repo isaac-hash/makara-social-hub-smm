@@ -30,11 +30,12 @@
 <style>
   /* Default = dark mode */
   :root {
-      --toggle-bg: #1e1e1e;
+      --toggle-bg: #141414f1;
       --text-color: #ffffff;
       --background-color: #000000;
       --makara-blue: #0D0BD1;
               --makara-orange: #FF9933;
+              --makara-orange-new: #c65102;
               --makara-blue-light: rgba(13, 11, 209, 0.08);
               --makara-orange-light: rgba(255, 153, 51, 0.08);
   }
@@ -110,7 +111,9 @@
     box-shadow: 0 4px 20px rgba(0, 98, 255, 0.1);
     overflow: visible;
     z-index: 9999;
+    display: block;
 ">
+
   <div class="container">
     <!-- Brand -->
     <a class="navbar-brand" href="<?=cn('')?>">
@@ -218,13 +221,18 @@
         <span>Welcome to your dashboard — stay updated with the latest announcements!</span>
     </div>
 </nav>
+      <!-- </div> -->
 
 <!-- ✅ Offcanvas (Mobile Menu) -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel" style="z-index: 9999;">
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel" style="z-index: 9999; background: linear-gradient(135deg,
+            rgba(0, 42, 255, 0.05) 0%,
+            rgba(0, 98, 255, 0.1) 50%,
+            rgba(64, 224, 208, 0.15) 100%
+        ); background-color: var(--background-color); color: var(--text-color);">
   <div class="offcanvas-header">
     <!-- <h5 class="offcanvas-title" id="mobileMenuLabel">Menu</h5> -->
      
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <button type="button" class="btn-close text-reset" style="color: var(--text-color);" data-bs-dismiss="offcanvas" aria-label="Close">X</button>
   </div>
   <div class="offcanvas-body">
     <ul class="navbar-nav">
@@ -261,7 +269,7 @@
         width: 100%;
         overflow: hidden;
         white-space: nowrap;
-        background: var(--makara-blue);
+        background: var(--makara-orange-new);
         color: var(--white);
         padding: 8px 0;
         box-shadow: var(--shadow);

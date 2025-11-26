@@ -18,7 +18,7 @@
             break;
     }
     $xhtml_item_status = sprintf(
-        '<span class="btn %s btn-sm">
+        '<span class="btn %s btn-sm"  style="color: var(--text-color);">
             <small>%s</small>
         </span>', $class_item_status, ticket_status_title($item['status'])
     );
@@ -30,7 +30,7 @@
     }
     $xhtml_item_subject_content = sprintf(
         '<div class="content">
-            <div class="subject %s">
+            <div class="subject %s" style="color: var(--text-color);">
                 %s
             </div>
             <div class="time">

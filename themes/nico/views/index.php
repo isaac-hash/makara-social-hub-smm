@@ -130,17 +130,31 @@
                             Makara Social Hub is your go-to digital growth and marketing hub. Helping individuals and businesses boost visibility,  
                             <span style="color: rgba(255, 255, 255, 0.7);">grow engagement, and build a powerful online presence.</span>
                         </p>
-                        <a href="<?=cn('/auth/signup')?>" class="btn px-5 py-3 mb-4 rounded-pill shadow-lg hover-lift" style="
-                            background: rgba(255, 255, 255, 0.15);
-                            backdrop-filter: blur(5px);
-                            border: 1px solid rgba(255, 255, 255, 0.3);
-                            color: white;
-                            font-weight: 500;
-                            transition: all 0.3s ease;
-                        " onmouseover="this.style.background='rgba(255, 255, 255, 0.25)'" 
-                           onmouseout="this.style.background='rgba(255, 255, 255, 0.15)'">
-                            Start Growing Today
-                        </a>
+                        <div class="flex" style="gap: 2rem; justify-content: space-between; display: flex; flex-wrap: nowrap; max-width: 300px; margin-bottom: 1.5rem;">
+
+                            <a href="<?=cn('/auth/signup')?>" class="btn px-3 w-100 py-3 mb-4 rounded-pill shadow-lg hover-lift" style="
+                                background: rgba(255, 255, 255, 0.15);
+                                backdrop-filter: blur(5px);
+                                border: 1px solid rgba(255, 255, 255, 0.3);
+                                color: white;
+                                font-weight: 500;
+                                transition: all 0.3s ease;
+                            " onmouseover="this.style.background='rgba(255, 255, 255, 0.25)'" 
+                               onmouseout="this.style.background='rgba(255, 255, 255, 0.15)'">
+                                Sign Up
+                            </a>
+                            <a href="<?=cn('/auth/login')?>" class="btn px-3 w-100 py-3 mb-4 rounded-pill shadow-lg hover-lift" style="
+                                background: rgba(255, 255, 255, 0.15);
+                                backdrop-filter: blur(5px);
+                                border: 1px solid rgba(255, 255, 255, 0.3);
+                                color: white;
+                                font-weight: 500;
+                                transition: all 0.3s ease;
+                            " onmouseover="this.style.background='rgba(255, 255, 255, 0.25)'" 
+                               onmouseout="this.style.background='rgba(255, 255, 255, 0.15)'">
+                                Sign In
+                            </a>
+                        </div>
                         <div class="keen-hero-social-proof d-flex align-items-center p-3 rounded-3" style="
                             background: rgba(255, 255, 255, 0.1);
                             backdrop-filter: blur(10px);

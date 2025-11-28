@@ -21,6 +21,7 @@
             --primary-blue: #0D0BD1;
             --primary-orange: #FF9933;
             --makara-orange: #c65102;
+            --makara-orange-new: #c65102;
             --white: #fff;
             --light-gray: #f8f9fa;
             --text-dark: #2c3e50;
@@ -521,7 +522,7 @@
             </div>
         </div>
     </header>
-    <div class="text-slide" style="--speed: 14s; margin-top:0rem;">
+    <div class="text-slide" style="--speed: 14s; margin-top: 4rem;">
         <span>See a high price? Relax — it’s per 1,000 units! You can purchase as low as 10.</span>
         <span>Small budgets welcome! Many services start at just 10 units.</span>
     </div>
@@ -625,7 +626,7 @@
         width: 100%;
         overflow: hidden;
         white-space: nowrap;
-        background: var(--makara-orange);
+        background: var(--makara-orange-new);
         color: var(--white);
         padding: 8px 0;
         box-shadow: var(--shadow);

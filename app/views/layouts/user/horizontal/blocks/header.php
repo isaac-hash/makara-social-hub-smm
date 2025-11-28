@@ -521,8 +521,9 @@
             </div>
         </div>
     </header>
-    <div class="text-slide" style="--speed: 14s; margin-top: 4rem;">
-        <span>Welcome to your dashboard — stay updated with the latest announcements!</span>
+    <div class="text-slide" style="--speed: 14s; margin-top:0rem;">
+        <span>See a high price? Relax — it’s per 1,000 units! You can purchase as low as 10.</span>
+        <span>Small budgets welcome! Many services start at just 10 units.</span>
     </div>
 
     <?php

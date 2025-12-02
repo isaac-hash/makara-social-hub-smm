@@ -590,6 +590,12 @@
                     <span>Tickets</span>
                 </a>
             </li>
+            <!-- <li class="menu-item">
+                <a href="<?=cn('notifications')?>" class="menu-link">
+                    <i class="fas fa-headset menu-icon"></i>
+                    <span>Notifications</span>
+                </a>
+            </li> -->
             <li class="menu-item">
                 <a href="<?=cn($header_elements['add_funds']['route-name']); ?>" class="menu-link">
                     <i class="fas fa-credit-card menu-icon"></i>

@@ -600,7 +600,7 @@
         });
     });
     </script>
-
+    <!-- Modal Script -->
     <script>
       $(document).ready(function(){
         var is_notification_popup = "<?=get_option('enable_notification_popup', 0)?>"

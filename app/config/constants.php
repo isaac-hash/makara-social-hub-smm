@@ -106,6 +106,8 @@ define("ORDERS_REFILL", "orders_refill");
 define("ORDERS_CANCEL", "orders_cancel");
 define("SUBSCRIPTIONS", "subscriptions");
 define("FAQS", "faqs");
+define("NOTIFICATIONS", "notifications");
+define("NOTIFICATION_MESSAGES", "notification_messages");
 define("TICKETS", "tickets");
 define("TICKET_MESSAGES", "ticket_messages");
 

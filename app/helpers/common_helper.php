@@ -1044,9 +1044,39 @@ if (!function_exists("ticket_status_array")) {
         return $data;
     }
 }
+if (!function_exists("notification_status_array")) {
+
+    function notification_status_array()
+    {
+        $data = array('new', 'pending', 'closed');
+        return $data;
+    }
+}
 
 if (!function_exists("ticket_status_title")) {
     function ticket_status_title($key)
+    {
+        switch ($key) {
+            case 'new':
+                return lang('New');
+                break;
+            case 'pending':
+                return lang('Pending');
+                break;
+
+            case 'closed':
+                return lang('Closed');
+                break;
+
+            case 'answered':
+                return lang('Answered');
+                break;
+
+        }
+    }
+}
+if (!function_exists("notification_status_title")) {
+    function notification_status_title($key)
     {
         switch ($key) {
             case 'new':
@@ -1445,9 +1475,9 @@ if (!function_exists('allowed_search_bar')) {
     function allowed_search_bar($module = "")
     {
         if (get_role('user')) {
-            $allowed_search = ['subscriptions', 'dripfeed', 'log', 'tickets', 'services', 'schedule'];
+            $allowed_search = ['subscriptions', 'dripfeed', 'log', 'tickets', 'notifications', 'services', 'schedule'];
         } else {
-            $allowed_search = ['user_block_ip', 'user_logs', 'user_mail_logs', 'services', 'subscriptions', 'dripfeed', 'users', 'tickets', 'faqs', 'log', 'search', 'transactions', 'subscribers', 'schedule'];
+            $allowed_search = ['user_block_ip', 'user_logs', 'user_mail_logs', 'services', 'subscriptions', 'dripfeed', 'users', 'tickets', 'notifications', 'faqs', 'log', 'search', 'transactions', 'subscribers', 'schedule'];
         }
         if (in_array($module, $allowed_search)) {
             return true;

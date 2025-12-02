@@ -217,10 +217,35 @@
       <?php endif; ?>
     </div>
   </div>
-  <div class="text-slide" style="--speed: 14s; margin-top:0rem;">
-        <span>See a high price? Relax — it’s per 1,000 units! You can purchase as low as 10.</span>
-        <span>Small budgets welcome! Many services start at just 10 units.</span>
-    </div>
+  <div class="text-slide" style="--speed: 20s;">
+  <div class="inner">
+    <span>See a high price? Relax — it’s per 1,000 units! You can purchase as low as 10.</span>
+    <span>Small budgets welcome! Many services start at just 10 units.</span>
+  </div>
+</div>
+
+<style>
+.text-slide {
+  width: 100%;
+  overflow: hidden;
+  background: var(--makara-orange-new);
+  color: white;
+  padding: 8px 0;
+  white-space: nowrap;
+}
+
+.text-slide .inner {
+  display: inline-flex;
+  gap: 60rem; /* space between messages */
+  animation: slide var(--speed, 15s) linear infinite;
+}
+
+@keyframes slide {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+</style>
+
 </nav>
       <!-- </div> -->
 
@@ -265,29 +290,3 @@
 
 
 
- <style>
-    .text-slide {
-        width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-        background: var(--makara-orange-new);
-        color: var(--white);
-        padding: 8px 0;
-        box-shadow: var(--shadow);
-        z-index: 0;
-    }
-
-    .text-slide span {
-        display: inline-block;
-        padding-left: 100%;
-        animation: slide var(--speed, 15s) linear infinite;
-        font-weight: 500;
-    }
-
-    @keyframes slide {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-100%); }
-    }
-
-
- </style>

@@ -18,6 +18,8 @@ class MY_Model extends CI_Model
     protected $tb_users_favorite_services;
     protected $tb_services;
     protected $tb_categories;
+    protected $tb_notifications;
+    protected $tb_notifications_message;
     protected $tb_tickets;
     protected $tb_ticket_message;
     protected $tb_api_providers;
@@ -44,6 +46,8 @@ class MY_Model extends CI_Model
         $this->tb_users_price       = USERS_PRICE;
         $this->tb_services          = SERVICES;
         $this->tb_users_favorite_services       = USERS_FAVORITE_SERVICES;
+        $this->tb_notifications     = NOTIFICATIONS;
+        $this->tb_notifications_message     = NOTIFICATION_MESSAGES;
         $this->tb_tickets           = TICKETS;
         $this->tb_ticket_message    = TICKET_MESSAGES;
         $this->tb_categories        = CATEGORIES;

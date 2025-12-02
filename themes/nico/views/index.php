@@ -27,39 +27,40 @@
             padding: 0;
         }
         .accordion {
-  background-color: #f3f3f3ff;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
-  border-radius: 2rem;
-}
+        background-color: #f3f3f3ff;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+        border-radius: 2rem;
+        }
 
-.active, .accordion:hover {
-  background-color: #ccc; 
-}
+        .active, .accordion:hover {
+        background-color: #ccc; 
+        }
 
-.panel {
-  padding: 0 18px;
-  display: none;
-  background-color: white;
-  overflow: hidden;
-}
+        .panel {
+        padding: 0 18px;
+        display: none;
+        background-color: white;
+        overflow: hidden;
+        }
+
+  
     </style>
-
-
-
     <!-- Header -->
-    
-
     <?php
     require_once 'themes/nico/views/nav.php';
     ?>
+
+   
+
+ 
 
     <!-- Hero Section -->
     <!-- Hero Section -->
@@ -75,6 +76,8 @@
         overflow: hidden;
         position: relative;
     ">
+     
+    
         <?php
             // if ($user_id) {
             //     echo "The User ID is: " . $user_id;
@@ -206,6 +209,73 @@
             </div>
         </div>
     </section>
+    
+
+    <!-- MODAL -->
+     <?php
+     $show = true;
+        if ($show):
+     ?>
+<div id="modalOverlay" style="
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999999;
+    padding: 20px;
+    cursor: pointer;
+">
+    <div style="
+        background: white;
+        padding: 10px 10px;
+        border-radius: 32px;
+        box-shadow: 0 40px 120px rgba(0,0,0,0.7);
+        max-width: 520px;
+        width: 100%;
+        text-align: center;
+        animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        pointer-events: auto;
+        height: 28rem;
+    ">
+        <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1764681663/makara011225_vcehys.jpg" width="100%" height="100%" style="border-radius: 32px;" alt="">
+        
+    </div>
+</div>
+<?php
+    endif;
+?>
+
+<style>
+    @keyframes popIn {
+        from { transform: scale(0.3); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const overlay = document.getElementById('modalOverlay');
+        
+        // Show modal
+        overlay.style.display = 'flex';
+
+        // Auto-hide after 5 seconds
+        const timer = setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 10000);
+
+        // Click anywhere to close
+        overlay.addEventListener('click', () => {
+            overlay.style.display = 'none';
+            clearTimeout(timer);
+        });
+    });
+</script>
 
     <!-- Stats Section -->
     <section class="py-5 " style="background-color: var(--toggle-bg); background: linear-gradient(135deg,
@@ -901,78 +971,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 order-2 order-lg-1">
-                    <!-- <div class="accordion custom-accordion" id="accordionExample" style="--bs-accordion-active-bg: #EEF2FF; --bs-accordion-btn-focus-border-color: #4F30A2; --bs-accordion-active-color: #4F30A2;">
-                        <div class="accordion-item" style="border-radius:2rem;">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    What are SMM panels?
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                <div class=" mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
-                                    An SMM panel is an online shop that you can visit to purchase SMM services at great prices. We provide a user-friendly platform to help you grow your social media presence effectively.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    What SMM services can I find?
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                <div class=" mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
-                                    We offer a comprehensive range of SMM services including:
-                                    <ul class="mt-2 mb-0">
-                                        <li>Social media likes and followers</li>
-                                        <li>Video views and engagement</li>
-                                        <li>Comments and shares</li>
-                                        <li>Custom social media packages</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Are SMM services safe?
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                <div class=" mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
-                                    Yes, our services are completely safe! We use organic methods that comply with social media platform guidelines. Your account security is our top priority, and we guarantee that your accounts won't face any risks.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFour">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    How does a mass order work?
-                                </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                                <div class=" mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
-                                    Our mass order feature allows you to place multiple orders simultaneously. Simply upload a list of links and select your desired services for each. This saves time and streamlines your social media growth strategy.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item" style="border-radius:2rem;">
-                            <h2 class="accordion-header" id="headingFive">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    What does drip-feed mean?
-                                </button>
-                            </h2>
-                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-                                <div class=" mt-2" style="color: whitesmoke; background-color: #0D0BD1; padding:1rem;">
-                                    Drip-feed is our smart delivery system that gradually distributes your order over time. For example, instead of getting 2000 likes at once, you can receive 200 likes daily for 10 days. This creates a more natural growth pattern and improves engagement authenticity.
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
+                    
 
 <div class="accordion" id="accordionExample"
      style="">
@@ -1152,6 +1151,7 @@
             </div>
         </div>
     </section>
+       
 <script>
   // Accordion data (title, content, and optional HTML)
   const faqData = [
@@ -1226,37 +1226,6 @@
   });
 </script>
     
-<script>
-//   // Example data (you can load this from anywhere)
-//   const accordionData = [
-//     { title: "Section 1", content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit..." },
-//     { title: "Section 2", content: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris..." },
-//     { title: "Section 3", content: "Duis aute irure dolor in reprehenderit in voluptate velit esse..." }
-//   ];
-
-//   // Generate accordion HTML dynamically
-//   const container = document.getElementById("accordionContainer");
-//   accordionData.forEach(item => {
-//     container.innerHTML += `
-//       <button class="accordion">${item.title}</button>
-//       <div class="panel">
-//         <p>${item.content}</p>
-//       </div>
-//     `;
-//   });
-</script>
-
-<!-- ✅ Your existing accordion toggle script -->
-<script>
-//   var acc = document.getElementsByClassName("accordion");
-//   for (let i = 0; i < acc.length; i++) {
-//     acc[i].addEventListener("click", function() {
-//       this.classList.toggle("active");
-//       var panel = this.nextElementSibling;
-//       panel.style.display = (panel.style.display === "block") ? "none" : "block";
-//     });
-//   }
-</script>
 <?php
 require_once 'themes/nico/views/footer.php';
 

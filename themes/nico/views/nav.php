@@ -217,7 +217,7 @@
       <?php endif; ?>
     </div>
   </div>
-  <div class="text-slide" style="--speed: 20s;">
+  <div class="text-slide" style="--speed: 30s;">
   <div class="inner">
     <span>See a high price? Relax — it’s per 1,000 units! You can purchase as low as 10.</span>
     <span>Small budgets welcome! Many services start at just 10 units.</span>

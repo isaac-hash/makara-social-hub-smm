@@ -231,8 +231,8 @@
     cursor: pointer;
 ">
     <div style="
-        background: white;
-        padding: 10px 10px;
+        
+        padding: 5px 5px;
         border-radius: 32px;
         box-shadow: 0 40px 120px rgba(0,0,0,0.7);
         max-width: 520px;

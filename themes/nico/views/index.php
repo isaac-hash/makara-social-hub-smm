@@ -267,7 +267,7 @@
         // Auto-hide after 5 seconds
         const timer = setTimeout(() => {
             overlay.style.display = 'none';
-        }, 10000);
+        }, 3000);
 
         // Click anywhere to close
         overlay.addEventListener('click', () => {

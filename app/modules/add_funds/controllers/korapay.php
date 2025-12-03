@@ -13,6 +13,7 @@ class Korapay extends MX_Controller {
     public $encryption_key;
     public $api_base;
     public $take_fee_from_user;
+    public $tb_payments_bonuses;
 
     // Toggle this to false in production
     public $debug_mode = true;
@@ -22,7 +23,7 @@ class Korapay extends MX_Controller {
 
     $this->load->model('add_funds_model', 'model');
     $this->load->helper('string');
-
+    $this->tb_payments_bonuses = PAYMENTS_BONUSES;
     $this->tb_users            = USERS;
     $this->tb_transaction_logs = TRANSACTION_LOGS;
     $this->tb_payments         = PAYMENTS_METHOD;
@@ -46,7 +47,7 @@ class Korapay extends MX_Controller {
     $this->debug_mode = $is_sandbox;
 
     $this->api_base = $is_sandbox
-        ? "https://api.sandbox.korapay.com/merchant/api/v1"
+        ? "https://api.korapay.com/merchant/api/v1"
         : "https://api.korapay.com/merchant/api/v1";
 
     $this->currency_code = "NGN";
@@ -619,9 +620,9 @@ class Korapay extends MX_Controller {
         _is_ajax(); // Ensure it's an AJAX request
 
         $reference = post('reference');
-        if (!$reference) {
-            ms(['status' => 'error', 'message' => 'Reference is missing.']);
-        }
+        // if (!$reference) {
+        //     ms(['status' => 'error', 'message' => 'Reference is missing.']);
+        // }
 
         $transaction = $this->model->get('*', $this->tb_transaction_logs, [
             'transaction_id' => $reference,

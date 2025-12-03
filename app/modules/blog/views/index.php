@@ -3,19 +3,19 @@
     ?>
 
 
-<section class="blog" style="padding: 4rem 0; margin-top: 5rem; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); min-height: 100vh;">
+<section class="blog" style="padding: 4rem 0; margin-top: 5rem; min-height: 100vh;">
   <div class="container">
     <!-- Header Section -->
     <div class="row justify-content-center mb-5">
       <div class="col-lg-8 text-center">
         <div class="blog-header" style="animation: fadeInUp 0.6s ease-out;">
-          <span class="badge" style="background: rgba(99, 102, 241, 0.1); color: #6366f1; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 600; margin-bottom: 1rem; display: inline-block;">
+          <span class="badge" style="background: rgba(99, 102, 241, 0.1); padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 600; margin-bottom: 1rem; margin-top: 4rem; color: var(--text-color); display: inline-block;">
             <?=lang('Blog')?>
           </span>
-          <h1 class="title-name" style="font-size: 3rem; font-weight: 700; color: #1e293b; margin-bottom: 1.5rem; line-height: 1.2;">
+          <h1 class="title-name" style="font-size: 3rem; font-weight: 700; color: var(--text-color); margin-bottom: 1.5rem; line-height: 1.2;">
             <?=lang('Blog')?>
           </h1>
-          <p class="lead" style="font-size: 1.1rem; color: #64748b; line-height: 1.8; max-width: 600px; margin: 0 auto;">
+          <p class="lead" style="font-size: 1.1rem; color: var(--text-color); line-height: 1.8; max-width: 600px; margin: 0 auto;">
             <?php echo lang("we_bring_you_the_best_stories_and_articles_youll_find_tips_on_all_social_networks_growth_and_general_social_media_advice_as_well_as_latest_updates_related_to_our_services"); ?>
           </p>
         </div>

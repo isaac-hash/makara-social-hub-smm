@@ -126,7 +126,7 @@
                         <!-- <li><a href="#" style="text-decoration: none; color: #FFF;">Features</a></li>
                         <li><a href="#" style="text-decoration: none; color: #FFF;">Pricing</a></li> -->
                         
-                        <li><a href="#" style="text-decoration: none; color: #FFF;">Blog</a></li>
+                        <li><a href="<?= cn('blog') ?> " style="text-decoration: none; color: #FFF;">Blog</a></li>
                         <li><a href="<?=cn('terms')?>" style="text-decoration: none; color: #FFF;">Terms and Conditions</a></li>
                         <li><a href="<?=cn('terms')?>" style="text-decoration: none; color: #FFF;">Privacy Policy</a></li>
                     </ul>

@@ -1,7 +1,7 @@
 
 <?php if (!empty($count_items_by_category)) : ?>
   <div class="widget">
-    <h3 class="title"><?=lang('Categories')?></h3>
+    <h3 class="title" style="color:black"><?=lang('Categories')?></h3>
     <div class="widget-category">
       <?php foreach ($count_items_by_category as $key => $items) : ?>
         <?php

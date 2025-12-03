@@ -54,8 +54,8 @@ class services extends My_UserController
             "items_category" => $items_category,
         );
         if (session('uid')) {
-            $this->template->set_layout('user');
-            // $this->template->set_layout(false);
+            // $this->template->set_layout('user');
+            $this->template->set_layout(false);
             $this->template->build("index", $data);
         } else {
             // $this->template->set_layout('general_page');

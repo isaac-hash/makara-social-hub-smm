@@ -177,7 +177,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 d-none d-lg-block position-relative">
+                <div class="col-lg-6  d-lg-block position-relative">
                     <div class="hero-image-wrapper" style="
                         position: relative;
                         width: 100%;
@@ -213,8 +213,18 @@
 
     <!-- MODAL -->
      <?php
-     $show = true;
+
+     if (!isset($_COOKIE['popup_shown'])) {
+        $show = true;
+
+        // Set cookie for 1 day
+            setcookie('popup_shown', 'yes', time() + 86400, "/");
+        } else {
+            $show = false;
+        }
+
         if ($show):
+
      ?>
 <div id="modalOverlay" style="
     display: none;
@@ -242,7 +252,8 @@
         pointer-events: auto;
         height: 28rem;
     ">
-        <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1764681663/makara011225_vcehys.jpg" width="100%" height="100%" style="border-radius: 32px;" alt="">
+        <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1764783306/IMG_1060_kxv8mf.png" width="100%" height="100%" style="border-radius: 32px;" alt="">
+        <!-- <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1764681663/makara011225_vcehys.jpg" width="100%" height="100%" style="border-radius: 32px;" alt=""> -->
         
     </div>
 </div>
@@ -277,6 +288,93 @@
     });
 </script>
 
+    <?php
+
+        
+        $promo_data = [
+            'title' => 'Promo',
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id doloribus enim nulla suscipit dignissimos. Minima necessitatibus aliquam porro velit itaque.',
+            'promo_image' => 'assets/images/promo-bg.jpg',
+            'promo_image_alt' => 'Social Media Growth Illustration',
+            // 'background_color' => 'var(--toggle-bg)',
+            // 'background' => 'linear-gradient(135deg,rgba(0, 42, 255, 0.05) 0%,rgba(0, 98, 255, 0.1) 50%,rgba(64, 224, 208, 0.15) 100%);',
+            $status => false,
+        ];
+        $promo = [
+            'title' => $promo_data['title'],
+            'description' => $promo_data['description'],
+            'promo_image' => $promo_data['promo_image'],
+            'promo_image_alt' => $promo_data['promo_image_alt'],
+            // 'background_color' => $promo_data['background_color'],
+            // 'background' => $promo_data['background'],
+            $status => $promo_data[$status],
+        ];
+        // $title = $promo[$title];
+
+        $promo_show = $promo[$status];
+        if ($promo_show):
+            // var_dump($promo);
+     ?>
+    <section class="hero-section position-relative" style="
+        background: var(--toggle-bg);
+        
+        background-color: linear-gradient(135deg,rgba(0, 42, 255, 0.05) 0%,rgba(0, 98, 255, 0.1) 50%,rgba(64, 224, 208, 0.15) 100%);
+        min-height: 100vh;
+
+    ">
+        <div class="container position-relative" >
+            <div class="row align-items-center min-vh-75">
+                <div class="col-lg-6 py-5">
+                    <div class="hero-content-wrapper">
+                        
+                        <p class=" mb-4" style="color: var(--text-color); font-size: 3.25rem; font-weight:bold; background: linear-gradient(to right, #202020ff, #e0e0e0);
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            text-shadow: 2px 2px 4px rgba(0,0,0,0.1)">
+                            <?= $promo['title'] ?>
+                           
+                        </p>
+                        <p class="keen-subtitle lead mb-4" style="color: var(--text-color); font-size: 1.25rem;">
+                            <?= $promo['description'] ?>
+                           
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6  d-lg-block position-relative">
+                    <div class="hero-image-wrapper" style="
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        min-height: 500px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    ">
+                        <img src="<?= $promo['promo_image'] ?>" 
+                             alt="<?= $promo['promo_image_alt'] ?> " 
+                             class="img-fluid rounded-4 shadow-lg" 
+                             style="
+                                max-width: 95%;
+                                height: 30rem;
+                                animation: float 3s ease-in-out infinite;
+                                filter: drop-shadow(0 10px 20px rgba(0,98,255,0.2));
+                             "
+                        >
+                    </div>
+                    <style>
+                        @keyframes float {
+                            0% { transform: translateY(0px); }
+                            50% { transform: translateY(-20px); }
+                            100% { transform: translateY(0px); }
+                        }
+                    </style>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php
+     endif;
+     ?> 
     <!-- Stats Section -->
     <section class="py-5 " style="background-color: var(--toggle-bg); background: linear-gradient(135deg,
             rgba(0, 42, 255, 0.05) 0%,
@@ -396,10 +494,10 @@
                 <div class="col-lg-6">
                     <div class="who-we-are-image position-relative mt-5 mt-lg-0">
                         <img src="assets\images\makara_IMG_0437.png" alt="About Us" class="img-fluid floating-animation">
-                        <div class="experience-badge bg-white shadow">
+                        <!-- <div class="experience-badge bg-white shadow">
                             <span class="h2 mb-0 text-primary fw-bold">24/7</span>
                             <span class="text-dark">Support</span>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

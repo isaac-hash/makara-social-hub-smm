@@ -1,15 +1,23 @@
-
-
+<?php
+include 'app\views\layouts\user\horizontal\blocks\header2.php';
+?>
 <?php
   $items_category = array_column($items_category, 'id', 'name');
   $items_category = array_flip(array_intersect_key($items_category, array_flip(array_keys($items))));
 ?>
 
 <style>
+  *{
+    padding: 0;
+    margin: 0;
+  }
         :root {
             /* Makara Social Hub Brand Colors */
             --makara-blue: #0D0BD1;
             --makara-orange: #FF9933;
+            --toggle-bg: #303030ff;
+      --text-color: #ffffff;
+      --background-color: #303030ff;
         }
 
         .bg-makara-blue {
@@ -49,11 +57,11 @@
   /* Desktop - with sidebar offset */
   .responsive-section-header {
     margin-top: 9rem;
-    margin-left: 9rem;
+    margin-right: -20rem;
   }
   
   .responsive-content-row {
-    margin-left: 12rem;
+    margin-left: 6rem;
   }
   
   /* Tablet Screens (768px to 991px) */
@@ -88,6 +96,11 @@
     
     .responsive-content-row .card {
       margin-bottom: 1rem;
+    }
+
+    .page-title{
+      /* margin-top: 15rem; */
+      padding-top:5rem;
     }
   }
   
@@ -133,55 +146,78 @@
     body.sidebar-hidden .responsive-content-row {
       margin-left: 0.5rem;
     }
+    .page-title{
+      /* margin-top: 15rem; */
+      padding-top:4rem;
+    }
   }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .service-container{
+      max-width: 83%;
+      margin:auto;
+      margin-left: 11.3rem;
+    }
+  }
+  @media (min-width:1025px) {
+    .service-container{
+      max-width: 88%;
+      margin:auto;
+      margin-left: 11.3rem;
+    }
+  }
+
+
 </style>
-<section class="page-title responsive-section-header" style="max-width: 80%; margin:auto; margin-top: 6rem;">
-  <div class="row justify-content-between ">
-    <div class="col-md-6">
-      <h1 class="page-title">
-        <i class="fe fe-list" style="font-size: 20px;" aria-hidden="true"> </i> 
-        <?=lang("Services")?>
-      </h1>
-    </div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <select  name="status" class="form-control search-by-category">
-          <option value="0"> <?=lang("all")?></option>
-          <?php 
-            if (!empty($items_category)) {
-              foreach ($items_category as $key => $category) {
-          ?>
-          <option value="<?=$key?>"><?=$category?></option>
-          <?php }}?>
-        </select>
+<div class="service-container">
+
+  <section class="page-title responsive-section-header" style="max-width: 100%; margin:auto;  background: var(--background-color); ">
+    <div class="row justify-content-between ">
+      <div class="col-md-6">
+        <h1 class="page-title">
+          <i class="fe fe-list" style="font-size: 20px;" aria-hidden="true"> </i> 
+          <?=lang("Services")?>
+        </h1>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <select  name="status" class="form-control search-by-category">
+            <option value="0"> <?=lang("all")?></option>
+            <?php 
+              if (!empty($items_category)) {
+                foreach ($items_category as $key => $category) {
+            ?>
+            <option value="<?=$key?>"><?=$category?></option>
+            <?php }}?>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <input type="text" name="query" class="form-control " id="service-search" placeholder="<?= lang("Search_for_") ?>" value="">
+        </div>          
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <input type="text" name="query" class="form-control " id="service-search" placeholder="<?= lang("Search_for_") ?>" value="">
-      </div>          
-    </div>
+  </section>
+  <div class="row m-t-5 responsive-content-row" id="result_ajaxSearch" style="max-width: 100%; margin:auto; background:var(--background-color)">
+    <?php 
+      if(!empty($items)){
+        $data = array(
+          "controller_name"     => $controller_name,
+          "params"              => $params,
+          "columns"             => $columns,
+          "items"               => $items,
+        );
+        $this->load->view('child/index', $data);
+      } else {
+        echo show_empty_item();
+      }
+    ?>
   </div>
-</section>
-<div class="row m-t-5 responsive-content-row" id="result_ajaxSearch" style="max-width: 90%; margin:auto;">
-  <?php 
-    if(!empty($items)){
-      $data = array(
-        "controller_name"     => $controller_name,
-        "params"              => $params,
-        "columns"             => $columns,
-        "items"               => $items,
-      );
-      $this->load->view('child/index', $data);
-    } else {
-      echo show_empty_item();
-    }
-  ?>
+  
+  
+  <section class="py-5">
+     </section>
 </div>
-
-
-<section class="py-5">
-   </section>
 <script>
   $(document).ready(function() {
     function filterServices() {

@@ -12,6 +12,9 @@
             /* Makara Social Hub Brand Colors */
             --makara-blue: #0D0BD1;
             --makara-orange: #FF9933;
+            --toggle-bg: #141414f1;
+      --text-color: #ffffff;
+      --background-color: #000000;
         }
 
         .bg-makara-blue {
@@ -91,6 +94,11 @@
     .responsive-content-row .card {
       margin-bottom: 1rem;
     }
+
+    .page-title{
+      /* margin-top: 15rem; */
+      padding-top:5rem;
+    }
   }
   
   /* Extra Small Screens (below 576px) */
@@ -135,9 +143,15 @@
     body.sidebar-hidden .responsive-content-row {
       margin-left: 0.5rem;
     }
+    .page-title{
+      /* margin-top: 15rem; */
+      padding-top:4rem;
+    }
   }
+
+
 </style>
-<section class="page-title responsive-section-header" style="max-width: 80%; margin:auto; margin-top: 6rem;">
+<section class="page-title responsive-section-header" style="max-width: 100%; margin:auto;  background: var(--background-color); ">
   <div class="row justify-content-between ">
     <div class="col-md-6">
       <h1 class="page-title">
@@ -165,7 +179,7 @@
     </div>
   </div>
 </section>
-<div class="row m-t-5 responsive-content-row" id="result_ajaxSearch" style="max-width: 90%; margin:auto;">
+<div class="row m-t-5 responsive-content-row" id="result_ajaxSearch" style="max-width: 100%; margin:auto; background:var(--background-color)">
   <?php 
     if(!empty($items)){
       $data = array(

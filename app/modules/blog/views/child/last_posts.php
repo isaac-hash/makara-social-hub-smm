@@ -1,7 +1,7 @@
 
 <?php if (!empty($items)) : ?>
   <div class="widget">
-    <h3 class="title"><?=lang('last_posts')?></h3>
+    <h3 class="title" style="color:black"><?=lang('last_posts')?></h3>
     <?php foreach ($items as $key => $item) : ?>
       <?php
         $item_link_detail = cn('blog/' . $item['url_slug']);

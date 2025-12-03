@@ -25,6 +25,7 @@ class MY_Model extends CI_Model
     protected $tb_api_providers;
     protected $tb_language_list;
     protected $tb_news;
+    protected $tb_promo;
     protected $tb_faqs;
     protected $tb_role_permission;
     protected $tb_transaction_logs;
@@ -56,6 +57,7 @@ class MY_Model extends CI_Model
         $this->tb_language_list     = LANGUAGE_LIST;
         $this->tb_order             = ORDER;
         $this->tb_orders_refill     = ORDERS_REFILL;
+        $this->tb_promo             = PROMO;
         $this->tb_news              = NEWS;
         $this->tb_faqs              = FAQS;
         $this->tb_blog_posts        = BLOG_POSTS;

@@ -187,12 +187,22 @@
                         align-items: center;
                         justify-content: center;
                     ">
+                    <style>
+                        .img{
+                             height: 30rem;
+                        }
+                        @media (max-width:768px){
+                           .img{
+                               height: 23rem;
+                           }
+                        }
+                    </style>
                         <img src="assets/images/makara_IMG_0436.png" 
                              alt="Social Media Growth Illustration" 
-                             class="img-fluid rounded-4 shadow-lg" 
+                             class="img-fluid img rounded-4 shadow-lg" 
                              style="
                                 max-width: 90%;
-                                height: 30rem;
+                               
                                 animation: float 3s ease-in-out infinite;
                                 filter: drop-shadow(0 10px 20px rgba(0,98,255,0.2));
                              "

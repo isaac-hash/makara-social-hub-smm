@@ -3,7 +3,7 @@
     ?>
 
     <style>
-      @media (max-width:768px) {
+      @media (max-width:750px) {
         .blog{
           margin-top: 5rem;
           margin-left: 3rem;

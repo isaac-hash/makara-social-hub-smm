@@ -6,7 +6,7 @@
       @media (max-width:750px) {
         .blog{
           margin-top: 5rem;
-          margin-left: 3rem;
+          margin-left: 2rem;
         }
       }
     </style>

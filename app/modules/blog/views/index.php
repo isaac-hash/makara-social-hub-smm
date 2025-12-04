@@ -56,12 +56,12 @@
               
               <div class="content d-flex flex-column" style="padding: 2rem;">
                 <h4 class="title mb-3" style="font-size: 1.4rem; font-weight: 700; line-height: 1.4;">
-                  <a href="<?= $item_link_detail ?>" style="color: #1e293b; text-decoration: none; transition: color 0.3s ease;">
+                  <a href="<?= $item_link_detail ?>" style="color: var(--text-color); text-decoration: none; transition: color 0.3s ease;">
                     <?= $item_title ?>
                   </a>
                 </h4>
                 
-                <div class="short-desc mb-4" style="color: #64748b; line-height: 1.7; flex-grow: 1;">
+                <div class="short-desc mb-4" style="color: var(--text-color); line-height: 1.7; flex-grow: 1;">
                   <?= $item_content ?>
                 </div>
                 
@@ -71,10 +71,10 @@
                       <?= substr(esc($author), 0, 1) ?>
                     </div>
                     <div>
-                      <div style="color: #1e293b; font-weight: 600;">
+                      <div style="color: var(--text-color); font-weight: 600;">
                         <?= esc($author) ?>
                       </div>
-                      <small class="text-muted d-flex align-items-center" style="gap: 0.25rem;">
+                      <small class="text-muted d-flex align-items-center" style="gap: 0.25rem; color: var(--text-color);">
                         <i class="fa fa-calendar" style="font-size: 0.75rem;"></i> 
                         <?= $item_released ?>
                       </small>
@@ -82,7 +82,7 @@
                   </div>
                   
                   <a href="<?= $item_link_detail ?>" class="read-more" 
-                     style="color: #6366f1; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: gap 0.3s ease;">
+                     style="color: var(--primary-color); font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: gap 0.3s ease;">
                     <?=lang('Read More')?>
                     <i class="fa fa-arrow-right"></i>
                   </a>

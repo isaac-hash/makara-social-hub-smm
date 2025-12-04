@@ -1,5 +1,5 @@
 <?php
-include 'app\views\layouts\user\horizontal\blocks\header2.php';
+include 'app/views/layouts/user/horizontal/blocks/header2.php';
 ?>
 <?php
   $items_category = array_column($items_category, 'id', 'name');

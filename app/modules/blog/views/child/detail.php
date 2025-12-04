@@ -20,7 +20,7 @@
   $author                     = get_option('website_name');
   $item_category_name         = show_category_name_by_lang_code($item, $lang_code);
 ?>
-<div class="blog-content header">
+<div class="blog-content header" style="background-color: var(--background-color);">
   <div class="image-thumbnail text-center">
     <img src="<?= $item['image']; ?>" alt="<?= esc($item['name']); ?>" style="max-width: 100%; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
   </div>

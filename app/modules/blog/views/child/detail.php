@@ -39,7 +39,7 @@
       </span>
     </p>
   </div>
-  <div class="details" style="color:var(--text-color)">
+  <div class="details" style="color:var(--text-color); background: var(--background-color);">
     <?= $item['content']; ?>
   </div>
 </div>

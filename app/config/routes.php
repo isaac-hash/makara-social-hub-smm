@@ -150,6 +150,7 @@ $GLOBALS['ADMIN_URL_PREFIX'] = 'admin';
 $route['upload_files']                                               = 'admin/file_manager/upload_files';
 $route[$GLOBALS['ADMIN_URL_PREFIX']]                                 = 'admin/login';
 $route[$GLOBALS['ADMIN_URL_PREFIX'] . '/receipts']                   = 'admin/receipts';
+$route[$GLOBALS['ADMIN_URL_PREFIX'] . '/promo']                   = 'admin/promo';
 $route[$GLOBALS['ADMIN_URL_PREFIX'] . '/settings/store']             = 'admin/settings/store';
 $route[$GLOBALS['ADMIN_URL_PREFIX'] . '/settings/(:any)']            = 'admin/settings/index/$1';
 

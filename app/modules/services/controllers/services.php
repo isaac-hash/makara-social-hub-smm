@@ -58,8 +58,8 @@ class services extends My_UserController
             $this->template->set_layout(false);
             $this->template->build("index", $data);
         } else {
-            // $this->template->set_layout('general_page');
             $this->template->set_layout('general_page');
+            // $this->template->set_layout(false);
             $this->template->build("index", $data);
         }
     }

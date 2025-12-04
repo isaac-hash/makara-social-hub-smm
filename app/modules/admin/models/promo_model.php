@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class news_model extends MY_Model 
+class promo_model extends MY_Model 
 {
 
     protected $tb_main;
@@ -156,63 +156,32 @@ class news_model extends MY_Model
         return $result;
     }
 
-    // public function save_item($params = null, $option = null)
-    // {
-    //     switch ($option['task']) {
-    //         case 'add-item':
-    //             $data = array(
-    //                 "created"         => date("Y-m-d H:i:s", strtotime(str_replace('/', '-', post('start')))),
-    //                 "title"            => post('title'),
-    //                 "status"          => (int)post("status"),
-    //                 "description"     => htmlspecialchars($this->input->post('description'), ENT_QUOTES),
-    //                 // "image"            => 
-    //                 "changed"		  => NOW,
-    //             );
-    //             $this->db->insert($this->tb_main, $data);
-    //             return ["status"  => "success", "message" => 'Update successfully'];
-    //             break;
-
-    //         case 'edit-item':
-    //             $data = [
-    //                 "created"         => date("Y-m-d H:i:s", strtotime(str_replace('/', '-', post('start')))),
-    //                 "title"            => post('title'),
-    //                 "status"          => (int)post("status"),
-    //                 "description"     => htmlspecialchars($this->input->post('description'), ENT_QUOTES),
-    //                 // "image"            => 
-    //                 "changed"		  => NOW,
-    //             ];
-    //             $this->db->update($this->tb_main, $data, ["id" => post('id')]);
-    //             return ["status"  => "success", "message" => 'Update successfully'];
-    //             break;
-
-    //         case 'change-status':
-    //             $this->db->update($this->tb_main, ['status' => $params['status'], 'changed' => NOW], ["id" => $params['id']]);
-    //             return ["status"  => "success", "message" => 'Update successfully'];
-    //             break;
-
-    //         case 'bulk-action':
-    //             if (in_array($params['title'], ['delete', 'deactive', 'active']) && empty($params['ids'])) {
-    //                 return ["status"  => "error", "message" => 'Please choose at least one item'];
-    //             }
-    //             $arr_ids = convert_str_number_list_to_array($params['ids']);
-    //             switch ($params['title']) {
-    //                 case 'delete':
-    //                     $this->db->where_in('id', $arr_ids);
-    //                     $this->db->delete($this->tb_main);
-    //                     return ["status"  => "success", "message" => 'Update successfully'];
-    //                     break;
-    //                 case 'deactive':
-    //                     $this->db->where_in('id', $arr_ids);
-    //                     $this->db->update($this->tb_main, ['status' => 0]);
-    //                     return ["status"  => "success", "message" => 'Update successfully'];
-    //                     break;
-    //                 case 'active':
-    //                     $this->db->where_in('id', $arr_ids);
-    //                     $this->db->update($this->tb_main, ['status' => 1]);
-    //                     return ["status"  => "success", "message" => 'Update successfully'];
-    //                     break;
-    //             }
-    //             break;
-    //     }
-    // }
+    public function save_item($params = null, $option = null)
+    {
+        switch ($option['task']) {
+            case 'add-item':
+                $data = array(
+                    "title"            => $params['title'],
+                    "description"     => $params['description'],
+                    "image"            => $params['image'],
+                    "alt"              => $params['alt'],
+                    "status"          => (int)$params["status"],
+                    "created"         => NOW,
+                    "changed"		  => NOW,
+                );
+                
+                $this->db->insert($this->tb_main, $data);
+                
+                // Check if insert was successful
+                if ($this->db->affected_rows() > 0) {
+                    return ["status"  => "success", "message" => 'Promo added successfully'];
+                } else {
+                    // Log the database error
+                    $error = $this->db->error();
+                    log_message('error', 'Promo insert failed: ' . json_encode($error));
+                    return ["status"  => "error", "message" => 'Failed to add promo. Database error: ' . $error['message']];
+                }
+                break;
+        }
+    }
 }

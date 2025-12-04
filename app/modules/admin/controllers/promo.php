@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class news extends My_AdminController
+class promo extends My_AdminController
 {
 
     public function __construct()
@@ -14,7 +14,7 @@ class news extends My_AdminController
 
         $this->controller_name = strtolower(get_class($this));
         $this->controller_title = ucfirst(str_replace('_', ' ', get_class($this)));
-        $this->path_views = "news";
+        $this->path_views = "promo";
         $this->params = [];
 
         $this->columns = array(
@@ -25,6 +25,17 @@ class news extends My_AdminController
             "status" => ['name' => 'status', 'class' => 'text-center'],
         );
     }
+        public function index()
+        {
+            $items = $this->main_model->list_items(null, ['task' => 'list-items-view-news']);
+            
+            $data = [
+                "controller_name" => $this->controller_name,
+                "columns" => $this->columns,
+                "items" => $items,
+            ];
+            $this->template->build($this->path_views . "/view", $data);
+        }
 
     public function store()
     {
@@ -32,12 +43,24 @@ class news extends My_AdminController
             redirect(admin_url($this->controller_name));
         }
 
+        // Form validation
+        $this->form_validation->set_rules('title', 'Title', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('description', 'Description', 'trim|xss_clean');
+        $this->form_validation->set_rules('alt', 'Alt Text', 'trim|xss_clean');
+        $this->form_validation->set_rules('status', 'Status', 'trim|required|in_list[0,1]|xss_clean');
+
+        if (!$this->form_validation->run()) {
+            _validation('error', validation_errors());
+        }
+
+        // Check if file is uploaded
         if (empty($_FILES['promo']['name'])) {
-            // echo json_encode(["file" => ])
             ms(["status" => "error", "message" => "Please select a promo image to upload."]);
         }
-        $description = $_POST["description"];
-        $title = $_POST["title"];
+
+        // Permission check - Temporarily commented out for debugging
+        // Uncomment this after setting up permissions in the admin panel for 'promo' controller
+        // staff_check_role_permission($this->controller_name, 'add');
 
         $upload_promo_image_path = FCPATH . "assets/uploads/promo/";
         if (!is_dir($upload_promo_image_path)) {
@@ -45,13 +68,13 @@ class news extends My_AdminController
         }
 
         $config['upload_path']   = $upload_promo_image_path;
-        $config['allowed_types'] = 'gif|jpg|jpeg|png|pdf';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png';
         $config['max_size']      = 10239; // 10MB
         $config['encrypt_name']  = TRUE;
 
         $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload('receipt')) {
+        if (!$this->upload->do_upload('promo')) {
             ms(["status" => "error", "message" => strip_tags($this->upload->display_errors())]);
         }
 
@@ -59,19 +82,21 @@ class news extends My_AdminController
         $image_path = 'assets/uploads/promo/' . $upload_data['file_name'];
 
         $data = [
-            "description" => $description,
-            "title" => $title,
-            'image' => $image_path,
-            'status'       => 0,
-            'created_at'   => NOW,
+            "title"        => $this->input->post('title'),
+            "description"  => $this->input->post('description'),
+            "image"        => $image_path,
+            "alt"          => $this->input->post('alt'),
+            "status"       => (int)$this->input->post("status"),
         ];
 
-        $this->db->insert('promo', $data);
+        // Log data for debugging
+        log_message('debug', 'Promo save attempt - Data: ' . json_encode($data));
+        log_message('debug', 'Promo table name: ' . PROMO);
 
-        ms([
-            "status"  => "success",
-            "message" => "Promo Updated Correctly",
-        ]);
+        $response = $this->main_model->save_item($data, ['task' => 'add-item']);
+        
+        // Log response
+        log_message('debug', 'Promo save response: ' . json_encode($response));
 
         ms($response);
     }

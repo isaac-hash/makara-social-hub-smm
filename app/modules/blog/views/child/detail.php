@@ -1,6 +1,8 @@
 <style>
     .header{
         margin-top: 3rem;
+        background: var(--background-color);
+        outline: 2px solid var(--text-color);
     }
     @media (max-width:768px) {
         .header{
@@ -22,22 +24,22 @@
   <div class="image-thumbnail text-center">
     <img src="<?= $item['image']; ?>" alt="<?= esc($item['name']); ?>" style="max-width: 100%; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
   </div>
-  <h1 class="title" style="color:black"><?= esc($item['name']); ?></h1>
+  <h1 class="title" style="color:var(--text-color)"><?= esc($item['name']); ?></h1>
   <div class="post-info">
     <p>
       <span>
         <i class="fa fa-user"></i>
         <a href="javascript:void(0)" title="<?= esc($author); ?>" rel="author"><?= esc($author); ?></a>
       </span>
-      <span style="color:black">
+      <span style="color:var(--text-color)">
         <i class="fa fa-calendar"></i> <?= $item_released; ?> </span>
-      <span style="color:black">
+      <span style="color:var(--text-color)">
         <i class="fa fa-tag"></i>
         <a href="<?= $item_link_related_category; ?>"><?= $item_category_name; ?></a>
       </span>
     </p>
   </div>
-  <div class="details" style="color:black">
+  <div class="details" style="color:var(--text-color)">
     <?= $item['content']; ?>
   </div>
 </div>

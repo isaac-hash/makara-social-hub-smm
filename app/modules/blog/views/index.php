@@ -39,7 +39,7 @@
             $item_category_name = show_category_name_by_lang_code($item, $lang_code);
           ?>
           <div class="col-lg-6 col-md-6 col-sm-12">
-            <article class="card blog-item h-100 border-0 shadow-sm" style="transition: all 0.3s ease; border-radius: 16px; overflow: hidden; background: #ffffff;">
+            <article class="card blog-item h-100 border-0 shadow-sm" style="transition: all 0.3s ease; border-radius: 16px; overflow: hidden; background: var(--background-color); outline: 2px solid var(--text-color);">
               <div class="box-image position-relative" style="overflow: hidden; height: 280px;">
                 <a href="<?= $item_link_detail ?>" style="display: block; height: 100%;">
                   <img class="img-fluid w-100 h-100" src="<?= $item['image'] ?>" alt="<?= $item['url_slug'] ?>" 

@@ -2,8 +2,17 @@
     require_once 'themes/nico/views/nav.php';
     ?>
 
+    <style>
+      @media (max-width:768px) {
+        .blog{
+          margin-top: 5rem;
+          margin-left: 3rem;
+        }
+      }
+    </style>
 
-<section class="blog" style="padding: 4rem 0; margin-top: 5rem; min-height: 100vh;">
+
+<section class="blog" style="padding: 4rem 0;  min-height: 100vh;">
   <div class="container">
     <!-- Header Section -->
     <div class="row justify-content-center mb-5">

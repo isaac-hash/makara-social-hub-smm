@@ -432,7 +432,7 @@
                 <i class="fas fa-bars"></i>
             </button>
             <a href="#" class="logo">
-                <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1760352921/logo_famnk2.png" alt="Website Logo" style="max-height: 40px;">
+                <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1765204995/blue_logo_christmas_fve0g0.png" alt="Website Logo" style="max-height: 40px;">
             
             </a>
         </div>

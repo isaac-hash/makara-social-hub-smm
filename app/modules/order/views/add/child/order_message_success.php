@@ -65,7 +65,6 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Initialize modal
     const modalElement = document.getElementById('orderSuccessModal');
     const orderModal = new bootstrap.Modal(modalElement);
 
@@ -90,8 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // EXAMPLE SHOW: call orderModal.show() wherever needed
-    // orderModal.show();
+    // Show modal
+    orderModal.show();
 });
 </script>
-

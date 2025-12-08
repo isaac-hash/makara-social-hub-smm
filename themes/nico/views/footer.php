@@ -105,7 +105,7 @@
                 <div class="col-lg-4 mb-4 mb-lg-0" style="color: #FFF;">
                     <div style="height: 120px; overflow: hidden;">
 
-                        <img src="<?=BASE?>assets/images/blue_logo_christmas.png" alt="Makara Logo" style="height: 100px; width: 300px;" class="footer-logo mb-4">
+                        <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1765204995/blue_logo_christmas_fve0g0.png" alt="Makara Logo" style="height: 100px; width: 300px;" class="footer-logo mb-4">
                     </div>
                     <p class="mb-4">Premium social media growth solutions for brands that want to stand out and succeed in the digital world.</p>
                     <div class="footer-social">

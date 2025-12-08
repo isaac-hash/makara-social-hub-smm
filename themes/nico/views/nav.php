@@ -8,7 +8,7 @@
 <meta name="keywords" content="<?=get_option('website_keywords', "smm panel, SmartPanel, smm reseller panel, smm provider panel, reseller panel, instagram panel, resellerpanel, social media reseller panel, smmpanel, panelsmm, smm, panel, socialmedia, instagram reseller panel")?>">
 <title><?=get_option('website_title', "Makara Social Hub - SMM Panel Reseller Tool")?></title>
 
-<link rel="shortcut icon" type="image/x-icon" href="<?=BASE?>assets/images/blue_logo_christmas.png">
+<link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1765204995/blue_logo_christmas_fve0g0.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -117,7 +117,7 @@
   <div class="container">
     <!-- Brand -->
     <a class="navbar-brand" href="<?=cn('')?>">
-      <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1760352921/logo_famnk2.png" alt="Makara Logo" class="navbar-logo" style="height: 45px; width: 190px;" />
+      <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1765204995/blue_logo_christmas_fve0g0.png" alt="Makara Logo" class="navbar-logo" style="height: 45px; width: 190px;" />
     </a>
     <div class="sticky-bottom-left-btn">
     <a href="#" class="sticky-btn" onclick="toggleTheme(event)">

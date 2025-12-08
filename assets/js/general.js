@@ -352,7 +352,9 @@ function General() {
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title"><i class="fe fe-check-circle"></i> Order Received</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close close" data-bs-dismiss="modal" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="d-none d-sm-block">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <div class="text-center mb-3">
@@ -386,12 +388,13 @@ function General() {
             // 4. Update balance in header
             $(".user-balance").html(data.user_balance);
 
-            // 5. Show it using native Bootstrap 5 (this NEVER fails)
-            var myModal = new bootstrap.Modal(document.getElementById('orderSuccessModal'), {
+            // 5. Show it using jQuery (works with both BS4 and BS5)
+            var myModal = $('#orderSuccessModal');
+            myModal.modal({
                 backdrop: 'static',
                 keyboard: false
             });
-            myModal.show();
+            myModal.modal('show');
         }
         // actionFormWithoutToast
         $(document).on("submit", ".actionFormWithoutToast", function () {

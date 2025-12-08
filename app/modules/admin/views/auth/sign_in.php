@@ -6,7 +6,7 @@
         <div class="card-title text-center">
           <div class="site-logo mb-2">
             <a href="<?=cn()?>">
-              <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1760352921/logo_famnk2.png" alt="website-logo" style="max-height: 50px;">
+              <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1765204995/blue_logo_christmas_fve0g0.png" alt="website-logo" style="max-height: 50px;">
             </a>
           </div>
           <h5><?=lang("login_to_your_account")?></h5>

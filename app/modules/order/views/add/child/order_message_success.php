@@ -38,9 +38,7 @@
         <h5 class="modal-title" id="orderSuccessModalLabel">
           <i class="fe fe-check-circle"></i> <?php echo lang('order_received'); ?>
         </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="text-center mb-3">
@@ -68,7 +66,7 @@
 // Ensure modal close buttons work properly
 $(document).ready(function() {
     // Handle close button clicks
-    $(document).on('click', '#orderSuccessModal [data-dismiss="modal"]', function(e) {
+    $(document).on('click', '#orderSuccessModal [data-bs-dismiss="modal"]', function(e) {
         e.preventDefault();
         $('#orderSuccessModal').modal('hide');
     });

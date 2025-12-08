@@ -371,8 +371,12 @@ function General() {
             // Update user balance display
             $(".user-balance").html(data.user_balance);
 
-            // Show the modal
-            modal.modal('show');
+            $('.modal-backdrop').remove();
+            $('body').removeClass('modal-open').css({'padding-right': '', 'overflow': ''});
+            modal.modal('hide'); // force hide old instance
+            setTimeout(function() {
+                new bootstrap.Modal(modal[0]).show();
+            }, 100);
         }
 
         // actionFormWithoutToast

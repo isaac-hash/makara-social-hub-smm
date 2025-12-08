@@ -63,35 +63,26 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    // Initialize modal
-    const modalElement = document.getElementById('orderSuccessModal');
-    const orderModal = new bootstrap.Modal(modalElement);
-
-    // Close button inside modal
-    document.addEventListener('click', function(e) {
-        if (e.target.matches('#orderSuccessModal [data-bs-dismiss="modal"]')) {
-            orderModal.hide();
+// Ensure modal close buttons work properly
+$(document).ready(function() {
+    // Handle close button clicks
+    $(document).on('click', '#orderSuccessModal [data-bs-dismiss="modal"]', function(e) {
+        e.preventDefault();
+        $('#orderSuccessModal').modal('hide');
+    });
+    
+    // Handle backdrop click
+    $('#orderSuccessModal').on('click', function(e) {
+        if ($(e.target).hasClass('modal')) {
+            $(this).modal('hide');
         }
     });
-
-    // Backdrop click
-    modalElement.addEventListener('click', function(e) {
-        if (e.target.classList.contains('modal')) {
-            orderModal.hide();
+    
+    // Handle ESC key
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && $('#orderSuccessModal').hasClass('show')) {
+            $('#orderSuccessModal').modal('hide');
         }
     });
-
-    // ESC key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modalElement.classList.contains('show')) {
-            orderModal.hide();
-        }
-    });
-
-    // EXAMPLE SHOW: call orderModal.show() wherever needed
-    // orderModal.show();
 });
 </script>
-

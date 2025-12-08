@@ -7,7 +7,7 @@
     <title><?=get_option('website_title', "Makara - Social Hub")?></title>
     <meta name="description" content="<?=get_option('website_desc', "Your one-stop solution for social media management.")?>">
     <meta name="keywords" content="<?=get_option('website_keywords', "social media, smm, panel, marketing")?>">
-    <link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1760352921/logo_famnk2.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1765204995/blue_logo_christmas_fve0g0.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -385,7 +385,7 @@
     <div class="signup-container">
         <div class="signup-card">
             <div class="logo-container">
-                <img src="<?=BASE?>assets/images/makara_IMG_1670.PNG" alt="Logo" style="max-width: 110px; max-height: 110px;">
+                <img src="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1765204995/blue_logo_christmas_fve0g0.png" alt="Logo" style="max-width: 110px; max-height: 110px;">
 
             </div>
             

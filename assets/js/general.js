@@ -339,46 +339,60 @@ function General() {
             return false;
         })
 
-        // Show success message on place order page
         function show_success_message_place_order(data) {
-            var modal = $("#orderSuccessModal");
+            // 1. Remove EVERYTHING that could interfere
+            $('#orderSuccessModal').remove();
+            $('.modal-backdrop').remove();
+            $('body').removeClass('modal-open').css({ 'padding-right': '', 'overflow': '' });
 
-            var order_detail = data.order_detail;
-            modal.find(".id span").html(order_detail.id);
-            modal.find(".service_name span").html(order_detail.service_name);
-            modal.find(".charge span").html(order_detail.charge);
-            modal.find(".balance span").html(order_detail.balance);
+            // 2. Build a completely fresh modal from scratch (no cloning, no old instance)
+            var modalHtml = `
+        <div class="modal fade order-success-modal" id="orderSuccessModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><i class="fe fe-check-circle"></i> Order Received</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center mb-3">
+                            <p class="lead">Thank you! Your order has been received.</p>
+                        </div>
+                        <ul class="order-detail-list">
+                            <li class="id">Order ID: <span>${data.order_detail.id}</span></li>
+                            <li class="service_name">Service: <span>${data.order_detail.service_name}</span></li>
+                            <li class="charge">Charge: <span>${data.order_detail.charge}</span></li>
+                            <li class="balance">New Balance: <span>${data.order_detail.balance}</span></li>
+                            ${data.order_type === 'default' ?
+                    `<li class="link">Link: <span>${data.order_detail.link}</span></li>
+                                 <li class="quantity">Quantity: <span>${data.order_detail.quantity}</span></li>` :
+                    `<li class="username">Username: <span>${data.order_detail.username}</span></li>
+                                 <li class="posts">Posts: <span>${data.order_detail.posts}</span></li>`
+                }
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">
+                            Go to Dashboard
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>`;
 
-            if (data.order_type == 'default') {
-                modal.find(".username").addClass('d-none');
-                modal.find(".posts").addClass('d-none');
-                modal.find(".link").removeClass('d-none');
-                modal.find(".quantity").removeClass('d-none');
+            // 3. Inject it fresh into body
+            $('body').append(modalHtml);
 
-                modal.find(".link span").html(order_detail.link);
-                modal.find(".quantity span").html(order_detail.quantity);
-            }
-
-            if (data.order_type == 'subscriptions') {
-                modal.find(".username").removeClass('d-none');
-                modal.find(".posts").removeClass('d-none');
-                modal.find(".link").addClass('d-none');
-                modal.find(".quantity").addClass('d-none');
-
-                modal.find(".username span").html(order_detail.username);
-                modal.find(".posts span").html(order_detail.posts);
-            }
-            // Update user balance display
+            // 4. Update balance in header
             $(".user-balance").html(data.user_balance);
 
-            $('.modal-backdrop').remove();
-            $('body').removeClass('modal-open').css({'padding-right': '', 'overflow': ''});
-            modal.modal('hide'); // force hide old instance
-            setTimeout(function() {
-                new bootstrap.Modal(modal[0]).show();
-            }, 100);
+            // 5. Show it using native Bootstrap 5 (this NEVER fails)
+            var myModal = new bootstrap.Modal(document.getElementById('orderSuccessModal'), {
+                backdrop: 'static',
+                keyboard: false
+            });
+            myModal.show();
         }
-
         // actionFormWithoutToast
         $(document).on("submit", ".actionFormWithoutToast", function () {
             alertMessage.hide();

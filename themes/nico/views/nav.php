@@ -8,7 +8,7 @@
 <meta name="keywords" content="<?=get_option('website_keywords', "smm panel, SmartPanel, smm reseller panel, smm provider panel, reseller panel, instagram panel, resellerpanel, social media reseller panel, smmpanel, panelsmm, smm, panel, socialmedia, instagram reseller panel")?>">
 <title><?=get_option('website_title', "Makara Social Hub - SMM Panel Reseller Tool")?></title>
 
-<link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/dlkfqsjgg/image/upload/v1760352921/logo_famnk2.png">
+<link rel="shortcut icon" type="image/x-icon" href="<?=BASE?>assets/images/blue_logo_christmas.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

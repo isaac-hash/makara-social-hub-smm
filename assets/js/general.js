@@ -339,72 +339,49 @@ function General() {
             return false;
         })
 
-        function show_success_message_place_order(data) {
-            // 1. Remove EVERYTHING that could interfere
-            $('#orderSuccessModal').remove();
-            $('.modal-backdrop').remove();
-            $('body').removeClass('modal-open').css({ 'padding-right': '', 'overflow': '' });
+         function show_success_message_place_order(data) {
+            var notification_area = $("#order-message-area");
 
-            // 2. Build a completely fresh modal from scratch (no cloning, no old instance)
-            var modalHtml = `
-        <div class="modal fade order-success-modal" id="orderSuccessModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title"><i class="fe fe-check-circle"></i> Order Received</h5>
-                        <button type="button" class="btn-close close" data-bs-dismiss="modal" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true" class="d-none d-sm-block">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="text-center mb-3">
-                            <p class="lead">Thank you! Your order has been received.</p>
-                        </div>
-                        <ul class="order-detail-list">
-                            <li class="id">Order ID: <span>${data.order_detail.id}</span></li>
-                            <li class="service_name">Service: <span>${data.order_detail.service_name}</span></li>
-                            <li class="charge">Charge: <span>${data.order_detail.charge}</span></li>
-                            <li class="balance">New Balance: <span>${data.order_detail.balance}</span></li>
-                            ${data.order_type === 'default' ?
-                    `<li class="link">Link: <span>${data.order_detail.link}</span></li>
-                                 <li class="quantity">Quantity: <span>${data.order_detail.quantity}</span></li>` :
-                    `<li class="username">Username: <span>${data.order_detail.username}</span></li>
-                                 <li class="posts">Posts: <span>${data.order_detail.posts}</span></li>`
-                }
-                        </ul>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">
-                            Go to Dashboard
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>`;
+            var order_detail = data.order_detail;
+            notification_area.find(".order-success .id span").html(order_detail.id);
+            notification_area.find(".order-success .service_name span").html(order_detail.service_name);
+            notification_area.find(".order-success .charge span").html(order_detail.charge);
+            notification_area.find(".order-success .balance span").html(order_detail.balance);
+            
+            if (data.order_type == 'default') {
+                notification_area.find(".order-success .username").addClass('d-none');
+                notification_area.find(".order-success .posts").addClass('d-none');
+                notification_area.find(".order-success .link").removeClass('d-none');
+                notification_area.find(".order-success .quantity").removeClass('d-none');
+                
+                notification_area.find(".order-success .link span").html(order_detail.link);
+                notification_area.find(".order-success .quantity span").html(order_detail.quantity);
+            }
 
-            // 3. Inject it fresh into body
-            $('body').append(modalHtml);
-
-            // 4. Update balance in header
+            if (data.order_type == 'subscriptions') {
+                notification_area.find(".order-success .username").removeClass('d-none');
+                notification_area.find(".order-success .posts").removeClass('d-none');
+                notification_area.find(".order-success .link").addClass('d-none');
+                notification_area.find(".order-success .quantity").addClass('d-none');
+                
+                notification_area.find(".order-success .username span").html(order_detail.username);
+                notification_area.find(".order-success .posts span").html(order_detail.posts);
+            }
+            if ($(".order-success").hasClass('d-none')) {
+                $(".order-success").removeClass('d-none')
+            }
             $(".user-balance").html(data.user_balance);
-
-            // 5. Show it using jQuery (works with both BS4 and BS5)
-            var myModal = $('#orderSuccessModal');
-            myModal.modal({
-                backdrop: 'static',
-                keyboard: false
-            });
-            // myModal.modal('show');
         }
+
         // actionFormWithoutToast
-        $(document).on("submit", ".actionFormWithoutToast", function () {
+        $(document).on("submit", ".actionFormWithoutToast", function(){
             alertMessage.hide();
             event.preventDefault();
-            var _that = $(this),
-                _action = _that.attr("action"),
-                _data = _that.serialize();
-            _data = _data + '&' + $.param({ token: token });
-            var _redirect = _that.data("redirect");
+            var _that       = $(this),
+                _action     = _that.attr("action"),
+                _data       = _that.serialize();
+                _data       = _data + '&' + $.param({token:token});
+            var _redirect   = _that.data("redirect");
             _that.find(".btn-submit").addClass('btn-loading');
             $.post(_action, _data, function (_result) {
                 if (is_json(_result)) {
@@ -433,7 +410,7 @@ function General() {
     }
 }
 
-General = new General();
-$(function () {
-    General.init();
-});
+        General = new General();
+        $(function () {
+            General.init();
+        });

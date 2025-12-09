@@ -328,6 +328,8 @@ class order extends My_UserController
         }
         $more_params['service_name'] = $check_service->name;
         $this->save_order($this->tb_order, $data, $user->balance, $total_charge, $more_params);
+        $this->session->set_flashdata('success', lang("order_added_successfully"));
+        notify(lang("order_added_successfully"), "success");
         redirect("statistics");
     }
 

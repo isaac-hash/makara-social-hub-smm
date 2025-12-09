@@ -370,19 +370,15 @@ function General() {
             if ($(".order-success").hasClass('d-none')) {
                 $(".order-success").removeClass('d-none')
             }
-            $(".user-balance").html(data.user_balance);
+           $(".user-balance").text(data.user_balance);
+
             setTimeout(function () {
                 console.log("A");
-                alert("B");
-                console.log("C");
-                window.location.href = "/test";
-
                 alert("Order made successfully");
                 notify('Order made successfully', 'success');
-                setTimeout(function () {
-                    window.location.href = "statistics";
-                }, 3000);
-            }, 10); // Wait 3 seconds to show the message
+                window.location.href = "statistics";
+            }, 100);
+                // Wait 3 seconds to show the message
         }
 
         // actionFormWithoutToast

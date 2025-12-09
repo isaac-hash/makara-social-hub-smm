@@ -394,7 +394,7 @@ function General() {
                 backdrop: 'static',
                 keyboard: false
             });
-            myModal.modal('show');
+            // myModal.modal('show');
         }
         // actionFormWithoutToast
         $(document).on("submit", ".actionFormWithoutToast", function () {

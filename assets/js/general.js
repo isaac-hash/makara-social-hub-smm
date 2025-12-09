@@ -370,13 +370,13 @@ function General() {
             if ($(".order-success").hasClass('d-none')) {
                 $(".order-success").removeClass('d-none')
             }
+            $(".user-balance").text(data.user_balance);
             setTimeout(function () {
                 console.log("A");
                 alert("Order made successfully");
                 notify('Order made successfully', 'success');
                 window.location.href = "statistics";
             }, 600);
-           $(".user-balance").text(data.user_balance);
 
                 // Wait 3 seconds to show the message
         }

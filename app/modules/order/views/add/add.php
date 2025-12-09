@@ -53,7 +53,8 @@
       <div class="card-body">
         <div class="tab-content">
           <div id="new_order" class="tab-pane fade in active show">
-            <form class="form actionForm" action="<?=cn($controller_name . "/ajax_add_order")?>" data-redirect="<?=cn('new_order')?>" method="POST">
+            <form class="form actionForm" action="<?=cn($controller_name . "/ajax_add_order")?>" method="POST">
+            <!-- <form class="form actionForm" action="<?=cn($controller_name . "/ajax_add_order")?>" data-redirect="<?=cn('new_order')?>" method="POST"> -->
               <div class="row">
                 <div class="col-md-7">
                   <div class="content-header-title">

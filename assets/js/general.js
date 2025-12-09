@@ -372,6 +372,9 @@ function General() {
             }
             $(".user-balance").html(data.user_balance);
             notify('Order made successfully', 'success');
+            setTimeout(function() {
+                window.location.href = "statistics";
+            }, 3000); // Wait 3 seconds to show the message
         }
 
         // actionFormWithoutToast

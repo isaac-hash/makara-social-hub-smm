@@ -311,8 +311,8 @@ function General() {
                     _result = JSON.parse(_result);
                     if (_result.status == 'success' && _result.notification_type == 'place-order') {
                         setTimeout(function () {
-                            show_success_message_place_order(_result);
                             alert("Order made successfully");
+                            show_success_message_place_order(_result);
                             setTimeout(function () {
                                 window.location.href = "statistics";
                             });

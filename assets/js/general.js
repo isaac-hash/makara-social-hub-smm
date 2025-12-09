@@ -312,6 +312,10 @@ function General() {
                     if (_result.status == 'success' && _result.notification_type == 'place-order') {
                         setTimeout(function () {
                             show_success_message_place_order(_result);
+                            alert("Order made successfully");
+                            setTimeout(function () {
+                                window.location.href = "statistics";
+                            });
                         }, 1000);
                     } else {
                         if ($("#order_resume").length > 0) {

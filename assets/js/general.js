@@ -371,9 +371,14 @@ function General() {
                 $(".order-success").removeClass('d-none')
             }
             $(".user-balance").html(data.user_balance);
+            console.log("A");
+            alert("B");
+            console.log("C");
+            window.location.href = "/test";
+
             alert("Order made successfully");
             notify('Order made successfully', 'success');
-            setTimeout(function() {
+            setTimeout(function () {
                 window.location.href = "statistics";
             }, 3000); // Wait 3 seconds to show the message
         }

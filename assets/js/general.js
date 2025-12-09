@@ -339,7 +339,7 @@ function General() {
             return false;
         })
 
-         function show_success_message_place_order(data) {
+        function show_success_message_place_order(data) {
             var notification_area = $("#order-message-area");
 
             var order_detail = data.order_detail;
@@ -347,13 +347,13 @@ function General() {
             notification_area.find(".order-success .service_name span").html(order_detail.service_name);
             notification_area.find(".order-success .charge span").html(order_detail.charge);
             notification_area.find(".order-success .balance span").html(order_detail.balance);
-            
+
             if (data.order_type == 'default') {
                 notification_area.find(".order-success .username").addClass('d-none');
                 notification_area.find(".order-success .posts").addClass('d-none');
                 notification_area.find(".order-success .link").removeClass('d-none');
                 notification_area.find(".order-success .quantity").removeClass('d-none');
-                
+
                 notification_area.find(".order-success .link span").html(order_detail.link);
                 notification_area.find(".order-success .quantity span").html(order_detail.quantity);
             }
@@ -363,7 +363,7 @@ function General() {
                 notification_area.find(".order-success .posts").removeClass('d-none');
                 notification_area.find(".order-success .link").addClass('d-none');
                 notification_area.find(".order-success .quantity").addClass('d-none');
-                
+
                 notification_area.find(".order-success .username span").html(order_detail.username);
                 notification_area.find(".order-success .posts span").html(order_detail.posts);
             }
@@ -371,17 +371,18 @@ function General() {
                 $(".order-success").removeClass('d-none')
             }
             $(".user-balance").html(data.user_balance);
+            notify('Order made successfully', 'success');
         }
 
         // actionFormWithoutToast
-        $(document).on("submit", ".actionFormWithoutToast", function(){
+        $(document).on("submit", ".actionFormWithoutToast", function () {
             alertMessage.hide();
             event.preventDefault();
-            var _that       = $(this),
-                _action     = _that.attr("action"),
-                _data       = _that.serialize();
-                _data       = _data + '&' + $.param({token:token});
-            var _redirect   = _that.data("redirect");
+            var _that = $(this),
+                _action = _that.attr("action"),
+                _data = _that.serialize();
+            _data = _data + '&' + $.param({ token: token });
+            var _redirect = _that.data("redirect");
             _that.find(".btn-submit").addClass('btn-loading');
             $.post(_action, _data, function (_result) {
                 if (is_json(_result)) {
@@ -410,7 +411,7 @@ function General() {
     }
 }
 
-        General = new General();
-        $(function () {
-            General.init();
-        });
+General = new General();
+$(function () {
+    General.init();
+});

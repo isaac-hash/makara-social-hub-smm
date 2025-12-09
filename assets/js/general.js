@@ -371,6 +371,7 @@ function General() {
                 $(".order-success").removeClass('d-none')
             }
             $(".user-balance").html(data.user_balance);
+            alert("Order made successfully");
             notify('Order made successfully', 'success');
             setTimeout(function() {
                 window.location.href = "statistics";

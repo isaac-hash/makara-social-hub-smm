@@ -299,31 +299,9 @@
 </script>
 
     <?php
-
-        
-        $promo_data = [
-            'title' => 'Promo',
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id doloribus enim nulla suscipit dignissimos. Minima necessitatibus aliquam porro velit itaque.',
-            'promo_image' => 'assets/images/promo-bg.jpg',
-            'promo_image_alt' => 'Social Media Growth Illustration',
-            // 'background_color' => 'var(--toggle-bg)',
-            // 'background' => 'linear-gradient(135deg,rgba(0, 42, 255, 0.05) 0%,rgba(0, 98, 255, 0.1) 50%,rgba(64, 224, 208, 0.15) 100%);',
-            $status => false,
-        ];
-        $promo = [
-            'title' => $promo_data['title'],
-            'description' => $promo_data['description'],
-            'promo_image' => $promo_data['promo_image'],
-            'promo_image_alt' => $promo_data['promo_image_alt'],
-            // 'background_color' => $promo_data['background_color'],
-            // 'background' => $promo_data['background'],
-            $status => $promo_data[$status],
-        ];
-        // $title = $promo[$title];
-
-        $promo_show = $promo[$status];
-        if ($promo_show):
-            // var_dump($promo);
+        // Check if we have any promos from the database
+        if (!empty($promos)) {
+            foreach ($promos as $promo_item):
      ?>
     <section class="hero-section position-relative" style="
         background: var(--toggle-bg);
@@ -341,11 +319,11 @@
                             -webkit-background-clip: text;
                             -webkit-text-fill-color: transparent;
                             text-shadow: 2px 2px 4px rgba(0,0,0,0.1)">
-                            <?= $promo['title'] ?>
+                            <?= htmlspecialchars($promo_item['title']) ?>
                            
                         </p>
                         <p class="keen-subtitle lead mb-4" style="color: var(--text-color); font-size: 1.25rem;">
-                            <?= $promo['description'] ?>
+                            <?= htmlspecialchars_decode($promo_item['description'], ENT_QUOTES) ?>
                            
                         </p>
                     </div>
@@ -360,8 +338,8 @@
                         align-items: center;
                         justify-content: center;
                     ">
-                        <img src="<?= $promo['promo_image'] ?>" 
-                             alt="<?= $promo['promo_image_alt'] ?> " 
+                        <img src="<?= BASE . $promo_item['image'] ?>" 
+                             alt="<?= htmlspecialchars($promo_item['alt'] ?? $promo_item['title'], ENT_QUOTES) ?> " 
                              class="img-fluid rounded-4 shadow-lg" 
                              style="
                                 max-width: 95%;
@@ -383,7 +361,8 @@
         </div>
     </section>
     <?php
-     endif;
+            endforeach;
+        }
      ?> 
     <!-- Stats Section -->
     <section class="py-5 " style="background-color: var(--toggle-bg); background: linear-gradient(135deg,

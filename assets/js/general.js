@@ -311,11 +311,7 @@ function General() {
                     _result = JSON.parse(_result);
                     if (_result.status == 'success' && _result.notification_type == 'place-order') {
                         setTimeout(function () {
-                            alert("Order made successfully");
                             show_success_message_place_order(_result);
-                            setTimeout(function () {
-                                window.location.href = "statistics";
-                            });
                         }, 1000);
                     } else {
                         if ($("#order_resume").length > 0) {
@@ -375,12 +371,6 @@ function General() {
                 $(".order-success").removeClass('d-none')
             }
             $(".user-balance").text(data.user_balance);
-            setTimeout(function () {
-                console.log("A");
-                alert("Order made successfully");
-                notify('Order made successfully', 'success');
-                window.location.href = "statistics";
-            }, 600);
             // Wait 3 seconds to show the message
         }
 

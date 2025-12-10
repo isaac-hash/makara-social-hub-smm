@@ -27,7 +27,7 @@ class promo extends My_AdminController
     }
         public function index()
         {
-            $items = $this->main_model->list_items(null, ['task' => 'list-items-view-news']);
+            $items = $this->main_model->list_items(null, ['task' => 'list-items-admin']);
             
             $data = [
                 "controller_name" => $this->controller_name,
@@ -43,6 +43,8 @@ class promo extends My_AdminController
             redirect(admin_url($this->controller_name));
         }
 
+        $id = $this->input->post('id');
+
         // Form validation
         $this->form_validation->set_rules('title', 'Title', 'trim|required|xss_clean');
         $this->form_validation->set_rules('description', 'Description', 'trim|xss_clean');
@@ -54,52 +56,74 @@ class promo extends My_AdminController
         }
 
         // Check if file is uploaded
-        if (empty($_FILES['promo']['name'])) {
-            ms(["status" => "error", "message" => "Please select a promo image to upload."]);
+        $image_path = "";
+        if (!empty($_FILES['promo']['name'])) {
+            $upload_promo_image_path = FCPATH . "assets/uploads/promo/";
+            if (!is_dir($upload_promo_image_path)) {
+                mkdir($upload_promo_image_path, 0755, true);
+            }
+
+            $config['upload_path']   = $upload_promo_image_path;
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size']      = 10239; // 10MB
+            $config['encrypt_name']  = TRUE;
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('promo')) {
+                ms(["status" => "error", "message" => strip_tags($this->upload->display_errors())]);
+            }
+
+            $upload_data = $this->upload->data();
+            $image_path = 'assets/uploads/promo/' . $upload_data['file_name'];
+        } else {
+             if (empty($id)) {
+                ms(["status" => "error", "message" => "Please select a promo image to upload."]);
+             }
         }
-
-        // Permission check - Temporarily commented out for debugging
-        // Uncomment this after setting up permissions in the admin panel for 'promo' controller
-        // staff_check_role_permission($this->controller_name, 'add');
-
-        $upload_promo_image_path = FCPATH . "assets/uploads/promo/";
-        if (!is_dir($upload_promo_image_path)) {
-            mkdir($upload_promo_image_path, 0755, true);
-        }
-
-        $config['upload_path']   = $upload_promo_image_path;
-        $config['allowed_types'] = 'gif|jpg|jpeg|png';
-        $config['max_size']      = 10239; // 10MB
-        $config['encrypt_name']  = TRUE;
-
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('promo')) {
-            ms(["status" => "error", "message" => strip_tags($this->upload->display_errors())]);
-        }
-
-        $upload_data = $this->upload->data();
-        $image_path = 'assets/uploads/promo/' . $upload_data['file_name'];
 
         $data = [
             "title"        => $this->input->post('title'),
             "description"  => $this->input->post('description'),
-            "image"        => $image_path,
             "alt"          => $this->input->post('alt'),
             "status"       => (int)$this->input->post("status"),
         ];
 
-        // Log data for debugging
-        log_message('debug', 'Promo save attempt - Data: ' . json_encode($data));
-        log_message('debug', 'Promo table name: ' . PROMO);
+        if (!empty($image_path)) {
+            $data['image'] = $image_path;
+        }
 
-        $response = $this->main_model->save_item($data, ['task' => 'add-item']);
-        
-        // Log response
-        log_message('debug', 'Promo save response: ' . json_encode($response));
+        if ($id) {
+            $data['id'] = $id;
+            $response = $this->main_model->save_item($data, ['task' => 'edit-item']);
+        } else {
+            $response = $this->main_model->save_item($data, ['task' => 'add-item']);
+        }
 
         ms($response);
     }
 
-    
+
+    public function update($id = "")
+    {
+        $item = $this->main_model->get_item(['id' => (int)$id], ['task' => 'get-item']);
+        if (!$item) {
+            redirect(admin_url($this->controller_name));
+        }
+
+        $data = [
+            "controller_name" => $this->controller_name,
+            "item" => $item,
+        ];
+        $this->template->build($this->path_views . "/update", $data);
+    }
+
+    public function delete($id = "")
+    {
+        if (!$id) {
+            redirect(admin_url($this->controller_name));
+        }
+        $response = $this->main_model->delete_item(['id' => (int)$id], ['task' => 'delete-item']);
+        ms($response);
+    }
 }

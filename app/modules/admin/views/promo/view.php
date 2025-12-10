@@ -12,71 +12,20 @@
 ?>
 
 <div id="main-modal-content" class="promo_view">
-  <div class="modal-right">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-pantone">
-          <h4 class="modal-title"><i class="fe fe-award"></i> <?=lang("promo")?></h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          </button>
-        </div>
+  <div class="">
+    <div class="" role="document">
+      <div class="mb-3">
+        <h4 class=""><i class="fe fe-award"></i> <?=lang("promo")?></h4>
+      </div>
+      <div class="row">
         
-        <!-- Upload Form -->
-        <div class="modal-body">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title"><i class="fa fa-upload"></i> Upload New Promo</h3>
-            </div>
-            <div class="card-body">
-              <?php echo form_open($form_url, $form_attributes); ?>
-                <div class="row">
-                  <div class="col-md-12 form-group">
-                    <label for="promo">Promo Image <span class="text-danger">*</span></label>
-                    <input type="file" name="promo" id="promo" class="form-control" accept="image/*" required>
-                    <small class="form-text text-muted">Maximum file size: 10MB. Allowed formats: JPG, PNG, GIF</small>
-                  </div>
-
-                  <div class="col-md-12 form-group">
-                    <label for="title">Title <span class="text-danger">*</span></label>
-                    <input type="text" name="title" id="title" class="<?=$class_element?>" required>
-                  </div>
-
-                  <div class="col-md-12 form-group">
-                    <label for="description">Description</label>
-                    <textarea name="description" id="description" class="<?=$class_element_editor?>" rows="4"></textarea>
-                  </div>
-
-                  <div class="col-md-12 form-group">
-                    <label for="alt">Image Alt Text</label>
-                    <input type="text" name="alt" id="alt" class="<?=$class_element?>" placeholder="Alternative text for the image">
-                  </div>
-
-                  <div class="col-md-12 form-group">
-                    <label for="status">Status</label>
-                    <?php echo form_dropdown('status', $form_status, '1', ['class' => $class_element, 'id' => 'status']); ?>
-                  </div>
-
-                  <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary btn-min-width mr-1 mb-1 btn-submit-promo">
-                      <i class="fa fa-save"></i> Upload Promo
-                    </button>
-                    <button type="reset" class="btn btn-secondary">
-                      <i class="fa fa-undo"></i> Reset
-                    </button>
-                  </div>
-                </div>
-              <?php echo form_close(); ?>
-            </div>
-          </div>
-        </div>
-
         <!-- Existing Promos List -->
-        <div class="modal-body o-auto">
+        <div class="col-12 col-lg-6 mb-3 mb-lg-0">
           <div class="card">
             <div class="card-header">
               <h3 class="card-title"><i class="fa fa-list"></i> Existing Promos</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="max-height: 600px; overflow-y: auto;">
               <?php
                 if (!empty($items)) {
               ?>
@@ -86,9 +35,15 @@
               ?>
                 <div class="promo-item mb-3">
                   <div class="card">
-                    <div class="card-header">
-                      <h3 class="card-title"><?=$item['title']?></h3>
-                      <small class="text-muted m-l-5"><?=date("d/m/Y" , strtotime(convert_timezone($item['created'], 'user')))?></small>
+                    <div class="card-header d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
+                      <div class="flex-grow-1 mb-2 mb-sm-0">
+                        <h3 class="card-title mb-1"><?=$item['title']?></h3>
+                        <small class="text-muted"><?=date("d/m/Y" , strtotime(convert_timezone($item['created'], 'user')))?></small>
+                      </div>
+                      <div class="card-options d-flex flex-wrap">
+                        <a href="<?=admin_url($controller_name . '/update/' . $item['id'])?>" class="btn btn-sm btn-primary mr-1 mb-1"><i class="fa fa-edit"></i> <span class="d-none d-sm-inline">Edit</span></a>
+                        <a href="<?=admin_url($controller_name . '/delete/' . $item['id'])?>" class="btn btn-sm btn-danger ajaxModal mb-1"><i class="fa fa-trash"></i> <span class="d-none d-sm-inline">Delete</span></a>
+                      </div>
                     </div>
                     <div class="card-body desc">
                       <?php if (!empty($item['image'])): ?>
@@ -103,6 +58,55 @@
               <?php }}else{ 
                 echo show_empty_item(); 
               }?>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Upload Form -->
+        <div class="col-12 col-lg-6">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa fa-upload"></i> Upload New Promo</h3>
+            </div>
+            <div class="card-body">
+              <?php echo form_open($form_url, $form_attributes); ?>
+                <div class="row">
+                  <div class="col-12 form-group">
+                    <label for="promo">Promo Image <span class="text-danger">*</span></label>
+                    <input type="file" name="promo" id="promo" class="form-control" accept="image/*" required>
+                    <small class="form-text text-muted">Maximum file size: 10MB. Allowed formats: JPG, PNG, GIF</small>
+                  </div>
+
+                  <div class="col-12 form-group">
+                    <label for="title">Title <span class="text-danger">*</span></label>
+                    <input type="text" name="title" id="title" class="<?=$class_element?>" required>
+                  </div>
+
+                  <div class="col-12 form-group">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" class="<?=$class_element_editor?>" rows="4"></textarea>
+                  </div>
+
+                  <div class="col-12 form-group">
+                    <label for="alt">Image Alt Text</label>
+                    <input type="text" name="alt" id="alt" class="<?=$class_element?>" placeholder="Alternative text for the image">
+                  </div>
+
+                  <div class="col-12 form-group">
+                    <label for="status">Status</label>
+                    <?php echo form_dropdown('status', $form_status, '1', ['class' => $class_element, 'id' => 'status']); ?>
+                  </div>
+
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary btn-min-width mr-1 mb-1 btn-submit-promo">
+                      <i class="fa fa-save"></i> Upload Promo
+                    </button>
+                    <button type="reset" class="btn btn-secondary mb-1">
+                      <i class="fa fa-undo"></i> Reset
+                    </button>
+                  </div>
+                </div>
+              <?php echo form_close(); ?>
             </div>
           </div>
         </div>

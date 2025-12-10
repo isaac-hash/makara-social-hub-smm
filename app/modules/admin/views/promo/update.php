@@ -1,6 +1,7 @@
 <?php
 $form_url = admin_url($controller_name . "/store/");
 $form_attributes = ['class' => 'form actionForm', 'data-redirect' => admin_url($controller_name), 'method' => "POST", 'enctype' => 'multipart/form-data'];
+$item = (isset($item)) ? $item : null;
 ?>
 <div class="card">
     <div class="card-header">
@@ -17,38 +18,44 @@ $form_attributes = ['class' => 'form actionForm', 'data-redirect' => admin_url($
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="title"><?= lang("Title") ?></label>
-                        <input class="form-control" type="text" name="title" id="title" placeholder="Enter title">
+                        <input class="form-control" type="text" name="title" id="title" placeholder="Enter title" value="<?=!empty($item['title']) ? $item['title'] : ''?>">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="alt"><?= lang("Image_Alt_Text") ?></label>
-                        <input class="form-control" type="text" name="alt" id="alt" placeholder="Enter image alt text">
+                        <input class="form-control" type="text" name="alt" id="alt" placeholder="Enter image alt text" value="<?=!empty($item['alt']) ? $item['alt'] : ''?>">
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="description"><?= lang("Description") ?></label>
-                        <textarea class="form-control" name="description" id="description" rows="3" placeholder="Enter description"></textarea>
+                        <textarea class="form-control" name="description" id="description" rows="3" placeholder="Enter description"><?=!empty($item['description']) ? $item['description'] : ''?></textarea>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="promo"><?= lang("Promo_Image") ?></label>
                         <input type="file" class="form-control" name="promo" id="promo">
+                        <?php if (!empty($item['image'])): ?>
+                            <small class="text-muted">Current image: <a href="<?=BASE . $item['image']?>" target="_blank"><?=basename($item['image'])?></a></small>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="status"><?= lang("Status") ?></label>
                         <select name="status" id="status" class="form-control">
-                            <option value="1"><?= lang("Active") ?></option>
-                            <option value="0"><?= lang("Inactive") ?></option>
+                            <option value="1" <?= (isset($item['status']) && $item['status'] == 1) ? 'selected' : '' ?>><?= lang("Active") ?></option>
+                            <option value="0" <?= (isset($item['status']) && $item['status'] == 0) ? 'selected' : '' ?>><?= lang("Inactive") ?></option>
                         </select>
                     </div>
                 </div>
             </div>
         </div>
+        <?php if (!empty($item['id'])): ?>
+            <input type="hidden" name="id" value="<?=$item['id']?>">
+        <?php endif; ?>
         <div class="form-actions">
             <button type="submit" class="btn btn-primary btn-min-width mr-1 mb-1"><?= lang("Save") ?></button>
         </div>

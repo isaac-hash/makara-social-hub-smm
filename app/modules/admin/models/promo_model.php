@@ -64,6 +64,14 @@ class promo_model extends MY_Model
             $query = $this->db->get();
             $result = $query->result_array();
         }
+
+        if ($option['task'] == 'list-items-admin') {
+            $this->db->select('id, title, description, status, image, created, alt');
+            $this->db->from($this->tb_main);
+            $this->db->order_by('created', 'DESC');
+            $query = $this->db->get();
+            $result = $query->result_array();
+        }
         return $result;
     }
 
@@ -162,12 +170,12 @@ class promo_model extends MY_Model
             case 'add-item':
                 $data = array(
                     "title"            => $params['title'],
-                    "description"     => $params['description'],
+                    "description"      => $params['description'],
                     "image"            => $params['image'],
                     "alt"              => $params['alt'],
-                    "status"          => (int)$params["status"],
-                    "created"         => NOW,
-                    "changed"		  => NOW,
+                    "status"           => (int)$params["status"],
+                    "created"          => NOW,
+                    "changed"          => NOW,
                 );
                 
                 $this->db->insert($this->tb_main, $data);
@@ -181,6 +189,24 @@ class promo_model extends MY_Model
                     log_message('error', 'Promo insert failed: ' . json_encode($error));
                     return ["status"  => "error", "message" => 'Failed to add promo. Database error: ' . $error['message']];
                 }
+                break;
+
+            case 'edit-item':
+                $data = array(
+                    "title"            => $params['title'],
+                    "description"      => $params['description'],
+                    "alt"              => $params['alt'],
+                    "status"           => (int)$params["status"],
+                    "changed"          => NOW,
+                );
+
+                if (!empty($params['image'])) {
+                    $data['image'] = $params['image'];
+                }
+
+                $this->db->update($this->tb_main, $data, ['id' => $params['id']]);
+                
+                return ["status"  => "success", "message" => 'Promo updated successfully'];
                 break;
         }
     }

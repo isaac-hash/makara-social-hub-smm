@@ -18,9 +18,15 @@ class home extends MX_Controller {
         if (get_option("enable_disable_homepage") && !in_array($home_page_type, ['monoka'])) {
             redirect(cn("auth/login"));
         }
+        
+        // Load promo model and fetch active promos
+        $this->load->model('admin/promo_model');
+        $promos = $this->promo_model->list_items(null, ['task' => 'list-items-view-news']);
+        
         $data = [
             // 'lang_current' => get_lang_code_defaut(),
 			// 'languages'    => $this->model->fetch("*", LANGUAGE_LIST, "status = 1")
+            'promos' => $promos,
         ];
         $this->template->set_layout('blank_page');
         $this->template->build('../../../themes/'.$home_page_type.'/views/index', $data);

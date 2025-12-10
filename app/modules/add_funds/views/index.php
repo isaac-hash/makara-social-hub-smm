@@ -37,6 +37,14 @@
       -webkit-transform: translateX(215px);
     }
   }
+  .video-frame{
+    width:80%;
+  }
+  @media (min-width: 1000px) {
+    .video-frame{
+      width:60%;
+    }
+  }
 </style>
 
     <style>
@@ -470,6 +478,15 @@
         </div>
       </div> 
     </div> -->
+    <div style="position:relative; padding-bottom:56.25%; height:5rem; overflow:hidden; margin:auto;" class="video-frame">
+    <iframe 
+        src="https://youtube.com/embed/0_T5SuGKpic?si=ErMsPc9Mcfrpcp18" 
+        style="position:absolute; top:0; left:0; width:100%; height:100%;" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
 
   </div>
 </section>

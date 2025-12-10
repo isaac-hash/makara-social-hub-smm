@@ -68,6 +68,7 @@ $route['user/receipts'] = 'manual_payment/index';
 $route['new_order']                             = 'order/new_order';
 $route['tickets/(:num)'] = 'tickets/view/$1';
 $route['notifications/(:num)'] = 'notifications/view/$1';
+$route['notifications'] = 'notifications';
 
 // client area
 $route['login']                   = 'auth/login';

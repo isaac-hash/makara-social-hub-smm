@@ -42,7 +42,7 @@
                       </div>
                       <div class="card-options d-flex flex-wrap">
                         <a href="<?=admin_url($controller_name . '/update/' . $item['id'])?>" class="btn btn-sm btn-primary mr-1 mb-1"><i class="fa fa-edit"></i> <span class="d-none d-sm-inline">Edit</span></a>
-                        <a href="<?=admin_url($controller_name . '/delete/' . $item['id'])?>" class="btn btn-sm btn-danger ajaxModal mb-1"><i class="fa fa-trash"></i> <span class="d-none d-sm-inline">Delete</span></a>
+                        <a href="<?=admin_url($controller_name . '/delete/' . $item['id'])?>" class="btn btn-sm btn-danger ajaxDelete mb-1"><i class="fa fa-trash"></i> <span class="d-none d-sm-inline">Delete</span></a>
                       </div>
                     </div>
                     <div class="card-body desc">
@@ -168,6 +168,32 @@
           }, 1000);
         }
       });
+      
+      return false;
+    });
+
+    // Custom AJAX handler for delete
+    $(document).on("click", ".ajaxDelete", function(e) {
+      e.preventDefault();
+      var _that = $(this);
+      
+      if (!confirm("Are you sure you want to delete this item?")) return false;
+      
+      var _url = _that.attr("href");
+      var _data = $.param({token: token});
+      
+      pageOverlay.show();
+      $.post(_url, _data, function(_result) {
+        setTimeout(function() {
+          pageOverlay.hide();
+          notify(_result.message, _result.status);
+          if (_result.status == 'success') {
+            setTimeout(function() {
+              window.location.reload();
+            }, 1500);
+          }
+        }, 1000);
+      }, 'json');
       
       return false;
     });

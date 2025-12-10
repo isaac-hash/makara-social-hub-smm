@@ -146,13 +146,12 @@ class promo_model extends MY_Model
     {
         $result = [];
         if($option['task'] == 'delete-item'){
-            $item = $this->get("id, ids", $this->tb_main, ['id' => $params['id']]);
+            $item = $this->get("id", $this->tb_main, ['id' => $params['id']]);
             if ($item) {
                 $this->db->delete($this->tb_main, ["id" => $params['id']]);
                 $result = [
                     'status' => 'success',
                     'message' => 'Deleted successfully',
-                    "ids"     => $item->ids,
                 ];
             }else{
                 $result = [

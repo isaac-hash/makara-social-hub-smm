@@ -35,6 +35,16 @@
   <?php
     if (!empty($filter_categories)) $this->load->view('child/btn_filter_categories', ['filter_categories' => $filter_categories]);
   ?>
+  <div style="position:relative; padding-bottom:56.25%; height:5rem; overflow:hidden; width:80%; margin:auto;">
+    <iframe 
+        src="https://youtube.com/embed/kQmj1lOkxrE?si=fRwsA_TzEG3GlviT" 
+        style="position:absolute; top:0; left:0; width:100%; height:100%;" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
+
 
   <div class="col-md-10 col-xl-10" >
     <div class="card">

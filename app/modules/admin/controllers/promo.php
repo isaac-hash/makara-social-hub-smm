@@ -120,8 +120,12 @@ class promo extends My_AdminController
 
     public function delete($id = "")
     {
-        if (!$id) {
+        if (!is_ajax_call()) {
             redirect(admin_url($this->controller_name));
+        }
+
+        if (!$id) {
+            ms(['status' => 'error', 'message' => 'Invalid ID']);
         }
         $response = $this->main_model->delete_item(['id' => (int)$id], ['task' => 'delete-item']);
         ms($response);

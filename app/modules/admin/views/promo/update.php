@@ -2,6 +2,7 @@
 $form_url = admin_url($controller_name . "/store/");
 $form_attributes = ['class' => 'form actionForm', 'data-redirect' => admin_url($controller_name), 'method' => "POST", 'enctype' => 'multipart/form-data'];
 $item = (isset($item)) ? $item : null;
+$class_element_editor = app_config('template')['form']['class_element_editor'];
 ?>
 <div class="card">
     <div class="card-header">
@@ -30,7 +31,7 @@ $item = (isset($item)) ? $item : null;
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="description"><?= lang("Description") ?></label>
-                        <textarea class="form-control" name="description" id="description" rows="3" placeholder="Enter description"><?=!empty($item['description']) ? $item['description'] : ''?></textarea>
+                        <textarea class="form-control <?=$class_element_editor?>" name="description" id="description" rows="3" placeholder="Enter description"><?=!empty($item['description']) ? $item['description'] : ''?></textarea>
                     </div>
                 </div>
                 <div class="col-md-6">

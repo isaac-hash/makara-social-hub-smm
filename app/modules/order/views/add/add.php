@@ -21,7 +21,7 @@
         .video-frame{
     width:90%;
     margin-bottom: 2rem;
-    height:10rem;
+    height:20rem;
   }
   @media (min-width: 1000px) {
     .video-frame{

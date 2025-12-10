@@ -39,7 +39,7 @@
   }
   .video-frame{
     width:80%;
-    height:10rem;
+    height:20rem;
   }
   @media (min-width: 1000px) {
     .video-frame{

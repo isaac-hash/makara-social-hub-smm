@@ -18,6 +18,15 @@
             --makara-border: #020c68ff;
             --makara-blue-bg: #020c6867;
         }
+        .video-frame{
+    width:90%;
+    margin-bottom: 2rem;
+  }
+  @media (min-width: 1000px) {
+    .video-frame{
+      width:60%;
+    }
+  }
 </style> 
 
 <?php
@@ -35,7 +44,7 @@
   <?php
     if (!empty($filter_categories)) $this->load->view('child/btn_filter_categories', ['filter_categories' => $filter_categories]);
   ?>
-  <div style="position:relative; padding-bottom:56.25%; height:5rem; overflow:hidden; width:80%; margin:auto;">
+  <div class="video-frame" style="position:relative; padding-bottom:56.25%; height:5rem; overflow:hidden; margin:auto; margin-bottom: 2rem;">
     <iframe 
         src="https://youtube.com/embed/kQmj1lOkxrE?si=fRwsA_TzEG3GlviT" 
         style="position:absolute; top:0; left:0; width:100%; height:100%;" 
@@ -46,7 +55,7 @@
 </div>
 
 
-  <div class="col-md-10 col-xl-10" >
+  <div class="col-md-10 col-xl-10 mt-3" >
     <div class="card">
       <div class="card-header d-flex align-items-center">
         <div class="tabs-list">

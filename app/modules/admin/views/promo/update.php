@@ -65,7 +65,7 @@ $class_element_editor = app_config('template')['form']['class_element_editor'];
 </div>
 
 <script>
-    // $(document).ready(function() {
-    //     plugin_editor('.plugin_editor', {height: 200});
-    // });
+    $(document).ready(function() {
+        plugin_editor('.plugin_editor', {height: 200});
+    });
 </script>

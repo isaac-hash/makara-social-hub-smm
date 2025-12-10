@@ -21,10 +21,12 @@
         .video-frame{
     width:90%;
     margin-bottom: 2rem;
+    height:10rem;
   }
   @media (min-width: 1000px) {
     .video-frame{
       width:60%;
+      height:5rem;
     }
   }
 </style> 
@@ -44,7 +46,7 @@
   <?php
     if (!empty($filter_categories)) $this->load->view('child/btn_filter_categories', ['filter_categories' => $filter_categories]);
   ?>
-  <div class="video-frame" style="position:relative; padding-bottom:56.25%; height:5rem; overflow:hidden; margin:auto; margin-bottom: 2rem;">
+  <div class="video-frame" style="position:relative; padding-bottom:56.25%;  overflow:hidden; margin:auto; margin-bottom: 2rem;">
     <iframe 
         src="https://youtube.com/embed/kQmj1lOkxrE?si=fRwsA_TzEG3GlviT" 
         style="position:absolute; top:0; left:0; width:100%; height:100%;" 

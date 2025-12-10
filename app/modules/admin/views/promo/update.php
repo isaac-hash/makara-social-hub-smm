@@ -63,3 +63,9 @@ $class_element_editor = app_config('template')['form']['class_element_editor'];
         <?php echo form_close(); ?>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        plugin_editor('.plugin_editor', {height: 200});
+    });
+</script>

@@ -47,7 +47,7 @@ class promo extends My_AdminController
 
         // Form validation
         $this->form_validation->set_rules('title', 'Title', 'trim|required|xss_clean');
-        $this->form_validation->set_rules('description', 'Description', 'trim|xss_clean');
+        $this->form_validation->set_rules('description', 'Description', 'trim');
         $this->form_validation->set_rules('alt', 'Alt Text', 'trim|xss_clean');
         $this->form_validation->set_rules('status', 'Status', 'trim|required|in_list[0,1]|xss_clean');
 

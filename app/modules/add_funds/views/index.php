@@ -328,6 +328,15 @@
   if (get_option("is_active_manual")) {
 ?>
 <section class="add-funds m-t-30">
+  <div style="position:relative; padding-bottom:56.25%; height:5rem; overflow:hidden; margin:auto;" class="video-frame">
+    <iframe 
+        src="https://youtube.com/embed/0_T5SuGKpic?si=bGDeQ_gEQBSA4yz8" 
+        style="position:absolute; top:0; left:0; width:100%; height:100%;" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
 
 <button type="button" style="
            
@@ -480,15 +489,7 @@
         </div>
       </div> 
     </div> -->
-    <div style="position:relative; padding-bottom:56.25%; height:5rem; overflow:hidden; margin:auto;" class="video-frame">
-    <iframe 
-        src="https://youtube.com/embed/0_T5SuGKpic?si=ErMsPc9Mcfrpcp18" 
-        style="position:absolute; top:0; left:0; width:100%; height:100%;" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-    </iframe>
-</div>
+    
 
   </div>
 </section>

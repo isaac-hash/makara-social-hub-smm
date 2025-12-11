@@ -38,8 +38,8 @@
     }
   }
   .video-frame{
-    width:80%;
-    height:1000px;
+    width:95%;
+    height:600px;
   }
   @media (min-width: 1000px) {
     .video-frame{

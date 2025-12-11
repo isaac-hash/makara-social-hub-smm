@@ -51,6 +51,17 @@
         overflow: hidden;
         }
 
+        .video-player{
+            height: 60rem;
+        }
+
+        @media (min-width: 1024px) {
+            .video-player{
+                /* height: 40rem; */
+                width: 75%;
+                margin: auto;
+            }
+        }
   
     </style>
     <!-- Header -->
@@ -1025,7 +1036,31 @@
                 </div>
             </div>
         </div>
-    </section>    <!-- FAQs Section -->
+    </section>
+    <section class="video-player">
+        <h3 style="text-align:center; margin-bottom: 2rem;">Our Video Guides</h3>
+        <div style="width:95%; overflow:hidden; margin:auto; margin-bottom:2rem;" class="video-frame">
+            <h3 style="text-align:center; margin-bottom: 2rem; text-decoration:underline;">How to fund your wallet</h3>
+            <iframe 
+                src="https://youtube.com/embed/0_T5SuGKpic?si=bGDeQ_gEQBSA4yz8" 
+                style=" width:100%; height:23rem;" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div style="width:95%; overflow:hidden; margin:auto; margin-bottom:2rem;" class="video-frame">
+            <h3 style="text-align:center; margin-bottom: 2rem; text-decoration:underline;">How to make an order</h3>
+            <iframe 
+                src="https://youtube.com/embed/kQmj1lOkxrE?si=fRwsA_TzEG3GlviT" 
+                style=" width:100%; height:23rem;" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+    <!-- FAQs Section -->
     <section class="faq-section py-7" style="
         background: linear-gradient(135deg,
             rgba(0, 42, 255, 0.03) 0%,

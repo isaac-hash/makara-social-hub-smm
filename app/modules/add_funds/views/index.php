@@ -353,6 +353,7 @@
            
            gap:8px;
            transition:background 0.3s ease;
+           margin-top: 3rem;
          "
          class="text-center text-lg-left d-flex align-items-center justify-content-center justify-content-lg-start btn col-lg-7 col-md-7 col-10 mx-auto p-3 mb-4"
          onmouseover="this.style.background='#1a1a1a'"

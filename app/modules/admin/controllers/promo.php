@@ -84,7 +84,7 @@ class promo extends My_AdminController
 
         $data = [
             "title"        => $this->input->post('title'),
-            "description"  => $this->input->post('description'),
+            "description"  => $this->input->post('description', FALSE),
             "alt"          => $this->input->post('alt'),
             "status"       => (int)$this->input->post("status"),
         ];

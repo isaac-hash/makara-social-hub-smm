@@ -354,7 +354,7 @@
                              class="img-fluid rounded-4 shadow-lg" 
                              style="
                                 max-width: 95%;
-                                height: 30rem;
+                                height: 25rem;
                                 animation: float 3s ease-in-out infinite;
                                 filter: drop-shadow(0 10px 20px rgba(0,98,255,0.2));
                              "

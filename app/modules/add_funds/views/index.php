@@ -44,7 +44,7 @@
   @media (min-width: 1000px) {
     .video-frame{
       width:60%;
-      height:5rem;
+      height:10rem;
     }
   }
 </style>

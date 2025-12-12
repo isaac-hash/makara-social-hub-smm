@@ -314,60 +314,245 @@
         if (!empty($promos)) {
             foreach ($promos as $promo_item):
      ?>
-    <section class="hero-section position-relative" style="
-        background: var(--toggle-bg);
-        
-        background-color: linear-gradient(135deg,rgba(0, 42, 255, 0.05) 0%,rgba(0, 98, 255, 0.1) 50%,rgba(64, 224, 208, 0.15) 100%);
+    <section class="promo-hero-section position-relative" style="
+        background: linear-gradient(135deg,
+            var(--makara-orange-new) 0%,
+            rgba(255, 120, 50, 0.95) 25%,
+            rgba(255, 90, 50, 0.9) 50%,
+            rgba(255, 60, 80, 0.85) 75%,
+            rgba(220, 50, 100, 0.8) 100%
+        );
         min-height: 100vh;
-
+        overflow: hidden;
+        position: relative;
     ">
-        <div class="container position-relative" >
-            <div class="row align-items-center min-vh-75">
-                <div class="col-lg-6 py-5">
-                    <div class="hero-content-wrapper">
-                        
-                        <p class=" mb-4" style="color: var(--text-color); font-size: 3.25rem; font-weight:bold; background: linear-gradient(to right, #202020ff, #e0e0e0);
-                            -webkit-background-clip: text;
-                            -webkit-text-fill-color: transparent;
-                            text-shadow: 2px 2px 4px rgba(0,0,0,0.1)">
-                            <?= htmlspecialchars($promo_item['title']) ?>
-                           
-                        </p>
-                        <p class="keen-subtitle lead mb-4" style="color: var(--text-color); font-size: 1.25rem;">
-                            <?= htmlspecialchars_decode($promo_item['description'], ENT_QUOTES) ?>
-                           
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-6  d-lg-block position-relative">
-                    <div class="hero-image-wrapper" style="
-                        position: relative;
-                        width: 100%;
-                        height: 100%;
-                        min-height: 500px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    ">
+        <!-- Animated gradient mesh overlay -->
+        <div style="
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+                              radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 40%);
+            opacity: 0.6;
+            mix-blend-mode: overlay;
+        "></div>
+        
+        <!-- Animated diagonal lines -->
+        <div style="
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 15px,
+                rgba(255, 255, 255, 0.03) 15px,
+                rgba(255, 255, 255, 0.03) 30px
+            );
+            animation: promo-gradient-move 25s linear infinite;
+        "></div>
+        
+        <!-- Floating decorative circles -->
+        <div class="promo-floating-circle" style="
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            top: -100px;
+            right: -50px;
+            animation: promo-pulse 8s ease-in-out infinite;
+        "></div>
+        <div class="promo-floating-circle" style="
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            bottom: 50px;
+            left: -80px;
+            animation: promo-pulse 6s ease-in-out infinite reverse;
+        "></div>
+        
+        <style>
+            @keyframes promo-gradient-move {
+                0% { background-position: 0 0; }
+                100% { background-position: 60px 60px; }
+            }
+            @keyframes promo-pulse {
+                0%, 100% { transform: scale(1); opacity: 0.5; }
+                50% { transform: scale(1.1); opacity: 0.8; }
+            }
+            @keyframes promo-float {
+                0% { transform: translateY(0px) rotate(0deg); }
+                50% { transform: translateY(-25px) rotate(2deg); }
+                100% { transform: translateY(0px) rotate(0deg); }
+            }
+            @keyframes promo-shimmer {
+                0% { background-position: -200% center; }
+                100% { background-position: 200% center; }
+            }
+            .promo-hero-section .promo-title {
+                font-size: clamp(2rem, 5vw, 3.5rem);
+                font-weight: 800;
+                line-height: 1.2;
+                background: linear-gradient(135deg, #ffffff 0%, #fff8f0 50%, #ffffff 100%);
+                background-size: 200% auto;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                animation: promo-shimmer 4s linear infinite;
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            .promo-hero-section .promo-description {
+                font-size: clamp(1rem, 2vw, 1.3rem);
+                line-height: 1.7;
+                color: rgba(255, 255, 255, 0.95);
+                text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            }
+            .promo-content-card {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 24px;
+                padding: 2.5rem;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .promo-content-card:hover {
+                background: rgba(255, 255, 255, 0.15);
+                transform: translateY(-5px);
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            }
+            .promo-image-container {
+                position: relative;
+                width: 100%;
+                min-height: 450px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .promo-image-container::before {
+                content: '';
+                position: absolute;
+                width: 90%;
+                height: 90%;
+                background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+                border-radius: 50%;
+                animation: promo-pulse 5s ease-in-out infinite;
+            }
+            .promo-image {
+                max-width: 95%;
+                max-height: 550px;
+                object-fit: cover;
+                border-radius: 20px;
+                animation: promo-float 4s ease-in-out infinite;
+                box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25),
+                            0 10px 20px rgba(0, 0, 0, 0.15),
+                            inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+                transition: all 0.4s ease;
+            }
+            .promo-image:hover {
+                transform: translateY(-10px) scale(1.02);
+                box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3),
+                            0 15px 30px rgba(0, 0, 0, 0.2);
+            }
+            .promo-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                background: rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(10px);
+                padding: 10px 20px;
+                border-radius: 50px;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                color: white;
+                font-weight: 600;
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+                animation: promo-pulse 3s ease-in-out infinite;
+            }
+            .promo-badge i {
+                font-size: 1.1rem;
+            }
+            @media (max-width: 991px) {
+                .promo-content-card {
+                    padding: 1.5rem;
+                    margin-bottom: 2rem;
+                }
+                .promo-image-container {
+                    min-height: 400px;
+                }
+                .promo-image {
+                    max-height: 420px;
+                }
+            }
+            @media (max-width: 576px) {
+                .promo-image-container {
+                    min-height: 320px;
+                }
+                .promo-image {
+                    max-height: 300px;
+                    max-width: 98%;
+                }
+            }
+            /* Mobile: Image on top of text */
+            @media (max-width: 991px) {
+                .promo-row {
+                    display: flex !important;
+                    flex-direction: column-reverse !important;
+                }
+                .promo-text-col {
+                    order: 1 !important;
+                }
+                .promo-image-col {
+                    order: 2 !important;
+                }
+            }
+        </style>
+        
+        <div class="container position-relative py-5">
+            <div class="row align-items-center min-vh-75 promo-row">             
+                
+                <div class="col-lg-6 d-lg-block position-relative promo-image-col">
+                    <div class="promo-image-container">
                         <img src="<?= BASE . $promo_item['image'] ?>" 
-                             alt="<?= htmlspecialchars($promo_item['alt'] ?? $promo_item['title'], ENT_QUOTES) ?> " 
-                             class="img-fluid rounded-4 shadow-lg" 
-                             style="
-                                max-width: 95%;
-                                height: 25rem;
-                                animation: float 3s ease-in-out infinite;
-                                filter: drop-shadow(0 10px 20px rgba(0,98,255,0.2));
-                             "
+                             alt="<?= htmlspecialchars($promo_item['alt'] ?? $promo_item['title'], ENT_QUOTES) ?>" 
+                             class="img-fluid promo-image"
                         >
                     </div>
-                    <style>
-                        @keyframes float {
-                            0% { transform: translateY(0px); }
-                            50% { transform: translateY(-20px); }
-                            100% { transform: translateY(0px); }
-                        }
-                    </style>
                 </div>
+                <div class="col-lg-6 py-5 promo-text-col">
+                    <div class="promo-content-card">
+                        <div class="promo-badge">
+                            <i class="fas fa-fire"></i>
+                            <span>Special Promo</span>
+                        </div>
+                        
+                        <h2 class="promo-title mb-4">
+                            <?= htmlspecialchars($promo_item['title']) ?>
+                        </h2>
+                        
+                        <p class="promo-description mb-4">
+                            <?= htmlspecialchars_decode($promo_item['description'], ENT_QUOTES) ?>
+                        </p>
+                        
+                        <div class="d-flex flex-wrap gap-3 mt-4">
+                            <a href="<?=cn('/auth/signup')?>" class="btn px-4 py-3 rounded-pill" style="
+                                background: rgba(255, 255, 255, 0.95);
+                                color: var(--makara-orange-new);
+                                font-weight: 600;
+                                border: none;
+                                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+                                transition: all 0.3s ease;
+                            " onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 15px 40px rgba(0,0,0,0.2)'" 
+                               onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 10px 30px rgba(0,0,0,0.15)'">
+                                <i class="fas fa-rocket me-2"></i>Signup Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>

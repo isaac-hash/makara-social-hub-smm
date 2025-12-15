@@ -58,6 +58,7 @@ $route['about-services'] = 'services/about';
 $route['services'] = 'services/index';
 $route['cac'] = 'cac';
 $route['api-page'] = 'api_page';
+$route['tutorials'] = 'tutorials/index';
 $route['add_funds/korapay/simulate_bank_transfer_success'] = 'add_funds/korapay/simulate_bank_transfer_success';
 $route['add_funds/korapay/validate_charge'] = 'add_funds/korapay/validate_charge';
 $route['user/receipts'] = 'manual_payment/index';

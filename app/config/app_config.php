@@ -25,6 +25,7 @@ $config['controller'] = [
         'service_area'     => ['name' => 'Service',         'icon' => '',                    'area_title' => true,  'route-name' => '#'],
         'order'            => ['name' => 'Orders',          'icon' => 'fe fe-shopping-cart', 'area_title' => false, 'route-name' => 'order'],
         'promo'            => ['name' => 'Promos',          'icon' => 'fe fe-award', 'area_title' => false, 'route-name' => 'promo'],
+        'tutorials'            => ['name' => 'Tutorials',          'icon' => 'fe fe-camera', 'area_title' => false, 'route-name' => 'tutorials'],
         'dripfeed'         => ['name' => 'Dripfeed',        'icon' => 'fe fe-droplet',       'area_title' => false, 'route-name' => 'dripfeed'],
         'receipts'         => ['name' => 'Receipts',   'icon' => 'fe fe-file-text',   'area_title' => false, 'route-name' => 'receipts'],
         'subscriptions'    => ['name' => 'Subscriptions',   'icon' => 'fe fe-thumbs-up',     'area_title' => false, 'route-name' => 'subscriptions'],

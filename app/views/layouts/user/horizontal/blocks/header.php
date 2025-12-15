@@ -377,40 +377,40 @@
             }
         }
 
-    .sticky-btn {
-        width:30px;
-        height:20px;
-
-        padding: 9px;
-
-        background: var(--toggle-bg, #1e1e1e);
-        color: var(--makara-blue);
-        text-decoration: none;
-        border-radius: 100%;
-        margin-left: .5rem;
-
-        box-shadow: 0 4px 15px rgba(13, 11, 209, 0.3);
-        transition: all 0.3s ease;
-
-    }
-
-    .sticky-btn i {
-        font-size: 1.3rem;
-    }
-    /* Mobile responsive */
-    @media (max-width: 768px) {
-
         .sticky-btn {
-            width: 30px;
-            height: 30px;
-            padding: 8px;
-            justify-content: center;
+            width:30px;
+            height:20px;
+
+            padding: 9px;
+
+            background: var(--toggle-bg, #1e1e1e);
+            color: var(--makara-blue);
+            text-decoration: none;
+            border-radius: 100%;
+            margin-left: .5rem;
+
+            box-shadow: 0 4px 15px rgba(13, 11, 209, 0.3);
+            transition: all 0.3s ease;
+
         }
 
         .sticky-btn i {
             font-size: 1.3rem;
         }
-    }
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+
+            .sticky-btn {
+                width: 30px;
+                height: 30px;
+                padding: 8px;
+                justify-content: center;
+            }
+
+            .sticky-btn i {
+                font-size: 1.3rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -548,6 +548,12 @@
                 <a href="<?=cn('statistics')?>" class="menu-link active">
                     <i class="fas fa-chart-line menu-icon"></i>
                     <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn('tutorials')?>" class="menu-link">
+                    <i class="fe fe-camera menu-icon"></i>
+                    <span>Tutorials</span>
                 </a>
             </li>
             <li class="menu-item">

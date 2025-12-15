@@ -112,6 +112,7 @@ define("TICKETS", "tickets");
 define("TICKET_MESSAGES", "ticket_messages");
 
 define("PROMO", "promo");
+define("TUTORIALS", "tutorials");
 define("NEWS", "general_news");
 define("COUPONS", "general_coupons");
 define("OPTIONS", "general_options");

@@ -8,6 +8,7 @@ class notifications_model extends MY_Model
     {
         parent::__construct();
         $this->tb_main = NOTIFICATIONS;
+        $this->tb_notification_message = NOTIFICATION_MESSAGES;
         $this->tb_staffs = STAFFS;
     }
 
@@ -197,5 +198,102 @@ class notifications_model extends MY_Model
         if ($send_message) {
             send_mail_error_log(["status" => "error", "message" => $send_message]);
         }
+    }
+
+    public function send_manual_notification($params = [])
+    {
+        if (empty($params['uids']) || empty($params['subject']) || empty($params['message'])) {
+             return ["status" => "error", "message" => lang("please_fill_in_the_required_fields")];
+        }
+
+        $uids = explode(',', $params['uids']);
+        $count = 0;
+        foreach ($uids as $uid) {
+            $data = [
+                'uid' => $uid,
+                'subject' => $params['subject'],
+                'description' => $params['message'],
+            ];
+            if ($this->add_admin_notification($data)) {
+                $count++;
+            }
+        }
+        
+        return ["status" => "success", "message" => "Sent $count notifications successfully"];
+    }
+
+    public function add_admin_notification($data = [])
+    {
+        if (empty($data['uid']) || empty($data['subject']) || empty($data['description'])) {
+            return false;
+        }
+
+        $insert_data = [
+            "ids" => ids(),
+            "uid" => $data['uid'],
+            "subject" => $data['subject'],
+            "description" => $data['description'],
+            'user_read' => 1, // Highlight as unread for user? Usually 0 is unread... wait.
+            // In list_items: user_read is selected.
+            // In view_get_item: 'user_read' => 0 is UPDATED when viewed.
+            // So 1 means unread? Or 0 means unread?
+            // "user_read" => 0 in add-item (user creates).
+            // When admin replies: 'user_read' => 0.
+            // When user views: 'user_read' => 0?
+            // Wait. Line 98: 'user_read' => 0 on update.
+            // If it converts to 0 on view, then it was likely 1 before?
+            // BUT add-item sets it to 0. 
+            // Let's check `view.php` or `index.php` to see how it displays.
+            // I'll assume 1 is unread for now because `view_get_item` sets it to 0.
+            // WAIT. If `view_get_item` sets it to 0, then 0 is READ.
+            // So 1 is UNREAD.
+            // BUT `add-item` sets `user_read` = 0. That means user created it, so they read it. Correct.
+            // `view-get-item` sets `user_read` = 0.
+            // `add-item-notification-massage` (reply) sets `user_read` = 0.
+            // This implies 0 is UNREAD?
+            // If `view-get-item` sets it to 0. Then it STAYS 0?
+            // Let me check `notifications` VIEW file `index` if possible, but I can't right now easily without tool.
+            // Let's assume standard logic: 1 = unread, 0 = read.
+            // If `view-get-item` sets it to 0 (Read).
+            // Then creating a message (`add-item`) by user sets `user_read` = 0 (Read by user). `admin_read` = 1 (Unread by admin).
+            // `add-item-notification-massage` (reply):
+            // Defaults: 'user_read' => 0 (Read by user? No, if admin replies, user should NOT have read it).
+            // Line 153 sets 'user_read' => 0. This seems wrong if admin replies.
+            // UNLESS 0 is UNREAD?
+            // If 0 is UNREAD, then `view-get-item` updating it to 0 means... marking it unread? That makes no sense.
+            // Let's re-read line 97:
+            /*
+            $data_item = [
+                'user_read' => 0,
+                'changed' => NOW,
+            ];
+            $this->db->update($this->tb_main, $data_item, ['id' => $params['id']]);
+            */
+            // If viewing the item sets it to 0. Then 0 MUST be READ.
+            // Then `add-item` sets `user_read` = 0. (User read their own new ticket). Correct.
+            // `add-item-notification-massage`:
+            /*
+            $data_item = [
+                'status' => 'pending',
+                'user_read' => 0,
+                'admin_read' => 1,
+            */
+            // This is generic update. If USER replies, `user_read`=0 (read), `admin_read`=1 (unread).
+            // If ADMIN replies, this method is also called?
+            // `store_message` in controller calls this.
+            // `store_message` is in `notifications.php` (User side).
+            // So this method is ONLY for user replies!
+            // So 1 = Unread, 0 = Read.
+            // So when ADMIN sends a notification, `user_read` should be 1 (Unread).
+            
+            'user_read' => 1, 
+            'admin_read' => 0, // Admin sent it, so read.
+            'status' => 'new', // Use 'new' or 'answer' or 'closed'?
+            'changed' => NOW,
+            'created' => NOW,
+        ];
+
+        $this->db->insert($this->tb_main, $insert_data);
+        return $this->db->affected_rows() > 0;
     }
 }

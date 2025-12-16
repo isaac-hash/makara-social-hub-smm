@@ -389,4 +389,16 @@ class users_model extends MY_Model
             return ["status"  => "success", "message" => 'Update successfully'];
         }
     }
+    public function search_items_by_key($k)
+    {
+        $this->db->select('id as id, CONCAT(first_name, " ", last_name, " (", email, ")") as text');
+        $this->db->from($this->tb_main);
+        if ($k != "" && strlen($k) >= 2) {
+            $this->db->where("(`first_name` LIKE '%$k%' OR `last_name` LIKE '%$k%' OR `email` LIKE '%$k%')");
+        }
+        $this->db->order_by('id', 'ASC');
+        $this->db->limit(10);
+        $query = $this->db->get();
+        return ["items" => $query->result_array()];
+    }
 }

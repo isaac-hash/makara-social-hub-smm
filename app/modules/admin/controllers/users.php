@@ -379,4 +379,14 @@ class users extends My_AdminController
             ]);
         }
     }
+
+    public function search()
+    {
+        if (!is_ajax_call()) {
+            redirect(admin_url($this->controller_name));
+        }
+        $k = get('q');
+        $result = $this->main_model->search_items_by_key($k);
+        echo json_encode($result);
+    }
 }

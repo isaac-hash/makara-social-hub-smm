@@ -68,6 +68,14 @@ class add_funds_model extends MY_Model
                 $this->send_mail_payment_notification(['user' => $user]);
             }
 
+            // [NEW] Send in-app notification
+            $this->load->model('notifications/notifications_model');
+            $this->notifications_model->add_admin_notification([
+                'uid' => $user->id,
+                'subject' => 'Payment Received',
+                'description' => "Your payment of " . $data_tnx->amount . " (Transaction ID: " . $data_tnx->transaction_id . ") was successful.",
+            ]);
+
             // Commit transaction
             $this->db->trans_complete();
 

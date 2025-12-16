@@ -459,15 +459,18 @@
             </div>
 
             <?php
-              if (get_option("enable_news_announcement") &&  get_option('news_announcement_button_position', "header") == 'header') {
+                $CI = &get_instance();
+                $CI->load->model('notifications/notifications_model');
+                $unread_notification_count = $CI->notifications_model->count_items(['uid' => session('uid')], ['task' => 'count-items-unread']);
             ?>
             <div class="header-icon">
-                <a class="ajaxModal" href="<?=cn("news-annoucement")?>" data-toggle="tooltip" data-placement="bottom" title="<?=lang("news__announcement")?>">
-                    <i class="fas fa-bell"></i>
-                    <span class="notification-badge <?=(isset($_COOKIE["news_annoucement"]) && $_COOKIE["news_annoucement"] == "clicked") ? "" : "change_color"?>"></span>
+                <a href="<?=cn("notifications")?>" data-toggle="tooltip" data-placement="bottom" title="<?=lang("Notifications")?>">
+                    <i class="fas fa-bell" style="color: black;"></i>
+                    <?php if ($unread_notification_count > 0) { ?>
+                        <span class="notification-badge change_color"><?= $unread_notification_count ?></span>
+                    <?php } ?>
                 </a>
             </div>
-            <?php }?>
 
             <?php
               $redirect = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -566,6 +569,12 @@
                 <a href="<?=cn($header_elements['order']['route-name'])?>" class="menu-link">
                     <i class="fas fa-clock-rotate-left menu-icon"></i>
                     <span>Order History</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="<?=cn('notifications')?>" class="menu-link">
+                    <i class="fas fa-bell menu-icon"></i>
+                    <span>Notifications</span>
                 </a>
             </li>
             <li class="menu-item">

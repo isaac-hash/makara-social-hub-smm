@@ -18,93 +18,10 @@
   </div>
 </section>
 
-<?php
-  $class_element = app_config('template')['form']['class_element'];
-  $form_subjects = [
-    'subject_order'   => lang("Order"),
-    'subject_payment' => lang("Payment"),
-    'subject_service' => lang("Service"),
-    'subject_other'   => lang("Other"),
-  ];
-  $form_request = [
-    'refill'         => lang("Refill"),
-    'cancellation'   => lang("Cancellation"),
-    'speed_up'       => lang("Speed_Up"),
-    'other'          => lang("Other"),
-  ];
-  $form_payments = [
-    // 'paypal'         => lang("Paypal"),
-    // 'stripe'         => lang("Cancellation"),
-    // 'speed_up'       => lang("Stripe"),
-    'korapay'         => lang("Korapay"),
-    'manual_payment'  => lang("Manual_Payment"), 'other'          => lang("Other"),
-  ];
-
-  $elements = [
-    [
-      'label'      => form_label(lang('Subject')),
-      'element'    => form_dropdown('subject', $form_subjects, '', ['class' => $class_element . ' ajaxChangeTicketSubject']),
-      'class_main' => "col-md-12 col-sm-12 col-xs-12",
-    ],
-    [
-      'label'      => form_label(lang('Request')),
-      'element'    => form_dropdown('request', $form_request, '', ['class' => $class_element]),
-      'class_main' => "col-md-12 col-sm-12 col-xs-12 subject-order",
-    ],
-    [
-      'label'      => form_label(lang('order_id')),
-      'element'    => form_input(['name' => 'orderid', 'value' => '', 'placeholder' => lang("for_multiple_orders_please_separate_them_using_comma_example_123451234512345"),'type' => 'text', 'class' => $class_element]),
-      'class_main' => "col-md-12 col-sm-12 col-xs-12 subject-order",
-    ],
-    [
-      'label'      => form_label(lang('Payment')),
-      'element'    => form_dropdown('payment', $form_payments, '', ['class' => $class_element]),
-      'class_main' => "col-md-12 col-sm-12 col-xs-12 subject-payment d-none",
-    ],
-    [
-      'label'      => form_label(lang('Transaction_ID')),
-      'element'    => form_input(['name' => 'transaction_id', 'value' => '', 'placeholder' => lang("enter_the_transaction_id"),'type' => 'text', 'class' => $class_element]),
-      'class_main' => "col-md-12 col-sm-12 col-xs-12 subject-payment d-none",
-    ],
-    [
-      'label'      => form_label(lang("Description")),
-      'element'    => form_textarea(['name' => 'description', 'value' => '', 'class' => $class_element]),
-      'class_main' => "col-md-12",
-    ],
-  ];
-  $form_url     = cn($controller_name. "/store/");
-  $redirect_url = cn($controller_name) ;
-  $form_attributes = ['class' => 'form actionForm', 'data-redirect' => $redirect_url, 'method' => "POST"];
-?>
 
 <div class="row justify-content-end responsive-content-row">
-  <div class="col-md-5 d-none d-sm-block">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">
-          <h4 class="modal-title" style="color: black;"><i class="fe fe-edit"></i> <?=lang("add_new_ticket")?></h4>
-        </h3>
-        <div class="card-options">
-          <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
-          <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
-        </div>
-      </div>
 
-      <div class="card-body o-auto" style="height: calc(100vh - 180px); background-color: var(--background-color); color: var(--text-color);">
-        <?php echo form_open($form_url, $form_attributes); ?>
-          <div class="form-body" id="add_new_ticket">
-            <div class="row justify-content-md-center">
-              <?php echo render_elements_form($elements); ?>
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <button type="submit" class="btn btn-primary btn-spinner-border btn-block btn-lg mr-1 mb-1"><?=lang('Submit')?></button>
-              </div>
-            </div>
-          </div>
-        <?php echo form_close(); ?>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-7">
+  <div class="col-12">
     <div class="row" id="result_ajaxSearch">
       <div class="col-md-12">
         <div class="card">

@@ -111,6 +111,14 @@ class receipts_model extends MY_Model {
         // }
 
         // $debug['transaction_log_inserted'] = true;
+
+        // [NEW] Send in-app notification
+        $this->load->model('notifications/notifications_model');
+        $this->notifications_model->add_admin_notification([
+            'uid' => $receipt->user_id,
+            'subject' => 'Payment Approved',
+            'description' => "Your manual payment of " . $receipt->amount . " (Receipt ID: " . $receipt->id . ") has been approved.",
+        ]);
     }
 
     // -----------------------------------------------------------------

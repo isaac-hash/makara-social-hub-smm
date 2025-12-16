@@ -36,6 +36,7 @@ $config['controller'] = [
         'category'         => ['name' => 'Category',        'icon' => 'fa fa-th-large',      'area_title' => false, 'route-name' => 'category'],
         'support_area'     => ['name' => 'Support Area',    'icon' => '',                    'area_title' => true,  'route-name' => '#'],
         'tickets'          => ['name' => 'Ticket',          'icon' => 'fa fa-comments-o',    'area_title' => false, 'route-name' => 'tickets'],
+        'notifications'    => ['name' => 'Notification',    'icon' => 'fa fa-comments-o',    'area_title' => false, 'route-name' => 'notifications'],
         'users_area'       => ['name' => 'Manage Users',    'icon' => '',                    'area_title' => true, 'route-name' => '#'],
         'users'            => ['name' => 'Users',           'icon' => 'fe fe-users',         'area_title' => false, 'route-name' => 'users'],
         'subscribers'      => ['name' => 'Subscribers',     'icon' => 'fe fe-user-plus',     'area_title' => false, 'route-name' => 'subscribers'],

@@ -95,74 +95,57 @@
     $item_status        = show_item_status($controller_name, $item['id'], $item['status'], '');
 ?>
 <div class="row responsive-section-header">
-    <div class="col-md-4">
+    <div class="col-12 col-md-4 mb-3 mb-md-0">
         <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="h4" style="color: black;"><i class="fa fa-ticket"></i> Notification #<?php echo $item['id']; ?></h3>
+            <div class="card-header">
+                <h3 class="card-title" style="color: black;">
+                    <i class="fe fe-info-circle text-primary"></i> Notification #<?php echo $item['id']; ?>
+                </h3>
             </div>
             <div class="card-body">
-                <div class="ticket-details">
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td scope="row"><?=lang("Status")?></td><td><?php echo $item_status; ?></td></tr>
-                            <tr>
-                                <td scope="row"><?=lang("Name")?></td><td><?php echo $item['first_name'] . ' ' .$item['last_name']; ?></td>
-                            </tr>
-                            <tr>
-                                <td scope="row"><?=lang("Email")?></td><td><?php echo $item['email']; ?></td>
-                            </tr>
-                            <tr>
-                                <td scope="row"><?=lang("Created")?></td><td><?php echo $item_created; ?></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="notification-details">
+                    <div class="table-responsive">
+                        <table class="table table-borderless table-sm mb-0">
+                            <tbody>
+                                <tr>
+                                    <td class="text-muted" style="width: 40%;"><?=lang("Status")?></td>
+                                    <td><?php echo $item_status; ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted"><?=lang("Name")?></td>
+                                    <td><?php echo esc($item['first_name'] . ' ' .$item['last_name']); ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted"><?=lang("Email")?></td>
+                                    <td class="text-break"><?php echo esc($item['email']); ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted"><?=lang("Created")?></td>
+                                    <td><?php echo $item_created; ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <?php
-        $form_url     = cn($controller_name."/store_message/");
-        $redirect_url = cn($controller_name . '/') . $item['id'];
-        $form_attributes = ['class' => 'card-body form actionForm m-t-20', 'data-redirect' => $redirect_url, 'method' => "POST"];
-        $form_hidden = ['ids' => @$item['ids']];
-    ?>
-    <div class="col-md-8">
+    <div class="col-12 col-md-8">
         <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="h4 ticket-title" style="color: black;"><?php echo $item['subject']; ?></h3>
+            <div class="card-header">
+                <h3 class="card-title" style="color: black;">
+                    <i class="fe fe-bell text-primary" style="color: black;"></i> <?php echo esc($item['subject']); ?>
+                </h3>
+                <div class="card-options">
+                    <span class="text-muted small">
+                        <i class="fe fe-clock"></i> <?php echo show_item_datetime($item['created'], 'long'); ?>
+                    </span>
+                </div>
             </div>
-            <?php 
-                if ($item['status'] != 'closed') {
-            ?>
-                <?php echo form_open($form_url, $form_attributes, $form_hidden); ?>
-                    <div class="form-group">
-                        <label for="userinput8"><?=lang("Message")?></label>
-                        <textarea rows="10" class="form-control" name="message"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-min-width m-r-5"><?=lang("Submit")?></button>
-                <?php echo form_close(); ?>
-                <hr/>   
-            <?php } ?>
-            <div id="frame">
-                <div class="content">
-                    <div class="messages">
-                        <ul class="p-l-0">
-                            <?php
-                                if ($items_ticket_message) {
-                                    foreach ($items_ticket_message as $key => $item_message) {
-                                        echo show_item_ticket_message_detail($controller_name, $item_message, 'user');
-                                    }
-                                }
-                            ?>
-                            <?php
-                                $item['message'] = $item['description'];
-                                unset($item['description']);
-                                echo show_item_ticket_message_detail($controller_name, $item, 'user');
-                            ?>
-                        </ul>
-                    </div>
+            <div class="card-body">
+                <div class="notification-content" style="color: black;">
+                    <?php echo nl2br(esc($item['description'])); ?>
                 </div>
             </div>
         </div>

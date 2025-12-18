@@ -553,12 +553,12 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <!-- <li class="menu-item">
+            <li class="menu-item">
                 <a href="<?=cn('tutorials')?>" class="menu-link">
                     <i class="fe fe-camera menu-icon"></i>
                     <span>Tutorials</span>
                 </a>
-            </li> -->
+            </li>
             <li class="menu-item">
                 <a href="<?=cn($header_elements['dripfeed']['route-name'])?>" class="menu-link">
                     <i class="fas fa-droplet menu-icon"></i>

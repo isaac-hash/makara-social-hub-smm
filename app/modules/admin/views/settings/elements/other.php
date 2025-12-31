@@ -11,6 +11,13 @@
       <div class="row">
         <div class="col-md-12 col-lg-12">
 
+          <h5 class="text-info"><i class="fe fe-smartphone"></i> Brevo SMS API</h5>
+          <div class="form-group">
+            <label class="form-label">Brevo API Key</label>
+            <input type="password" class="form-control" name="brevo_api_key" value="<?=get_option('brevo_api_key', '')?>">
+            <small class="text-muted">Get your API key from <a href="https://account.brevo.com/advanced/api" target="_blank">Brevo Settings</a></small>
+          </div>
+
           <h5 class="text-info"><i class="fe fe-link"></i> <?=lang("enable_https")?></h5>
           <div class="form-group">
             <div class="form-label"><?=lang("Status")?></div>

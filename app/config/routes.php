@@ -70,6 +70,7 @@ $route['new_order']                             = 'order/new_order';
 $route['tickets/(:num)'] = 'tickets/view/$1';
 $route['notifications/(:num)'] = 'notifications/view/$1';
 $route['notifications'] = 'notifications';
+$route['sms_webhook'] = 'admin/sms/webhook';
 
 // client area
 $route['login']                   = 'auth/login';

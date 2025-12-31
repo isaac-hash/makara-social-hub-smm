@@ -76,6 +76,16 @@ class notifications_model extends MY_Model
             $query = $this->db->get();
             $result = $query->num_rows();
         }
+
+        // Count items: unread
+        if ($option['task'] == 'count-items-unread') {
+            $this->db->select('id');
+            $this->db->from($this->tb_main);
+            $this->db->where('uid', session('uid'));
+            $this->db->where('user_read', 1);
+            $query = $this->db->get();
+            $result = $query->num_rows();
+        }
         return $result;
     }
 
@@ -115,6 +125,7 @@ class notifications_model extends MY_Model
                 "description" => $params['description'],
                 'user_read' => 0,
                 'admin_read' => 1,
+                "created_by" => 0,
                 "changed" => NOW,
                 "created" => NOW,
             );
@@ -288,6 +299,7 @@ class notifications_model extends MY_Model
             
             'user_read' => 1, 
             'admin_read' => 0, // Admin sent it, so read.
+            'created_by' => 1,
             'status' => 'new', // Use 'new' or 'answer' or 'closed'?
             'changed' => NOW,
             'created' => NOW,

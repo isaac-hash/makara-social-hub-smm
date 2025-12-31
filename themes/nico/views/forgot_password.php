@@ -19,10 +19,10 @@
             <!-- <div class="col-md-6 left-image mx-auto">
               <a href="<?=cn();?>"><img src="<?php echo BASE; ?>themes/nico/assets/images/login.png" alt="login" class="login-card-img"></a>
             </div> -->
-            <div class="col-md-12">
+            <div class="col-md-12 mx-auto">
               <div class="card-body">
                 <div class="brand-wrapper">
-                  <a href="<?=cn();?>"><img src="<?=get_option('website_logo', BASE."assets/images/logo.png")?>" alt="logo" class="logo"></a>
+                  <a href="<?=cn();?>"><img src="<?=get_option('website_logo', BASE."assets/images/logo.png")?>" alt="logo" class="logo" style="max-width: 110px; max-height: 110px;"></a>
                 </div>
                 <p class="login-card-description"><?=lang("forgot_password")?></p>
                 <?php echo form_open($form_url, $form_attributes); ?>

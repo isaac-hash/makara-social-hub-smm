@@ -14,7 +14,7 @@
   <body>
     <main class="align-items-center min-vh-100 py-3 py-md-0" style="background-color: #0D0BD1; color: #fff">
       <div class="container">
-        <div class="row h-100 align-items-center auth-form">
+        <div class="row h-100 align-items-center auth-form border border-radius" style="background-color: #fff;">
           <div class="col-md-6 mx-auto">
               <div class="card-body">
                 <div class="brand-wrapper">

@@ -15,22 +15,17 @@
     <main class="d-flex align-items-center min-vh-100 py-3 py-md-0" style="background-color: #0D0BD1">
       <div class="container col-md-6 mx-auto">
         <div class="card login-card" style="">
-          <div class="row">
-            <!-- <div class="col-md-6 left-image mx-auto">
-              <a href="<?=cn();?>"><img src="<?php echo BASE; ?>themes/nico/assets/images/login.png" alt="login" class="login-card-img"></a>
-            </div> -->
-            <div class="">
-              <div class="card-body">
-                <div class="brand-wrapper">
-                  <a href="<?=cn();?>"><img src="<?=get_option('website_logo', BASE."assets/images/logo.png")?>" alt="logo" class="logo"></a>
-                </div>
-                <p class="login-card-description"><?=lang("forgot_password")?></p>
-                <?php echo form_open($form_url, $form_attributes); ?>
-                  <p class=""><?=lang("enter_your_registration_email_address_to_receive_password_reset_instructions")?></p>
-                  <div class="form-group">
-                    <input type="email" name="email" id="email" class="form-control" placeholder="<?php echo lang("Email"); ?>">
-                  </div>
-                  <!-- reCAPCHA -->
+          <div class="card-body">
+            <div class="brand-wrapper">
+              <a href="<?=cn();?>"><img src="<?=get_option('website_logo', BASE."assets/images/logo.png")?>" alt="logo" class="logo"></a>
+            </div>
+            <p class="login-card-description"><?=lang("forgot_password")?></p>
+            <?php echo form_open($form_url, $form_attributes); ?>
+              <p class=""><?=lang("enter_your_registration_email_address_to_receive_password_reset_instructions")?></p>
+              <div class="form-group">
+                <input type="email" name="email" id="email" class="form-control" placeholder="<?php echo lang("Email"); ?>">
+              </div>
+              <!-- reCAPCHA -->
                   <?php if (get_option('enable_goolge_recapcha') &&  get_option('google_capcha_site_key') != "" && get_option('google_capcha_secret_key') != "") : ?>
                     <div class="form-group">
                       <div class="g-recaptcha" data-sitekey="<?=get_option('google_capcha_site_key')?>"></div>
@@ -46,8 +41,6 @@
                 <nav class="login-card-footer-nav">
                   <a href="<?=cn();?>" class="text-reset"><?=lang('back_to_home');?></a>
                 </nav>
-              </div>
-            </div>
           </div>
         </div>
       </div>

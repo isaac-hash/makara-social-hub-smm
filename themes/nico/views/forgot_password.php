@@ -14,12 +14,8 @@
   <body>
     <main class="align-items-center min-vh-100 py-3 py-md-0" style="background-color: #0D0BD1; color: #fff">
       <div class="container">
-        <div class="card login-card">
-          <div class="row no-gutters">
-            <!-- <div class="col-md-6 left-image mx-auto">
-              <a href="<?=cn();?>"><img src="<?php echo BASE; ?>themes/nico/assets/images/login.png" alt="login" class="login-card-img"></a>
-            </div> -->
-            <div class="col-md-6 mx-auto">
+        <div class="row h-100 align-items-center auth-form">
+          <div class="col-md-6 mx-auto">
               <div class="card-body">
                 <div class="brand-wrapper">
                   <a href="<?=cn();?>"><img src="<?=get_option('website_logo', BASE."assets/images/logo.png")?>" alt="logo" class="logo" style="max-width: 110px; max-height: 110px;"></a>

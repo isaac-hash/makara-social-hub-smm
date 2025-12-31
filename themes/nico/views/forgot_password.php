@@ -13,13 +13,13 @@
   ?>
   <body>
     <main class="d-flex align-items-center min-vh-100 py-3 py-md-0" style="background-color: #0D0BD1">
-      <div class="container">
-        <div class="card login-card">
+      <div class="container col-md-6 mx-auto">
+        <div class="card login-card" style="">
           <div class="row">
             <!-- <div class="col-md-6 left-image mx-auto">
               <a href="<?=cn();?>"><img src="<?php echo BASE; ?>themes/nico/assets/images/login.png" alt="login" class="login-card-img"></a>
             </div> -->
-            <div class="col-12 mx-auto">
+            <div class="">
               <div class="card-body">
                 <div class="brand-wrapper">
                   <a href="<?=cn();?>"><img src="<?=get_option('website_logo', BASE."assets/images/logo.png")?>" alt="logo" class="logo"></a>

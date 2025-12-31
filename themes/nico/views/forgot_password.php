@@ -13,7 +13,7 @@
   ?>
   <body>
     <main class="d-flex align-items-center min-vh-100 py-3 py-md-0" style="background-color: #0D0BD1">
-      <div class="container col-md-6 mx-auto">
+      <div class="container col-md-5 mx-auto">
         <div class="card login-card" style="">
           <div class="card-body mx-auto">
             <div class="brand-wrapper">
@@ -34,7 +34,7 @@
                   <div class="form-group mt-20">
                     <div id="alert-message" class="alert-message-reponse"></div>
                   </div>
-                  <button class="btn btn-block login-btn btn-submit mb-4" type="submit"><?=lang("Submit")?></button>
+                  <button class="btn btn-block login-btn btn-submit mb-4" type="submit" style="background-color: #0D0BD1; color: #fff"><?=lang("Submit")?></button>
                 <?php echo form_close(); ?>
 
                 <p class="login-card-footer-text"><?=lang("already_have_account")?> <a href="<?=cn('/auth/login')?>"><?=lang("Login")?></a></p>
